@@ -1,0 +1,18 @@
+# This file is written by xdg-user-dirs-update
+# If you want to change or add directories, just edit the line you're
+# interested in. All local changes will be retained on the next run
+# Format is XDG_xxx_DIR="$HOME/yyy", where yyy is a shell-escaped
+# homedir-relative path, or XDG_xxx_DIR="/yyy", where /yyy is an
+# absolute path. No other format is supported.
+# 
+XDG_DESKTOP_DIR="/mnt/internal/LinuxData/LinuxDesktop"
+XDG_DOWNLOAD_DIR="/mnt/internal/Data/PersonalFolder/Downloads"
+XDG_TEMPLATES_DIR="/mnt/internal/Data/PersonalFolder/Templates"
+XDG_PUBLICSHARE_DIR="/mnt/internal/Data/PersonalFolder/Public"
+XDG_MUSIC_DIR="/mnt/internal/Data/PersonalFolder/Music"
+XDG_PICTURES_DIR="/mnt/internal/Data/PersonalFolder/Pictures"
+XDG_VIDEOS_DIR="/mnt/internal/Data/PersonalFolder/Videos"
+XDG_DOCUMENTS_DIR="/mnt/internal/Data/PersonalFolder/Documents"
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_DATA_HOME="$HOME/.local/share"
