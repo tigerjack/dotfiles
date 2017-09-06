@@ -41,6 +41,8 @@ dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+# Start the OpenSSH agent, evaluating the environment variables
+eval $(ssh-agent)
 
 ## One of the two window managers below
 exec xmonad
