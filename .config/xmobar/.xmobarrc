@@ -1,0 +1,50 @@
+Config { font = "xft:DejaVu Sans Mono:size=11:bold:antialias=true"
+        , borderColor = "black"
+        , border = TopB
+        , bgColor = "#252525"
+        , fgColor = "grey"
+        , alpha = 255
+        , position = BottomW L 90
+        , textOffset = -1
+        , iconOffset = -1
+        , lowerOnStart = False
+        , pickBroadest = False
+        , persistent = True
+        , hideOnStart = False
+        , allDesktops = True
+        , overrideRedirect = False
+        , commands = [
+                          Run Weather "LIML" 
+                          ["-t","Wth:<tempC>°C","-L","5","-H","35","--high","orange","--low","lightblue"]
+                          36000
+                        , Run Volume "default" "Master" 
+                          ["-t", "Vol:<volume>%<status>", "--", "-c", "orange"] 
+                          20
+                        , Run MultiCpu
+                          ["-t", "Cpu:<total>%", "-L","35","-H","75", "--normal","orange", "--high", "#D23D00"] 
+                          10
+                        , Run Memory 
+                          ["-t", "Mem:<usedratio>%"] 
+                          10
+                        , Run Swap 
+                          ["-t", "Swp:<usedratio>%"] 
+                          100
+                        , Run DynNetwork  
+                          ["-L","56","-H","32000","--high","#49B349"] 
+                          10
+                        , Run BatteryP 
+                          ["BAT0"]
+                          ["-t", "Bat:<acstatus><left>%(<timeleft>)",  "-L", "20", "-H", "80", "-p", "3", "-l", "#D23D00",
+                           "--", "-O", "<fc=#49B349>On</fc>", "-i", "<fc=#49B349>On</fc>", "-o", "<fc=orange>Off</fc>", "-L", "-15", "-H", "-5",
+                           "-l", "red", "-m", "blue", "-h", "#49B349"]
+                          60
+                        , Run Date "%d/%m/%y %H:%M" "date" 10
+                        , Run CoreTemp 
+			  ["-t", "Tmp:<core0>C", "-L", "40", "-H", "60", "-l", "lightblue", "-h", "#D23D00"] 
+                          50
+                        , Run Kbd [("us", "US"), ("it", "IT")] 
+                        , Run StdinReader
+                        ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "%StdinReader%}{%coretemp%--%multicpu%--%memory%*%swap%--%dynnetwork%--%battery%--%LIML%--%default:Master%--%kbd%--%date%"}

@@ -1,0 +1,39 @@
+SystemNotes
+
+*** Test modifications
+Added /usr/bin/ethtool to /etc/mkinitcpio.conf in order to disable wake on lan
+
+*** Structure
+xmonad -> .xmonad/xmonad.hs
+xmobar -> launched by xmonad (see), config in .config/xmobar/.xmobarrc
+twmnd  -> .config/twmn
+yeganesh + dmenu -> launched by xmonad (see), history file in .local/share/yeganesh
+xbindkeys -> to associate keyboard keys to actions, see .xbindkeysrc.scm
+xss-lock -> subscribes the systemd-events suspend, hibernate, lock-session, and unlock-session with appropriate actions (run locker and wait for user to unlock or kill locker).
+feh -> For background, stores last command inside .fehbg
+xournal -> config file is at .xournal/config
+wmctrl -> interact with the EWMH compliant X Window Manager (i.e. XMonad)
+
+*** general settings
+** Appearence
+GTK2 -> lxappearance -> .gtkrc-2.0
+GTK3 -> lxappearance -> .config/gtk-3.0/settings.ini
+qt5 -> qt5ct (you have to set the QT_QPA_PLATFORMTHEME="qt5ct" env variable first)
+
+** Sound
+pulseaudio -> GUI -> pavucontrol
+	   -> tray -> pasystray
+	   -> CLI -> pacmd - Used to reconfigure a PulseAudio sound server during runtime.
+	      	     pactl - Used to control a running PulseAudio sound server.
+		     	   Example usage.
+			   To see the list of sinks run
+			      pactl list short sinks
+			   To set the default sink run
+			      pactl set-default-sink <sink-id>
+			   To see the list of running client using a sink run
+			      pactl list short sinks-input
+			   To switch the default sink for a sink-input run
+			      pactl move-sink-input <sink-input-id> <sink-id>
+	      	     pamixer - A client for a running PulseAudio server, i.e. a mixer
+		     	       I mainly use it for its simplicity to increase/decrease volume or toggle mute
+		     

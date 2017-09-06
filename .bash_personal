@@ -1,0 +1,83 @@
+# Eternal bash history.
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
+# To erase duplicates from history
+#export HISTCONTROL=erasedups
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+
+## To color less, man, etc
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'
+## export LESS_TERMCAP_mr=$(tput rev)
+## export LESS_TERMCAP_mh=$(tput dim)
+## export LESS_TERMCAP_ZV=$(tput rsubm)
+## export LESS_TERMCAP_ZO=$(tput ssupm)
+## export LESS_TERMCAP_ZW=$(tput rsupm)
+
+## export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+## export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+## export LESS_TERMCAP_me=$(tput sgr0)
+## export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+## export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+## export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+## export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+## export LESS_TERMCAP_mr=$(tput rev)
+## export LESS_TERMCAP_mh=$(tput dim)
+## export LESS_TERMCAP_ZN=$(tput ssubm)
+## export LESS_TERMCAP_ZV=$(tput rsubm)
+## export LESS_TERMCAP_ZO=$(tput ssupm)
+## export LESS_TERMCAP_ZW=$(tput rsupm)
+## export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
+
+# Get color support for 'less'
+export LESS="--RAW-CONTROL-CHARS"
+
+## To color man
+## man() {
+##     LESS_TERMCAP_md=$'\e[01;31m' \
+##     LESS_TERMCAP_me=$'\e[0m' \
+##     LESS_TERMCAP_se=$'\e[0m' \
+##     LESS_TERMCAP_so=$'\e[01;44;33m' \
+##     LESS_TERMCAP_ue=$'\e[0m' \
+##     LESS_TERMCAP_us=$'\e[01;32m' \
+##     command man "$@"
+## }  
+
+
+## To use solarized dircolors for ls
+eval `dircolors ~/.config/dircolors.ansi-dark`
+
+
+## To prevent nested ranger instances
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger "$@"
+    else
+        exit
+    fi
+}
+# Set the default editor
+export EDITOR="vim"
+
+# To start emacs in daemon mode automatically
+#export ALTERNATE_EDITOR=""
+#export EDITOR=emacsclient
+
+# To use the system theme on calibre
+export CALIBRE_USE_SYSTEM_THEME=true
