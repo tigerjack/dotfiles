@@ -1,7 +1,5 @@
 SystemNotes
 
-*** Test modifications
-Added /usr/bin/ethtool to /etc/mkinitcpio.conf in order to disable wake on lan
 
 *** Structure
 xmonad -> .xmonad/xmonad.hs
@@ -14,6 +12,8 @@ feh -> For background, stores last command inside .fehbg
 xournal -> config file is at .xournal/config
 wmctrl -> interact with the EWMH compliant X Window Manager (i.e. XMonad)
 xdg_menu -> better check
+
+dotfiles_mgmt -> personal alias to manage my important files using git. To use it just use dotfiles_mgmt instead of git in normal commands (f.e. dotfiles_mgmt commit -m "Hello")
 
 *** general settings
 ** Appearence
@@ -37,4 +37,15 @@ pulseaudio -> GUI -> pavucontrol
 			      pactl move-sink-input <sink-input-id> <sink-id>
 	      	     pamixer - A client for a running PulseAudio server, i.e. a mixer
 		     	       I mainly use it for its simplicity to increase/decrease volume or toggle mute
+*** Test modifications
+Added /usr/bin/ethtool to /etc/mkinitcpio.conf in order to disable wake on lan
 		     
+*** Useful web resources
+    Manage dotfiles -> https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+
+***
+To learn
+   pam
+   gnome-keyring
+
+***
