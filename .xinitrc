@@ -44,6 +44,9 @@ export SSH_AUTH_SOCK
 # Start the OpenSSH agent, evaluating the environment variables
 eval $(ssh-agent)
 
+# Start the emacs daemon
+emacs --daemon >~/.startx/emacs_daemon.log 2>&1 &
+
 ## One of the two window managers below
 exec xmonad
 #exec twm

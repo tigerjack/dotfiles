@@ -81,3 +81,9 @@ export EDITOR="vim"
 
 # To use the system theme on calibre
 export CALIBRE_USE_SYSTEM_THEME=true
+
+# Go source binaries ecc.
+export GOPATH="/mnt/internal/LinuxData/Programming/gopath"
+
+# Export path (N.B. already exported at a system level at /etc/profile)
+export PATH="$PATH:$GOPATH/bin"

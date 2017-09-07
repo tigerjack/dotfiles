@@ -12,8 +12,10 @@ feh -> For background, stores last command inside .fehbg
 xournal -> config file is at .xournal/config
 wmctrl -> interact with the EWMH compliant X Window Manager (i.e. XMonad)
 xdg_menu -> better check
+	    update-menus to update the list of menu entries
 
 dotfiles_mgmt -> personal alias to manage my important files using git. To use it just use dotfiles_mgmt instead of git in normal commands (f.e. dotfiles_mgmt commit -m "Hello")
+mimeinfo -> better of xdg-open when no Desktop Environment. Sample usage mimeinfo -n <file> to open file with default app, mimeinfo -d <file> to select default app for file
 
 *** general settings
 ** Appearence
