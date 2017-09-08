@@ -5,7 +5,6 @@
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-! Max number of scrollback lines
 URxvt.depth:                32
 URxvt.geometry:             90x30
 URxvt.transparent:          false
@@ -13,9 +12,15 @@ URxvt.fading:               0
 ! URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
 URxvt.loginShell:           true
-URxvt.saveLines:            500
+URxvt.saveLines:            65535
 URxvt.internalBorder:       3
 URxvt.lineSpace:            0
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+
 
 ! Fonts
 URxvt.allow_bold:           false
@@ -31,7 +36,14 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,resize-font
+URxvt.perl-ext-common:      default,resize-font,url-select
+
+! Yankable URLs (no mouse)
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/firefox
+URxvt.url-select.underline: true
+
+
 
 ! Matcher to open url
 ! URxvt.matcher.button:       1
@@ -44,4 +56,3 @@ URxvt.cursorUnderline:      false
 
 ! Pointer
 URxvt.pointerBlank:         true
-

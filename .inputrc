@@ -1,0 +1,22 @@
+# Read by Readline library, used by bash to edit and interact with command line
+
+# Disable bell??
+set bell-style none
+
+### Completion
+# Color files by types
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+
+### Macro
+# quickly send a command in the background with Ctrl+Alt+B, discarding all of its output and input:
+
+"\e\C-b":"\C-e >/dev/null 2>&1 </dev/null &\C-m"

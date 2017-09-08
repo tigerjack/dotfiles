@@ -12,8 +12,7 @@ export HISTFILE=~/.bash_eternal_history
 #export HISTCONTROL=erasedups
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
 
 ## To color less, man, etc
 export LESS=-R
@@ -87,3 +86,7 @@ export GOPATH="/mnt/internal/LinuxData/Programming/gopath"
 
 # Export path (N.B. already exported at a system level at /etc/profile)
 export PATH="$PATH:$GOPATH/bin"
+
+# Autojump must be sourced here if you want to use it in subshells also (f.e. 
+# when launching a subshell from ranger)
+. /etc/profile.d/autojump.bash
