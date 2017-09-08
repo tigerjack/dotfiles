@@ -51,3 +51,22 @@ To learn
    gnome-keyring
 
 ***
+Key binding definitions
+    # X system
+    .xbindkeys.scm
+
+    # Window manager
+    .xmonad.hs
+
+    # BASH
+    .bash_binding
+
+    # Terminals (urxvt)
+    .inputrc
+
+    # urxvt
+    .Xresources.d/urxvt
+    various perl extensions
+    	    -yankable urls: Alt+u to switch to url select, j/k to navigate, Enter to open link, y to copy link
+	    
+    # tmux

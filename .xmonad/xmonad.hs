@@ -205,7 +205,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Spawn the launcher using command specified by myLauncher.
   -- Use this to launch programs without a key binding.
-  , ((modMask, xK_p),
+  , ((modMask .|. shiftMask, xK_semicolon),
      spawn myCLauncher)
 
   -- Take a full screenshot using the command specified by myScreenshot.
@@ -224,7 +224,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Close focused window.
-  , ((modMask .|. shiftMask, xK_c),
+  , ((modMask .|. shiftMask, xK_x),
      kill)
 
   -- Cycle through the available layout algorithms.
