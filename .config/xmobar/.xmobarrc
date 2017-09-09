@@ -14,10 +14,7 @@ Config { font = "xft:DejaVu Sans Mono:size=11:bold:antialias=true"
         , allDesktops = True
         , overrideRedirect = False
         , commands = [
-                          Run Weather "LIML" 
-                          ["-t","Wth:<tempC>°C","-L","5","-H","35","--high","orange","--low","lightblue"]
-                          36000
-                        , Run Volume "default" "Master" 
+                          Run Volume "default" "Master" 
                           ["-t", "Vol:<volume>%<status>", "--", "-c", "orange"] 
                           20
                         , Run MultiCpu
@@ -47,4 +44,4 @@ Config { font = "xft:DejaVu Sans Mono:size=11:bold:antialias=true"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader%}{%coretemp%--%multicpu%--%memory%*%swap%--%dynnetwork%--%battery%--%LIML%--%default:Master%--%kbd%--%date%"}
+        , template = "%StdinReader%}{%coretemp%--%multicpu%--%memory%*%swap%--%dynnetwork%--%battery%--%default:Master%--%kbd%--%date%"}

@@ -15,6 +15,9 @@ trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --
 # The network manager tray icon
 wicd-gtk -t >~/.startx/wicd-gtk.log 2>&1 &
 
+# The weather system tray icon (not yet working)
+# meteo-qt >~/.startx/meteo-qt 2>&1 &
+
 # To manage clipboards
 copyq >~/.startx/copyq.log 2>&1 &
 

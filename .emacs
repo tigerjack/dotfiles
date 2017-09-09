@@ -27,6 +27,10 @@
  )
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") 
 
+;; Set font size (it's 1/10 pt)
+(set-face-attribute 'default nil :height 200)
+
+
 ;; --- PACKAGES
 ;; Deft
 (require 'deft)

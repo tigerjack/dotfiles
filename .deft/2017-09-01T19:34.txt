@@ -53,16 +53,16 @@ To learn
 ***
 Key binding definitions
     # X system
-    .xbindkeys.scm
+    .xbindkeys.scm -> it applies to the X system, undependent from the window manager (xmonad, ..)
 
     # Window manager
-    .xmonad.hs
+    .xmonad.hs -> Used for key binding used only by the window manager
 
     # BASH
-    .bash_binding
+    .bash_binding -> used for bash keybindings
 
     # Terminals (urxvt)
-    .inputrc
+    .inputrc -> used for all readline applications, not just bash
 
     # urxvt
     .Xresources.d/urxvt
