@@ -70,7 +70,7 @@ main = do
 
 
 -- The command to lock the screen or show the screensaver.
-myCScreensaver = "xscreensaver-command -lock; xset dpms force off"
+myCScreensaver = "loginctl lock-session"
 
 -- The command to take a fullscreen screenshot.
 myCScreenshotFull = "scrot '/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'"
@@ -232,7 +232,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      sendMessage NextLayout)
 
   --  Reset the layouts on the current workspace to default.
-  , ((modMask .|. shiftMask, xK_space),
+  , ((modMask .|. controlMask, xK_space),
      setLayout $ XMonad.layoutHook conf)
 
   -- Resize viewed windows to the correct size.

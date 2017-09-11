@@ -30,11 +30,16 @@
 ;; Set font size (it's 1/10 pt)
 (set-face-attribute 'default nil :height 200)
 
-
-;; --- PACKAGES
+;;;;;;;;;;;;;;;;;;;;;
+;; --- PACKAGES ;;;;;
+;;;;;;;;;;;;;;;;;;;;;
 ;; Deft
 (require 'deft)
+;; 
 (setq deft-recursive t)
+(setq deft-directory "/mnt/internal/Data/PersonalFolder/Documents/Notes/DeftNotes/")
+(setq deft-use-filename-as-title t)
+(setq deft-use-filter-string-for-filename t)
 
 ;; Auto complete
 (ac-config-default)
