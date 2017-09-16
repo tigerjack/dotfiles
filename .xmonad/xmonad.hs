@@ -94,7 +94,7 @@ myCConfirm msg f = do
 
 -- My settings --
 myTerminal ="urxvt"
-myWorkspaces =  map show [1..3] ++ ["4:Tasks", "5", "6:study","7:social","8:vm","9:media"]
+myWorkspaces =  map show [1..2] ++ ["3:Tasks", "4", "5", "6:study","7:social","8:vm","9:media"]
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -153,10 +153,9 @@ myLayoutHook = avoidStruts (
 
 ------------------------------------------------------------------------
 -- Colors and borders
--- Currently based on the ir_black theme.
 --
 myNormalBorderColor  = "#7c7c7c"
-myFocusedBorderColor = "#ffb6b0"
+myFocusedBorderColor = "#07A900"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 myTabConfig = def {
@@ -177,7 +176,7 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 -- Width of the window border in pixels.
-myBorderWidth = 2
+myBorderWidth = 3
 
 
 ------------------------------------------------------------------------

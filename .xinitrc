@@ -27,8 +27,9 @@ pasystray >~/.startx/pasystray.log 2>&1 &
 # To associate shortcuts to events
 xbindkeys >~/.startx/xbindkeys.log 2>&1 &
 
-# twmn (notification system) daemon
-twmnd >~/.startx/twmnd.log 2>&1 &
+# notification system daemon
+#twmnd >~/.startx/twmnd.log 2>&1 &
+dunst >~/.startx/dunst.log 2>&1 &
 
 # The mail client
 thunderbird >~/.startx/thunderbird.log 2>&1 &
