@@ -1,0 +1,15 @@
+
+[Default Applications]
+x-scheme-handler/tg=telegramdesktop.desktop
+application/lrf=calibre-lrfviewer.desktop
+image/png=shotwell-viewer.desktop;
+application/pdf=mupdf.desktop;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+application/epub+zip=calibre-ebook-viewer.desktop;
+application/x-mobipocket-ebook=calibre-ebook-viewer.desktop;
+image/vnd.djvu=djvulibre-djview4.desktop;
+image/jpeg=shotwell-viewer.desktop;
+inode/directory=urxvt-usercreated-1.desktop;
+text/x-tex=texstudio.desktop;
+image/svg+xml=shotwell-usercreated-1.desktop;
