@@ -1,1 +1,4 @@
 export QT_QPA_PLATFORMTHEME="qt5ct"
+
+# To increase performance on Nvidia cards
+export VGL_READBACK=pbo

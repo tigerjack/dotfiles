@@ -34,22 +34,37 @@ dunst >~/.startx/dunst.log 2>&1 &
 # The mail client
 thunderbird >~/.startx/thunderbird.log 2>&1 &
 
-## The background
-~/bin/change_background.sh >~/.startx/change_wallpaper.log 2>&1 &
-
 # To avoid terminal bell
 xset -b
 
+
+# Execute all my periodic X scripts
+for file in ~/bin/mycron/x/?*.sh; do
+	name=$(basename -s .sh $file)
+	logfile="/home/tigerjack/.startx/$name.log"
+	( $file > "$logfile" 2>&1 &)
+done
+unset file
+
+# Start gnome-keyring-daemon in another way
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+#export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+
+# Execute all scripts inside xinitrc.d
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
 # Start the gnome-keyring-daemon from xinitrc:
-dbus-update-activation-environment --systemd DISPLAY
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+#dbus-update-activation-environment --systemd DISPLAY
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+#export SSH_AUTH_SOCK
 
 # Start the OpenSSH agent, evaluating the environment variables
 eval $(ssh-agent)
-
-# Start the emacs daemon
-emacs --daemon >~/.startx/emacs_daemon.log 2>&1 &
 
 ## One of the two window managers below
 exec xmonad

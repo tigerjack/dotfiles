@@ -94,7 +94,7 @@ myCConfirm msg f = do
 
 -- My settings --
 myTerminal ="urxvt"
-myWorkspaces =  map show [1..2] ++ ["3:Tasks", "4", "5", "6:study","7:social","8:vm","9:media"]
+myWorkspaces =  map show [0..2] ++ ["3:Tasks", "4", "5", "6:study","7:social","8:vm","9:media"]
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -120,8 +120,8 @@ myManageHook = composeAll
     , className =? "MPlayer"        --> doShift "9:media"
     , className =? "smplayer"       --> doShift "9:media"
     , className =? "mpv"            --> doShift "9:media"
-    , className =? "MPlayer"        --> doFloat
-    , className =? "smplayer"       --> doFloat
+--    , className =? "MPlayer"        --> doFloat
+--    , className =? "smplayer"       --> doFloat
     , className =? "mpv"       --> doFloat
     , className =? "VirtualBox"     --> doShift "8:vm"
     , className =? "TelegramDesktop"--> doShift "7:social"
@@ -299,7 +299,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
-      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+      | (i, k) <- zip (XMonad.workspaces conf) [xK_0 .. xK_9]
       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
   ++
 

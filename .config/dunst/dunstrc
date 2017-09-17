@@ -279,13 +279,14 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
-[play-sound-on-critical]
+[play-sound]
 	## filters
- 	msg_urgency = critical
+ 	# msg_urgency = critical
  	summary = "*"
 	## modify (none)
 	## script to run
  	script = alert_sound.sh
+	
 [disable-pasystray-multiple-messages]
 	## filters
 	appname = "pasystray"
