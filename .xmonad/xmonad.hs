@@ -54,7 +54,8 @@ main = do
                 , manageHook = manageDocks <+> myManageHook <+> manageHook def
                 , handleEventHook = mconcat
                         [ docksEventHook
-                        , handleEventHook def ]
+                        , handleEventHook def
+			, XMonad.Hooks.EwmhDesktops.fullscreenEventHook ]
                 , layoutHook = smartBorders $ myLayoutHook
                 , logHook = dynamicLogWithPP $ xmobarPP { 
                           ppOutput = hPutStrLn xmproc

@@ -17,12 +17,8 @@ SLEEP_HIGH="900"
 SLEEP_NORMAL="600"
 SLEEP_LOW="300"
 SLEEP_CRITICAL="120"
-#acpi battery name
 BAT="BAT0"
-#action
 ACTION_CRITICAL="systemctl hibernate"
-CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
-CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
 
 #MAX_BATTERY=$(cat /proc/acpi/battery/BAT0/info | grep 'last full' | awk '{print$4}')
@@ -30,8 +26,10 @@ CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 #CRITICAL_BATTERY=$(($CRITICAL_BATTERY*$MAX_BATTERY/100))
 
 # sleep at startup
-# sleep 60
+echo "I'm inside"
 while [ true ]; do
+	CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+	CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
 	if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
 		if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
 			echo "Boooom $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
