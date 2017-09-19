@@ -33,6 +33,9 @@
 ;; Disable menu bar
 (menu-bar-mode -1)
 
+;; Show line numbers
+(global-linum-mode t)
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; --- PACKAGES ;;;;;
 ;;;;;;;;;;;;;;;;;;;;;

@@ -56,7 +56,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Change the screen settings
-xrandr --output "LVDS-1" --brightness 0.2 --gamma 1:1:0.5
+xrandr --output "LVDS-1" --brightness 0.5 --gamma 1:1:0.5
 
 # Start the OpenSSH agent, evaluating the environment variables
 eval $(ssh-agent)

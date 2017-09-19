@@ -9,7 +9,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-sensible'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-unimpaired'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -48,3 +50,4 @@ filetype plugin indent on    " required
 syntax enable
 set background=dark
 "colorscheme solarized
+set number
