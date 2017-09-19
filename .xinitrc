@@ -55,10 +55,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Start the gnome-keyring-daemon from xinitrc:
-#dbus-update-activation-environment --systemd DISPLAY
-#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-#export SSH_AUTH_SOCK
+# Change the screen settings
+xrandr --output "LVDS-1" --brightness 0.2 --gamma 1:1:0.7
 
 # Start the OpenSSH agent, evaluating the environment variables
 eval $(ssh-agent)

@@ -7,12 +7,13 @@ STEP=0.1
 #$(echo "$CURRENT_BRIGHTNESS  + $STEP" | bc)
 if [[ "$1" == "+" ]] && [ $(echo "$CURRENT_BRIGHTNESS < 1.5" | bc) -eq 1 ]
 then
-    echo "Inc"
     xrandr --output "LVDS-1" --brightness $(echo "$CURRENT_BRIGHTNESS  + $STEP" | bc)
 elif [ "$1" == "-" ] && [ $(echo "$CURRENT_BRIGHTNESS > 0.0" | bc) -eq 1 ]
 then
-    echo "Dec"
     xrandr --output "LVDS-1" --brightness $(echo "$CURRENT_BRIGHTNESS - $STEP" | bc)
+elif [ "$1" == "=" ] && [ $(echo "$2 > 0.0" | bc) -eq 1 ]  && [ $(echo "$2 < 1.5" | bc) -eq 1 ]
+then
+    xrandr --output "LVDS-1" --brightness "$2"
 else
-    echo "Out of range"
+    notify-send "Brightness out of range"
 fi
