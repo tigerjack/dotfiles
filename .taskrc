@@ -30,7 +30,7 @@ include /usr/share/doc/task/rc/dark-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
 taskd.server=freecinc.com:53589
-taskd.key=freecinc_9aa46843.key.pem
-taskd.ca=freecinc_9aa46843.ca.pem
-taskd.certificate=freecinc_9aa46843.cert.pem
+taskd.key=/mnt/internal/Data/PersonalFolder/Tasks/freecinc_9aa46843.key.pem
+taskd.ca=/mnt/internal/Data/PersonalFolder/Tasks/freecinc_9aa46843.ca.pem
+taskd.certificate=/mnt/internal/Data/PersonalFolder/Tasks/freecinc_9aa46843.cert.pem
 taskd.credentials=FreeCinc\/freecinc_9aa46843\/585a9874-126b-4821-8502-d476e8f1b098
