@@ -16,8 +16,9 @@ CRITICAL_BATTERY="5"
 SLEEP_HIGH="900"
 SLEEP_NORMAL="600"
 SLEEP_LOW="300"
-SLEEP_CRITICAL="120"
+SLEEP_CRITICAL="90"
 BAT="BAT0"
+ACTION_COUNTDOWN="30"
 ACTION_CRITICAL="systemctl hibernate"
 
 
@@ -25,16 +26,14 @@ ACTION_CRITICAL="systemctl hibernate"
 #LOW_BATTERY=$(($LOW_BATTERY*$MAX_BATTERY/100))
 #CRITICAL_BATTERY=$(($CRITICAL_BATTERY*$MAX_BATTERY/100))
 
-# sleep at startup
-echo "I'm inside"
 while [ true ]; do
 	CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
 	CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
 	if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
 		if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
 			echo "Boooom $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
-			notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to hibernate in 60s!"
-			sleep 60
+			notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to hibernate in $ACTION_COUNTDOWN s!"
+			sleep $ACTION_COUNTDOWN
 			$ACTION_CRITICAL
 		fi
 		sleep $SLEEP_CRITICAL

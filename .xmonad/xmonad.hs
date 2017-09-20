@@ -121,12 +121,12 @@ myManageHook = composeAll
     , className =? "MPlayer"        --> doShift "9:media"
     , className =? "smplayer"       --> doShift "9:media"
     , className =? "mpv"            --> doShift "9:media"
+    , className =? "spotify"            --> doShift "9:media"
 --    , className =? "MPlayer"        --> doFloat
 --    , className =? "smplayer"       --> doFloat
     , className =? "mpv"       --> doFloat
     , className =? "VirtualBox"     --> doShift "8:vm"
     , className =? "TelegramDesktop"--> doShift "7:social"
-    , className =? "stalonetray"    --> doIgnore
     , className =? "Calibre-gui"    --> doShift "9:media"
     , className =? "Gimp"           --> doShift "9:media"
     , manageDocks
@@ -260,19 +260,19 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      windows W.swapMaster)
 
   -- Swap the focused window with the next window.
-  , ((modMask .|. shiftMask, xK_j),
+  , ((modMask .|. shiftMask , xK_less),
      windows W.swapDown  )
 
   -- Swap the focused window with the previous window.
-  , ((modMask .|. shiftMask, xK_k),
+  , ((modMask, xK_less),
      windows W.swapUp    )
 
   -- Shrink the master area.
-  , ((modMask, xK_h),
+  , ((modMask .|. shiftMask, xK_h),
      sendMessage Shrink)
 
   -- Expand the master area.
-  , ((modMask, xK_l),
+  , ((modMask .|. shiftMask, xK_l),
      sendMessage Expand)
 
   -- Push window back into tiling.
