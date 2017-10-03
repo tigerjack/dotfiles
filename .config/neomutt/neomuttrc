@@ -26,3 +26,8 @@ alternative_order text/plain text/enriched text/html
 
 # mailcap, to see HTML pages inside mutt
 set mailcap_path= ~/.config/neomutt/mailcap
+
+# urlscan, to open urls in browser
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+

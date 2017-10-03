@@ -1,2 +1,5 @@
 [MIME Cache]
+image/gif=wine-extension-gif.desktop;
+image/jpeg=wine-extension-jfif.desktop;wine-extension-jpe.desktop;
+image/png=wine-extension-png.desktop;
 x-scheme-handler/tg=telegramdesktop.desktop;

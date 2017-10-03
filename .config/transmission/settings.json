@@ -1,6 +1,6 @@
 {
     "alt-speed-down": 50,
-    "alt-speed-enabled": true,
+    "alt-speed-enabled": false,
     "alt-speed-time-begin": 540,
     "alt-speed-time-day": 127,
     "alt-speed-time-enabled": false,
@@ -30,7 +30,7 @@
     "main-window-height": 1052,
     "main-window-is-maximized": 0,
     "main-window-layout-order": "menu,toolbar,filter,list,statusbar",
-    "main-window-width": 954,
+    "main-window-width": 1280,
     "main-window-x": 0,
     "main-window-y": 0,
     "message-level": 2,
