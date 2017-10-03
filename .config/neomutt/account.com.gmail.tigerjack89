@@ -1,0 +1,60 @@
+### Gmail
+# Source passw
+source "gpg -dq $HOME/.config/neomutt/passwords/com.gmail.tigerjack89.gpg |"
+
+# Necessary ???
+unset ssl_starttls
+unset ssl_use_sslv3
+unset smtp_authenticators
+unset imap_list_subscribed
+unset imap_check_subscribed
+
+## Imap
+set imap_user=tigerjack89@gmail.com
+set imap_pass=$my_gmail_pass
+# Instead of a local directory which contains all your mail (and directories), use your server (and the highest folder in the hierarchy, if needed).
+set folder=imaps://imap.gmail.com/
+# The spoolfile is the folder where your (unfiltered) e-mail arrives. Most e-mail services conventionally name it INBOX. You can now use '=' or '+' as a substitution for the full folder path that was configured above.
+set spoolfile=+INBOX
+
+# Any IMAP folders that should be checked regularly for new mail should be listed here. To check all subscribed mails use imap_check_subscribed
+#set imap_check_subscribed
+# If you do not set this variable, the spoolfile will be used by default. This variable is also important for the #Sidebar. 
+#mailboxes = +INBOX +Spam +Bin
+# # Specify where to save and/or look for postponed messages.
+set postponed = +[Gmail]/Drafts
+set mbox=+"[Gmail]/All Mail"
+set trash=+"[Gmail]/Bin"
+
+#set imap_list_subscribed
+#set imap_check_subscribed
+# The folder where all your sent e-mails will be saved. Gmail saves automatically sent e-mail to +[Gmail]/Sent, so we do not want duplicates. 
+set record = ""
+
+## SMTP
+set smtp_url="smtps://$imap_user@smtp.gmail.com:465/"
+set smtp_pass = $my_gmail_pass
+set realname = 'Simone Perriello'
+set from = tigerjack89@gmail.com
+set use_from = yes
+set ssl_force_tls = yes
+set ssl_starttls = yes
+
+## Maildir
+#set mbox_type=Maildir
+#set folder=/mnt/internal/Data/PersonalFolder/eMail/mutt/com.gmail.tigerjack89/
+
+## Hook
+account-hook 'account.com.gmail.tigerjack89' "set imap_user=tigerjack89@gmail.com imap_pass=$my_gmail_pass"
+
+# Color status bar
+color status red default
+
+# Don't know yet if it is useful
+set certificate_file = "~/.config/neomutt/com.gmail.tigerjack89/certificates"
+
+### Bindings
+bind editor <space> noop
+macro index,pager A "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+#macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+

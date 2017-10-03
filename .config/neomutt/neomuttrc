@@ -1,0 +1,28 @@
+# Load shared_params
+source "$HOME/.config/neomutt/shared_params"
+
+# Gmail account
+source ~/.config/neomutt/account.com.gmail.tigerjack89
+# Polimi Office account
+#source ~/.config/neomutt/account.it.polimi.10548660
+
+# Folder hook
+folder-hook 'account.com.gmail.tigerjack89' 'source ~/.config/neomutt/account.com.gmail.tigerjack89'
+folder-hook 'account.it.polimi.10548660' 'source ~/.config/neomutt/account.it.polimi.10548660'
+
+# Macros for switching accounts
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/account.com.gmail.tigerjack89<enter><change-folder>!<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/account.it.polimi.10548660<enter><change-folder>!<enter>'
+
+# Fetch mail shortcut
+bind index G imap-fetch-mail
+
+# Command for new mail
+set new_mail_command="notify-send 'New Mail' '%n new messages, %u unread.' &"
+
+# To view HTML emails
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# mailcap, to see HTML pages inside mutt
+set mailcap_path= ~/.config/neomutt/mailcap

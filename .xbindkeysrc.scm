@@ -176,8 +176,8 @@
 (xbindkey '(XF86MonBrightnessDown) "brightness.sh -")
 (xbindkey '(XF86MonBrightnessUp) "brightness.sh +")
 (xbindkey '(XF86TouchpadToggle) "toggle_touchpad.sh")
-(xbindkey '(XF86AudioNext) "cmus-remote -n")
-(xbindkey '(XF86AudioPrev) "cmus-remote -r")
-(xbindkey '(XF86AudioPlay) "cplay.sh")
+(xbindkey '(XF86AudioNext) "playerctl next")
+(xbindkey '(XF86AudioPrev) "playerctl prev")
+(xbindkey '(XF86AudioPlay) "playerctl play-pause")
 
 

@@ -4,3 +4,6 @@
 *dotfiles
 *emacs.d/auto-save-list*
 *.swp
+
+### Particular dirs
+.config/neomutt/passwords

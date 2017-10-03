@@ -146,12 +146,12 @@ myManageHook = composeAll
 myLayoutHook = avoidStruts (
     Tall 1 (3/100) (1/2) |||
     tabbed shrinkText myTabConfig |||
-    Full |||
-    ThreeColMid 1 (3/100) (1/2) |||
-    Mirror (Tall 1 (3/100) (1/2)) |||
-    spiral (6/7)) |||
-    noBorders (fullscreenFull Full)
-
+    noBorders (fullscreenFull Full)) |||
+    ThreeColMid 1 (3/100) (1/2)
+--        spiral (6/7)) |||
+--     Mirror (Tall 1 (3/100) (1/2)) |||
+--    Full |||
+ 
 ------------------------------------------------------------------------
 -- Colors and borders
 --
@@ -220,7 +220,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. mod1Mask, xK_Print),
     spawn myCScreenshotActive)
 --------------------------------------------------------------------
-  -- "Standard" xmonad key bindings
+  -- Modified "Standard" xmonad key bindings
   --
 
   -- Close focused window.
@@ -260,11 +260,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      windows W.swapMaster)
 
   -- Swap the focused window with the next window.
-  , ((modMask .|. shiftMask , xK_less),
+  , ((modMask .|. shiftMask , xK_bracketright),
      windows W.swapDown  )
 
   -- Swap the focused window with the previous window.
-  , ((modMask, xK_less),
+  , ((modMask .|. shiftMask, xK_bracketleft),
      windows W.swapUp    )
 
   -- Shrink the master area.

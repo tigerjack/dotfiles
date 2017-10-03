@@ -13,3 +13,4 @@ image/jpeg=shotwell-viewer.desktop;
 inode/directory=urxvt-usercreated-1.desktop;
 text/x-tex=texstudio.desktop;
 image/svg+xml=shotwell-usercreated-1.desktop;
+audio/x-wav=smplayer.desktop;

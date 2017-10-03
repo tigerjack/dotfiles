@@ -32,11 +32,13 @@ xbindkeys >~/.startx/xbindkeys.log 2>&1 &
 dunst >~/.startx/dunst.log 2>&1 &
 
 # The mail client
-thunderbird >~/.startx/thunderbird.log 2>&1 &
+#thunderbird >~/.startx/thunderbird.log 2>&1 &
 
 # To avoid terminal bell
 xset -b
 
+# Emacs daemon
+emacs --daemon &
 
 # Execute all my periodic X scripts
 for file in ~/bin/mycron/x/?*.sh; do
@@ -57,6 +59,9 @@ fi
 
 # Change the screen settings
 xrandr --output "LVDS-1" --brightness 0.5 --gamma 1:1:0.5
+
+# Activate bloc num
+numlockx &
 
 # Start the OpenSSH agent, evaluating the environment variables
 eval $(ssh-agent)

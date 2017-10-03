@@ -112,7 +112,7 @@
     #
     # It's important to note that markup inside the format option will be parsed
     # regardless of what this is set to.
-    markup = full
+    markup = strip
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -285,7 +285,15 @@
  	summary = "*"
 	## modify (none)
 	## script to run
- 	script = alert_sound.sh
+ 	script = dunst_alert_sound.sh
+
+[play-sound-on-mutt-mail]
+	## filters
+	appname="notify-send"
+ 	summary = "New Mail"
+	## modify (none)
+	## script to run
+ 	script = dunst_alert_sound.sh
 	
 [disable-pasystray-multiple-messages]
 	## filters

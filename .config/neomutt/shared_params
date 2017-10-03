@@ -1,0 +1,38 @@
+# How often to check for new mail (time in seconds).
+# From the FAQ.
+#  After every keyboard input mutt updates the status of all folders. To receive "New mail in ..." notifications even without needing to press a key, set $timeout == time to wait for idle mutt (no key pressed) before the status is updated again as if a key were pressed. To avoid too frequent folder access (bad connections via NFS or IMAP), set $mail_check == minium time between 2 scans for new mail (external changes to folders) in case of high keyboard activity.
+# 
+#     $mail_check < $timeout : scan on next update $timeout < $mail_check : update before scan
+# 
+# This means $mail_check < $timeout is more useful, because by the time mutt will update, it will also scan for external changes to incorporate them in the update. 
+set mail_check = 300
+set timeout = 301
+
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
+
+# Other settings
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+set mbox_type=Maildir
+
+### User interface
+#set sidebar_visible
+#set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+#set mail_check_stats
+
+# Color schemes
+source /home/tigerjack/.config/neomutt/color_schemes/vombatidae.mutt
+
+# Store message headers locally to speed things up.
+# If cache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
+set header_cache = ~/.cache/mutt/headers
+
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+# This will cost important disk usage according to your e-mail amount.
+set message_cachedir = ~/.cache/mutt/bodies
+
