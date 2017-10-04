@@ -177,7 +177,7 @@
 (xbindkey '(XF86MonBrightnessUp) "brightness.sh +")
 (xbindkey '(XF86TouchpadToggle) "toggle_touchpad.sh")
 (xbindkey '(XF86AudioNext) "playerctl next")
-(xbindkey '(XF86AudioPrev) "playerctl prev")
+(xbindkey '(XF86AudioPrev) "playerctl previous")
 (xbindkey '(XF86AudioPlay) "playerctl play-pause")
 
 
