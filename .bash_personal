@@ -102,3 +102,6 @@ export PS1="${GREEN}\u@\h:\W>${RESET}"
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# To override vimrc default location
+# Set vimrc's location and source it on vim startup
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
