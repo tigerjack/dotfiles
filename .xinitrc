@@ -10,7 +10,7 @@ xss-lock -- xscreensaver-command --lock >~/.startx/xss-lock.log &
 #conky -p 2 &
 
 # The tray
-trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --widthtype percent --transparent false --tint 0x252525 --height 20 --expand false >~/.startx/trayer.log 2>&1 &
+trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --expand true --width 5 --widthtype percent --transparent false --tint 0x252525 --height 20 --expand false >~/.startx/trayer.log 2>&1 &
 
 # The network manager tray icon
 #wicd-gtk -t >~/.startx/wicd-gtk.log 2>&1 &

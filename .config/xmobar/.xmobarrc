@@ -4,7 +4,7 @@ Config { font = "xft:DejaVu Sans Mono:size=11:bold:antialias=true"
         , bgColor = "#252525"
         , fgColor = "grey"
         , alpha = 255
-        , position = BottomW L 90
+        , position = BottomW L 95
         , textOffset = -1
         , iconOffset = -1
         , lowerOnStart = False
