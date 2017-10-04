@@ -49,3 +49,7 @@
 
 ;; Auto complete
 (ac-config-default)
+
+;; Apply the linux style for parenthesis instead of default gnu style
+(setq c-default-style "linux"
+                c-basic-offset 4)
