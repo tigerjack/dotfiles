@@ -53,3 +53,9 @@
 ;; Apply the linux style for parenthesis instead of default gnu style
 (setq c-default-style "linux"
                 c-basic-offset 4)
+
+;; May be useful to use backspace in terminals
+(global-set-key (kbd "C-?") 'help-command)
+(global-set-key (kbd "M-?") 'mark-paragraph)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
