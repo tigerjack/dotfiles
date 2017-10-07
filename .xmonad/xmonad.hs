@@ -36,6 +36,7 @@ import XMonad.Layout.TwoPane
 import XMonad.Layout.Spiral
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.TabBarDecoration
+import XMonad.Actions.FloatKeys
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 -- Main --
@@ -294,6 +295,27 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Restart xmonad.
   , ((modMask, xK_q),
      restart "xmonad" True)
+
+--------------------------------------------------------------------
+-- Float key actions
+--
+  , ((modMask,               xK_Right     ), 
+     withFocused (keysMoveWindow (5,0) ))
+  , ((modMask,               xK_Left     ), 
+     withFocused (keysMoveWindow (-5,0) ))
+  , ((modMask,               xK_Down     ), 
+     withFocused (keysMoveWindow (0,5) ))
+  , ((modMask,               xK_Up     ), 
+     withFocused (keysMoveWindow (0, -5) ))
+
+  , ((modMask  .|. shiftMask , xK_Right     ), 
+     withFocused (keysResizeWindow (10,0) (0, 0) ))
+  , ((modMask  .|. shiftMask , xK_Left     ), 
+     withFocused (keysResizeWindow (-10,0) (0, 0) ))
+  , ((modMask .|. shiftMask , xK_Down     ), 
+     withFocused (keysResizeWindow (0,10) (0, 0) ))
+  , ((modMask .|. shiftMask , xK_Up     ), 
+     withFocused (keysResizeWindow (0,-10) (0, 0) ))
   ]
   ++
 
