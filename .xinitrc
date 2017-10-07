@@ -22,7 +22,7 @@ trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --
 copyq >~/.startx/copyq.log 2>&1 &
 
 # The pulse audio tray icon
-pasystray >~/.startx/pasystray.log 2>&1 &
+#pasystray >~/.startx/pasystray.log 2>&1 &
 
 # To associate shortcuts to events
 xbindkeys >~/.startx/xbindkeys.log 2>&1 &
