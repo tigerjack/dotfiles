@@ -117,6 +117,15 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# switch between the current and the previously focused one
+bindsym $mod+o workspace back_and_forth
+bindsym $mod+Shift+o move container to workspace back_and_forth
+
+# move to different RandR output
+# Move the current workspace to the next output
+# (effectively toggles when you only have two outputs)
+bindsym $mod+F1 move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -168,3 +177,8 @@ bar {
 
 ## Some window specific config
 for_window [class="trayer"] floating enable; border none
+assign [class="TelegramDesktop"] 7
+assign [class="smplayer"] 9
+assign [class="mplayer"] 9
+assign [class="mpv"] 9
+assign [class="Spotify"] 9
