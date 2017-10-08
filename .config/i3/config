@@ -126,6 +126,12 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # lock the screen
 bindsym $mod+Shift+z exec "loginctl lock-session"
 
+# take screenshot
+bindsym $mod+Control+Print exec --no-startup-id "scrot '/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'"
+bindsym $mod+Shift+Print exec --no-startup-id "sleep 0.2; scrot -s '/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'"
+bindsym $mod+Control+Shift+Print exec --no-startup-id "sleep 0.2; scrot -u '/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'"
+
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
