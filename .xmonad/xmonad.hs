@@ -115,7 +115,6 @@ myWorkspaces =  map show [0..2] ++ ["3:Tasks", "4", "5", "6:study","7:social","8
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ resource  =? "desktop_window" --> doIgnore
-    , className =? "SpeedCrunch"    --> doFloat
     , className =? "Steam"          --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "feh"            --> doFloat
