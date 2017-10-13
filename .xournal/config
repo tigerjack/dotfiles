@@ -132,7 +132,7 @@ highlighter_ruler=false
 # default highlighter is in shape recognizer mode (true/false)
 highlighter_recognizer=false
 # button 2 tool (pen, eraser, highlighter, text, selectregion, selectrect, vertspace, hand, image)
-btn2_tool=vertspace
+btn2_tool=hand
 # button 2 brush linked to primary brush (true/false) (overrides all other settings)
 btn2_linked=true
 # button 2 brush color (for pen or highlighter only)
