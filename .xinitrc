@@ -70,4 +70,5 @@ eval $(ssh-agent)
 ## One of the two window managers below
 #exec xmonad
 #exec twm
-exec i3 -V >> ~/.startx/i3log-$(date +'%F-%k-%M-%S') 2>&1
+exec i3
+#exec i3 -V >> ~/.startx/i3log-$(date +'%F-%k-%M-%S') 2>&1
