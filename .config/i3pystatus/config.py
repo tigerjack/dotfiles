@@ -50,7 +50,7 @@ status.register("mem",
 # This would look like this:
 # Discharging 6h:51m
 status.register("battery",
-        format="{status} {percentage:.2f}% {remaining:%E%hh:%Mm}",
+        format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
     alert=True,
     alert_percentage=5,
     status={
