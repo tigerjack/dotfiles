@@ -2,7 +2,7 @@
 CURRENT_BRIGHTNESS=$(xrandr --current --verbose | grep -m 1 'Brightness:' | cut -f2- -d:)
 CURRENT_BLUE_GAMMA=$(xrandr --current --verbose | grep -m 1 "Gamma" | cut -f4- -d:)
 DEFAULT_BRIGHTNESS="0.2"
-DEFAULT_BLUE_GAMMA="2" ## Note: it's evaluated as the ratio 1/2
+DEFAULT_BLUE_GAMMA="2.0" ## Note: it's evaluated as the ratio 1/2
 
 # Note that with a brightness above 1.0 a step below 0.05 doesn't work well
 STEP=0.1
