@@ -175,7 +175,8 @@ bindsym $mod+r mode "resize"
 # https://i3wm.org/docs/userguide.html#_configuring_i3bar
 bar {
 	tray_output primary
-        status_command python3 .config/i3pystatus/config.py #i3status
+        status_command python3 .config/i3pystatus/config.py
+	#status_command i3status
 	workspace_buttons yes
 }
 
