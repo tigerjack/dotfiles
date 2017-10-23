@@ -1,10 +1,11 @@
 ### Office
 # Unset all previous mail and source shared configs
 reset all
-source "$HOME/.config/neomutt/account_shared_configs"
+source "$HOME/.config/neomutt/shared_params"
 
 # Source passw
 source "gpg -dq $HOME/.config/neomutt/passwords/it.polimi.10548660.gpg |"
+macro index,pager <f10> '<enter-command>source "gpg -dq $HOME/.config/neomutt/passwords/it.polimi.10548660.gpg |"<enter>'
 
 ## Imap
 set imap_user=10548660@polimi.it
@@ -29,7 +30,7 @@ set smtp_authenticators = "login"
 
 ## Mailboxes
 unmailboxes *
-mailboxes = +INBOX +/Drafts +/Archive "+/Deleted Items"
+mailboxes +INBOX +/Drafts +/Archive "+/Deleted Items" "+/Sent Items"
 ## Maildir
 #set mbox_type=Maildir
 
