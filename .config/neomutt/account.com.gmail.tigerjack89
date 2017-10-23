@@ -1,4 +1,8 @@
 ### Gmail
+# Unset all previous set variables and source shared configs
+reset all
+source "$HOME/.config/neomutt/account_shared_configs"
+
 # Source passw
 source "gpg -dq $HOME/.config/neomutt/passwords/com.gmail.tigerjack89.gpg |"
 
@@ -6,8 +10,6 @@ source "gpg -dq $HOME/.config/neomutt/passwords/com.gmail.tigerjack89.gpg |"
 unset ssl_starttls
 unset ssl_use_sslv3
 unset smtp_authenticators
-unset imap_list_subscribed
-unset imap_check_subscribed
 
 ## Imap
 set imap_user=tigerjack89@gmail.com
@@ -20,6 +22,9 @@ set spoolfile=+INBOX
 # Any IMAP folders that should be checked regularly for new mail should be listed here. To check all subscribed mails use imap_check_subscribed
 #set imap_check_subscribed
 # If you do not set this variable, the spoolfile will be used by default. This variable is also important for the #Sidebar. 
+unmailboxes *
+set imap_list_subscribed
+set imap_check_subscribed
 #mailboxes = +INBOX +Spam +Bin
 # # Specify where to save and/or look for postponed messages.
 set postponed = +[Gmail]/Drafts

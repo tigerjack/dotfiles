@@ -1,4 +1,8 @@
 ### Office
+# Unset all previous mail and source shared configs
+reset all
+source "$HOME/.config/neomutt/account_shared_configs"
+
 # Source passw
 source "gpg -dq $HOME/.config/neomutt/passwords/it.polimi.10548660.gpg |"
 
@@ -10,8 +14,6 @@ set postponed = +/Drafts
 set mbox=+/Archive
 set trash="+/Deleted Items"
 set spoolfile=+INBOX
-#set imap_list_subscribed
-#set imap_check_subscribed
 set record = ""
 
 ## SMTP
@@ -25,9 +27,11 @@ set ssl_starttls = yes
 set ssl_use_sslv3=yes
 set smtp_authenticators = "login"
 
+## Mailboxes
+unmailboxes *
+mailboxes = +INBOX +/Drafts +/Archive "+/Deleted Items"
 ## Maildir
 #set mbox_type=Maildir
-#set folder=/mnt/internal/Data/PersonalFolder/eMail/mutt/it.polimi.10548660/
 
 ## Hook
 account-hook 'account.it.polimi.10548660' "set imap_user=10548660@polimi.it imap_pass=$my_office_pass"

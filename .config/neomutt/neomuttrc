@@ -17,15 +17,9 @@ macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/ac
 # Fetch mail shortcut
 bind index G imap-fetch-mail
 
-# Command for new mail
-set new_mail_command="notify-send 'New Mail' '%n new messages, %u unread.' &"
-
 # To view HTML emails
 auto_view text/html
 alternative_order text/plain text/enriched text/html
-
-# mailcap, to see HTML pages inside mutt
-set mailcap_path= ~/.config/neomutt/mailcap
 
 # urlscan, to open urls in browser
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
