@@ -1,3 +1,5 @@
+URxvt*iso14755: False
+
 !-------------------------------------------------------------------------------
 ! URxvt settings
 ! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
