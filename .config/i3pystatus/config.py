@@ -53,6 +53,7 @@ status.register("battery",
         format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
     alert=True,
     alert_percentage=5,
+    alert_timeout=5
     status={
         "DIS": "↓",
         "CHR": "↑",
