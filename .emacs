@@ -18,14 +18,27 @@
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "46e88f221595fe2091fe695410df6d1bcad7166557810817319cb40018c1e626" default)))
  '(font-use-system-font t)
- '(package-selected-packages (quote (dumb-jump whole-line-or-region spacemacs-theme ##))))
+ '(package-selected-packages
+   (quote
+    (yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
+ '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;; yasnippet
+(add-to-list 'load-path
+	     "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; Add company-irony to company-backends
+(eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony))
 
 ;; Set font size (it's 1/10 pt)
 (set-face-attribute 'default nil :height 300)
@@ -65,3 +78,14 @@
 
 ;; dumb-jump
 (dumb-jump-mode)
+
+;; enable company mode
+(add-hook 'after-init-hook 'global-company-mode)
+
+
+;; irony-mode for c/c++ smart autocompletion
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
