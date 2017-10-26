@@ -24,7 +24,7 @@ set spoolfile=+INBOX
 #set imap_check_subscribed
 # If you do not set this variable, the spoolfile will be used by default. This variable is also important for the #Sidebar. 
 unmailboxes *
-mailboxes +INBOX +[Gmail]/Spam +[Gmail]/Bin "+[Gmail]/Sent Mail" +[Gmail]/Drafts +University/PoliMi
+mailboxes +INBOX +[Gmail]/Spam +[Gmail]/Bin "+[Gmail]/Sent Mail" +[Gmail]/Drafts +University/PoliMi "+[Gmail]/All Mail"
 # Specify where to save and/or look for postponed messages.
 set postponed = +[Gmail]/Drafts
 set mbox=+"[Gmail]/All Mail"

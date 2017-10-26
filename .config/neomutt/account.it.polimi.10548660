@@ -30,7 +30,7 @@ set smtp_authenticators = "login"
 
 ## Mailboxes
 unmailboxes *
-mailboxes +INBOX +/Drafts +/Archive "+/Deleted Items" "+/Sent Items"
+mailboxes +INBOX +/Drafts +/Archive "+/Deleted Items" "+/Junk Email" "+/Sent Items" 
 ## Maildir
 #set mbox_type=Maildir
 

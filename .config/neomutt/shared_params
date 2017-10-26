@@ -1,5 +1,5 @@
-set imap_list_subscribed
-set imap_check_subscribed
+#set imap_list_subscribed
+#set imap_check_subscribed
 
 # How often to check for new mail (time in seconds).
 # From the FAQ.
