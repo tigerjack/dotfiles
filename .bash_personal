@@ -105,3 +105,6 @@ export GPG_TTY
 # To override vimrc default location
 # Set vimrc's location and source it on vim startup
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
+# Export also bins in opt
+export PATH="$PATH:/opt/tigerjack/bin"
