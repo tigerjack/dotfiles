@@ -74,9 +74,10 @@ flycheck_*.el
 
 ### VIM
 # Swap
-[._]*.s[a-v][a-z]
+# Commented bcz ignore also .scm files
+#[._]*.s[a-v][a-z]
 [._]*.sw[a-p]
-[._]s[a-v][a-z]
+#[._]s[a-v][a-z]
 [._]sw[a-p]
 
 # Session
