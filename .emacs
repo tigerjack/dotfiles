@@ -1,4 +1,5 @@
 ;; add MELPA support
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
@@ -68,18 +69,12 @@
 
 ;; Apply the linux style for parenthesis instead of default gnu style
 (setq c-default-style "linux"
-                c-basic-offset 4)
-
-;; May be useful to use backspace in terminals
-(global-set-key (kbd "C-?") 'help-command)
-(global-set-key (kbd "M-?") 'mark-paragraph)
-(global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "M-h") 'backward-kill-word)
+                c-basic-offset 4)  
 
 ;; dumb-jump
 (dumb-jump-mode)
 
-;; enable company mode
+;; enable company mode[B]
 (add-hook 'after-init-hook 'global-company-mode)
 
 
@@ -89,3 +84,18 @@
 (add-hook 'objc-mode-hook 'irony-mode)
 
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PERSONAL FUNCTIONS AND KEY BINDINGS;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; To copy the whole line into the buffer
+(defun copy-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank))
+(global-set-key (kbd "C-M-k") 'copy-line)
+
+;; Modified keybindings; C-k kill the whole line instead of from cursor position to end of line
+(global-set-key (kbd "C-k") 'kill-whole-line)
