@@ -38,8 +38,8 @@ dunst >~/.startx/dunst.log 2>&1 &
 # To avoid terminal bell
 xset -b
 
-# Emacs daemon
-emacs --daemon &
+# Emacs daemon, now started w/ systemd service in ~/.config/systemd/user/emacsd.service
+#emacs --daemon &
 
 # Execute all my periodic X scripts
 for file in ~/bin/mycron/x/?*.sh; do
