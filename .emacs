@@ -1,6 +1,6 @@
 ;; add MELPA support
-
 (require 'package)
+
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 ;; ADDED by Package.el.  This must come before configurations of
@@ -9,26 +9,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (spacemacs-dark)))
- '(custom-safe-themes
-   (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "46e88f221595fe2091fe695410df6d1bcad7166557810817319cb40018c1e626" default)))
- '(font-use-system-font t)
- '(package-selected-packages
-   (quote
-    (yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
- '(show-paren-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; yasnippet
@@ -42,10 +23,10 @@
     '(add-to-list 'company-backends 'company-irony))
 
 ;; Set font size (it's 1/10 pt)
-(set-face-attribute 'default nil :height 300)
+;(set-face-attribute 'default nil :height 300)
 
 ;; Disable menu bar
-(menu-bar-mode -1)
+;; (menu-bar-mode -1)
 
 ;; Show line numbers
 (global-linum-mode t)
@@ -99,3 +80,29 @@
 
 ;; Modified keybindings; C-k kill the whole line instead of from cursor position to end of line
 (global-set-key (kbd "C-k") 'kill-whole-line)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; OPTIONS SAVED USING EMACS SAVE OPTIONS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (spacemacs-dark)))
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "46e88f221595fe2091fe695410df6d1bcad7166557810817319cb40018c1e626" default)))
+ '(font-use-system-font f)
+ '(package-selected-packages
+   (quote
+    (yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
+ '(show-paren-mode t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Droid Sans Mono" :foundry "1ASC" :slant normal :weight normal :height 171 :width normal)))))
+
