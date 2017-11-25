@@ -6,11 +6,16 @@ status = Status()
 # Tue 30 Jul 11:59:46 PM KW31
 #                          ^-- calendar week
 status.register("clock",
-    format="%a %-d %b %X",)
+    format="%a %-d %b %X",
+    on_leftclick = "urxvt -e bash -c 'cal -3 && bash' ",
+    on_rightclick = "urxvt -e bash -c 'gcalcli --configFolder=/home/tigerjack/.config/gcalcli --calendar=tigerjack89@gmail.com calm && bash' ",
+)
 
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
-status.register("load")
+status.register("load",
+    on_leftclick = "urxvt -e htop",
+)
 
 # Shows your CPU temperature, if you have a Intel CPU
 status.register("temp",
@@ -19,12 +24,15 @@ status.register("temp",
     hints={"markup": "pango"},
     dynamic_color=True,
     alert_temp=60,
+    on_leftclick = "urxvt -e htop",
     #format="{temp:.0f}°C",
 )
 
 status.register("mem",
         format="Mem: {percent_used_mem}%/{total_mem} GiB",
-        divisor = 1024**3,)
+        divisor = 1024**3,
+        on_leftclick = "urxvt -e htop",
+)
 
 # The battery monitor has many formatting options, see README for details
 
@@ -52,8 +60,9 @@ status.register("mem",
 status.register("battery",
         format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
     alert=True,
+    interval=10,
     alert_percentage=5,
-    alert_timeout=5,
+    alert_timeout=30,
     status={
         "DIS": "↓",
         "CHR": "↑",
@@ -80,7 +89,9 @@ status.register("battery",
 status.register("network",
     interface="wlp2s0",
     format_up="{essid} {quality:3.0f}% \u2197{bytes_sent}KB/s \u2198{bytes_recv}KB/s",
-    format_down="{interface} \u2013",)
+    format_down="{interface} \u2013",
+    on_leftclick = "urxvt -e bash -c 'sudo nethogs wlp2s0'",
+)
 
 # Shows disk usage of /
 # Format:
@@ -93,7 +104,9 @@ status.register("network",
 #
 # Note: requires libpulseaudio from PyPI
 status.register("pulseaudio",
-    format="♪{volume}",)
+    format="♪{volume}",
+    on_leftclick = "urxvt -e pulsemixer"
+)
 
 # Shows mpd status
 # Format:
