@@ -14,8 +14,7 @@ SLEEP_VLOW="150"
 SLEEP_CRITICAL="90"
 BAT="BAT0"
 ACTION_COUNTDOWN="30"
-# The action is managed by /etc/udev/rules.d/98-lowbat.rules
-#ACTION_CRITICAL="systemctl hibernate"
+ACTION_CRITICAL="systemctl hibernate"
 
 while [ true ]; do
 	CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
@@ -24,9 +23,9 @@ while [ true ]; do
 		if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
 			echo "$(date)"
 			echo "Boooom $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
-			notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to hibernate soon"
-			#sleep $ACTION_COUNTDOWN
-			#$ACTION_CRITICAL
+			notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to hibernate in $ACTION_COUNTDOWN s!"
+			sleep $ACTION_COUNTDOWN
+			$ACTION_CRITICAL
 		fi
 		sleep $SLEEP_CRITICAL
 	elif [ $CURRENT_BATTERY_LEVEL -le $VLOW_BATTERY ]; then
