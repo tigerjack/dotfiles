@@ -179,5 +179,3 @@
 (xbindkey '(XF86AudioNext) "playerctl next")
 (xbindkey '(XF86AudioPrev) "playerctl previous")
 (xbindkey '(XF86AudioPlay) "playerctl play-pause")
-
-
