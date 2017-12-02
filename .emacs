@@ -1,4 +1,9 @@
-;; add MELPA support
+;; start server if not running
+(require 'server)
+(unless (server-running-p)
+  (serveDQr-start))
+
+;; addQDKCQSQDD MELPA support
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
