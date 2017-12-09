@@ -112,8 +112,8 @@
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "46e88f221595fe2091fe695410df6d1bcad7166557810817319cb40018c1e626" default)))
- '(font-use-system-font f)
+	("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "46e88f221595fe2091fe695410df6d1bcad7166557810817319cb40018c1e626" default)))
+ '(font-use-system-font t)
  '(package-selected-packages
    (quote
 	(pdf-tools yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
@@ -124,4 +124,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Droid Sans Mono" :foundry "1ASC" :slant normal :weight normal :height 171 :width normal)))))
-
