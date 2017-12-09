@@ -89,6 +89,10 @@
 ;; Modified keybindings; C-k kill the whole line instead of from cursor position to end of line
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
+;; To quickly switch between myfile.cc and myfile.h with C-c o. Note the use of the c-mode-common-hook, so it will work for both C and C++.
+;; Actually defined directly under 'c-mode-common-hook variable
+;;(add-hook 'c-mode-common-hook '(lambda() (local-set-key (kbd "C-c o") 'ff-find-other-file)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OPTIONS SAVED USING EMACS SAVE OPTIONS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -98,6 +102,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(c-mode-common-hook
+   (quote
+	(ac-cc-mode-setup
+	 (lambda nil
+	   (local-set-key
+		(kbd "C-c o")
+		(quote ff-find-other-file))))))
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
    (quote
