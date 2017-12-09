@@ -116,7 +116,7 @@
  '(font-use-system-font f)
  '(package-selected-packages
    (quote
-    (yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
+	(pdf-tools yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
