@@ -36,6 +36,9 @@
 ;; Show line numbers
 (global-linum-mode t)
 
+;; set tab-width
+(setq-default tab-width 4)
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; --- PACKAGES ;;;;;
 ;;;;;;;;;;;;;;;;;;;;;
