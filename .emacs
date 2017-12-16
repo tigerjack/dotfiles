@@ -63,6 +63,9 @@
 ;; dumb-jump
 (dumb-jump-mode)
 
+;; display column number
+(setq column-number-mode t)
+
 ;; enable company mode[B]
 (add-hook 'after-init-hook 'global-company-mode)
 
