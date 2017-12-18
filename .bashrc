@@ -7,6 +7,7 @@ PS1='[\u@\h \W]\$ '
 . ~/.bash_aliases
 . ~/.bash_personal
 . ~/.bash_bindings
+. ~/.bash_functions
 
 # To search in the official repository when command is not found
 . /usr/share/doc/pkgfile/command-not-found.bash
