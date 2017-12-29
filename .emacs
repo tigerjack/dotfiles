@@ -77,6 +77,9 @@
 
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
+;; hook to highlight column number 80 in programming mode
+(add-hook 'prog-mode-hook (lambda () (interactive) (column-marker-1 80)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PERSONAL FUNCTIONS AND KEY BINDINGS;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -117,9 +120,10 @@
    (quote
 	("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "46e88f221595fe2091fe695410df6d1bcad7166557810817319cb40018c1e626" default)))
  '(font-use-system-font t)
+ '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-	(pdf-tools yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
+	(markdown-mode+ markdown-mode column-marker pdf-tools yasnippet-snippets yasnippet company-irony irony dumb-jump whole-line-or-region spacemacs-theme ##)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
