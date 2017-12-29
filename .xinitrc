@@ -41,6 +41,9 @@ xset -b
 # Emacs daemon, now started w/ systemd service in ~/.config/systemd/user/emacsd.service
 #emacs --daemon &
 
+# Polkit, started by systemctl
+lxqt-policykit-agent &
+
 # Execute all my periodic X scripts
 for file in ~/bin/mycron/x/?*.sh; do
 	name=$(basename -s .sh $file)
