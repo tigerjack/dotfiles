@@ -1,7 +1,2 @@
 [MIME Cache]
-application/x-extension-htm=wine-extension-htm.desktop;
-application/x-extension-html=wine-extension-html.desktop;
-application/x-wine-extension-xcesession=wine-extension-xcesession.desktop;
-application/x-wine-extension-xclpack=wine-extension-xclpack.desktop;
-application/x-wine-extension-xcvault=wine-extension-xcvault.desktop;
 x-scheme-handler/tg=telegramdesktop.desktop;
