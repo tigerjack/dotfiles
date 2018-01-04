@@ -90,6 +90,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# focus floating and move
+bindsym $mod+m focus floating mode "moveit"
+
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -129,6 +132,12 @@ bindsym $mod+Shift+o move container to workspace back_and_forth
 # (effectively toggles when you only have two outputs)
 bindsym $mod+F1 move workspace to output right
 
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+n move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+n scratchpad show
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -145,6 +154,17 @@ bindsym $mod+Control+Print exec --no-startup-id "scrot '/mnt/internal/Data/Perso
 bindsym $mod+Shift+Print exec --no-startup-id "sleep 0.2; scrot -s '/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'"
 bindsym $mod+Control+Shift+Print exec --no-startup-id "sleep 0.2; scrot -u '/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'"
 
+# move floating window
+mode "moveit" {
+    bindsym Up move up 20px
+    bindsym Left move left 20px
+    bindsym Down move down 20px
+    bindsym Right move right 20px
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
