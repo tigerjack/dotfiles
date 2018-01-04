@@ -25,6 +25,7 @@ while [ true ]; do
 			echo "Boooom $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
 			notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWN s!"
 			sleep $ACTION_COUNTDOWN
+			echo "Performing $ACTION_CRITICAL"
 			$ACTION_CRITICAL
 		fi
 		sleep $SLEEP_CRITICAL
