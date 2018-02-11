@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+show_marks yes
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -44,7 +45,11 @@ bindsym $mod+Shift+semicolon exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop
+#
+#Trying alternative to i3-dmenu-desktop
+#--no-generic disable the reading of GenericName keys from desktop files
+bindsym $mod+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
 
 # change focus
 bindsym $mod+h focus left
@@ -156,10 +161,26 @@ bindsym $mod+Control+Shift+Print exec --no-startup-id "sleep 0.2; scrot -u '/mnt
 
 # move floating window
 mode "moveit" {
-    bindsym Up move up 20px
-    bindsym Left move left 20px
-    bindsym Down move down 20px
-    bindsym Right move right 20px
+
+    bindsym k move up 5px
+    bindsym h move left 5px
+    bindsym j move down 5px
+    bindsym l move right 5px
+
+    bindsym Shift+k move up 25px
+    bindsym Shift+h move left 25px
+    bindsym Shift+j move down 25px
+    bindsym Shift+l move right 25px
+
+    bindsym Up move up 5px
+    bindsym Left move left 5px
+    bindsym Down move down 5px
+    bindsym Right move right 5px
+
+    bindsym Shift+Up move up 25px
+    bindsym Shift+Left move left 25px
+    bindsym Shift+Down move down 25px
+    bindsym Shift+Right move right 25px
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -174,16 +195,29 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+	# Faster
+        bindsym Shift+h resize shrink width 25 px or 25 ppt
+        bindsym Shift+k resize grow height 25 px or 25 ppt
+        bindsym Shift+j resize shrink height 25 px or 25 ppt
+        bindsym Shift+l resize grow width 25 px or 25 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+	# Faster
+
+        bindsym Shift+Left resize shrink width 25 px or 25 ppt
+        bindsym Shift+Up resize grow height 25 px or 25 ppt
+        bindsym Shift+Down resize shrink height 25 px or 25 ppt
+        bindsym Shift+Right resize grow width 25 px or 25 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -205,7 +239,7 @@ bar {
 ## Some window specific config
 for_window [class="trayer"] floating enable; border none
 assign [class="TelegramDesktop"] 7
-assign [class="smplayer"] 9
-assign [class="mplayer"] 9
-assign [class="mpv"] 9
-assign [class="Spotify"] 9
+assign [class="smplayer"] 10
+assign [class="mplayer"] 10
+assign [class="mpv"] 10
+assign [class="Spotify"] 10
