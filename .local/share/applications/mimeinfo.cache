@@ -1,2 +1,4 @@
 [MIME Cache]
+application/x-anki=ankimine.desktop;
+application/x-apkg=ankimine.desktop;
 x-scheme-handler/tg=telegramdesktop.desktop;
