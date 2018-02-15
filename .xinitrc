@@ -28,6 +28,12 @@ copyq >~/.startx/copyq.log 2>&1 &
 # To associate shortcuts to events
 xbindkeys >~/.startx/xbindkeys.log 2>&1 &
 
+
+# To remap keys, see this blog http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
+setxkbmap -option 'caps:ctrl_modifier'
+xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >~/logs/startx/xcape.log 2>&1 &
+
+
 # notification system daemon
 #twmnd >~/.startx/twmnd.log 2>&1 &
 dunst >~/.startx/dunst.log 2>&1 &
