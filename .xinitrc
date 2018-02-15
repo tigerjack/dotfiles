@@ -5,28 +5,28 @@
 # Source my file with environment variables used by GUI application
 [ -f ~/.xmyenv ] && . ~/.xmyenv
 
-xscreensaver -no-splash >~/.startx/xscreensaver.log &
-xss-lock -- xscreensaver-command --lock >~/.startx/xss-lock.log &
+xscreensaver -no-splash >~/logs/startx/xscreensaver.log &
+xss-lock -- xscreensaver-command --lock >~/logs/startx/xss-lock.log &
 #conky -p 2 &
 
 # The tray
 # Deleted because i3 has already a default trayer
-#trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --expand true --width 5 --widthtype percent --transparent false --tint 0x252525 --height 20 --expand false >~/.startx/trayer.log 2>&1 &
+#trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --expand true --width 5 --widthtype percent --transparent false --tint 0x252525 --height 20 --expand false >~/logs/startx/trayer.log 2>&1 &
 
 # The network manager tray icon
-#wicd-gtk -t >~/.startx/wicd-gtk.log 2>&1 &
+#wicd-gtk -t >~/logs/startx/wicd-gtk.log 2>&1 &
 
 # The weather system tray icon (not yet working)
-# meteo-qt >~/.startx/meteo-qt 2>&1 &
+# meteo-qt >~/logs/startx/meteo-qt 2>&1 &
 
 # To manage clipboards
-copyq >~/.startx/copyq.log 2>&1 &
+copyq >~/logs/startx/copyq.log 2>&1 &
 
 # The pulse audio tray icon
-#pasystray >~/.startx/pasystray.log 2>&1 &
+#pasystray >~/logs/startx/pasystray.log 2>&1 &
 
 # To associate shortcuts to events
-xbindkeys >~/.startx/xbindkeys.log 2>&1 &
+xbindkeys >~/logs/startx/xbindkeys.log 2>&1 &
 
 
 # To remap keys, see this blog http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
@@ -35,11 +35,11 @@ xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >~/logs/startx/xca
 
 
 # notification system daemon
-#twmnd >~/.startx/twmnd.log 2>&1 &
-dunst >~/.startx/dunst.log 2>&1 &
+#twmnd >~/logs/startx/twmnd.log 2>&1 &
+dunst >~/logs/startx/dunst.log 2>&1 &
 
 # The mail client
-#thunderbird >~/.startx/thunderbird.log 2>&1 &
+#thunderbird >~/logs/startx/thunderbird.log 2>&1 &
 
 # To avoid terminal bell
 xset -b
@@ -53,7 +53,7 @@ lxqt-policykit-agent &
 # Execute all my periodic X scripts
 for file in ~/bin/mycron/x/?*.sh; do
 	name=$(basename -s .sh $file)
-	logfile="/home/tigerjack/.startx/$name.log"
+	logfile="/home/tigerjack/logs/startx/$name.log"
 	#echo "$file $name $logfile"
 	( $file > "$logfile" 2>&1 &)
 done
@@ -80,4 +80,4 @@ eval $(ssh-agent)
 #exec xmonad
 #exec twm
 exec i3
-#exec i3 -V >> ~/.startx/i3log-$(date +'%F-%k-%M-%S') 2>&1
+#exec i3 -V >> ~/logs/startx/i3log-$(date +'%F-%k-%M-%S') 2>&1
