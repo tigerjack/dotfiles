@@ -75,6 +75,7 @@ ranger() {
 }
 # Set the default editor
 export EDITOR="vim"
+export EDITOR2="emacsclient -cn"
 
 # To start emacs in daemon mode automatically
 #export ALTERNATE_EDITOR=""
