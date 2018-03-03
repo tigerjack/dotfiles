@@ -111,3 +111,8 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # Export also bins in opt
 export PATH="$PATH:/opt/tigerjack/bin"
+
+# Set matlab to use the userpath folder (first run userpath('dir_name') inside matlab
+export MATLAB_USE_USERWORK=1
+# Set matlab log directory
+MATLAB_LOG_DIR=~/logs/matlab/
