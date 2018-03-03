@@ -9,6 +9,7 @@ alias prog_mgmt='/usr/bin/git --git-dir=/mnt/internal/ProgrammingData/.git_prog_
 alias winq464_old='export WINEARCH=win64 export WINEPREFIX=/mnt/internal/LinuxData/wine/q4_64_old && '
 alias winq464='export WINEARCH=win64 export WINEPREFIX=/mnt/internal/LinuxData/wine/q4_64 && '
 alias winq432='export WINEARCH=win32 export WINEPREFIX=/mnt/internal/LinuxData/wine/q4_32 && '
+alias winq432_2='export WINEARCH=win32 export WINEPREFIX=/mnt/internal/LinuxData/wine/q4_32_2 && '
 alias gcalcli='gcalcli --configFolder=/home/tigerjack/.config/gcalcli'
 alias gcalclit='gcalcli --configFolder=/home/tigerjack/.config/gcalcli --calendar=tigerjack89@gmail.com'
 alias gcalclir='gcalcli --configFolder=/home/tigerjack/.config/gcalcli --calendar=Ripetizioni'
