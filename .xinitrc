@@ -9,9 +9,6 @@ xscreensaver -no-splash >"/home/tigerjack/logs/startx/xscreensaver.log$DISPLAY" 
 xss-lock -- xscreensaver-command --lock >"/home/tigerjack/logs/startx/xss-lock.log$DISPLAY" 2>&1 &
 #conky -p 2 &
 
-# To manage clipboards
-copyq >~/logs/startx/copyq.log 2>&1 &
-
 # To associate shortcuts to events
 xbindkeys >"/home/tigerjack/logs/startx/xbindkeys.log$DISPLAY" 2>&1 &
 
@@ -31,10 +28,17 @@ xset -b
 lxqt-policykit-agent >"/home/tigerjack/logs/startx/lxqt_policykit_agent.log$DISPLAY" 2>&1 &
 
 # Execute all my periodic X scripts
-for file in ~/bin/mycron/x/?*.sh; do
+for file in ~/bin/x/cron/?*.sh; do
 	name=$(basename -s .sh $file)
-	logfile="/home/tigerjack/logs/startx/$name.log"
-	#echo "$file $name $logfile"
+	logfile="/home/tigerjack/logs/startx/$name.log$DISPLAY"
+	( $file >"$logfile" 2>&1 &)
+done
+unset file
+
+# Execute all my startup X scripts
+for file in ~/bin/x/startup/?*.sh; do
+	name=$(basename -s .sh $file)
+	logfile="/home/tigerjack/logs/startx/$name.log$DISPLAY"
 	( $file > "$logfile" 2>&1 &)
 done
 unset file
