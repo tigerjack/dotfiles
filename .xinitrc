@@ -9,21 +9,8 @@ xscreensaver -no-splash >~/logs/startx/xscreensaver.log &
 xss-lock -- xscreensaver-command --lock >~/logs/startx/xss-lock.log &
 #conky -p 2 &
 
-# The tray
-# Deleted because i3 has already a default trayer
-#trayer --edge bottom --align right --SetDockType true --SetPartialStrut true  --expand true --width 5 --widthtype percent --transparent false --tint 0x252525 --height 20 --expand false >~/logs/startx/trayer.log 2>&1 &
-
-# The network manager tray icon
-#wicd-gtk -t >~/logs/startx/wicd-gtk.log 2>&1 &
-
-# The weather system tray icon (not yet working)
-# meteo-qt >~/logs/startx/meteo-qt 2>&1 &
-
 # To manage clipboards
 copyq >~/logs/startx/copyq.log 2>&1 &
-
-# The pulse audio tray icon
-#pasystray >~/logs/startx/pasystray.log 2>&1 &
 
 # To associate shortcuts to events
 xbindkeys >~/logs/startx/xbindkeys.log 2>&1 &
@@ -38,14 +25,8 @@ xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >~/logs/startx/xca
 #twmnd >~/logs/startx/twmnd.log 2>&1 &
 dunst >~/logs/startx/dunst.log 2>&1 &
 
-# The mail client
-#thunderbird >~/logs/startx/thunderbird.log 2>&1 &
-
 # To avoid terminal bell
 xset -b
-
-# Emacs daemon, now started w/ systemd service in ~/.config/systemd/user/emacsd.service
-#emacs --daemon &
 
 # Polkit, started by systemctl
 lxqt-policykit-agent &
