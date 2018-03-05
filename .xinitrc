@@ -5,31 +5,30 @@
 # Source my file with environment variables used by GUI application
 [ -f ~/.xmyenv ] && . ~/.xmyenv
 
-xscreensaver -no-splash >~/logs/startx/xscreensaver.log &
-xss-lock -- xscreensaver-command --lock >~/logs/startx/xss-lock.log &
+xscreensaver -no-splash >"/home/tigerjack/logs/startx/xscreensaver.log$DISPLAY" 2>&1 &
+xss-lock -- xscreensaver-command --lock >"/home/tigerjack/logs/startx/xss-lock.log$DISPLAY" 2>&1 &
 #conky -p 2 &
 
 # To manage clipboards
 copyq >~/logs/startx/copyq.log 2>&1 &
 
 # To associate shortcuts to events
-xbindkeys >~/logs/startx/xbindkeys.log 2>&1 &
-
+xbindkeys >"/home/tigerjack/logs/startx/xbindkeys.log$DISPLAY" 2>&1 &
 
 # To remap keys, see this blog http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
 setxkbmap -option 'caps:ctrl_modifier'
-xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >~/logs/startx/xcape.log 2>&1 &
+xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >"/home/tigerjack/logs/startx/xcape.log$DISPLAY" 2>&1 &
 
 
 # notification system daemon
 #twmnd >~/logs/startx/twmnd.log 2>&1 &
-dunst >~/logs/startx/dunst.log 2>&1 &
+dunst >"/home/tigerjack/logs/startx/dunst.log$DISPLAY" 2>&1 &
 
 # To avoid terminal bell
 xset -b
 
 # Polkit, started by systemctl
-lxqt-policykit-agent &
+lxqt-policykit-agent >"/home/tigerjack/logs/startx/lxqt_policykit_agent.log$DISPLAY" 2>&1 &
 
 # Execute all my periodic X scripts
 for file in ~/bin/mycron/x/?*.sh; do
