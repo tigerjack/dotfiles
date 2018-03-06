@@ -95,8 +95,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus floating and move
+# focus floating and move/resize (see definitions later)
 bindsym $mod+m focus floating mode "moveit"
+bindsym $mod+r focus floating mode "resize"
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -115,6 +116,16 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 11
+bindsym $mod+F2 workspace 12
+bindsym $mod+F3 workspace 13
+bindsym $mod+F4 workspace 14
+bindsym $mod+F5 workspace 15
+bindsym $mod+F6 workspace 16
+bindsym $mod+F7 workspace 17
+bindsym $mod+F8 workspace 18
+bindsym $mod+F9 workspace 19
+bindsym $mod+F10 workspace 20
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -127,6 +138,16 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 11
+bindsym $mod+Shift+F2 move container to workspace 12
+bindsym $mod+Shift+F3 move container to workspace 13
+bindsym $mod+Shift+F4 move container to workspace 14
+bindsym $mod+Shift+F5 move container to workspace 15
+bindsym $mod+Shift+F6 move container to workspace 16
+bindsym $mod+Shift+F7 move container to workspace 17
+bindsym $mod+Shift+F8 move container to workspace 18
+bindsym $mod+Shift+F9 move container to workspace 19
+bindsym $mod+Shift+F10 move container to workspace 20
 
 # switch between the current and the previously focused one
 bindsym $mod+o workspace back_and_forth
@@ -135,7 +156,7 @@ bindsym $mod+Shift+o move container to workspace back_and_forth
 # move to different RandR output
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
-bindsym $mod+F1 move workspace to output right
+bindsym $mod+Alt+F1 move workspace to output right
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+n move scratchpad
@@ -223,8 +244,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
