@@ -49,7 +49,10 @@ bindsym $mod+Shift+semicolon exec dmenu_run
 #
 #Trying alternative to i3-dmenu-desktop
 #--no-generic disable the reading of GenericName keys from desktop files
-bindsym $mod+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
+#bindsym $mod+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
+
+# Replacing dmenu with rofi
+bindsym $mod+semicolon exec "rofi -combi-modi window,drun -show combi"
 
 # change focus
 bindsym $mod+h focus left
