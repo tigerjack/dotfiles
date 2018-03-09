@@ -1,0 +1,4 @@
+rofi.combi-modi:    window,drun,ssh
+rofi.theme:         glue_pro_blue
+rofi.font:          hack 15
+rofi.modi:          combi

@@ -52,7 +52,7 @@ bindsym $mod+Shift+semicolon exec dmenu_run
 #bindsym $mod+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
 
 # Replacing dmenu with rofi
-bindsym $mod+semicolon exec "rofi -combi-modi window,drun -show combi"
+bindsym $mod+semicolon exec rofi -show
 
 # change focus
 bindsym $mod+h focus left
