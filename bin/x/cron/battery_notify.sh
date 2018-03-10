@@ -13,49 +13,41 @@ SLEEP_LOW="300"
 SLEEP_VLOW="150"
 SLEEP_CRITICAL="90"
 BAT="BAT0"
-ACTION_COUNTDOWN="30"
+ACTION_COUNTDOWN="60"
 ACTION_CRITICAL="systemctl hybrid-sleep"
 
 while [ true ]; do
-	CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
-	CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
-	if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
-		if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
-			echo "$(date)"
-			echo "Boooom $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
-			notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWN s!"
-			sleep $ACTION_COUNTDOWN
-			if [ "$(cat /sys/class/power_supply/"$BAT"/status)" == "Discharging" ]; then
-			    echo "Performing $ACTION_CRITICAL"
-			    $ACTION_CRITICAL
+	  CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+	  CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
+    SLEEP_TIME=$SLEEP_VLOW
+	  if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
+		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
+			      notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWN s!"
+			      echo "$(date) Going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWS s"
+			      sleep $ACTION_COUNTDOWN
+			      if [ "$(cat /sys/class/power_supply/"$BAT"/status)" == "Discharging" ]; then
+			          echo "$(date) Performing $ACTION_CRITICAL"
+			          $ACTION_CRITICAL
+		        fi
 		    fi
-		fi
-		sleep $SLEEP_CRITICAL
-	elif [ $CURRENT_BATTERY_LEVEL -le $VLOW_BATTERY ]; then
-		if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
-		    echo "$(date)"
-		    echo "Fujii $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
+        SLEEP_TIME=$SLEEP_CRITICAL
+	  elif [ $CURRENT_BATTERY_LEVEL -le $VLOW_BATTERY ]; then
+		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
     		    notify-send -u "critical" -i "battery-low" -c "device" "Bat ${CURRENT_BATTERY_LEVEL}%!"
-		fi
-		sleep $SLEEP_VLOW
-	elif [ $CURRENT_BATTERY_LEVEL -le $LOW_BATTERY ]; then
-	    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
-    		notify-send -u "critical" -i "battery-low" -c "device" "Bat ${CURRENT_BATTERY_LEVEL}%!"
-	    fi
-	    echo "$(date)"
-	    echo "Accuort $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
-	    sleep $SLEEP_LOW
-	elif [ $CURRENT_BATTERY_LEVEL -le $HIGH_BATTERY ]; then
-		echo "$(date)"
-		echo "Ttt appo' $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
-		sleep $SLEEP_HIGH
-	elif [ $CURRENT_BATTERY_LEVEL -le $VHIGH_BATTERY ]; then
-		echo "$(date)"
-		echo "Fin e munn' $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
-		sleep $SLEEP_VHIGH
-	else
-		echo "$(date)"
-	        echo "E che miserj" $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS
-		sleep $SLEEP_VHIGH
-	fi	
+		    fi
+		    SLEEP_TIME=$SLEEP_VLOW
+	  elif [ $CURRENT_BATTERY_LEVEL -le $LOW_BATTERY ]; then
+	      if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
+    		    notify-send -u "critical" -i "battery-low" -c "device" "Bat ${CURRENT_BATTERY_LEVEL}%!"
+	      fi
+	      SLEEP_TIME=$SLEEP_LOW
+	  elif [ $CURRENT_BATTERY_LEVEL -le $HIGH_BATTERY ]; then
+		    SLEEP_TIME=$SLEEP_HIGH
+	  elif [ $CURRENT_BATTERY_LEVEL -le $VHIGH_BATTERY ]; then
+		    SLEEP_TIME=$SLEEP_VHIGH
+	  else
+		    SLEEP_TIME=$SLEEP_VHIGH
+	  fi
+		echo "$(date): $CURRENT_BATTERY_LEVEL $CURRENT_BATTERY_STATUS"
+    sleep $SLEEP_TIME
 done
