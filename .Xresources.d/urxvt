@@ -38,7 +38,7 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,resize-font,url-select,keyboard-select,selection-to-clipboard
+URxvt.perl-ext-common:      default,resize-font,url-select,keyboard-select
 
 
 ! Yankable URLs (no mouse)
@@ -62,3 +62,4 @@ URxvt.pointerBlank:         true
 ! keyboard-select
 URxvt.keysym.M-a: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keyboard-select.clipboard:true
