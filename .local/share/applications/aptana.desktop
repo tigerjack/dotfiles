@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=AptanaStudio3
+Comment=
+Exec=/opt/tigerjack/Aptana_Studio_3/AptanaStudio3
+Icon=/opt/tigerjack/Aptana_Studio_3/icon.xpm
+Terminal=false
+Categories=Development; Web; Javascript
