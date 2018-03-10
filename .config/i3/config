@@ -40,7 +40,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+x kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Shift+semicolon exec dmenu_run
+#bindsym $mod+Shift+semicolon exec dmenu_run
 #bindsym $mod+Shift+semicolon exec "yeganesh -x -- -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -49,7 +49,7 @@ bindsym $mod+Shift+semicolon exec dmenu_run
 #
 #Trying alternative to i3-dmenu-desktop
 #--no-generic disable the reading of GenericName keys from desktop files
-#bindsym $mod+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
+bindsym $mod+Shift+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
 
 # Replacing dmenu with rofi
 bindsym $mod+semicolon exec rofi -show
