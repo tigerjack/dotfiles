@@ -112,7 +112,7 @@ export PATH="$PATH:/opt/tigerjack/bin"
 # Set matlab to use the userpath folder (first run userpath('dir_name') inside matlab
 export MATLAB_USE_USERWORK=1
 # Set matlab log directory
-export MATLAB_LOG_DIR=~/logs/matlab/
+export MATLAB_LOG_DIR=~/logs/matlab
 
 # For helm-gtags
 export GTAGSLABEL=pygments 
