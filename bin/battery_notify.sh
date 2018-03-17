@@ -11,21 +11,26 @@ SLEEP_VHIGH="1500"
 SLEEP_HIGH="900"
 SLEEP_LOW="300"
 SLEEP_VLOW="150"
-SLEEP_CRITICAL="90"
+SLEEP_CRITICAL="60"
 BAT="BAT0"
 ACTION_COUNTDOWN="60"
-ACTION_CRITICAL="systemctl hybrid-sleep"
+#ACTION_CRITICAL="systemctl hybrid-sleep"
+ACTION_CRITICAL="systemctl suspend"
 # Notify msg
-NOTIFY_MSG=""
+TEST=""
 
 function critical_action() {
 		notify-send -u "critical" -i "battery-low" -c "device" "Bat critical level, going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWN s!"
-		echo "$(date) Going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWS s"
+		echo "$(date) Going to perform $ACTION_CRITICAL in $ACTION_COUNTDOWN s"
 		sleep $ACTION_COUNTDOWN
 		if [ "$(cat /sys/class/power_supply/"$BAT"/status)" == "Discharging" ]; then
 			  echo "$(date) Performing $ACTION_CRITICAL"
 			  $ACTION_CRITICAL
 		fi
+}
+
+function critical_action2() {
+    systemctl hibernate
 }
 
 function send_message() {
@@ -43,9 +48,20 @@ while [ true ]; do
     SLEEP_TIME=$SLEEP_VLOW
 	  if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
 		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
-            critical_action
+            if [ -z "$TEST" ]; then
+                echo "If branch taken"
+                critical_action
+                TEST="t"
+            else
+                #Maybe already set as udev rule
+                critical_action2
+                echo "Else branch taken"
+                TEST=""
+            fi
+            SLEEP_TIME=30
+        else
+            SLEEP_TIME=$SLEEP_CRITICAL
 		    fi
-        SLEEP_TIME=$SLEEP_CRITICAL
 	  elif [ $CURRENT_BATTERY_LEVEL -le $VLOW_BATTERY ]; then
 		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
             NOTIFY_MSG="Bat $CURRENT_BATTERY_LEVEL%!"
