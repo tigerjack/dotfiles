@@ -57,17 +57,18 @@ status.register("mem",
 
 # This would look like this:
 # Discharging 6h:51m
-status.register("battery",
-        format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
-    alert=True,
-    interval=10,
-    alert_percentage=5,
-    alert_timeout=30,
-    status={
-        "DIS": "↓",
-        "CHR": "↑",
-        "FULL": "=",
-    },)
+# Removed bcz problem w/ battery
+# status.register("battery",
+#         format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
+#     alert=True,
+#     interval=10,
+#     alert_percentage=5,
+#     alert_timeout=30,
+#     status={
+#         "DIS": "↓",
+#         "CHR": "↑",
+#         "FULL": "=",
+#     },)
 
 # Displays whether a DHCP client is running
 #status.register("runwatch",
