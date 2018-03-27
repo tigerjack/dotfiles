@@ -54,7 +54,8 @@ values."
      emacs-lisp
      git
      markdown
-     org
+     (org :variables
+	org-projectile-file "TODOs.org")
      (c-c++ :variables
             c-c++-enable-clang-support t
 	    c-c++-enable-clang-format-on-save t
