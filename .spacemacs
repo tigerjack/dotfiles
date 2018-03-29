@@ -336,6 +336,10 @@ you should place your code here."
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
   (setq deft-directory "/mnt/internal/Data/PersonalFolder/Documents/Notes/DeftNotes")
+  ;; pressing p several times cycle between the kill ring content.
+  (setq dotspacemacs-enable-paste-transient-state t)
+  ;; Display ascii instead of unicode chars on the status line
+  (setq dotspacemacs-mode-line-unicode-symbols nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
