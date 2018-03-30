@@ -340,6 +340,8 @@ you should place your code here."
   (setq dotspacemacs-enable-paste-transient-state t)
   ;; Display ascii instead of unicode chars on the status line
   (setq dotspacemacs-mode-line-unicode-symbols nil)
+  ;; load private file, not tracked
+  (load-file "./.spacemacs_private")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

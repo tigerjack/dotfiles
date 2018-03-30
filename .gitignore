@@ -4,6 +4,7 @@
 .config/neomutt/passwords
 .local/share/applications/wine*
 .local/share/applications/q4wine*
+.spacemacs_private
 
 ### LINUX
 *~
