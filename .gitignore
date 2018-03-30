@@ -2,6 +2,8 @@
 
 ### Particular dirs
 .config/neomutt/passwords
+.local/share/applications/wine*
+.local/share/applications/q4wine*
 
 ### LINUX
 *~
