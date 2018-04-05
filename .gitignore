@@ -1,10 +1,67 @@
-*dotfiles
+.git_dotfiles
 
-### Particular dirs
+# log files/dirs
+*.log*
+*logs/*
+*Logs/*
+
+### Specific file extensions
+*.lock
+*.lck
+*.jpg
+*.jpeg
+*.png
+*.dat
+*.timestamp
+*.cache*
+*.directory
+*.menu
+
+### Particular files/dirs
+bash_eternal_history
+.spacemacs_private
+*wine-extension*
+
 .config/neomutt/passwords
+.config/chromium/*
+.config/vim/bundle/*
+.config/calibre/*
+.config/VirtualBox/*.log.*
+.config/libreoffice/*
+.config/opera/*
+.config/skypeforlinux/*
+.config/smplayer/*
+.config/spotify/*
+.config/texstudio/*
+.config/transmission*/resume/*
+.config/transmission*/torrents/*
+
 .local/share/applications/wine*
 .local/share/applications/q4wine*
-.spacemacs_private
+.local/share/TelegramDesktop/*
+
+bin/chkrootkit*
+backup/*
+Downloads/*
+.wine/*
+.thunderbird/*
+.scuolabook/*
+.npm/*
+.netbeans/*
+.mozilla/*
+.cabal/packages/*
+.cache/*
+.dropbox-dist/*
+.dbus/*
+.eclipse/*
+.matlab/*
+.goldendict/*
+.java/*
+.jd/*
+.texlive/*
+.tmux/plugins/*
+.tmux/resurrect/*
+.macromedia/*
 
 ### LINUX
 *~
