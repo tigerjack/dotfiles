@@ -23,3 +23,5 @@ alias wfh='sudo netctl start wlp2s0-TP-LINK_8340'
 alias wfp='sudo netctl start wlp2s0-polimi'
 alias wfw='sudo netctl start wlp2s0-HUAWEI'
 alias wfs='sudo netctl stop-all'
+alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
