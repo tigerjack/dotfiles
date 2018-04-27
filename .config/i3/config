@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 show_marks yes
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -159,7 +160,7 @@ bindsym $mod+Shift+o move container to workspace back_and_forth
 # move to different RandR output
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
-bindsym $mod+Alt+F1 move workspace to output right
+bindsym $sup+$alt+F1 move workspace to output right
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+n move scratchpad
