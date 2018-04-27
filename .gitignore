@@ -41,6 +41,10 @@ bash_eternal_history
 .local/share/TelegramDesktop/*
 
 bin/chkrootkit*
+bin/tests/*
+bin/matlab
+bin/mex
+
 backup/*
 Downloads/*
 .wine/*
