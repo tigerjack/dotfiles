@@ -78,7 +78,7 @@ export EDITOR="vim"
 export EDITOR2="emacsclient -cn"
 
 # To start emacs in daemon mode automatically
-#export ALTERNATE_EDITOR=""
+export ALTERNATE_EDITOR=""
 #export EDITOR=emacsclient
 
 # Go source binaries ecc.
