@@ -71,7 +71,8 @@ values."
                       )
      (python :variables python-enable-yapf-format-on-save t)
      deft
-     spell-checking
+     (spell-checking :variables
+                      spell-checking-enable-by-default nil)
     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
