@@ -92,8 +92,8 @@ export PATH="$PATH:$GOPATH/bin"
 . /etc/profile.d/autojump.bash
 
 # Bash coloring
-GREEN="\[$(tput setaf 46)\]"
-BLUE="\[$(tput setaf 45)\]"
+GREEN="\[$(tput setaf 2)\]"
+BLUE="\[$(tput setaf 6)\]"
 RESET="\[$(tput sgr0)\]"
 
 export PS1="${GREEN}\u@\h:\W${BLUE}"'$(__git_ps1 "(%s)")'"${GREEN}>${RESET}"
