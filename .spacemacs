@@ -55,7 +55,7 @@ values."
      git
      markdown
      (org :variables
-	org-projectile-file "TODOs.org")
+          org-projectile-file "TODOs.org")
      (c-c++ :variables
             c-c++-enable-clang-support t
 	    c-c++-enable-clang-format-on-save t
@@ -67,8 +67,7 @@ values."
             shell-default-position 'bottom)
      (version-control :variables
                       version-control-diff-side 'left
-                      version-control-diff-tool 'diff-hl
-                      )
+                      version-control-diff-tool 'diff-hl)
      (python :variables python-enable-yapf-format-on-save t)
      deft
      (spell-checking :variables
