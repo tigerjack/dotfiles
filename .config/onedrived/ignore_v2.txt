@@ -69,3 +69,6 @@ Temporary Items
 Learning/
 Pictures/Shotwelled
 * (myarch).*
+Pictures/NotShotwelled/OthersBackup
+Pictures/NotShotwelled/Strega
+Pictures/NotShotwelled/temp
