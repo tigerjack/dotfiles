@@ -8,7 +8,7 @@
 
 # Set user directories
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="/mnt/internal/LinuxData/cache"
+export XDG_CACHE_HOME="/mnt/internal/LinuxData/cache/tigerjack"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # Source bashrc
