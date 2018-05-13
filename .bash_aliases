@@ -4,7 +4,7 @@ alias ls='ls -h --color=auto'
 alias ll='ls -lh'
 alias lal='ls -Alh'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
-alias startxf="export FIRST_DISPLAY='1' && startx >$HOME/logs/startx/all.log 2>&1"
+alias sxf="export FIRST_DISPLAY='1' && startx >$HOME/logs/startx/all.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git_dotfiles/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=/mnt/internal/ProgrammingData/.git_prog_mgmt/ --work-tree=/mnt/internal/ProgrammingData'
 alias winq464_old='export WINEARCH=win64 export WINEPREFIX=/mnt/internal/LinuxData/wine/q4_64_old && '
