@@ -13,8 +13,8 @@ xss-lock -- xscreensaver-command --lock >"/home/tigerjack/logs/startx/xss-lock.l
 xbindkeys >"/home/tigerjack/logs/startx/xbindkeys.log$DISPLAY" 2>&1 &
 
 # To remap keys, see this blog http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
-setxkbmap -option 'caps:ctrl_modifier'
-xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >"/home/tigerjack/logs/startx/xcape.log$DISPLAY" 2>&1 &
+#setxkbmap -option 'caps:ctrl_modifier'
+#xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >"/home/tigerjack/logs/startx/xcape.log$DISPLAY" 2>&1 &
 
 
 # notification system daemon
