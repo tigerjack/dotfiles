@@ -1,0 +1,7 @@
+# Source my file with environment variables used by GUI application
+[ -f ~/.xmyenv ] && . ~/.xmyenv
+
+numlockx &
+copyq &
+#xrandr --output default --primary &
+setxkbmap us &
