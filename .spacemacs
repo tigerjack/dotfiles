@@ -339,7 +339,7 @@ you should place your code here."
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
-  (setq deft-directory "/mnt/internal/Data/PersonalFolder/Documents/Notes/DeftNotes")
+  (setq deft-directory (substitute-in-file-name "$MDIR_GLOBAL_DATA/Documents/Notes/DeftNotes"))
   ;; Display ascii instead of unicode chars on the status line
   (setq dotspacemacs-mode-line-unicode-symbols nil)
   ;; load private file, not tracked
