@@ -346,6 +346,8 @@ you should place your code here."
   (setq dotspacemacs-mode-line-unicode-symbols nil)
   ;; load private file, not tracked
   (load-file "./.spacemacs_private")
+  ;; To avoid bug listed here https://github.com/jaypei/emacs-neotree/issues/226
+  (setq helm-split-window-inside-p t)
   ;; ranger options
   ;; previow ignore extensions
   (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
