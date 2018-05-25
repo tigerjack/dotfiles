@@ -32,7 +32,8 @@ values."
    dotspacemacs-configuration-layers
    '(
      html
-     javascript
+     (javascript :variables
+                 javascript-disable-tern-port-files nil)
      sql
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
