@@ -6,10 +6,8 @@
 # Activate block num at login
 #setleds -D +num
 
-# Set user directories
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="/mnt/internal/LinuxData/cache/tigerjack"
-export XDG_DATA_HOME="$HOME/.local/share"
+# Source global environment variables (shared b/w GUI and cli applications)
+. ~/.global_env
 
 # Source bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc
