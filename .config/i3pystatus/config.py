@@ -1,6 +1,6 @@
 from i3pystatus import Status
 
-status = Status()
+status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
 
 # Displays clock like this:
 # Tue 30 Jul 11:59:46 PM KW31
