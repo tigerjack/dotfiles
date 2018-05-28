@@ -5,32 +5,32 @@
 # Source my file with environment variables used by GUI application
 [ -f ~/.xmyenv ] && . ~/.xmyenv
 
-xscreensaver -no-splash >"/home/tigerjack/logs/startx/xscreensaver.log$DISPLAY" 2>&1 &
-xss-lock -- xscreensaver-command --lock >"/home/tigerjack/logs/startx/xss-lock.log$DISPLAY" 2>&1 &
+xscreensaver -no-splash >"$MDIR_LOGS/startx/xscreensaver.log$DISPLAY" 2>&1 &
+xss-lock -- xscreensaver-command --lock >"$MDIR_LOGS/startx/xss-lock.log$DISPLAY" 2>&1 &
 #conky -p 2 &
 
 # To associate shortcuts to events
-xbindkeys >"/home/tigerjack/logs/startx/xbindkeys.log$DISPLAY" 2>&1 &
+xbindkeys >"$MDIR_LOGS/startx/xbindkeys.log$DISPLAY" 2>&1 &
 
 # To remap keys, see this blog http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
 #setxkbmap -option 'caps:ctrl_modifier'
-#xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >"/home/tigerjack/logs/startx/xcape.log$DISPLAY" 2>&1 &
+#xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' >"$MDIR_LOGS/startx/xcape.log$DISPLAY" 2>&1 &
 
 
 # notification system daemon
 #twmnd >~/logs/startx/twmnd.log 2>&1 &
-dunst >"/home/tigerjack/logs/startx/dunst.log$DISPLAY" 2>&1 &
+dunst >"$MDIR_LOGS/startx/dunst.log$DISPLAY" 2>&1 &
 
 # To avoid terminal bell
 xset -b
 
 # Polkit, started by systemctl
-lxqt-policykit-agent >"/home/tigerjack/logs/startx/lxqt_policykit_agent.log$DISPLAY" 2>&1 &
+lxqt-policykit-agent >"$MDIR_LOGS/startx/lxqt_policykit_agent.log$DISPLAY" 2>&1 &
 
 # Execute all my periodic X scripts
 for file in ~/bin/x/cron/?*.sh; do
 	name=$(basename -s .sh $file)
-	logfile="/home/tigerjack/logs/startx/$name.log$DISPLAY"
+	logfile="$MDIR_LOGS/startx/$name.log$DISPLAY"
 	( $file >"$logfile" 2>&1 &)
 done
 unset file
@@ -38,7 +38,7 @@ unset file
 # Execute all my startup X scripts
 for file in ~/bin/x/startup/?*.sh; do
 	name=$(basename -s .sh $file)
-	logfile="/home/tigerjack/logs/startx/$name.log$DISPLAY"
+	logfile="$MDIR_LOGS/startx/$name.log$DISPLAY"
 	( $file > "$logfile" 2>&1 &)
 done
 unset file
@@ -64,5 +64,5 @@ eval $(ssh-agent)
 #exec xmonad
 #exec twm
 #exec i3
-exec dbus-launch --sh-syntax --exit-with-session i3 >"/home/tigerjack/logs/startx/i3.log$DISPLAY" 2>&1
+exec dbus-launch --sh-syntax --exit-with-session i3 >"$MDIR_LOGS/startx/i3.log$DISPLAY" 2>&1
 #exec i3 -V >> ~/logs/startx/i3log-$(date +'%F-%k-%M-%S') 2>&1
