@@ -42,7 +42,7 @@ URxvt.perl-ext-common:      default,resize-font,url-select,keyboard-select
 
 
 ! Yankable URLs (no mouse)
-URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-r: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/firefox
 URxvt.url-select.underline: true
 
