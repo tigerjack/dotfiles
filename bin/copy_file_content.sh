@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 #echo "$1"
 t=$(file -b --mime-type "$1")

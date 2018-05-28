@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 id=`xinput | grep PS/2 | awk '{print $6}' |  xinput | grep PS/2 | awk '{print $6}' | sed -e 's#.*=\(\)#\1#'`
 TOUCH_ENABLED=`xinput list-props $id | grep Device\ Enabled | awk '{ print $4 }'`
 if [ $TOUCH_ENABLED = 0 ]; then
