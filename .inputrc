@@ -18,5 +18,7 @@ set menu-complete-display-prefix On
 
 ### Macro
 # quickly send a command in the background with Ctrl+Alt+B, discarding all of its output and input:
-
 "\e\C-b":"\C-e >/dev/null 2>&1 </dev/null &\C-m"
+
+# forward history with Ctrl-t
+"\C-t":forward-search-history
