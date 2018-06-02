@@ -268,3 +268,6 @@ assign [class="smplayer"] 10
 assign [class="mplayer"] 10
 assign [class="mpv"] 10
 assign [class="Spotify"] 10
+ 
+#Execute the startup script
+exec --no-startup-id ~/bin/x/post_i3_scripts.sh

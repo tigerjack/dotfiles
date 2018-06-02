@@ -1,4 +1,3 @@
-#!/usr/bin/sh
 slt=90
 if [ -x /usr/bin/gcalcli ]; then
     echo "gcalcli detected"
@@ -7,7 +6,7 @@ if [ -x /usr/bin/gcalcli ]; then
         online=$?
         if [ $online -eq 0 ]; then
             echo "Connection established"
-            /usr/bin/gcalcli --configFolder='/home/tigerjack/.config/gcalcli' --calendar='tigerjack89@gmail.com' remind 120 'notify-send -u "critical" %s'
+            /usr/bin/gcalcli --configFolder="$XDG_CONFIG_HOME/gcalcli" --calendar='tigerjack89@gmail.com' remind 120 'notify-send -u "critical" %s'
             sleep 720 # 120 min, as above
         else
             if [ "$slt" -ge 6000 ]; then

@@ -1,0 +1,2 @@
+# Network applet
+nm-applet
