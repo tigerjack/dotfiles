@@ -4,6 +4,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 #Other personal global dirs
 export MDIR_GLOBAL_DATA="$HOME/Data"
+export MDIR_GLOBAL_APP_DATA="$MDIR_GLOBAL_DATA/AppData"
 export MDIR_LINUX_DATA="$HOME/Data"
 export MDIR_PROGRAMMING_DATA="$HOME/prog_mgmt"
 export MDIR_LOGS="$HOME/logs"

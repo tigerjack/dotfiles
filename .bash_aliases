@@ -18,8 +18,8 @@ alias gcalclip='gcalcli --configFolder=$XDG_CONFIG_HOME/gcalcli --calendar=perri
 alias emt='emacsclient -t'
 alias emcn='emacsclient -cn'
 alias emn='emacsclient -n'
-alias anki='anki -b $MDIR_GLOBAL_DATA/AppData/Anki'
-alias mnemosyne='mnemosyne -d $MDIR_GLOBAL_DATA/AppData/Mnemosyine'
+alias anki='anki -b $MDIR_GLOBAL_APP_DATA/Anki'
+alias mnemosyne='mnemosyne -d $MDIR_GLOBAL_APP_DATA/Mnemosyine'
 alias mutt='mutt -F $XDG_CONFIG_HOME/neomutt/neomuttrc'
 alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
