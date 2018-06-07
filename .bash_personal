@@ -1,3 +1,23 @@
+# Shopt various
+# append to the history file, don't overwrite it
+shopt -s histappend
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
 # Eternal bash history.
 # ---------------------
 # Undocumented feature which sets the size to "unlimited".
@@ -16,8 +36,10 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
 
 ## To color less, man, etc
 # The following line is to highliht syntax
-export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
+# This export LESSOPEN and LESSCLOSE
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+export LESS="--RAW-CONTROL-CHARS"
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
 export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
@@ -46,19 +68,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 ## export LESS_TERMCAP_ZW=$(tput rsupm)
 ## export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
-# Get color support for 'less'
-export LESS="--RAW-CONTROL-CHARS"
-
-## To color man
-## man() {
-##     LESS_TERMCAP_md=$'\e[01;31m' \
-##     LESS_TERMCAP_me=$'\e[0m' \
-##     LESS_TERMCAP_se=$'\e[0m' \
-##     LESS_TERMCAP_so=$'\e[01;44;33m' \
-##     LESS_TERMCAP_ue=$'\e[0m' \
-##     LESS_TERMCAP_us=$'\e[01;32m' \
-##     command man "$@"
-## }  
 
 
 ## To use solarized dircolors for ls
