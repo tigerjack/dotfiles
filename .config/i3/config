@@ -95,10 +95,10 @@ bindsym $sup+t layout tabbed
 bindsym $sup+e layout toggle split
 
 # toggle tiling / floating
-bindsym $sup+Shift+space floating toggle
+bindsym $sup+Shift+g floating toggle
 
 # change focus between tiling / floating windows
-bindsym $sup+space focus mode_toggle
+bindsym $sup+g focus mode_toggle
 
 # focus floating and move/resize (see definitions later)
 bindsym $sup+m focus floating mode "moveit"
