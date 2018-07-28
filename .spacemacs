@@ -44,6 +44,7 @@ values."
      helm
      (auto-completion :variables
                         auto-completion-enable-help-tooltip t
+                        auto-completion-enable-snippets-in-popup t
                         auto-completion-return-key-behavior 'complete
                         auto-completion-tab-key-behavior 'cycle
                         auto-completion-complete-with-key-sequence nil
@@ -61,8 +62,8 @@ values."
           org-projectile-file "TODOs.org")
      (c-c++ :variables
             c-c++-enable-clang-support t
-	    c-c++-enable-clang-format-on-save t
-	    c-c++-enable-rtags-support t
+            c-c++-enable-clang-format-on-save t
+            c-c++-enable-rtags-support t
             c-c++-default-mode-for-headers 'c++-mode)
      gtags
      (shell :variables
@@ -73,6 +74,10 @@ values."
                       version-control-diff-tool 'diff-hl)
      (python :variables python-enable-yapf-format-on-save t)
      deft
+     (latex :variables
+            latex-build-command "LaTeX"
+            latex-enable-auto-fill t
+            latex-enable-folding t)
      (spell-checking :variables
                       spell-checking-enable-by-default nil)
     )
@@ -345,7 +350,7 @@ you should place your code here."
   ;; Display ascii instead of unicode chars on the status line
   (setq dotspacemacs-mode-line-unicode-symbols nil)
   ;; load private file, not tracked
-  (load-file "./.spacemacs_private")
+  ;;(load-file "./.spacemacs_private")
   ;; To avoid bug listed here https://github.com/jaypei/emacs-neotree/issues/226
   (setq helm-split-window-inside-p t)
   ;; ranger options
@@ -353,7 +358,8 @@ you should place your code here."
   (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
   ;; preview max file size
   (setq ranger-max-preview-size 10)
-  )
+  (setq org-export-backends '(beamer html latex md))
+ )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -363,10 +369,12 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(org-download-screenshot-method "scrot -s %s")
  '(package-selected-packages
    (quote
-    (ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc company-anaconda anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers google-c-style cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (ac-emacs-eclim company-emacs-eclim eclim company-auctex auctex restclient-helm restclient know-your-http-well tern-auto-complete ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc company-anaconda anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers google-c-style cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(paradox-automatically-star nil)
+ '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
     ((company-clang-arguments "-I/mnt/internal/ProgrammingData/stm32/accelerometer_game/miosix-kernel/miosix/arch/cortexM4_stm32f4/common" "-I/mnt/internal/ProgrammingData/stm32/accelerometer_game/miosix-kernel/miosix/arch/cortexM4_stm32f4/stm32f407vg_stm32f4discovery/interfaces-impl")))))
