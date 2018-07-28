@@ -1,8 +1,14 @@
+# Go to home
+cd ~
+
 ## Load X resources, never background them 
 [ -f ~/.Xdefaults ] && xrdb -merge ~/.Xdefaults > "$MDIR_LOGS/startx/xrdb_defaults.log$DISPLAY" 2>&1
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources > "$MDIR_LOGS/startx/xrdb_resources.log$DISPLAY" 2>&1
 
-# Source my file with environment variables used by GUI application
+# Source my files with environment variables used by all applications...
+# [ -f ~/.global_env ] && . ~/.global_env > "$MDIR_LOGS/startx/global_env.log$DISPLAY" 2>&1
+# actually they are sources via bashrc
+# ... and GUI applications
 [ -f ~/.xmyenv ] && . ~/.xmyenv > "$MDIR_LOGS/startx/xmyenv.log$DISPLAY" 2>&1
 
 # To avoid terminal bell
@@ -27,6 +33,7 @@ xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' > "$MDIR_LOGS/star
 #
 # Alternative method to swap CapsLock and Ctrl key
 # xmodmap ~/.config/xmodmap/speedswapper
+
 # Repeat delay (100-1000) and repeat interval (10-200) of keyboard
 xset r rate 250 60
 # Disable slow-keys
