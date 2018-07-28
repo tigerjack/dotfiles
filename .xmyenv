@@ -1,6 +1,3 @@
-# Source global environment variables (shared b/w gui and cli apps)
-. ~/.global_env
-
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # To increase performance on Nvidia cards
