@@ -27,3 +27,9 @@ xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' > "$MDIR_LOGS/star
 #
 # Alternative method to swap CapsLock and Ctrl key
 # xmodmap ~/.config/xmodmap/speedswapper
+# Repeat delay (100-1000) and repeat interval (10-200) of keyboard
+xset r rate 250 60
+# Disable slow-keys
+xkbset -sl
+# Disable accessibility so slow-keys won't turn back on
+xkbset -a
