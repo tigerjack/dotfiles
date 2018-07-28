@@ -22,7 +22,7 @@ for file in ~/bin/x/autostart/?*.sh; do
 	if [ -x "$file" ]; then
 		name=$(basename -s .sh $file)
 		logfile="$MDIR_LOGS/startx/$name.log$DISPLAY"
-		(. $file >"$logfile" 2>&1 & )
+		($file >"$logfile" 2>&1 & )
 	fi
 done
 unset file
