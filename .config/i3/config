@@ -38,6 +38,7 @@ focus_follows_mouse no
 # start a terminal
 bindsym $sup+Return exec i3-sensible-terminal
 
+
 # kill focused window
 bindsym $sup+Shift+x kill
 
@@ -259,6 +260,17 @@ bar {
 	#status_command i3status
 	workspace_buttons yes
 }
+
+## Mouse options
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $sup+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $sup+button3 floating toggle
 
 ## Some window specific config
 for_window [class="trayer"] floating enable; border none
