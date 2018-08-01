@@ -5,6 +5,8 @@ alias egrep='egrep --color=auto'
 alias ls='ls -h --color=auto'
 alias ll='ls -lh'
 alias lal='ls -Alh'
+alias td='transmission-daemon'
+alias trc='transmission-remote-cli'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/all.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git_dotfiles/ --work-tree=$HOME'
