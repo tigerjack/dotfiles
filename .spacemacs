@@ -365,6 +365,9 @@ you should place your code here."
         org-latex-pdf-process
         '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
           "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  ;; set the path of the ditaa executable
+  (setq org-ditaa-jar-path
+        (expand-file-name "/usr/share/ditaa/ditaa.jar"))
  )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -383,7 +386,13 @@ you should place your code here."
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
-    ((company-clang-arguments "-I/mnt/internal/ProgrammingData/stm32/accelerometer_game/miosix-kernel/miosix/arch/cortexM4_stm32f4/common" "-I/mnt/internal/ProgrammingData/stm32/accelerometer_game/miosix-kernel/miosix/arch/cortexM4_stm32f4/stm32f407vg_stm32f4discovery/interfaces-impl")))))
+    ;; vars used in some .dir-locals.el to use ditaa and calc in org mode
+    ((eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (ditaa . t))))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
