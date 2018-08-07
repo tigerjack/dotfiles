@@ -1,1 +1,14 @@
-@daily	10	clean_tmp.daily	/home/simone/bin/clean_my_temp_dirs.sh
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/home/simone/bin
+HOME=/home/simone
+LOGNAME=simone
+XDG_CONFIG_HOME=/home/simone/.config
+XDG_CACHE_HOME=/home/simone/.cache
+XDG_DATA_HOME=/home/simone/.local/share
+MDIR_GLOBAL_DATA=/media/DatiSimone/simone
+MDIR_GLOBAL_APP_DATA=/media/DatiSimone/simone/AppData
+MDIR_LINUX_DATA=/home/simone/LinuxData
+MDIR_PROGRAMMING_DATA=/home/simone/LinuxData/prog_mgmt
+
+1	10	clean_tmp.daily	/home/simone/bin/clean_my_temp_dirs.sh
+@monthly 0	backup_cron	crontab -l > $MDIR_LINUX_DATA/online_repos/git/dotfiles/backup/crontab.dump
