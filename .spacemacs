@@ -359,6 +359,12 @@ you should place your code here."
   ;; preview max file size
   (setq ranger-max-preview-size 10)
   (setq org-export-backends '(beamer html latex md))
+  ;; used to export source code with minted package
+  (setq org-latex-listings 'minted
+        org-latex-packages-alist '(("" "minted"))
+        org-latex-pdf-process
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
  )
 
 ;; Do not write anything past this comment. This is where Emacs will
