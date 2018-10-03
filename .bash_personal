@@ -54,7 +54,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 ## export LESS_TERMCAP_ZV=$(tput rsubm)
 ## export LESS_TERMCAP_ZO=$(tput ssupm)
 ## export LESS_TERMCAP_ZW=$(tput rsupm)
-
 ## export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 ## export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
 ## export LESS_TERMCAP_me=$(tput sgr0)
@@ -123,3 +122,9 @@ export MATLAB_LOG_DIR=~/logs/matlab
 
 # For helm-gtags
 export GTAGSLABEL=pygments 
+
+# Some git exports
+export GIT_PROG_MGMT_OPTS="--git-dir=$MDIR_PROGRAMMING_DATA/.git_prog_mgmt/ --work-tree=$MDIR_PROGRAMMING_DATA"
+export GIT_DOTFILES_MGMT_OPTS="--git-dir=$HOME/.dot_git/ --work-tree=$HOME"
+# Format options not working
+export GIT_LOG_OPTS="--graph --abbrev-commit --decorate --all"
