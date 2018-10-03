@@ -18,7 +18,11 @@
 *.menu
 
 ### Particular files/dirs
-bash_eternal_history
+.Xauthority
+.ssh
+.esd_auth
+.bash_history
+.bash_eternal_history
 .spacemacs_private
 *wine-extension*
 
@@ -35,18 +39,33 @@ bash_eternal_history
 .config/texstudio/*
 .config/transmission*/resume/*
 .config/transmission*/torrents/*
+.config/mailnag/mailnag.cfg
+.config/gcalcli/cache
+.config/gcalcli/oauth
+.config/pulse
 
 .local/share/applications/wine*
 .local/share/applications/q4wine*
 .local/share/TelegramDesktop/*
+.local/share/ranger/bookmarks
+.local/share/ranger/history
+.local/share/ranger/tagged
+.local/share/recently-used.xbel
+# Used (mainly?) by pip --user
+.local/lib
+.local/bin
 
 bin/chkrootkit*
 bin/tests/*
 bin/matlab
 bin/mex
+bin/go
+bin/k2pdfopt
+bin/qtox
 
-backup/*
-Downloads/*
+backup
+Downloads
+LinuxData
 .wine/*
 .thunderbird/*
 .scuolabook/*
@@ -66,6 +85,7 @@ Downloads/*
 .tmux/plugins/*
 .tmux/resurrect/*
 .macromedia/*
+.psensor/*
 
 ### LINUX
 *~
