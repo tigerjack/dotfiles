@@ -36,7 +36,7 @@ xrandr --output $(xrandr | grep -E " connected (primary )?[1-9]+" | sed -e "s/\(
 numlockx &
 
 # Set us layout for keyboard
-setxkbmap us > "$MDIR_LOGS/startx/setxkbmap.log$DISPLAY" 2>&1
+setxkbmap -layout us > "$MDIR_LOGS/startx/setxkbmap.log$DISPLAY" 2>&1
 # To remap keys, see http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
 setxkbmap -option 'caps:ctrl_modifier' >> "$MDIR_LOGS/startx/setxkbmap.log$DISPLAY" 2>&1 
 xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape' > "$MDIR_LOGS/startx/xcape.log$DISPLAY" 2>&1
