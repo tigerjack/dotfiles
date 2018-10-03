@@ -22,3 +22,5 @@ alias mutt='mutt -F $XDG_CONFIG_HOME/neomutt/neomuttrc'
 alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias ecl='env SWT_GTK3=0 eclipse'
+alias wn32='WINEARCH=win32 WINEPREFIX=~/LinuxData/wine32'
+alias wn64='WINEPREFIX=~/LinuxData/wine64'
