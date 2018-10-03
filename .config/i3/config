@@ -48,11 +48,11 @@ bindsym $sup+Shift+x kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-#bindsym $sup+semicolon exec --no-startup-id i3-dmenu-desktop
+bindsym $sup+Shift+semicolon exec --no-startup-id i3-dmenu-desktop
 #
 #Trying alternative to i3-dmenu-desktop
 #--no-generic disable the reading of GenericName keys from desktop files
-bindsym $sup+Shift+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
+#bindsym $sup+Shift+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
 
 # Replacing dmenu with rofi
 bindsym $sup+semicolon exec rofi -show

@@ -19,13 +19,14 @@ status.register("load",
 
 # Shows your CPU temperature, if you have a Intel CPU
 status.register("temp",
-    format="{Core_0}-{Core_1}-{Core_2}-{Core_3}",
-    lm_sensors_enabled = True,
-    hints={"markup": "pango"},
-    dynamic_color=True,
-    alert_temp=60,
-    on_leftclick = "urxvt -e htop",
-    #format="{temp:.0f}°C",
+    lm_sensors_enabled = False,
+    format="{temp:.0f}°C",
+#    lm_sensors_enabled = True,
+#    format="{Core_0}-{Core_1}-{Core_2}-{Core_3}",
+#    hints={"markup": "pango"},
+#    dynamic_color=True,
+#    alert_temp=60,
+#    on_leftclick = "urxvt -e htop",
 )
 
 status.register("mem",
@@ -58,17 +59,17 @@ status.register("mem",
 # This would look like this:
 # Discharging 6h:51m
 # Removed bcz problem w/ battery
-# status.register("battery",
-#         format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
-#     alert=True,
-#     interval=10,
-#     alert_percentage=5,
-#     alert_timeout=30,
-#     status={
-#         "DIS": "↓",
-#         "CHR": "↑",
-#         "FULL": "=",
-#     },)
+status.register("battery",
+     format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
+     alert=True,
+     interval=10,
+     alert_percentage=5,
+     alert_timeout=30,
+     status={
+         "DIS": "↓",
+         "CHR": "↑",
+         "FULL": "=",
+     },)
 
 # Displays whether a DHCP client is running
 #status.register("runwatch",
@@ -88,7 +89,7 @@ status.register("mem",
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
-    interface="wlp2s0",
+    interface="wlp3s0",
     format_up="{essid} {quality:3.0f}% \u2197{bytes_sent}KB/s \u2198{bytes_recv}KB/s",
     format_down="{interface} \u2013",
     on_leftclick = "urxvt -e bash -c 'sudo nethogs wlp2s0'",

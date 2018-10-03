@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/mnt/internal/Data/PersonalFolder/Tasks/data
+data.location=/mnt/internal/DatiSimone/Tasks/data
 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
@@ -30,9 +30,9 @@ include /usr/share/doc/task/rc/dark-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
 taskd.server=freecinc.com:53589
-taskd.key=/mnt/internal/Data/PersonalFolder/Tasks/freecinc_9aa46843.key.pem
-taskd.ca=/mnt/internal/Data/PersonalFolder/Tasks/freecinc_9aa46843.ca.pem
-taskd.certificate=/mnt/internal/Data/PersonalFolder/Tasks/freecinc_9aa46843.cert.pem
+taskd.key=/mnt/internal/DatiSimone/Tasks/freecinc_9aa46843.key.pem
+taskd.ca=/mnt/internal/DatiSimone/Tasks/freecinc_9aa46843.ca.pem
+taskd.certificate=/mnt/internal/DatiSimone/Tasks/freecinc_9aa46843.cert.pem
 taskd.credentials=FreeCinc\/freecinc_9aa46843\/585a9874-126b-4821-8502-d476e8f1b098
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed

@@ -36,9 +36,11 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
 
 ## To color less, man, etc
 # The following line is to highliht syntax
+# make less more friendly for non-text input files, see lesspipe(1).
 # This export LESSOPEN and LESSCLOSE
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-#export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+[ -x /usr/bin/lesspipe.sh ] && eval "$(SHELL=/bin/sh lesspipe.sh)" #ARCH
+#export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s" #UBUNTU
+export LESSOPEN="| /usr/bin/lesspipe.sh %s"
 export LESS="--RAW-CONTROL-CHARS"
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
@@ -69,36 +71,30 @@ export LESS_TERMCAP_ue=$'\E[0m'
 ## export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
 
-
 ## To use solarized dircolors for ls
 eval `dircolors ~/.config/dircolors.ansi-dark`
 
-
-## To prevent nested ranger instances
-ranger() {
-    if [ -z "$RANGER_LEVEL" ]; then
-        /usr/bin/ranger "$@"
-    else
-        exit
-    fi
-}
 # Set the default editor
 export EDITOR="vim"
+# ... and my personal editor2
 export EDITOR2="emacsclient -cn"
 
 # To start emacs in daemon mode automatically
 export ALTERNATE_EDITOR=""
 #export EDITOR=emacsclient
 
-# Go source binaries ecc.
-export GOPATH="/mnt/internal/ProgrammingData/gopath"
+# Default browser
+export BROWSER="firefox"
 
+# Go source binaries ecc.
+export GOPATH="$HOME/bin/go"
 # Export path (N.B. already exported at a system level at /etc/profile)
 export PATH="$PATH:$GOPATH/bin"
 
 # Autojump must be sourced here if you want to use it in subshells also (f.e. 
 # when launching a subshell from ranger)
-. /etc/profile.d/autojump.bash
+. /etc/profile.d/autojump.bash #Arch
+#. /usr/share/autojump/autojump.sh #Ubuntu
 
 # Bash coloring
 GREEN="\[$(tput setaf 2)\]"
@@ -115,8 +111,10 @@ export GPG_TTY
 # Set vimrc's location and source it on vim startup
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
-# Export also bins in opt
-export PATH="$PATH:/opt/tigerjack/bin"
+# Export also bins in opt and home
+export PATH="$PATH:/opt/simone/bin"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Set matlab to use the userpath folder (first run userpath('dir_name') inside matlab
 export MATLAB_USE_USERWORK=1

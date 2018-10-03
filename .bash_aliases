@@ -9,7 +9,7 @@ alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias td='transmission-daemon'
 alias trc='transmission-remote-cli'
 alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/all.log 2>&1"
-alias dotfiles_mgmt='/usr/bin/git --git-dir=$MDIR_LINUX_DATA/online_repos/git/dotfiles/.git/ --work-tree=$MDIR_LINUX_DATA/online_repos/git/dotfiles'
+alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.dot_git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git_prog_mgmt/ --work-tree=$MDIR_PROGRAMMING_DATA'
 alias gcalcli='gcalcli --configFolder=$XDG_CONFIG_HOME/gcalcli'
 alias gcalclit='gcalcli --configFolder=$XDG_CONFIG_HOME/gcalcli --calendar=tigerjack89@gmail.com'
@@ -21,4 +21,4 @@ alias emn='emacsclient -n'
 alias mutt='mutt -F $XDG_CONFIG_HOME/neomutt/neomuttrc'
 alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias ecl='env SWT_GTK3=0 /opt/simone/eclipse/eclipse'
+alias ecl='env SWT_GTK3=0 eclipse'
