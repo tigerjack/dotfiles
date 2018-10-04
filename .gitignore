@@ -16,6 +16,7 @@
 *.cache*
 *.directory
 *.menu
+*.tox
 
 ### Particular files/dirs
 .Xauthority
@@ -23,9 +24,22 @@
 .esd_auth
 .bash_history
 .bash_eternal_history
+.wget-hsts
+.lesshst
 .spacemacs_private
+.emacs.d
 *wine-extension*
 
+
+.config/QtProject.conf
+.config/htop
+.config/dconf
+.config/tox
+.config/gpick
+.config/keepassxc
+.config/mps-youtube
+.config/pavucontrol-qt
+.config/zuluCrypt
 .config/neomutt/passwords
 .config/chromium/*
 .config/vim/bundle/*
@@ -43,14 +57,11 @@
 .config/gcalcli/cache
 .config/gcalcli/oauth
 .config/pulse
+.config/copyq*
+!.config/copyq-_0/copyq-_0.conf
 
-.local/share/applications/wine*
-.local/share/applications/q4wine*
-.local/share/TelegramDesktop/*
-.local/share/ranger/bookmarks
-.local/share/ranger/history
-.local/share/ranger/tagged
-.local/share/recently-used.xbel
+.local/share
+!.local/share/applications
 # Used (mainly?) by pip --user
 .local/lib
 .local/bin
@@ -61,7 +72,7 @@ bin/matlab
 bin/mex
 bin/go
 bin/k2pdfopt
-bin/qtox
+bin/qtox_git
 
 backup
 Downloads
