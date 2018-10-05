@@ -5,3 +5,6 @@ export VGL_READBACK=pbo
 
 # To use the system theme on calibre
 export CALIBRE_USE_SYSTEM_THEME=true
+
+# To use an ASKPASS program
+export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass
