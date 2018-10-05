@@ -27,6 +27,10 @@ xset -b
 # Start the OpenSSH agent, evaluating the environment variables
 eval $(ssh-agent -s &) >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
 
+# Gnome key ring, with ssh agent disabled bcz using ssh-agent
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+#export SSH_AUTH_SOCK
 
 # Change the screen settings
 #xrandr --output "Screen 0" --brightness 0.5 --gamma 1:1:0.5
