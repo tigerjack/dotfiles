@@ -20,26 +20,30 @@
 
 ### Particular files/dirs
 .Xauthority
-.ssh
+.ssh/
+.gnupg/
+.pki/
+.emacs.d/
 .esd_auth
 .bash_history
 .bash_eternal_history
 .wget-hsts
 .lesshst
 .spacemacs_private
-.emacs.d
 *wine-extension*
 
 
+.config/q4wine/
+.config/transmission-daemon/
 .config/QtProject.conf
-.config/htop
-.config/dconf
-.config/tox
-.config/gpick
-.config/keepassxc
-.config/mps-youtube
-.config/pavucontrol-qt
-.config/zuluCrypt
+.config/htop/
+.config/dconf/
+.config/tox/
+.config/gpick/
+.config/keepassxc/
+.config/mps-youtube/
+.config/pavucontrol-qt/
+.config/zuluCrypt/
 .config/neomutt/passwords
 .config/chromium/*
 .config/vim/bundle/*
