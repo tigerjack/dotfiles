@@ -33,6 +33,7 @@
 *wine-extension*
 
 
+.config/pcmanfm-qt/
 .config/q4wine/
 .config/transmission-daemon/
 .config/QtProject.conf
@@ -81,26 +82,31 @@ bin/qtox_git
 backup
 Downloads
 LinuxData
-.wine/*
-.thunderbird/*
-.scuolabook/*
-.npm/*
-.netbeans/*
-.mozilla/*
-.cabal/packages/*
-.cache/*
-.dropbox-dist/*
-.dbus/*
-.eclipse/*
-.matlab/*
-.goldendict/*
-.java/*
-.jd/*
-.texlive/*
-.tmux/plugins/*
-.tmux/resurrect/*
-.macromedia/*
-.psensor/*
+.audacity-data/
+.wine/
+.thunderbird/
+.scuolabook/
+.npm/
+.netbeans/
+.mozilla/
+.cabal/packages/
+.cache/
+.dropbox-dist/
+.dbus/
+.eclipse/
+# ... other eclipse related dirs
+.tooling/ 
+.swt/
+
+.matlab/
+.goldendict/
+.java/
+.jd/
+.texlive/
+.tmux/plugins/
+.tmux/resurrect/
+.macromedia/
+.psensor/
 
 ### LINUX
 *~
