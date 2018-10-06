@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.37 for tigerjack on Fri Nov 24 07:39:01 2017.
+# Written by xscreensaver-demo 5.40 for simone on Sat Oct  6 10:31:16 2018.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
@@ -26,13 +26,13 @@ ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
 dpmsQuickOff:	False
-dpmsStandby:	2:00:00
-dpmsSuspend:	2:00:00
-dpmsOff:	4:00:00
+dpmsStandby:	0:15:00
+dpmsSuspend:	0:15:00
+dpmsOff:	0:15:00
 grabDesktopImages:  False
 grabVideoFrames:    False
-chooseRandomImages: True
-imageDirectory:	/mnt/internal/Data/PersonalFolder/Pictures/NotShotwelled/Images/AllowedScreensavers
+chooseRandomImages: False
+imageDirectory:	"/mnt/internal/DatiSimone/Pictures/NotShotwelled/Images/AllowedScreensavers"
 
 mode:		blank
 selected:	224
@@ -269,6 +269,14 @@ programs:								      \
   GL: 				splodesic -root				    \n\
   GL: 				unicrud -root				    \n\
   GL: 				vigilance -root				    \n\
+  GL: 				esper -root				    \n\
+  GL: 				crumbler -root				    \n\
+				filmleader -root			    \n\
+				glitchpeg -root				    \n\
+  GL: 				maze3d -root				    \n\
+  GL: 				peepers -root				    \n\
+  GL: 				razzledazzle -root			    \n\
+				vfeedback -root				    \n\
 
 
 pointerPollTime:    0:00:05
