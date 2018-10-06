@@ -8,7 +8,7 @@ status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
 status.register("clock",
     format="%a %-d %b %X",
     on_leftclick = "urxvt -e bash -c 'cal -3 && bash' ",
-    on_rightclick = "urxvt -e bash -c 'gcalcli --configFolder=/home/tigerjack/.config/gcalcli --calendar=tigerjack89@gmail.com calm && bash' ",
+    on_rightclick = "urxvt -e bash -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && bash' ",
 )
 
 # Shows the average load of the last minute and the last 5 minutes
@@ -60,7 +60,7 @@ status.register("mem",
 # Discharging 6h:51m
 # Removed bcz problem w/ battery
 status.register("battery",
-     format="{status} {percentage:.0f}% {remaining:%E%hh:%Mm}",
+     format="{percentage:.0f}%{status}{remaining:%E%hh:%Mm}",
      alert=True,
      interval=10,
      alert_percentage=5,
@@ -90,7 +90,7 @@ status.register("battery",
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
     interface="wlp3s0",
-    format_up="{essid} {quality:3.0f}% \u2197{bytes_sent}KB/s \u2198{bytes_recv}KB/s",
+    format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}KB/s\u2198{bytes_recv}KB/s",
     format_down="{interface} \u2013",
     on_leftclick = "urxvt -e bash -c 'sudo nethogs wlp2s0'",
 )
@@ -107,7 +107,9 @@ status.register("network",
 # Note: requires libpulseaudio from PyPI
 status.register("pulseaudio",
     format="♪{volume}",
-    on_leftclick = "urxvt -e pulsemixer"
+    on_leftclick = "urxvt -e pulsemixer",
+    on_upscroll = "pamixer --increase 5",
+    on_downscroll = "pamixer --decrease 5",
 )
 
 # Shows mpd status
