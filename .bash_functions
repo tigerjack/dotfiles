@@ -1,3 +1,6 @@
+## External defined functions
+. ~/bin/bash_git_prompt.sh
+
 directory_stack=/home/tigerjack/.gdir.txt
 function gpush() {
     echo $(pwd) >> $directory_stack
