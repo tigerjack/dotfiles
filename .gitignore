@@ -32,7 +32,6 @@
 .spacemacs_private
 *wine-extension*
 
-.config/configstore/
 .config/pcmanfm-qt/
 .config/q4wine/
 .config/transmission-daemon/
