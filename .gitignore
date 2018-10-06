@@ -22,6 +22,7 @@
 .Xauthority
 .ssh/
 .gnupg/
+!.gnupg/gpg-agent.conf
 .pki/
 .emacs.d/
 .esd_auth
