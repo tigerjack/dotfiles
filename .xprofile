@@ -28,7 +28,7 @@ xset -b
 eval $(ssh-agent -s &) >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
 
 # Gnome key ring, with ssh agent disabled bcz using ssh-agent
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets) >"$MDIR_LOGS/startx/gnome_keyring.log$DISPLAY" 2>&1
 #eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 #export SSH_AUTH_SOCK
 
