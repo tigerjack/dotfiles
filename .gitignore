@@ -33,7 +33,12 @@
 .spacemacs_private
 *wine-extension*
 
+.xournal/
+!.xournal/config
 .config/pcmanfm-qt/
+# don't know why it doesn't work without an * and the ! pattern
+.config/cmus/*
+!.config/cmus/autosave
 .config/q4wine/
 .config/transmission-daemon/
 .config/QtProject.conf
@@ -61,10 +66,11 @@
 .config/mailnag/mailnag.cfg
 .config/pulse/
 .config/copyq*
+!.config/copyq-_0/copyq-_0.conf
+.config/lxqt/wallets
 
 .config/gcalcli/cache
 .config/gcalcli/oauth
-!.config/copyq-_0/copyq-_0.conf
 .config/configstore/update-notifier-npm.json
 
 .local/share
