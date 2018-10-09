@@ -97,7 +97,7 @@ status.register("network",
     interface="wlp3s0",
     format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}KB/s\u2198{bytes_recv}KB/s",
     format_down="{interface} \u2013",
-    on_leftclick = "urxvt -e bash -c 'sudo nethogs wlp2s0'",
+    on_leftclick = "urxvt -e bash -c 'sudo nethogs wlp3s0'",
 )
 
 # Shows disk usage of /
