@@ -23,7 +23,7 @@ set sort_aux = 'last-date-received'
 set mbox_type=Maildir
 
 # Color schemes
-source /home/tigerjack/.config/neomutt/color_schemes/vombatidae.mutt
+source ~/.config/neomutt/color_schemes/vombatidae.mutt
 
 # Store message headers locally to speed things up.
 # If cache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.

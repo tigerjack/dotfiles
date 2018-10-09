@@ -1,6 +1,6 @@
 ### Various
 # Command for new mail
-set new_mail_command="notify-send 'New Mail' '%n new messages, %u unread.' &"
+#set new_mail_command="notify-send 'New Mail' '%n new messages, %u unread.' &"
 
 # mailcap, to see HTML pages inside mutt
 set mailcap_path= ~/.config/neomutt/mailcap
