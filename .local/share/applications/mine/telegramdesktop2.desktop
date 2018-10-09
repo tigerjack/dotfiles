@@ -2,8 +2,8 @@
 Version=1.0
 Name=Telegram Desktop (2)
 Comment=Official desktop version of Telegram messaging app
-TryExec=/home/tigerjack/.local/share/TelegramDesktop/Telegram
-Exec=/home/tigerjack/.local/share/TelegramDesktop/Telegram -many -workdir /home/tigerjack/.local/share/TelegramDesktop/Profiles/2 -- %u
+TryExec=/usr/bin/telegram-desktop
+Exec=/usr/bin/telegram-desktop -many -workdir /home/tigerjack/.local/share/TelegramDesktop/Profiles/2 -- %u
 Icon=telegram
 Terminal=false
 StartupWMClass=TelegramDesktop
