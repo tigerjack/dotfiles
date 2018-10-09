@@ -34,8 +34,8 @@ function critical_action2() {
 
 function send_message() {
     if [ -n "$DISPLAY" ]; then
-	echo "$DISPLAY and $DBUS_SESSION_BUS_ADDRESS set, going to notify send"    	
-	/usr/bin/notify-send -u "critical" -i "battery-low" -c "device" "$1"
+	      echo "$DISPLAY and $DBUS_SESSION_BUS_ADDRESS set, going to notify send"
+	      /usr/bin/notify-send -u "critical" -i "battery-low" -c "device" "$1"
     else
         #The else part is not used ever ATM
         wall "$1"
@@ -43,8 +43,8 @@ function send_message() {
 }
 
 while [ true ]; do
-	  CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
-	  CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
+    CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+    CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
     SLEEP_TIME=$SLEEP_VLOW
 	  if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
 		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then

@@ -17,7 +17,7 @@ window_width=1920
 # the window height in pixels
 window_height=1036
 # scrollbar step increment (in pixels)
-scrollbar_speed=30
+scrollbar_speed=40
 # the step increment in the zoom dialog box
 zoom_dialog_increment=1
 # the multiplicative factor for zoom in/out

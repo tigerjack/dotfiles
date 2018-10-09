@@ -39,3 +39,4 @@ application/x-extension-xht=firefox.desktop;
 application/x-xoj=xournalpp.desktop;
 application/pdf=xpdf.desktop;
 audio/x-wav=mpv.desktop;
+text/plain=leafpad.desktop;
