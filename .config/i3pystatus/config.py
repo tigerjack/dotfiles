@@ -17,6 +17,11 @@ status.register("load",
     on_leftclick = "urxvt -e htop",
 )
 
+# Cpu frequency
+status.register("cpu_freq",
+        format="{core0g},{core1g}GHz",
+)
+
 # Shows your CPU temperature, if you have a Intel CPU
 status.register("temp",
     lm_sensors_enabled = False,
@@ -103,7 +108,6 @@ status.register("network",
 #     format="{used}/{total}G [{avail}G]",)
 
 # Shows pulseaudio default sink volume
-#
 # Note: requires libpulseaudio from PyPI
 status.register("pulseaudio",
     format="♪{volume}",
@@ -122,5 +126,4 @@ status.register("pulseaudio",
 #        "play": "▶",
 #        "stop": "◾",
 #    },)
-
 status.run()
