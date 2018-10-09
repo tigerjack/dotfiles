@@ -83,13 +83,17 @@
 .local/lib
 .local/bin
 
+# Used by go for my settings
+.local/pkg
+.local/src
+
 bin/chkrootkit*
 bin/tests/*
 bin/matlab
 bin/mex
 bin/go
-bin/k2pdfopt
-bin/qtox_git
+bin/x/k2pdfopt
+bin/x/qtox_git
 
 backup
 Downloads
