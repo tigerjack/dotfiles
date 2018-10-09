@@ -8,3 +8,6 @@ export CALIBRE_USE_SYSTEM_THEME=true
 
 # To use an ASKPASS program
 export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass
+
+# Other export path for my X bins
+export PATH="$PATH:$HOME/bin/x"
