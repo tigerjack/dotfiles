@@ -78,7 +78,7 @@
 .config/configstore/update-notifier-npm.json
 
 .local/share
-!.local/share/applications
+
 # Used (mainly?) by pip --user
 .local/lib
 .local/bin
