@@ -23,6 +23,8 @@
 .Xauthority
 # This file is used to see the entropy when using cryptographic tools, e.g. OpenSSL.
 .rnd
+# This is my personal dir stack used by gpush/gpo
+.gdir.txt
 .ssh/
 .gnupg/
 !.gnupg/gpg-agent.conf
@@ -36,6 +38,9 @@
 .spacemacs_private
 *wine-extension*
 
+.config/onedrive/*
+!.config/onedrive/config
+!.config/onedrive/sync_list
 .xournal/
 !.xournal/config
 .config/pcmanfm-qt/
