@@ -85,8 +85,9 @@ export ALTERNATE_EDITOR=""
 # Default browser
 export BROWSER="firefox"
 
-# Go source binaries ecc.
-export GOPATH="$HOME/bin/go"
+# Go src, bin, pkg directories.
+# WARN: I put the dir inside .local, where also user python stores its bin, lib, share dirs.
+export GOPATH="$HOME/.local"
 # Export path (N.B. already exported at a system level at /etc/profile)
 export PATH="$PATH:$GOPATH/bin"
 
