@@ -258,8 +258,10 @@ mode "resize" {
 bar {
 	tray_output primary
         status_command python3 ~/.config/i3pystatus/config.py
+	mode dock
 	#status_command i3status
 	workspace_buttons yes
+	tray_padding 0
 }
 
 ## Mouse options
