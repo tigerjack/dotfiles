@@ -17,9 +17,12 @@
 *.directory
 *.menu
 *.tox
+*.cache
 
 ### Particular files/dirs
 .Xauthority
+# This file is used to see the entropy when using cryptographic tools, e.g. OpenSSL.
+.rnd
 .ssh/
 .gnupg/
 !.gnupg/gpg-agent.conf
@@ -37,6 +40,7 @@
 !.xournal/config
 .config/pcmanfm-qt/
 # don't know why it doesn't work without an * and the ! pattern
+# maybe bcz autosave is interpreted as a dir
 .config/cmus/*
 !.config/cmus/autosave
 .config/q4wine/
