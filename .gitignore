@@ -37,6 +37,8 @@
 .lesshst
 .spacemacs_private
 *wine-extension*
+.conda/*
+.anaconda/*
 
 .config/onedrive/*
 !.config/onedrive/config
