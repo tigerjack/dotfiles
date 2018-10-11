@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PDF-XChange Editor Crack
+Exec=env WINEPREFIX="/home/simone/LinuxData/wine64" env WINEARCH=win64 /usr/bin/wine "/mnt/internal/DatiSimone/ProgrammiStandalone/Windows/Reader/PDF-XChange Editor Plus [6.0.317.1] [crack]/PDFXEdit.exe"
+Type=Application
+StartupNotify=true
+Comment=PDF-XChange Editor
+Icon=3F87_PDFXEdit.0
+StartupWMClass=pdfxedit.exe
