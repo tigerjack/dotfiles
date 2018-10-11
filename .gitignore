@@ -37,8 +37,13 @@
 .lesshst
 .spacemacs_private
 *wine-extension*
+.condarc
 .conda/*
 .anaconda/*
+.config/jupyter
+.jupyter
+.ipython/profile*
+.qiskit/qiskitrc
 
 .config/onedrive/*
 !.config/onedrive/config
