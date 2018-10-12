@@ -26,7 +26,10 @@ nm-tray >"$MDIR_LOGS/startx/nm-tray.log$DISPLAY" 2>&1 &
 copyq --session=${DISPLAY//:/_} >"$MDIR_LOGS/startx/copyq.log$DISPLAY" 2>&1 &
 
 # Mailnag to check email accounts
-mailnag  >"$MDIR_LOGS/startx/mailnag.log$DISPLAY" 2>&1 &
+mailnag >"$MDIR_LOGS/startx/mailnag.log$DISPLAY" 2>&1 &
+
+# For swipe and pinch commands
+libinput-gestures >"$MDIR_LOGS/startx/libinput-gestures.log$DISPLAY" 2>&1 &
 
 # Execute all my startup X scripts
 for file in ~/bin/x/autostart/?*.sh; do
