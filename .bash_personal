@@ -121,6 +121,11 @@ export MATLAB_USE_USERWORK=1
 # Set matlab log directory
 export MATLAB_LOG_DIR=~/logs/matlab
 
+# Jupyter
+JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+# Anaconda
+export PATH="$PATH:/opt/anaconda/bin"
+
 # For helm-gtags
 export GTAGSLABEL=pygments 
 
@@ -129,3 +134,7 @@ export GIT_PROG_MGMT_OPTS="--git-dir=$MDIR_PROGRAMMING_DATA/.git_prog_mgmt/ --wo
 export GIT_DOTFILES_MGMT_OPTS="--git-dir=$HOME/.dot_git/ --work-tree=$HOME"
 # Format options not working
 export GIT_LOG_OPTS="--graph --abbrev-commit --decorate --all"
+
+# python-virtualenvwrapper
+export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
+source /usr/bin/virtualenvwrapper_lazy.sh
