@@ -1,8 +1,6 @@
 [Default Applications]
 x-scheme-handler/tg=telegramdesktop.desktop
 application/lrf=calibre-lrfviewer.desktop
-image/png=shotwell-viewer.desktop;
-application/pdf=mupdf.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
 application/epub+zip=calibre-ebook-viewer.desktop;
@@ -37,6 +35,7 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 application/x-xoj=xournalpp.desktop;
-application/pdf=xpdf.desktop;
 audio/x-wav=mpv.desktop;
 text/plain=leafpad.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+image/png=gpicview.desktop;
