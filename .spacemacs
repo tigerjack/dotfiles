@@ -354,11 +354,34 @@ you should place your code here."
   ;;(load-file "./.spacemacs_private")
   ;; To avoid bug listed here https://github.com/jaypei/emacs-neotree/issues/226
   (setq helm-split-window-inside-p t)
-  ;; ranger options
+  ;; RANGER
   ;; previow ignore extensions
   (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
   ;; preview max file size
   (setq ranger-max-preview-size 10)
+  ;; LATEX
+  ;; see also https://mssun.me/blog/spacemacs-and-latex.html for all the following lines
+  (cond
+   ((string-equal system-type "darwin")
+    (progn (setq TeX-view-program-selection '((output-pdf "Skim")))))
+   ((string-equal system-type "gnu/linux")
+    ;; Use zathura as default pdf viewer on linux when pressing , v
+    (progn (setq TeX-view-program-selection '((output-pdf "Zathura"))))))
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-view-program-list
+        '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
+          ("Skim" "displayline -b -g %n %o %b")
+          ;; forward to zathura line number and file name; resend back to emacs line and filename when CTRL+click on zathura
+          ("Zathura"
+           ("zathura %o"
+            (mode-io-correlate
+             " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\"")))
+          ;; not used anymore
+          ;; ("Zathura" "zathura_sync.sh %n:1 %o")
+          ))
+  ;; ORG MODE
   (setq org-export-backends '(beamer html latex md))
   ;; used to export source code with minted package
   (setq org-latex-listings 'minted
