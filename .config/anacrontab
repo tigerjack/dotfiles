@@ -5,8 +5,8 @@ LOGNAME=simone
 XDG_CONFIG_HOME=/home/simone/.config
 XDG_CACHE_HOME=/home/simone/.cache
 XDG_DATA_HOME=/home/simone/.local/share
-MDIR_GLOBAL_DATA=/media/DatiSimone/simone
-MDIR_GLOBAL_APP_DATA=/media/DatiSimone/simone/AppData
+MDIR_GLOBAL_DATA=/mnt/internal/DatiSimone/simone
+MDIR_GLOBAL_APP_DATA=/mnt/internal/DatiSimone/simone/AppData
 MDIR_LINUX_DATA=/home/simone/LinuxData
 MDIR_PROGRAMMING_DATA=/home/simone/LinuxData/prog_mgmt
 
