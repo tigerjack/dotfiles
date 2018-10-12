@@ -48,8 +48,10 @@ values."
                         auto-completion-enable-snippets-in-popup t
                         auto-completion-return-key-behavior 'complete
                         auto-completion-tab-key-behavior 'cycle
-                        auto-completion-complete-with-key-sequence nil
-                        auto-completion-complete-with-key-sequence-delay 0.1
+                        auto-completion-complete-with-key-sequence 'j
+                        auto-completion-complete-with-key-sequence-delay 0
+                        auto-completion-enable-sort-by-usage t
+                        auto-completion-enable-snippets-in-popup t
                         auto-completion-private-snippets-directory nil)
      (syntax-checking :variables
 			syntax-checking-enable-by-default nil
@@ -90,7 +92,10 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    ;; just a test to check auto-complete
+                                    company
+                                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -436,4 +441,5 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
