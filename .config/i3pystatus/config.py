@@ -6,7 +6,7 @@ status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
 # Tue 30 Jul 11:59:46 PM KW31
 #                          ^-- calendar week
 status.register("clock",
-    format="%a %-d %b %X",
+    format="%a%-d%b%X",
     on_leftclick = "urxvt -e bash -c 'cal -3 && bash' ",
     on_rightclick = "urxvt -e bash -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && bash' ",
 )
