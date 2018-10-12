@@ -2,8 +2,7 @@
 
 # log files/dirs
 *.log*
-*logs/*
-*Logs/*
+*[lL]ogs/*
 
 ### Specific file extensions
 *.lock
@@ -33,6 +32,7 @@
 .esd_auth
 .bash_history
 .bash_eternal_history
+.python_history
 .wget-hsts
 .lesshst
 .spacemacs_private
@@ -45,6 +45,7 @@
 .ipython/profile*
 .qiskit/qiskitrc
 
+.config/SpeedCrunch
 .config/onedrive/*
 !.config/onedrive/config
 !.config/onedrive/sync_list
