@@ -2,6 +2,13 @@ from i3pystatus import Status
 
 status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
 
+# Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
+status.register("text",
+        text="QT",
+        color="#0055FF",
+        on_leftclick="pcmanfm-qt --desktop"
+)
+
 # Displays clock 
 status.register("clock",
     format="%a%-d%b%X",
