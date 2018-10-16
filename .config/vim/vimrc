@@ -24,8 +24,10 @@ call vundle#begin('~/.config/vim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-speeddating'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jceb/vim-orgmode'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
