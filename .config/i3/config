@@ -57,6 +57,9 @@ bindsym $sup+Shift+semicolon exec --no-startup-id i3-dmenu-desktop > "/home/simo
 # Replacing dmenu with rofi
 bindsym $sup+semicolon exec rofi -show > "/home/simone/LinuxData/logs/i3/rofi.log" 2>&1
 
+# A GUI menu for applications, testing
+bindsym $sup+Shift+a exec xfce4-appfinder > "/home/simone/LinuxData/logs/i3/xfce4-appfinder.log" 2>&1
+
 # change focus
 bindsym $sup+h focus left
 bindsym $sup+j focus down
@@ -258,8 +261,8 @@ mode "resize" {
 bar {
 	tray_output primary
         status_command python3 ~/.config/i3pystatus/config.py
-	mode dock
 	#status_command i3status
+	mode dock
 	workspace_buttons yes
 	tray_padding 0
 }
