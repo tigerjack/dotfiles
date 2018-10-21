@@ -648,20 +648,7 @@ This function is called at the very end of Spacemacs initialization."
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
-    ((eval progn
-           (make-local-variable
-            (quote process-environment))
-           (setq process-environment
-                 (copy-sequence process-environment))
-           (setenv "GTAGSTHROUGH" "true")
-           (setenv "GTAGSLIBPATH" "/home/simone/LinuxData/virtualenvs/qiskit_env"))
-     (eval progn
-           (make-local-variable
-            (quote process-environment))
-           (setq process-environment
-                 (copy-sequence process-environment))
-           (setenv "GTAGSLIBPATH" "/home/simone/LinuxData/virtualenvs/qiskit_env"))
-     (eval org-babel-do-load-languages
+    ((eval org-babel-do-load-languages
            (quote org-babel-load-languages)
            (quote
             ((emacs-lisp)
