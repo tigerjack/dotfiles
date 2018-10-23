@@ -640,6 +640,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ ;; In this way you use tabs for indentation and not spaces (default was nil).
+ ;; Note that some major modes (like python f.e.) overwrite this variable,
+ ;; while others (like c) doesn't.
+ '(indent-tabs-mode t)
  '(org-download-screenshot-method "scrot -s %s")
  '(package-selected-packages
    (quote
