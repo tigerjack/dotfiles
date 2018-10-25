@@ -50,6 +50,10 @@
 .gtk-bookmarks
 .config/gtk-3.0/bookmarks
 
+.config/filezilla/
+!.config/filezilla/layout.xml
+.putty/
+.config/VirtualBox
 # handbrake
 .config/ghb
 .config/GeoGebra
