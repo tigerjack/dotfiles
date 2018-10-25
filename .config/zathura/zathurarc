@@ -1,11 +1,11 @@
 # Recolor
-set recolor-darkcolor "#929292"
-set recolor-lightcolor "#282A36"
+set recolor-darkcolor "#ACACAC"
+set recolor-lightcolor "#131313"
 set recolor true
 
 # Colors
 set statusbar-bg "#000000"
-set statusbar-fg "#CC0000"
+set statusbar-fg "#00CC00"
 set default-fg "#FFFFFF"
 set default-bg "#000000"
 
