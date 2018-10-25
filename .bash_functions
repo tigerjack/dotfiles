@@ -1,17 +1,6 @@
 ## External defined functions
 . ~/bin/bash_git_prompt.sh
-
-directory_stack=~/.gdir.txt
-function gpush() {
-    echo $(pwd) >> $directory_stack
-    cd $1
-}
-function gpop() {
-    [ ! -s $directory_stack ] && return
-    newdir=$(sed -n '$p' $directory_stack)
-    sed -i -e '$d' $directory_stack
-    cd $newdir
-}
+. ~/bin/bash_gpush_pop.sh
 
 ## To prevent nested ranger instances
 ranger() {
