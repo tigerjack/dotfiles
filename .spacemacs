@@ -651,27 +651,34 @@ This function is called at the very end of Spacemacs initialization."
  '(paradox-automatically-star nil)
  '(paradox-github-token t)
  '(safe-local-variable-values
-   (quote
-    ((eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
-             (calc . t)
-             (C . t)
-             (ditaa . t))))
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
-             (calc . t)
-             (c . t)
-             (ditaa . t))))
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
-             (calc . t)
-             (ditaa . t))))))))
+	 (quote
+		((eval progn
+					 (make-local-variable
+						(quote process-environment))
+					 (setq process-environment
+								 (copy-sequence process-environment))
+					 (setenv "GTAGSTHROUGH" "true")
+					 (setenv "GTAGSLIBPATH" "/home/simone/LinuxData/virtualenvs/prange"))
+		 (eval org-babel-do-load-languages
+					 (quote org-babel-load-languages)
+					 (quote
+						((emacs-lisp)
+						 (calc . t)
+						 (C . t)
+						 (ditaa . t))))
+		 (eval org-babel-do-load-languages
+					 (quote org-babel-load-languages)
+					 (quote
+						((emacs-lisp)
+						 (calc . t)
+						 (c . t)
+						 (ditaa . t))))
+		 (eval org-babel-do-load-languages
+					 (quote org-babel-load-languages)
+					 (quote
+						((emacs-lisp)
+						 (calc . t)
+						 (ditaa . t))))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
