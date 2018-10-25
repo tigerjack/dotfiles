@@ -38,7 +38,7 @@ status.register("temp",
     hints={"markup": "pango"},
     dynamic_color=True,
     # Gives index out of bound error
-    #alert_temp=65,
+    alert_temp=65,
     on_leftclick = "urxvt -e htop",
 )
 
