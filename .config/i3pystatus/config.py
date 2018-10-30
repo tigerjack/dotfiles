@@ -6,7 +6,8 @@ status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
 status.register("text",
         text="QT",
         color="#0055FF",
-        on_leftclick="pcmanfm-qt --desktop"
+        on_leftclick="mouse_mode_on.sh",
+        on_rightclick="mouse_mode_off.sh"
 )
 
 # Displays clock 
