@@ -13,7 +13,8 @@ else if [ "$select" = "Reboot" ]; then
                    i3-msg exit
                else if [ "$select" = "KillSession" ]; then
                         i3-msg exit
-		                    loginctl kill-session $XDG_SESSION_ID
+		                    #loginctl kill-session $XDG_SESSION_ID
+		                    loginctl terminate-session $XDG_SESSION_ID
                     fi
                fi
           fi
