@@ -8,7 +8,6 @@ alias lal='ls -Alh'
 alias l1='ls -1'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias td='transmission-daemon'
-alias trc='transmission-remote-cli'
 alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/all.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
