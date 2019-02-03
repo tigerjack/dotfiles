@@ -137,4 +137,5 @@ export GIT_LOG_OPTS="--graph --abbrev-commit --decorate --all"
 
 # python-virtualenvwrapper
 export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
+export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
 source /usr/bin/virtualenvwrapper_lazy.sh
