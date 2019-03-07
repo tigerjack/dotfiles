@@ -6,3 +6,6 @@
 	fontdiff = -family \"DejaVu Sans Mono\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 	trustmtime = true
 	warndetachedcommit = true
+	commitmsgwidth = 80
+[merge]
+	tool = vimdiff
