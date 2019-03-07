@@ -46,6 +46,8 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      games
+     ; https://github.com/rubberydub/spacemacs-geben
+     geben
      (helm :variables
            ;; resize helm buffer window to adapt to the length of the candidate list.
            helm-enable-auto-resize t)
@@ -89,8 +91,9 @@ This function should only modify configuration layer settings."
      deft
      (latex :variables
             latex-build-command "LaTeX"
-            latex-enable-auto-fill t
+            latex-enable-auto-fill -1
             latex-enable-folding t)
+     bibtex
      (spell-checking :variables
                       spell-checking-enable-by-default nil)
     )
@@ -101,7 +104,9 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      sphinx-doc
+                                      )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -504,7 +509,51 @@ you should place your code here."
   (setq projectile-require-project-root nil)
   ;; WARN: default is 'turbo-alien, which may be faster
   ;; (setq projectile-indexing-method 'native)
-  (setq projectile-enable-caching t)
+  (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(org-download-screenshot-method "scrot -s %s")
+ '(package-selected-packages
+   (quote
+    (company-anaconda ac-etags auto-complete-clang php-mode jedi-core treepy graphql adoc-mode markup-faces ox-reveal haskell-mode swiper flycheck-rtags company-rtags google-c-style flex-autopair bison-mode ac-emacs-eclim company-emacs-eclim eclim company-auctex auctex restclient-helm restclient know-your-http-well tern-auto-complete ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+ '(paradox-automatically-star nil)
+ '(paradox-github-token t)
+ '(safe-local-variable-values
+   (quote
+    ((TeX-command-extra-options . "-shell-escape")
+     (javascript-backend . tern)
+     (javascript-backend . lsp)
+     (eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (C . t)
+             (ditaa . t))))
+     (eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (c . t)
+             (ditaa . t))))
+     (eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (ditaa . t))))))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+;; (setq projectile-enable-caching t)
   (setq projectile-globally-ignored-directories
         (append '(
                   ".git"
@@ -536,6 +585,11 @@ you should place your code here."
     '(add-to-list 'company-backends 'company-anaconda))
   (add-hook 'python-mode-hook 'anaconda-mode)
   ;; (add-hook 'python-mode-hook 'auto-complete-mode)
+  ;; AUCTEX for -shell-escape
+
+  ;; (add-hook 'TeX-mode-hook
+  ;;           (lambda ()
+  ;;             (setq TeX-command-extra-options "-shell-escape")))
 
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
@@ -552,6 +606,9 @@ you should place your code here."
   ;; preview max file size
   (setq ranger-max-preview-size 10)
   ;; LATEX
+  ;; (add-hook 'latex-mode-hook 'spacemacs/toggle-auto-fill-mode-off)
+  ;; (with-eval-after-load "auto-fill-mode"
+  ;;   (add-hook 'latex-mode-hook 'spacemacs/toggle-auto-fill-mode-off))
   ;; see also https://mssun.me/blog/spacemacs-and-latex.html for all the following lines
   (cond
    ((string-equal system-type "darwin")
@@ -573,6 +630,7 @@ you should place your code here."
           ;; not used anymore
           ;; ("Zathura" "zathura_sync.sh %n:1 %o")
           ))
+  (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
   ;; ORG MODE
   (setq org-export-backends '(beamer html latex md))
   ;; used to export source code with minted package
@@ -640,45 +698,38 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
- ;; In this way you use tabs for indentation and not spaces (default was nil).
- ;; Note that some major modes (like python f.e.) overwrite this variable,
- ;; while others (like c) doesn't.
- '(indent-tabs-mode t)
  '(org-download-screenshot-method "scrot -s %s")
  '(package-selected-packages
    (quote
-    (doom-modeline counsel company-anaconda ac-etags auto-complete-clang php-mode jedi-core treepy graphql adoc-mode markup-faces ox-reveal haskell-mode swiper flycheck-rtags company-rtags google-c-style flex-autopair bison-mode ac-emacs-eclim company-emacs-eclim eclim company-auctex auctex restclient-helm restclient know-your-http-well tern-auto-complete ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (latex-extra company-anaconda ac-etags auto-complete-clang php-mode jedi-core treepy graphql adoc-mode markup-faces ox-reveal haskell-mode swiper flycheck-rtags company-rtags google-c-style flex-autopair bison-mode ac-emacs-eclim company-emacs-eclim eclim company-auctex auctex restclient-helm restclient know-your-http-well tern-auto-complete ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(paradox-automatically-star nil)
  '(paradox-github-token t)
  '(safe-local-variable-values
-	 (quote
-		((eval progn
-					 (make-local-variable
-						(quote process-environment))
-					 (setq process-environment
-								 (copy-sequence process-environment))
-					 (setenv "GTAGSTHROUGH" "true")
-					 (setenv "GTAGSLIBPATH" "/home/simone/LinuxData/virtualenvs/prange"))
-		 (eval org-babel-do-load-languages
-					 (quote org-babel-load-languages)
-					 (quote
-						((emacs-lisp)
-						 (calc . t)
-						 (C . t)
-						 (ditaa . t))))
-		 (eval org-babel-do-load-languages
-					 (quote org-babel-load-languages)
-					 (quote
-						((emacs-lisp)
-						 (calc . t)
-						 (c . t)
-						 (ditaa . t))))
-		 (eval org-babel-do-load-languages
-					 (quote org-babel-load-languages)
-					 (quote
-						((emacs-lisp)
-						 (calc . t)
-						 (ditaa . t))))))))
+   (quote
+    ((projectile-indexing-method . native)
+     (TeX-command-extra-options . "-shell-escape")
+     (javascript-backend . tern)
+     (javascript-backend . lsp)
+     (eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (C . t)
+             (ditaa . t))))
+     (eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (c . t)
+             (ditaa . t))))
+     (eval org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote
+            ((emacs-lisp)
+             (calc . t)
+             (ditaa . t))))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
