@@ -106,7 +106,14 @@
 .config/gcalcli/oauth
 .config/configstore/update-notifier-npm.json
 
+.config/gthumb
+.config/Pinta
+.config/Florian_Hackenberger
+.config/stellarium
+
 .local/share
+
+
 
 # Used (mainly?) by pip --user
 .local/lib
