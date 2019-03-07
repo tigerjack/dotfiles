@@ -19,7 +19,8 @@ start-pulseaudio-x11 >"$MDIR_LOGS/startx/pulseaudioX11.log$DISPLAY" 2>&1 &
 
 # simple NetworkManager front end with system tray.
 # Replaces nm-applet
-nm-tray >"$MDIR_LOGS/startx/nm-tray.log$DISPLAY" 2>&1 &
+# nm-tray >"$MDIR_LOGS/startx/nm-tray.log$DISPLAY" 2>&1 &
+nm-applet >"$MDIR_LOGS/startx/nm-applet.log$DISPLAY" 2>&1 &
 
 # Copyq manages clipboards.
 # I have a different configuration for each DISPLAY
