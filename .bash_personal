@@ -76,7 +76,8 @@ eval `dircolors ~/.config/dircolors.ansi-dark`
 # Set the default editor
 export EDITOR="vim"
 # ... and my personal editor2
-export EDITOR2="emacsclient -cn"
+#export EDITOR2="emacsclient -cn"
+export EDITOR2="emacsclient -t"
 
 # To start emacs in daemon mode automatically
 export ALTERNATE_EDITOR=""
