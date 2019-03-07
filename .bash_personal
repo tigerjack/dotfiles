@@ -120,7 +120,7 @@ export PATH="$PATH:$HOME/.local/bin"
 # Set matlab to use the userpath folder (first run userpath('dir_name') inside matlab
 export MATLAB_USE_USERWORK=1
 # Set matlab log directory
-export MATLAB_LOG_DIR=~/logs/matlab
+export MATLAB_LOG_DIR="$MDIR_LOGS/matlab"
 
 # Jupyter
 JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
@@ -140,3 +140,7 @@ export GIT_LOG_OPTS="--graph --abbrev-commit --decorate --all"
 export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
 export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
 source /usr/bin/virtualenvwrapper_lazy.sh
+
+# npm config dir
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
