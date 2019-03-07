@@ -22,8 +22,12 @@
 .Xauthority
 # This file is used to see the entropy when using cryptographic tools, e.g. OpenSSL.
 .rnd
-# This is my personal dir stack used by gpush/gpo
+# This is my personal dir stack used by gpush/gpop
 .gdir.txt
+# Sensible data files
+.config/irssi/config
+.sqlite_history
+.mysql_history
 .ssh/
 .gnupg/
 !.gnupg/gpg-agent.conf
