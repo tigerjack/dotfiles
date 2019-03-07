@@ -9,6 +9,7 @@ alias l1='ls -1'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias tmsu_uni='tmsu -D /mnt/internal/DatiSimone/AppData/tmsu/university'
 alias tmsu_vid='tmsu -D /mnt/internal/DatiSimone/AppData/tmsu/video'
+alias tmsu_the='tmsu -D /mnt/internal/DatiSimone/AppData/tmsu/thesis'
 alias td='transmission-daemon'
 alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/all.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
