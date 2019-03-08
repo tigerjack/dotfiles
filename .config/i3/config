@@ -189,6 +189,8 @@ bindsym $sup+Control+Print exec --no-startup-id scrot "$(xdg-user-dir PICTURES)/
 bindsym $sup+Shift+Print exec --no-startup-id sleep 0.2 && scrot -s "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/"'%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
 bindsym $sup+Control+Shift+Print exec --no-startup-id sleep 0.2 && scrot -u "$(xdg-user-dir PICTURES)"'/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
 
+# Start calculator
+bindsym $sup+equal exec speedcrunch > /home/simone/LinuxData/logs/i3/speedcrunch.log 2>&1
 
 # move floating window
 mode "moveit" {
