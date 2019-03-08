@@ -44,3 +44,9 @@ unset file
 
 # We should execute also all .desktop files in .config/autostart
 # to comply to XDG specifcations
+
+# Remove previous logs
+rm "/home/simone/LinuxData/logs/i3/i3-sensible-terminal.log"
+rm "/home/simone/LinuxData/logs/i3/i3-dmenu-desktop.log"
+rm "/home/simone/LinuxData/logs/i3/rofi.log"
+rm "/home/simone/LinuxData/logs/i3/xfce4-appfinder.log"
