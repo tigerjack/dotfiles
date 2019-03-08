@@ -42,11 +42,11 @@ function send_message() {
     fi
 }
 
-while [ true ]; do
-    CURRENT_BATTERY_LEVEL=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+while true; do
+    CURRENT_BATTERY_LEVEL=$(acpi -b | grep -P -o '[0-9]+(?=%)')
     CURRENT_BATTERY_STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
     SLEEP_TIME=$SLEEP_VLOW
-	  if [ $CURRENT_BATTERY_LEVEL -le $CRITICAL_BATTERY ]; then
+	  if [ "$CURRENT_BATTERY_LEVEL" -le $CRITICAL_BATTERY ]; then
 		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
             if [ -z "$TEST" ]; then
                 echo "If branch taken"
@@ -62,19 +62,19 @@ while [ true ]; do
         else
             SLEEP_TIME=$SLEEP_CRITICAL
 		    fi
-	  elif [ $CURRENT_BATTERY_LEVEL -le $VLOW_BATTERY ]; then
+	  elif [ "$CURRENT_BATTERY_LEVEL" -le $VLOW_BATTERY ]; then
 		    if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
             NOTIFY_MSG="Bat $CURRENT_BATTERY_LEVEL%!"
 		    fi
 		    SLEEP_TIME=$SLEEP_VLOW
-	  elif [ $CURRENT_BATTERY_LEVEL -le $LOW_BATTERY ]; then
+	  elif [ "$CURRENT_BATTERY_LEVEL" -le $LOW_BATTERY ]; then
 	      if [ "$CURRENT_BATTERY_STATUS" == "Discharging" ]; then
             NOTIFY_MSG="Bat $CURRENT_BATTERY_LEVEL%!"
 	      fi
 	      SLEEP_TIME=$SLEEP_LOW
-	  elif [ $CURRENT_BATTERY_LEVEL -le $HIGH_BATTERY ]; then
+	  elif [ "$CURRENT_BATTERY_LEVEL" -le $HIGH_BATTERY ]; then
 		    SLEEP_TIME=$SLEEP_HIGH
-	  elif [ $CURRENT_BATTERY_LEVEL -le $VHIGH_BATTERY ]; then
+	  elif [ "$CURRENT_BATTERY_LEVEL" -le $VHIGH_BATTERY ]; then
 		    SLEEP_TIME=$SLEEP_VHIGH
 	  else
 		    SLEEP_TIME=$SLEEP_VHIGH

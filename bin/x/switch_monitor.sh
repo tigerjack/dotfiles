@@ -29,22 +29,23 @@ do
 	fi
 
 	# check whether the next output should be switched on
-	if [ $display = $activeOutput ]
+	if [ "$display" = "$activeOutput" ]
 	then
 		switch=1
 	fi
 
-	i=$(( $i + 1 ))
+	i=$(( i + 1 ))
 done
 
 # check if the default setup needs to be executed then run it
 echo "Resulting Configuration:"
-if [ -z "$(echo $execute | grep "auto")" ]
+#if [ -z "$(echo $execute | grep "auto")" ]
+if ! echo "$execute" | grep -q "auto"
 then
 	echo "Command: $default"
-	`$default`
+	$default
 else
 	echo "Command: $execute"
-	`$execute`
+	$execute
 fi
 echo -e "\n$(xrandr)"

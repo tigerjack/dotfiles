@@ -29,8 +29,8 @@ function gpush() {
     fi
 
     i=1
-    while [ $i -le $a ]; do
-	echo $(pwd) >> $directory_stack
+    while [ $i -le "$a" ]; do
+	pwd >> $directory_stack
 	i=$((i+1))
     done
 }
@@ -39,10 +39,16 @@ function gpop() {
     [ ! -s $directory_stack ] && return
     newdir=$(sed -n '$p' $directory_stack)
     sed -i -e '$d' $directory_stack
-    cd $newdir
+    cd "$newdir" || exit
+}
+
+
+function gstatus() {
+    cat $directory_stack
 }
 
 gclear ()
 {   
-    > $directory_stack
+    # no-op, just to rewrite
+    true > $directory_stack
 }	# ----------  end of function gclear  ----------

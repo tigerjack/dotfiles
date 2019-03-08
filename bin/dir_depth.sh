@@ -1,5 +1,5 @@
 #!/bin/sh
-find $1 -type d -printf '%d:%p\n' | sort -n | tail -1
+find "$1" -type d -printf '%d:%p\n' | sort -n | tail -1
 
 # Test 1
 #dir_depth() {

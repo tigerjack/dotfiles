@@ -15,23 +15,23 @@ then
     CURRENT_BLUE_GAMMA="$DEFAULT_BLUE_GAMMA"
 fi
 
-if [[ "$1" == "+" ]] && [ $(echo "$CURRENT_BRIGHTNESS < 1.5" | bc) -eq 1 ]
+if [[ "$1" == "+" ]] && [ "$(echo "$CURRENT_BRIGHTNESS < 1.5" | bc)" -eq 1 ]
 then
     echo "Going up"
-    xrandr --output "$ACTIVE_MONITOR" --auto --brightness $(echo "$CURRENT_BRIGHTNESS + $STEP" | bc) --gamma 1:1:$(echo "scale=1; 1.0 / $CURRENT_BLUE_GAMMA" | bc)
+    xrandr --output "$ACTIVE_MONITOR" --auto --brightness "$(echo "$CURRENT_BRIGHTNESS + $STEP" | bc)" --gamma 1:1:"$(echo "scale=1; 1.0 / $CURRENT_BLUE_GAMMA" | bc)"
 elif [ "$1" == "-" ]
 then
-    if [ $(echo "$CURRENT_BRIGHTNESS > 0.0" | bc) -eq 1 ]
+    if [ "$(echo "$CURRENT_BRIGHTNESS > 0.0" | bc)" -eq 1 ]
     then
 	echo "Going down"
-	xrandr --output "$ACTIVE_MONITOR" --brightness $(echo "$CURRENT_BRIGHTNESS - $STEP" | bc) --gamma 1:1:$(echo "scale=1; 1.0 / $CURRENT_BLUE_GAMMA" | bc)
+	xrandr --output "$ACTIVE_MONITOR" --brightness "$(echo "$CURRENT_BRIGHTNESS - $STEP" | bc)" --gamma 1:1:"$(echo "scale=1; 1.0 / $CURRENT_BLUE_GAMMA" | bc)"
     else
 	echo "Going off"
 	xrandr --output "$ACTIVE_MONITOR" --off
     fi
-elif [ "$1" == "=" ] && [ $(echo "$2 > 0.0" | bc) -eq 1 ]  && [ $(echo "$2 < 1.5" | bc) -eq 1 ]
+elif [ "$1" == "=" ] && [ "$(echo "$2 > 0.0" | bc)" -eq 1 ]  && [ "$(echo "$2 < 1.5" | bc)" -eq 1 ]
 then
-    xrandr --auto --output "$ACTIVE_MONITOR" --brightness "$2" --gamma 1:1:$(echo "scale=1; 1.0 / $CURRENT_BLUE_GAMMA" | bc)
+    xrandr --auto --output "$ACTIVE_MONITOR" --brightness "$2" --gamma 1:1:"$(echo "scale=1; 1.0 / $CURRENT_BLUE_GAMMA" | bc)"
 else
     notify-send "Brightness out of range"
 fi

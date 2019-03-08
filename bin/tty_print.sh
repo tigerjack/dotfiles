@@ -8,4 +8,4 @@ if [[ $TTY != tty* ]]; then
 fi
 
 printf -v vt 'vt%02d' "${TTY#tty}"
-echo $vt
+echo "$vt"

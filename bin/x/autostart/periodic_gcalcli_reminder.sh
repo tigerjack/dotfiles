@@ -1,3 +1,4 @@
+#!/bin/bash
 slt=90
 if [ -x /usr/bin/gcalcli ] || [ -x ~/.local/bin/gcalcli ]; then
     echo "gcalcli detected"
@@ -12,7 +13,8 @@ if [ -x /usr/bin/gcalcli ] || [ -x ~/.local/bin/gcalcli ]; then
             if [ "$slt" -ge 6000 ]; then
                 slt=6000
             else
-                let "slt=slt*3/2"
+                #let "slt=slt*3/2"
+		((slt=slt*3/2))
             fi
             echo "Connection refused. Retrying again in $slt seconds"
         fi

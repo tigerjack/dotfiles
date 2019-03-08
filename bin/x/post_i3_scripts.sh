@@ -24,7 +24,8 @@ nm-applet >"$MDIR_LOGS/startx/nm-applet.log$DISPLAY" 2>&1 &
 
 # Copyq manages clipboards.
 # I have a different configuration for each DISPLAY
-copyq --session=${DISPLAY//:/_} >"$MDIR_LOGS/startx/copyq.log$DISPLAY" 2>&1 &
+#copyq --session=${DISPLAY//:/_} >"$MDIR_LOGS/startx/copyq.log$DISPLAY" 2>&1 &
+copyq --session="${DISPLAY//:/_}" >"$MDIR_LOGS/startx/copyq.log$DISPLAY" 2>&1 &
 
 # Mailnag to check email accounts
 mailnag >"$MDIR_LOGS/startx/mailnag.log$DISPLAY" 2>&1 &
@@ -35,7 +36,8 @@ libinput-gestures >"$MDIR_LOGS/startx/libinput-gestures.log$DISPLAY" 2>&1 &
 # Execute all my startup X scripts
 for file in ~/bin/x/autostart/?*.sh; do
 	if [ -x "$file" ]; then
-		name=$(basename -s .sh $file)
+		#name=$(basename -s .sh $file)
+		name="$(basename -s .sh "$file")"
 		logfile="$MDIR_LOGS/startx/$name.log$DISPLAY"
 		($file >"$logfile" 2>&1 & )
 	fi

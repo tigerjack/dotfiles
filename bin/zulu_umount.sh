@@ -19,14 +19,14 @@
 
 set -o nounset                              # Treat unset variables as an error
 
-u=`zuluCrypt-cli -L`
+u=$(zuluCrypt-cli -L)
 
 while read -r line; do
     if [ -z "$line" ]
     then
-	a=($line) #bogus line
+	a=$line #bogus line
     else
-	a=($line)
+	a=$(echo "$line" | awk '{print $1}')
         echo "Trying to close $a"
 	zuluCrypt-cli -q -d "$a"
     fi
