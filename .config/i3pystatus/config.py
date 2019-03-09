@@ -52,8 +52,9 @@ status.register("uname",
 )
 
 status.register("updates",
-    format = "Updates: {count}",
-    backends = [pacman.Pacman()])
+    format = "Up{count}",
+    backends = [pacman.Pacman()],
+)
 
 
 # Shows pulseaudio default sink volume
@@ -107,13 +108,14 @@ status.register("load",
 
 # Cpu frequency
 status.register("cpu_freq",
-        format="{core0g}-{core1g}GHz",
+        #format="{core0g}-{core1g}GHz",
+        format="{core0g}GHz",
         color="#00ffaa",
 )
 
 # Memory
 status.register("mem",
-        format="{percent_used_mem}%/{total_mem}GiB",
+        format="{percent_used_mem}%/{total_mem}",
         divisor = 1024**3,
         color="#0055ff",
         warn_color="#ffaa00",
@@ -125,14 +127,18 @@ status.register("mem",
 status.register("network",
     interface="wlp3s0",
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
-    format_up="\u2197{bytes_sent}\u2198{bytes_recv}KiB/s",
-    format_down="{interface} \u2013",
+    format_up="\u2198{bytes_recv}\u2197{bytes_sent}KiB/s",
+    format_down="{interface}\u2013",
     on_leftclick = "nm-connection-editor",
     on_rightclick = "urxvt -e bash -c 'sudo nethogs wlp3s0'",
     start_color="#00ffaa",
     end_color="#ff0055",
     separate_color="True",
-    hints={"markup": "pango"},
+    #hints={"markup": "pango"},
 )
+#status.register("shell",
+#    #command="curl http://wttr.in/Milan?format=3",
+#    command="curl http://wttr.in/Milan?format='+%c+%t,+%w+%m'",
+#)
 
 status.run()
