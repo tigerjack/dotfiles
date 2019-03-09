@@ -5,6 +5,27 @@ from i3pystatus.weather import weathercom, wunderground
 
 #status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
 status = Status(logfile='/home/simone/LinuxData/logs/i3pystatus.log')
+
+# Shows pulseaudio default sink volume
+# Note: requires libpulseaudio from PyPI
+status.register("pulseaudio",
+    format="♪{volume}",
+    color_muted="#FFAA00",
+    on_leftclick = "urxvt -e pulsemixer",
+    on_rightclick = "pamixer --toggle-mute",
+    on_upscroll = "pamixer --increase 5",
+    on_downscroll = "pamixer --decrease 5",
+)
+
+# Displays clock 
+status.register("clock",
+    #format="%-d%b%X",
+    format="%-d%b%H:%M",
+    color="#00ffaa",
+    on_leftclick = "xclock -digital -update 1",
+    on_rightclick = "urxvt -e bash -c 'cal -3 && bash' ",
+)
+
 # Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
 status.register("text",
         text="QT",
@@ -18,8 +39,15 @@ status.register("text",
     on_leftclick="urxvt -e sh -c 'task list && $SHELL'",
     on_rightclick="urxvt -e sh -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && $SHELL' ",
 )
-status.register(
-    'weather',
+
+status.register("shell",
+    #command="curl http://wttr.in/Milan?format=3",
+    #command="curl http://wttr.in/Milan?format='+%c+%t,+%w+%m'",
+    command="curl http://wttr.in/Milan?format='+%w+%m' | awk -F' ' '{print $1 $3}'",
+    interval=3600
+)
+
+status.register('weather',
     format='{current_temp}{temp_unit}[{icon}][ {update_error}]',
     colorize=True,
     hints={'markup': 'pango'},
@@ -32,41 +60,28 @@ status.register(
     on_rightclick="urxvt --hold -e curl http://wttr.in",
 )
 
-# Displays clock 
-status.register("clock",
-    #format="%-d%b%X",
-    format="%-d%b%H:%M",
-    color="#00ffaa",
-    on_leftclick = "xclock -digital -update 1",
-    on_rightclick = "urxvt -e bash -c 'cal -3 && bash' ",
-)
-
 status.register("xkblayout",
     format="\u2328{symbol}",
     layouts=["us", "it"]
 )
 
-status.register("uname",
-    format="{release}",
-    on_leftclick = "urxvt --hold -e neofetch",
-)
-
 status.register("updates",
-    format = "Up{count}",
+    format = "\u27f3{count}",
     backends = [pacman.Pacman()],
+    interval=18000,
+    on_leftclick = "urxvt --hold -e sh -c 'checkupdates && $SHELL'",
+    on_rightclick = "urxvt --hold -e sudo pacman -Syu",
 )
 
-
-# Shows pulseaudio default sink volume
-# Note: requires libpulseaudio from PyPI
-status.register("pulseaudio",
-    format="♪{volume}",
-    color_muted="#FFAA00",
-    on_leftclick = "urxvt -e pulsemixer",
-    on_rightclick = "pamixer --toggle-mute",
-    on_upscroll = "pamixer --increase 5",
-    on_downscroll = "pamixer --decrease 5",
+status.register("shell",
+    command="printf 'Kern' && uname -r | cut -d '-' -f 1",
+    on_leftclick = "urxvt --hold -e uname -a",
 )
+
+# status.register("uname",
+#     format="{release}",
+#     on_leftclick = "urxvt --hold -e neofetch",
+# )
 
 # Shows your CPU temperature, if you have a Intel CPU
 # For AMD CPU I've commented formatting options and disabled lm_sensors
@@ -83,7 +98,7 @@ status.register("temp",
 )
 
 status.register("battery",
-     format="{percentage:.0f}%{status}{remaining:%E%hh:%Mm}",
+        format="{percentage:.0f}%{status}{remaining:%E%h:%M}",
      interval=30,
      # Not used, I use my own script
      # alert=True,
@@ -101,6 +116,7 @@ status.register("battery",
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
 status.register("load",
+    format="{avg1}",
     color="#00ffaa",
     critical_limit=2,
     on_leftclick = "urxvt -e htop -s PERCENT_CPU",
@@ -109,13 +125,14 @@ status.register("load",
 # Cpu frequency
 status.register("cpu_freq",
         #format="{core0g}-{core1g}GHz",
-        format="{core0g}GHz",
+        format="{core0g}G",
         color="#00ffaa",
 )
 
 # Memory
 status.register("mem",
-        format="{percent_used_mem}%/{total_mem}",
+        #format="{percent_used_mem}%/{total_mem}",
+        format="{percent_used_mem}%",
         divisor = 1024**3,
         color="#0055ff",
         warn_color="#ffaa00",
@@ -127,7 +144,7 @@ status.register("mem",
 status.register("network",
     interface="wlp3s0",
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
-    format_up="\u2198{bytes_recv}\u2197{bytes_sent}KiB/s",
+    format_up="\u2198{bytes_recv}\u2197{bytes_sent}K/s",
     format_down="{interface}\u2013",
     on_leftclick = "nm-connection-editor",
     on_rightclick = "urxvt -e bash -c 'sudo nethogs wlp3s0'",
@@ -136,9 +153,5 @@ status.register("network",
     separate_color="True",
     #hints={"markup": "pango"},
 )
-#status.register("shell",
-#    #command="curl http://wttr.in/Milan?format=3",
-#    command="curl http://wttr.in/Milan?format='+%c+%t,+%w+%m'",
-#)
 
 status.run()
