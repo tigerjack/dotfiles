@@ -1,7 +1,10 @@
 from i3pystatus import Status
+import logging
+from i3pystatus.updates import pacman
+from i3pystatus.weather import weathercom, wunderground
 
-status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
-
+#status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
+status = Status(logfile='/home/simone/LinuxData/logs/i3pystatus.log')
 # Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
 status.register("text",
         text="QT",
@@ -9,14 +12,49 @@ status.register("text",
         on_leftclick="mouse_mode_on.sh",
         on_rightclick="mouse_mode_off.sh"
 )
+status.register("text",
+    text="TK",
+    color="#0055FF",
+    on_leftclick="urxvt -e sh -c 'task list && $SHELL'",
+    on_rightclick="urxvt -e sh -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && $SHELL' ",
+)
+status.register(
+    'weather',
+    format='{current_temp}{temp_unit}[{icon}][ {update_error}]',
+    colorize=True,
+    hints={'markup': 'pango'},
+    log_level=logging.DEBUG,
+    backend=weathercom.Weathercom(
+        location_code='20126:4:IT',
+        log_level=logging.DEBUG,
+    ),
+    on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
+    on_rightclick="urxvt --hold -e curl http://wttr.in",
+)
 
 # Displays clock 
 status.register("clock",
-    format="%a%-d%b%X",
+    #format="%-d%b%X",
+    format="%-d%b%H:%M",
     color="#00ffaa",
-    on_leftclick = "urxvt -e bash -c 'cal -3 && bash' ",
-    on_rightclick = "urxvt -e bash -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && bash' ",
+    on_leftclick = "xclock -digital -update 1",
+    on_rightclick = "urxvt -e bash -c 'cal -3 && bash' ",
 )
+
+status.register("xkblayout",
+    format="\u2328{symbol}",
+    layouts=["us", "it"]
+)
+
+status.register("uname",
+    format="{release}",
+    on_leftclick = "urxvt --hold -e neofetch",
+)
+
+status.register("updates",
+    format = "Updates: {count}",
+    backends = [pacman.Pacman()])
+
 
 # Shows pulseaudio default sink volume
 # Note: requires libpulseaudio from PyPI
@@ -64,7 +102,7 @@ status.register("battery",
 status.register("load",
     color="#00ffaa",
     critical_limit=2,
-    on_leftclick = "urxvt -e htop",
+    on_leftclick = "urxvt -e htop -s PERCENT_CPU",
 )
 
 # Cpu frequency
@@ -80,7 +118,7 @@ status.register("mem",
         color="#0055ff",
         warn_color="#ffaa00",
         alert_color="#ff0055",
-        on_leftclick = "urxvt -e htop",
+        on_leftclick = "urxvt -e htop -s PERCENT_MEM",
 )
 
 # Note: requires both netifaces and basiciw (for essid and quality)
@@ -96,4 +134,5 @@ status.register("network",
     separate_color="True",
     hints={"markup": "pango"},
 )
+
 status.run()
