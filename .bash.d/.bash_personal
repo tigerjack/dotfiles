@@ -144,3 +144,6 @@ source /usr/bin/virtualenvwrapper_lazy.sh
 # npm config dir
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+
+#https://github.com/chubin/cheat.sh
+export CHEATSH="curl cht.sh"
