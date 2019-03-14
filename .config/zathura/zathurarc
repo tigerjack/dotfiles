@@ -8,6 +8,7 @@ set statusbar-bg "#000000"
 set statusbar-fg "#00CC00"
 set default-fg "#FFFFFF"
 set default-bg "#000000"
+# set highlight-transparency 0.1
 
 # Option
 set selection-clipboard clipboard

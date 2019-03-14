@@ -1,6 +1,6 @@
 #!/bin/bash
 . ~/.xprofile
-## One of the two window managers below
+## One of the window managers below
 #exec xmonad
 #exec twm
 exec i3
