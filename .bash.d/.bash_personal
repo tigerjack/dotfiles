@@ -147,3 +147,6 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 
 #https://github.com/chubin/cheat.sh
 export CHEATSH="curl cht.sh"
+
+# for dialog
+export DIALOGRC="$HOME/dialog/dialogrc"
