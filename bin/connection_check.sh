@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ping -c 1 -q 192.168.1.1 >/dev/null 2>&1
+ping -c 1 -q 8.8.8.8 >/dev/null 2>&1
 res=$?
 if [ $res != 0 ]; then
     # Offline
