@@ -20,6 +20,8 @@
 
 ### Particular files/dirs
 .Xauthority
+# it's just a link to Xresources
+.Xdefaults 
 # This file is used to see the entropy when using cryptographic tools, e.g. OpenSSL.
 .rnd
 # This is my personal dir stack used by gpush/gpop
@@ -62,9 +64,9 @@
 # Webclipse
 .webclipse*
 # Amule
-.aMule/*.met
-.aMule/*logfile
-.aMule/lastversion
+.aMule
+# subversion, not used ATM
+.subversion
 # Mono files
 .config/mono*
 .mono
@@ -138,11 +140,11 @@
 
 .local/share
 
-
-
 # Used (mainly?) by pip --user
 .local/lib
 .local/bin
+.local/etc
+.local/man
 
 # Used by go for my settings
 .local/pkg
