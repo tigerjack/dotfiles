@@ -18,4 +18,5 @@ unset file
 shopt -u dotglob
 
 # To search in the official repository when command is not found (Arch Linux specific config)
-. /usr/share/doc/pkgfile/command-not-found.bash
+# Too slow
+# . /usr/share/doc/pkgfile/command-not-found.bash
