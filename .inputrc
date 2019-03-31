@@ -1,6 +1,6 @@
 # Read by Readline library, used by bash to edit and interact with command line
 
-# Disable bell??
+# Disable bell on tab complete
 set bell-style none
 
 ### Completion
