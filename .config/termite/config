@@ -66,42 +66,34 @@ background          = rgba(28, 28, 28, 1.0)
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #151515
-color8  = #505050
-color7  = #D0D0D0
-color15 = #F5F5F5
+color0=     #000000
+color8=     #4D4D4D
+color7=     #BFBFBF
+color15=    #E6E6E6
 
 # Red
-color1  = #AC4142
-color9  = #AC4142
+color1=     #FF5555
+color9=     #FF6E67
 
 # Green
-color2  = #90A959
-color10 = #90A959
+color2=     #50FA7B
+color10=    #5AF78E
 
 # Yellow
-color3  = #F4BF75
-color11 = #F4BF75
+color3=     #F1FA8C
+color11=    #F4F99D
 
 # Blue
-color4  = #6A9FB5
-color12 = #6A9FB5
+color4=     #BD93F9
+color12=    #CAA9FA
 
 # Purple
-color5  = #AA759F
-color13 = #AA759F
+color5=     #FF79C6
+color13=    #FF92D0
 
 # Teal
-color6  = #75B5AA
-color14 = #75B5AA
-
-# Extra colors
-color16 = #D28445
-color17 = #8F5536
-color18 = #202020
-color19 = #303030
-color20 = #B0B0B0
-color21 = #E0E0E0
+color6=     #8BE9FD
+color14=    #9AEDFE
 
 [hints]
 #font = Monospace 12
