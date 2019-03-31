@@ -150,3 +150,6 @@ export CHEATSH="curl cht.sh"
 
 # for dialog
 export DIALOGRC="$HOME/dialog/dialogrc"
+
+# for i3-sensible-terminal
+export TERMINAL=termite
