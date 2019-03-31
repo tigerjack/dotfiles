@@ -160,7 +160,7 @@ status.register("network",
     start_color="#00ffaa",
     end_color="#ff0055",
     separate_color="True",
-    #hints={"markup": "pango"},
+    hints={"markup": "pango"},
 )
 
 status.run()
