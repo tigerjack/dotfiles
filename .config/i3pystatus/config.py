@@ -8,13 +8,15 @@ status = Status(logfile='/home/simone/LinuxData/logs/i3pystatus.log')
 
 # Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
 status.register("text",
-        text="\u235d",
+        #text="\u235d",
+        text="🖱",
         color="#cccccc",
         on_leftclick="mouse_mode_on.sh",
         on_rightclick="mouse_mode_off.sh"
 )
 status.register("text",
-    text="\u262f",
+    #text="\u262f",
+    text="🗓",
     color="#cccccc",
     on_leftclick="urxvt -e sh -c 'task list && $SHELL'",
     on_rightclick="urxvt -e sh -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && $SHELL' ",
@@ -153,7 +155,7 @@ status.register("network",
     interface="wlp3s0",
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
     #format_up="\u2198{bytes_recv}\u2197{bytes_sent}\u23d0\u03bd\u232a",
-    format_up="\u2198{bytes_recv}\u2197{bytes_sent}\uff5c\u03bd\u3009",
+    format_up="\u2198{bytes_recv}\u2197{bytes_sent} ⃓v❭",
     format_down="{interface}\u2013",
     on_leftclick = "nm-connection-editor",
     on_rightclick = "urxvt -e bash -c 'sudo nethogs wlp3s0'",
