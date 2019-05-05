@@ -153,3 +153,5 @@ export DIALOGRC="$HOME/dialog/dialogrc"
 
 # for i3-sensible-terminal
 export TERMINAL=termite
+# for ranger
+export TERMCMD='urxvt'

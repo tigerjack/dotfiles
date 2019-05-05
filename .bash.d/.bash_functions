@@ -5,7 +5,7 @@
 ## To prevent nested ranger instances
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
-        /usr/bin/ranger "$@"
+        PYTHONOPTIMIZE=1 /usr/bin/ranger "$@"
     else
         exit
     fi
