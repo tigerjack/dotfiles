@@ -36,7 +36,8 @@ floating_modifier $sup
 focus_follows_mouse no
 
 # start a terminal
-bindsym $sup+Return exec i3-sensible-terminal >> "/home/simone/LinuxData/logs/i3/i3-sensible-terminal.log" 2>&1
+#bindsym $sup+Return exec i3-sensible-terminal >> "/mnt/internal/LinuxData/logs/i3/i3-sensible-terminal.log" 2>&1
+bindsym $sup+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $sup+Shift+x kill
@@ -47,17 +48,20 @@ bindsym $sup+Shift+x kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $sup+Shift+semicolon exec --no-startup-id i3-dmenu-desktop >> "/home/simone/LinuxData/logs/i3/i3-dmenu-desktop.log" 2>&1
-#
+#bindsym $sup+Shift+semicolon exec --no-startup-id i3-dmenu-desktop >> "/mnt/internal/LinuxData/logs/i3/i3-dmenu-desktop.log" 2>&1
+bindsym $sup+Shift+semicolon exec --no-startup-id i3-dmenu-desktop
+
 #Trying alternative to i3-dmenu-desktop
 #--no-generic disable the reading of GenericName keys from desktop files
 #bindsym $sup+Shift+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
 
 # Replacing dmenu with rofi
-bindsym $sup+semicolon exec rofi -show >> "/home/simone/LinuxData/logs/i3/rofi.log" 2>&1
+#bindsym $sup+semicolon exec rofi -show >> "/mnt/internal/LinuxData/logs/i3/rofi.log" 2>&1
+bindsym $sup+semicolon exec rofi -show
 
 # A GUI menu for applications, testing
-bindsym $sup+Shift+a exec xfce4-appfinder >> "/home/simone/LinuxData/logs/i3/xfce4-appfinder.log" 2>&1
+#bindsym $sup+Shift+a exec xfce4-appfinder >> "/mnt/internal/LinuxData/logs/i3/xfce4-appfinder.log" 2>&1
+bindsym $sup+Shift+a exec xfce4-appfinder
 
 # change focus
 bindsym $sup+h focus left
@@ -178,11 +182,12 @@ bindsym $sup+Shift+c reload
 bindsym $sup+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $sup+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $sup+Shift+q exec dmenu_exit.sh > "/home/simone/LinuxData/logs/i3/dmenu_exit.log" 2>&1
+#bindsym $sup+Shift+q exec dmenu_exit.sh > "/mnt/internal/LinuxData/logs/i3/dmenu_exit.log" 2>&1
+bindsym $sup+Shift+q exec dmenu_exit.sh
 
 # lock the screen
-bindsym $sup+Shift+z exec "loginctl lock-session > '/home/simone/LinuxData/logs/i3/lock-session.log' 2>&1"
-
+#bindsym $sup+Shift+z exec "loginctl lock-session > '/mnt/internal/LinuxData/logs/i3/lock-session.log' 2>&1"
+bindsym $sup+Shift+z exec "loginctl lock-session"
 
 # take screenshot
 bindsym $sup+Control+Print exec --no-startup-id scrot "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/"'%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
@@ -190,7 +195,7 @@ bindsym $sup+Shift+Print exec --no-startup-id sleep 0.2 && scrot -s "$(xdg-user-
 bindsym $sup+Control+Shift+Print exec --no-startup-id sleep 0.2 && scrot -u "$(xdg-user-dir PICTURES)"'/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
 
 # Start calculator
-bindsym $sup+equal exec speedcrunch > /home/simone/LinuxData/logs/i3/speedcrunch.log 2>&1
+bindsym $sup+equal exec speedcrunch > /mnt/internal/LinuxData/logs/i3/speedcrunch.log 2>&1
 
 # move floating window
 mode "moveit" {
