@@ -19,7 +19,7 @@ status.register("text",
     text="🗓",
     color="#cccccc",
     on_leftclick="urxvt -e sh -c 'task list && $SHELL'",
-    on_rightclick="urxvt -e sh -c 'gcalcli --configFolder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && $SHELL' ",
+    on_rightclick="urxvt -e sh -c 'gcalcli --config-folder=~/.config/gcalcli --calendar=tigerjack89@gmail.com calm && $SHELL' ",
 )
 
 # Shows pulseaudio default sink volume
@@ -66,7 +66,8 @@ status.register('weather',
 )
 
 status.register("xkblayout",
-    format="\u2328{symbol}",
+    #format="\u2328{symbol}",
+    format="👅 {symbol}",
     color="#009AFF",
     layouts=["us", "it"],
     interval=1000
@@ -82,7 +83,7 @@ status.register("updates",
 )
 
 status.register("shell",
-    command="printf '\u03ba' && uname -r | cut -d '-' -f 1",
+    command="printf '🐧' && uname -r | cut -d '-' -f 1",
     color="#009aff",
     on_leftclick = "urxvt --hold -e uname -a",
     interval=18000
@@ -108,7 +109,7 @@ status.register("temp",
 )
 
 status.register("battery",
-        format="{percentage:.0f}%{status}{remaining:%E%h:%M}",
+        format="🔋{percentage:.0f}%{status}{remaining:%E%h:%M}",
      interval=30,
      # Not used, I use my own script
      # alert=True,
@@ -142,7 +143,10 @@ status.register("cpu_freq",
 # Memory
 status.register("mem",
         #format="{percent_used_mem}%/{total_mem}",
-        format="\u2592{percent_used_mem}%",
+        #format="\u2592{percent_used_mem}%",
+        #format="🧠{percent_used_mem}%",
+        #format="🐘{percent_used_mem}%",
+        format="🐏{percent_used_mem}%",
         divisor = 1024**3,
         color="#0055ff",
         warn_color="#ffaa00",
