@@ -78,6 +78,10 @@
 .config/smtube
 # enchant, the spell checker for ispell
 .config/enchant
+# Gimp
+.config/GIMP
+# Electron
+.config/Electron
 
 .config/VeraCrypt
 .config/gtk-2.0/gtkfilechooser.ini
@@ -182,8 +186,8 @@ LinuxData
 .java/
 .jd/
 .texlive/
-.tmux/plugins/
-.tmux/resurrect/
+.config/tmux/plugins/
+#.tmux/resurrect/
 .macromedia/
 .psensor/
 
