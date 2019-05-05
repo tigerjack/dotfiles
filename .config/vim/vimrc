@@ -78,3 +78,6 @@ set softtabstop=4
 set shiftwidth=4
 " Don't expand tab, i.e. don't convert tabs to spaces
 set noexpandtab
+if &diff
+    colorscheme mycolorscheme
+endif
