@@ -1,13 +1,14 @@
 [options]
-#allow_bold = true
+allow_bold = true
 #audible_bell = false
 #bold_is_bright = true
 #clickable_url = true
 #dynamic_title = true
-font = SauceCodePro Nerd Font Mono 14
+#font = SauceCodePro Nerd Font Mono 13
+font = Inconsolata 15
 #fullscreen = true
 #icon_name = terminal
-#mouse_autohide = false
+mouse_autohide = true
 #scroll_on_output = false
 #scroll_on_keystroke = true
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
@@ -54,16 +55,11 @@ scrollback_lines = 10000
 # If unset, will reverse foreground and background
 highlight = #2f2f2f
 
-# Base16 Classic Dark
-# Author: Jason Heeris (http://heeris.id.au)
-
 foreground          = #D0D0D0
 foreground_bold     = #E0E0E0
 cursor              = #E0E0E0
 cursor_foreground   = #151515
 background          = rgba(28, 28, 28, 1.0)
-
-# 16 color space
 
 # Black, Gray, Silver, White
 color0=     #000000
