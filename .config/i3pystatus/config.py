@@ -3,8 +3,7 @@ import logging
 from i3pystatus.updates import pacman
 from i3pystatus.weather import weathercom, wunderground
 
-#status = Status(logfile='$MDIR_LOGS/i3pystatus.log')
-status = Status(logfile='/home/simone/LinuxData/logs/i3pystatus.log')
+status = Status(logfile='$MDIR_LOGS/i3/i3pystatus.log')
 
 # Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
 status.register("text",
@@ -53,16 +52,17 @@ status.register("shell",
 )
 
 status.register('weather',
-    format='[{icon}]{current_temp}{temp_unit}[ {update_error}]',
+    format='[{icon}]{current_temp}({low_temp}/{high_temp}){temp_unit}[ {update_error}]',
     colorize=True,
     hints={'markup': 'pango'},
     log_level=logging.DEBUG,
     backend=weathercom.Weathercom(
         location_code='20126:4:IT',
         log_level=logging.DEBUG,
+        update_error='!',
     ),
     on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
-    on_rightclick="urxvt --hold -e curl http://wttr.in",
+    # on_rightclick="urxvt --hold -e curl http://wttr.in",
 )
 
 status.register("xkblayout",
@@ -86,13 +86,9 @@ status.register("shell",
     command="printf '🐧' && uname -r | cut -d '-' -f 1",
     color="#009aff",
     on_leftclick = "urxvt --hold -e uname -a",
+    on_rightclick = "urxvt --hold -e neofetch",
     interval=18000
 )
-
-# status.register("uname",
-#     format="{release}",
-#     on_leftclick = "urxvt --hold -e neofetch",
-# )
 
 # Shows your CPU temperature, if you have a Intel CPU
 # For AMD CPU I've commented formatting options and disabled lm_sensors
@@ -103,7 +99,6 @@ status.register("temp",
 #    format="{Core_0}-{Core_1}-{Core_2}-{Core_3}",
     hints={"markup": "pango"},
     dynamic_color=True,
-    # Gives index out of bound error
     alert_temp=65,
     on_leftclick = "urxvt -e htop",
 )
