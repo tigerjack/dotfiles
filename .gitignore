@@ -56,7 +56,9 @@
 .scenebuilder/
 .gtk-bookmarks
 .config/gtk-3.0/bookmarks
-
+# Emacs slime
+.slime
+.slime-history*
 # Simple screen recorder
 .ssr
 # Surf browser
