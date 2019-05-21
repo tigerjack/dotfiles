@@ -23,7 +23,7 @@ set -o nounset                              # Treat unset variables as an error
 #online=$?
 #if [ $online -eq 0 ]; then
 if ! [ "$(route -n | grep -c '^0\.0\.0\.0')" -eq 0 ]; then
-    x=$(curl -s http://wttr.in/Milan?format='+%m+%w' | awk '{print $1 $2 "\\u224a"}') && printf "%s""$x"
+    x=$(curl -s http://wttr.in/Milan?format='+%m+%w' | awk '{print $1 $2 "🌀"}') && printf "%s""$x"
 else 
     printf "\u26a0" 
 fi

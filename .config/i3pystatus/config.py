@@ -47,7 +47,8 @@ status.register("shell",
     #command="curl http://wttr.in/Milan?format=3",
     #command="curl http://wttr.in/Milan?format='+%c+%t,+%w+%m'",
     #command="curl -s http://wttr.in/Milan?format='+%m+%w' | awk -F' ' '{print $1 $2 \"\u224a\"}'",
-    command="wttr_wrapper.sh",
+    # command="wttr_wrapper.sh",
+    command="wttr_wrapper.py",
     interval=3600
 )
 
