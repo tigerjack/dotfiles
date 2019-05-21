@@ -294,6 +294,10 @@ assign [class="Skype"] 7
 #assign [class="mplayer"] 10
 #assign [class="mpv"] 10
 #assign [class="Spotify"] 10
+
+### Switch keyboard layout (mine)
+bindsym $sup+Shift+space exec 'xkbgroup_switch.sh' >> "/mnt/internal/LinuxData/logs/i3/xkbgroup.log" 2>&1
+
  
 #Execute the startup script
 exec --no-startup-id ~/bin/x/post_i3_scripts.sh
