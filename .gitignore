@@ -85,6 +85,9 @@
 # Electron
 .config/Electron
 
+# Eduroam keys
+.cat_installer
+
 .config/VeraCrypt
 .config/gtk-2.0/gtkfilechooser.ini
 .config/filezilla/
