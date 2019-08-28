@@ -1,0 +1,1 @@
+complete -W "$(tldr 2>/dev/null --list)" tldr
