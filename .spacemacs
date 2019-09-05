@@ -598,7 +598,7 @@ you should place your code here."
   ;; Display ascii instead of unicode chars on the status line
   ;; (setq dotspacemacs-mode-line-unicode-symbols nil)
   ;; load private file, not tracked
-  ;;(load-file ".config/private/spacemacs_private")
+  ;;(substitute-in-file-name "${MDIR_PRIVATE}/spacemacs/private")
   ;; To avoid bug listed here https://github.com/jaypei/emacs-neotree/issues/226
   (setq helm-split-window-inside-p t)
   ;; RANGER
