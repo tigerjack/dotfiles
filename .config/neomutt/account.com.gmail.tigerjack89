@@ -1,11 +1,11 @@
 ### Gmail
 # Unset all previous set variables and source shared configs
 reset all
-source "$HOME/.config/neomutt/shared_params"
+source "$XDG_CONFIG_DIR/neomutt/shared_params"
 
 # Source passw
-source "gpg -dq $HOME/.config/neomutt/passwords/com.gmail.tigerjack89.gpg |"
-macro index,pager <f10> '<enter-command>source "gpg -dq $HOME/.config/neomutt/passwords/com.gmail.tigerjack89.gpg |"<enter>'
+source "gpg -dq $MDIR_PRIVATE/neomutt/passwords/com.gmail.tigerjack89.gpg |"
+macro index,pager <f10> '<enter-command>source "gpg -dq $MDIR_PRIVATE/passwords/com.gmail.tigerjack89.gpg |"<enter>'
 
 # Necessary ???
 unset ssl_starttls
