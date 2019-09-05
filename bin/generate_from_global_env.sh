@@ -18,7 +18,7 @@
 #===============================================================================
 
 set -o nounset                              # Treat unset variables as an error
-declare -a arr=("$XDG_CONFIG_HOME/user-dirs.dirs" "$XDG_CONFIG_HOME/taskwarrior/taskrc" "$XDG_CONFIG_HOME/i3/config");
+declare -a arr=("$XDG_CONFIG_HOME/user-dirs.dirs" "$XDG_CONFIG_HOME/taskwarrior/taskrc" "$XDG_CONFIG_HOME/i3/config" "$XDG_CONFIG_HOME/anacrontab");
 for i in ${arr[@]};
 do
     echo "Replacing vars in $i.template"
