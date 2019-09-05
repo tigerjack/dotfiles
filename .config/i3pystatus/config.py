@@ -69,7 +69,6 @@ status.register('weather',
 status.register("xkblayout",
     #format="\u2328{symbol}",
     format="👅 {symbol}",
-    color="#009AFF",
     layouts=["us", "it"],
     interval=1000
 )
