@@ -2,10 +2,12 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+# private dir, check that it is 700
+export MDIR_PRIVATE="$HOME/.config/private"
 #Other personal global dirs
-export MDIR_GLOBAL_DATA="/mnt/internal/DatiSimone"
+export MDIR_GLOBAL_DATA="/mnt/Data"
 export MDIR_GLOBAL_APP_DATA="$MDIR_GLOBAL_DATA/AppData"
-export MDIR_LINUX_DATA="/mnt/internal/LinuxData"
+export MDIR_LINUX_DATA="/mnt/LinuxData" 
 export MDIR_PROGRAMMING_DATA="$MDIR_LINUX_DATA/prog_mgmt"
 export MDIR_LOGS="$MDIR_LINUX_DATA/logs"
 export MDIR_STANDALONE_SW="$MDIR_GLOBAL_DATA/ProgrammiStandalone"

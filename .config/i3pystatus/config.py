@@ -52,23 +52,25 @@ status.register("shell",
     interval=3600
 )
 
-status.register('weather',
-    format='[{icon}]{current_temp}({low_temp}/{high_temp}){temp_unit}[ {update_error}]',
-    colorize=True,
-    hints={'markup': 'pango'},
-    #log_level=logging.DEBUG,
-    backend=weathercom.Weathercom(
-        location_code='20126:4:IT',
-        #log_level=logging.DEBUG,
-        update_error='!',
-    ),
-    on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
-    # on_rightclick="urxvt --hold -e curl http://wttr.in",
-)
+# Doesn't work
+# status.register('weather',
+#     format='[{icon}]{current_temp}({low_temp}/{high_temp}){temp_unit}[ {update_error}]',
+#     colorize=True,
+#     hints={'markup': 'pango'},
+#     log_level=logging.DEBUG,
+#     backend=weathercom.Weathercom(
+#         location_code='20126:4:IT',
+#         log_level=logging.DEBUG,
+#         update_error='!',
+#     ),
+#     on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
+#     # on_rightclick="urxvt --hold -e curl http://wttr.in",
+# )
 
 status.register("xkblayout",
     #format="\u2328{symbol}",
     format="👅 {symbol}",
+#    color="#009AFF",
     layouts=["us", "it"],
     interval=1000
 )
@@ -90,34 +92,34 @@ status.register("shell",
     interval=18000
 )
 
-# Shows your CPU temperature, if you have a Intel CPU
-# For AMD CPU I've commented formatting options and disabled lm_sensors
-status.register("temp",
-    lm_sensors_enabled = False,
-    format="{temp:.0f}°C",
-#    lm_sensors_enabled = True,
-#    format="{Core_0}-{Core_1}-{Core_2}-{Core_3}",
-    hints={"markup": "pango"},
-    dynamic_color=True,
-    alert_temp=65,
-    on_leftclick = "urxvt -e htop",
-)
+# # Shows your CPU temperature, if you have a Intel CPU
+# # For AMD CPU I've commented formatting options and disabled lm_sensors
+# status.register("temp",
+#     lm_sensors_enabled = False,
+#     format="{temp:.0f}°C",
+# #    lm_sensors_enabled = True,
+# #    format="{Core_0}-{Core_1}-{Core_2}-{Core_3}",
+#     hints={"markup": "pango"},
+#     dynamic_color=True,
+#     alert_temp=65,
+#     on_leftclick = "urxvt -e htop",
+# )
 
-status.register("battery",
-        format="🔋{percentage:.0f}%{status}{remaining:%E%h:%M}",
-     interval=30,
-     # Not used, I use my own script
-     # alert=True,
-     alert_percentage=10,
-     alert_timeout=10,
-     # color="#00ffaa",
-     # charging_color="#0055ff",
-     full_color="#ff0000",
-     status={
-         "DIS": "↓",
-         "CHR": "↑",
-         "FULL": "\u26a0",
-     },)
+# status.register("battery",
+#         format="🔋{percentage:.0f}%{status}{remaining:%E%h:%M}",
+#      interval=30,
+#      # Not used, I use my own script
+#      # alert=True,
+#      alert_percentage=10,
+#      alert_timeout=10,
+#      # color="#00ffaa",
+#      # charging_color="#0055ff",
+#      full_color="#ff0000",
+#      status={
+#          "DIS": "↓",
+#          "CHR": "↑",
+#          "FULL": "\u26a0",
+#      },)
 
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
@@ -151,7 +153,7 @@ status.register("mem",
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
-    interface="wlp3s0",
+    interface="enp0s8",
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
     #format_up="\u2198{bytes_recv}\u2197{bytes_sent}\u23d0\u03bd\u232a",
     format_up="\u2198{bytes_recv}\u2197{bytes_sent} ⃓v❭",

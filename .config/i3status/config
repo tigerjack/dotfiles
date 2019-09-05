@@ -19,10 +19,10 @@ order += "load"
 order += "tztime local"
 order += "volume master"
 
-cpu_temperature 0 {
-	format = "T: %degrees °C"
-        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
-}
+# cpu_temperature 0 {
+# 	format = "T: %degrees °C"
+#         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
+# }
 
 wireless _first_ {
         format_up = "W:%quality@%essid %bitrate %frequency"
