@@ -158,3 +158,6 @@ export TERMCMD='urxvt'
 
 # for locale
 export LC_ALL=en_US.UTF-8
+
+# for task warrior
+export TASKRC="$HOME/.config/taskwarrior/taskrc"
