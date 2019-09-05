@@ -1,6 +1,7 @@
 ## External defined functions
 . ~/bin/bash_git_prompt.sh
 . ~/bin/bash_gpush_pop.sh
+. ~/bin/bash_remote_jupyter.sh
 
 ## To prevent nested ranger instances
 ranger() {
