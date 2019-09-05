@@ -34,3 +34,4 @@ alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/
 alias 5m='find ~/ ! -path "/home/simone/.mozilla/*"  ! -path "/home/simone/.cache/*" ! -path "/home/simone/.eclipse/*"! -path ".config/google-chrome/*" ! -path "~/.config/libreoffice/4/user/*" ! -mmin -5 -type f -ls'
 alias mynote='vim /mnt/internal/DatiSimone/Documents/Notes/FastNotes.txt'
 alias snclip="sncli -c $MDIR_PRIVATE/sncli/snclirc"
+alias mycli="mycli --myclirc $XDG_CONFIG_HOME/mycli/myclirc"
