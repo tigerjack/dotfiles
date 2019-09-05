@@ -11,7 +11,7 @@ alias tmsu_uni='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/university'
 alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
 alias tmsu_the='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/thesis'
 alias td='transmission-daemon'
-alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/all.log 2>&1"
+alias zx="export FIRST_DISPLAY='1' && startx -- -keeptty >$MDIR_LOGS/startx/xorg.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
 alias gcalcli='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli'
@@ -28,6 +28,9 @@ alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bol
 alias ecl='env SWT_GTK3=0 eclipse'
 alias wn32='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32'
 alias wn64='WINEPREFIX=$MDIR_LINUX_DATA/wine64'
+alias wnoffice='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine_office'
 alias stellarium='stellarium -c $XDG_CONFIG_HOME/stellarium/config.ini -u $XDG_DATA_HOME/stellarium --screenshot-dir $MDIR_SCREENSHOTS/stellarium'
 alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi'
 alias 5m='find ~/ ! -path "/home/simone/.mozilla/*"  ! -path "/home/simone/.cache/*" ! -path "/home/simone/.eclipse/*"! -path ".config/google-chrome/*" ! -path "~/.config/libreoffice/4/user/*" ! -mmin -5 -type f -ls'
+alias mynote='vim /mnt/internal/DatiSimone/Documents/Notes/FastNotes.txt'
+alias sncli="sncli -c .private/snclirc"
