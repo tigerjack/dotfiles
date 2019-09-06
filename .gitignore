@@ -17,6 +17,7 @@
 *.menu
 *.tox
 *.cache
+.vboxclient-*
 
 ### Particular files/dirs
 .Xauthority
