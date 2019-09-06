@@ -11,13 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-<<<<<<< HEAD:.config/taskwarrior/taskrc
-data.location=/mnt/Data/AppData/TaskWarrior
-||||||| merged common ancestors:.taskrc
-data.location=/mnt/internal/DatiSimone/Tasks/data
-=======
 data.location=$MDIR_GLOBAL_APP_DATA/TaskWarrior/
->>>>>>> d615b5627b0c4fc0bfc78fab779000bcc26d971b:.config/taskwarrior/taskrc.template
 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
@@ -36,19 +30,9 @@ include /usr/share/doc/task/rc/dark-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
 taskd.server=freecinc.com:53589
-<<<<<<< HEAD:.config/taskwarrior/taskrc
-taskd.key=/mnt/Data/Tasks/freecinc_9aa46843.key.pem
-taskd.ca=/mnt/Data/Tasks/freecinc_9aa46843.ca.pem
-taskd.certificate=/mnt/Data/freecinc_9aa46843.cert.pem
-||||||| merged common ancestors:.taskrc
-taskd.key=/mnt/internal/DatiSimone/Tasks/freecinc_9aa46843.key.pem
-taskd.ca=/mnt/internal/DatiSimone/Tasks/freecinc_9aa46843.ca.pem
-taskd.certificate=/mnt/internal/DatiSimone/Tasks/freecinc_9aa46843.cert.pem
-=======
 taskd.key=$MDIR_PRIVATE/TaskWarrior/freecinc_9aa46843.key.pem
 taskd.ca=$MDIR_PRIVATE/TaskWarrior/freecinc_9aa46843.ca.pem
 taskd.certificate=$MDIR_PRIVATE/TaskWarrior/freecinc_9aa46843.cert.pem
->>>>>>> d615b5627b0c4fc0bfc78fab779000bcc26d971b:.config/taskwarrior/taskrc.template
 taskd.credentials=FreeCinc\/freecinc_9aa46843\/585a9874-126b-4821-8502-d476e8f1b098
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
