@@ -152,7 +152,8 @@ export CHEATSH="curl cht.sh"
 export DIALOGRC="$HOME/dialog/dialogrc"
 
 # for i3-sensible-terminal
-export TERMINAL=termite
+#export TERMINAL=termite
+export TERMINAL='urxvt'
 # for ranger
 export TERMCMD='urxvt'
 
