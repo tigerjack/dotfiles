@@ -33,6 +33,6 @@ alias stellarium='stellarium -c $XDG_CONFIG_HOME/stellarium/config.ini -u $XDG_D
 alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi'
 alias 5m='find ~/ ! -path "/home/simone/.mozilla/*"  ! -path "/home/simone/.cache/*" ! -path "/home/simone/.eclipse/*"! -path ".config/google-chrome/*" ! -path "~/.config/libreoffice/4/user/*" ! -mmin -5 -type f -ls'
 alias mynote="vim $(xdg-user-dir DOCUMENTS)/Notes/FastNotes.txt"
-alias snclip="sncli -c $MDIR_PRIVATE/sncli_personal"
-alias sncliw="sncli -c $MDIR_PRIVATE/sncli_work"
+alias snclip="sncli -c $MDIR_PRIVATE/sncli/snclirc_personal"
+alias sncliw="sncli -c $MDIR_PRIVATE/sncli/snclirc_work"
 alias mycli="mycli --myclirc $XDG_CONFIG_HOME/mycli/myclirc"
