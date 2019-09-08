@@ -17,6 +17,7 @@
 *.menu
 *.tox
 *.cache
+.vboxclient-*
 
 ### Particular files/dirs
 .Xauthority
@@ -26,8 +27,15 @@
 .rnd
 # This is my personal dir stack used by gpush/gpop
 .gdir.txt
+# user dirs are generated automatically through generate_user_dirs.sh script file
+.config/user-dirs.dirs
 # Sensible data files
-.private/
+.config/private/
+# 
+.xournalpp/metadata
+.xournalpp/autosave
+.xournalpp/autosave
+
 .config/irssi/config
 .sqlite_history
 .mysql_history
