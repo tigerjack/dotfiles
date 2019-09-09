@@ -49,22 +49,25 @@ status.register("shell",
     #command="curl -s http://wttr.in/Milan?format='+%m+%w' | awk -F' ' '{print $1 $2 \"\u224a\"}'",
     # command="wttr_wrapper.sh",
     command="wttr_wrapper.py",
-    interval=3600
+    interval=3600,
+    on_leftclick='termite --hold -e "curl http://v2.wttr.in/Milan"',
+    on_rightclick='termite --hold -e "curl http://wttr.in/Milan"',
 )
 
-status.register('weather',
-    format='[{icon}]{current_temp}({low_temp}/{high_temp}){temp_unit}[ {update_error}]',
-    colorize=True,
-    hints={'markup': 'pango'},
-    #log_level=logging.DEBUG,
-    backend=weathercom.Weathercom(
-        location_code='20126:4:IT',
-        #log_level=logging.DEBUG,
-        update_error='!',
-    ),
-    on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
-    # on_rightclick="urxvt --hold -e curl http://wttr.in",
-)
+# Doesn't work
+# status.register('weather',
+#     format='[{icon}]{current_temp}({low_temp}/{high_temp}){temp_unit}[ {update_error}]',
+#     colorize=True,
+#     hints={'markup': 'pango'},
+#     log_level=logging.DEBUG,
+#     backend=weathercom.Weathercom(
+#         location_code='20126:4:IT',
+#         log_level=logging.DEBUG,
+#         update_error='!',
+#     ),
+#     on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
+#     # on_rightclick="urxvt --hold -e curl http://wttr.in",
+# )
 
 status.register("xkblayout",
     #format="\u2328{symbol}",
@@ -151,7 +154,7 @@ status.register("mem",
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
-    interface="wlp3s0",
+    interface="enp0s8",
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
     #format_up="\u2198{bytes_recv}\u2197{bytes_sent}\u23d0\u03bd\u232a",
     format_up="\u2198{bytes_recv}\u2197{bytes_sent} ⃓v❭",
