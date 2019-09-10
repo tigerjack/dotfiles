@@ -39,8 +39,8 @@ status.register("clock",
     #format="%-d%b%X",
     format="%-d%b%H:%M",
     color="#00ff65",
-    on_leftclick = "xclock -digital -update 1",
-    on_rightclick = "urxvt -e bash -c 'cal -3 && bash' ",
+    on_leftclick = "urxvt -e bash -c 'cal -m -3 && bash' ",
+    on_rightclick = "xclock -digital -update 1",
 )
 
 status.register("shell",
@@ -49,6 +49,8 @@ status.register("shell",
     #command="curl -s http://wttr.in/Milan?format='+%m+%w' | awk -F' ' '{print $1 $2 \"\u224a\"}'",
     # command="wttr_wrapper.sh",
     command="wttr_wrapper.py",
+    on_leftclick="termite --hold -e 'curl http://wttr.in/Milan'",
+    on_rightclick="termite --hold -e 'curl http://v2.wttr.in/Milan'",
     interval=3600
 )
 
@@ -62,8 +64,6 @@ status.register('weather',
         #log_level=logging.DEBUG,
         update_error='!',
     ),
-    on_leftclick="urxvt --hold -e curl http://wttr.in/Milan",
-    # on_rightclick="urxvt --hold -e curl http://wttr.in",
 )
 
 status.register("xkblayout",
