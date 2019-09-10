@@ -39,8 +39,8 @@ status.register("clock",
     #format="%-d%b%X",
     format="%-d%b%H:%M",
     color="#00ff65",
-    on_leftclick = "xclock -digital -update 1",
-    on_rightclick = "urxvt -e bash -c 'cal -3 && bash' ",
+    on_leftclick = "urxvt -e bash -c 'cal -m -3 && bash' ",
+    on_rightclick = "xclock -digital -update 1",
 )
 
 status.register("shell",

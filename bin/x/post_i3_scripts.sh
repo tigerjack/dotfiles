@@ -1,5 +1,5 @@
 #!/bin/sh
-## Means already in desktop files
+## Means already in desktop files, either /etx/xdg/autostart or	~/.config/autostart
 # Polkit, started by systemctl
 ## lxqt-policykit-agent >"$MDIR_LOGS/startx/lxqt_policykit_agent.log$DISPLAY" 2>&1 &
 
@@ -32,7 +32,7 @@ nm-applet >"$MDIR_LOGS/startx/nm-applet.log$DISPLAY" 2>&1 &
 mailnag >"$MDIR_LOGS/startx/mailnag.log$DISPLAY" 2>&1 &
 
 # For swipe and pinch commands
-libinput-gestures >"$MDIR_LOGS/startx/libinput-gestures.log$DISPLAY" 2>&1 &
+## libinput-gestures >"$MDIR_LOGS/startx/libinput-gestures.log$DISPLAY" 2>&1 &
 
 # Execute all my startup X scripts
 for file in ~/bin/x/autostart/?*.sh; do

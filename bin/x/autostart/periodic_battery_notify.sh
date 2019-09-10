@@ -13,8 +13,8 @@ SLEEP_VLOW="200"
 SLEEP_CRITICAL="90"
 BAT="BAT1"
 ACTION_COUNTDOWN="90"
-#ACTION_CRITICAL="systemctl hybrid-sleep"
-ACTION_CRITICAL="systemctl poweroff -i"
+ACTION_CRITICAL="systemctl hybrid-sleep"
+#ACTION_CRITICAL="systemctl poweroff -i"
 # Notify msg
 TEST=""
 

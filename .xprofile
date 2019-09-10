@@ -1,3 +1,4 @@
+## Means already in desktop files, either /etx/xdg/autostart or	~/.config/autostart
 # Go to home
 cd ~
 
@@ -28,7 +29,7 @@ xset -b
 eval $(ssh-agent -s &) >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
 
 # Gnome key ring, with ssh agent disabled bcz using ssh-agent and gpg disabled bcz gpg-agent started by systemctl --user
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets) >"$MDIR_LOGS/startx/gnome_keyring.log$DISPLAY" 2>&1
+## eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets) >"$MDIR_LOGS/startx/gnome_keyring.log$DISPLAY" 2>&1
 #export SSH_AUTH_SOCK
 
 # Change the screen settings
