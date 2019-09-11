@@ -46,8 +46,8 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      games
+     geben
      ; https://github.com/rubberydub/spacemacs-geben
-                                        ; https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.shgeben
      (helm :variables
            ;; resize helm buffer window to adapt to the length of the candidate list.
            helm-enable-auto-resize t)
