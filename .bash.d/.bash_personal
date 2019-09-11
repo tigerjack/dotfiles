@@ -153,12 +153,15 @@ export DIALOGRC="$HOME/dialog/dialogrc"
 
 # for i3-sensible-terminal
 #export TERMINAL=termite
-export TERMINAL='urxvt'
+export TERMINAL='termite'
 # for ranger
-export TERMCMD='urxvt'
+export TERMCMD='termite'
 
 # for locale
 # export LC_ALL=en_US.UTF-8
 
 # for task warrior
 export TASKRC="$HOME/.config/taskwarrior/taskrc"
+
+#
+eval $(thefuck --alias --enable-experimental-instant-mode)
