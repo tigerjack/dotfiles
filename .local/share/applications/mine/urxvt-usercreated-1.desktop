@@ -4,4 +4,4 @@ Encoding=UTF-8
 Type=Application
 Name=urxvt
 NoDisplay=true
-Exec=urxvt -e ranger
+Exec=$TERM -e ranger
