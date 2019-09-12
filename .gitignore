@@ -35,6 +35,8 @@
 .xournalpp/metadata
 .xournalpp/autosave
 .xournalpp/autosave
+# 
+.config/syncthing
 
 .config/irssi/config
 .sqlite_history
