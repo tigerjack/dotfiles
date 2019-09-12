@@ -147,6 +147,8 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 
 #https://github.com/chubin/cheat.sh
 export CHEATSH="curl cht.sh"
+#https://github.com/omgimanerd/getnews.tech
+export GETNEWS="curl getnews.tech"
 
 # for dialog
 export DIALOGRC="$HOME/dialog/dialogrc"
@@ -163,5 +165,5 @@ export TERMCMD='termite'
 # for task warrior
 export TASKRC="$HOME/.config/taskwarrior/taskrc"
 
-#
-eval $(thefuck --alias --enable-experimental-instant-mode)
+# for thefuck
+eval $(thefuck --alias)
