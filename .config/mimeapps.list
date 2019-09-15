@@ -38,3 +38,4 @@ text/plain=leafpad.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 image/png=gpicview.desktop;
 application/xhtml+xml=firefox.desktop;
+application/vnd.ms-excel=libreoffice-calc.desktop;
