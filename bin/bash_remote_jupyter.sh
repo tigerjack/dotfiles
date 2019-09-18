@@ -25,8 +25,8 @@ function jpt() {
 }
 
 function jptt(){
-    # Forwards port $1 into port $2 and listens to it
-    ssh -N -f -L localhost:"$2":localhost:"$1" simone@172.31.0.71
-    echo "Remember to kill the server-side notebook and the port-forwarding process using sudo netstat -lpn | grep 'port number'"
+    # Forwards port $2 opened on machine $1 into port $2 on localhost and listens to it
+    ssh -N -f -L localhost:"$3":localhost:"$2" simone@$1
+    echo "Remember to kill the server-side notebook and the port-forwarding process using sudo netstat -lpn | grep 'local port number'"
 }
 
