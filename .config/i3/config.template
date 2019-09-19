@@ -168,7 +168,7 @@ bindsym $sup+Shift+o move container to workspace back_and_forth
 # move to different RandR output
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
-bindsym $sup+$alt+F1 move workspace to output right
+bindsym $sup+Control+F1 move workspace to output right
 # Switch focus to left/right monitor
 bindsym $sup+Control+Left focus output left
 bindsym $sup+Control+Right focus output right
