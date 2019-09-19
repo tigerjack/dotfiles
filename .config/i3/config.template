@@ -170,8 +170,8 @@ bindsym $sup+Shift+o move container to workspace back_and_forth
 # (effectively toggles when you only have two outputs)
 bindsym $sup+Control+F1 move workspace to output right
 # Switch focus to left/right monitor
-bindsym $sup+Control+Left focus output left
-bindsym $sup+Control+Right focus output right
+bindsym $sup+Control+h focus output left
+bindsym $sup+Control+l focus output right
 
 # Make the currently focused window a scratchpad
 bindsym $sup+Shift+n move scratchpad
