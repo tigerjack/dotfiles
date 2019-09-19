@@ -169,6 +169,9 @@ bindsym $sup+Shift+o move container to workspace back_and_forth
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
 bindsym $sup+$alt+F1 move workspace to output right
+# Switch focus to left/right monitor
+bindsym $sup+Control+Left focus output left
+bindsym $sup+Control+Right focus output right
 
 # Make the currently focused window a scratchpad
 bindsym $sup+Shift+n move scratchpad
@@ -267,7 +270,7 @@ mode "resize" {
 # https://i3wm.org/docs/userguide.html#_configuring_i3bar
 bar {
 	tray_output primary
-        status_command python3 ~/.config/i3pystatus/config.py
+        status_command python3 "$XDG_CONFIG_HOME/i3pystatus/config.py"
 	#status_command i3status
 	mode dock
 	workspace_buttons yes
