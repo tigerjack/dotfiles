@@ -61,8 +61,12 @@ for file in ~/.config/autostart/?*.desktop; do
 done
 unset file
 
-# Remove previous logs
-rm "$MDIR_LINUX_DATA/logs/i3/i3-sensible-terminal.log"
-rm "$MDIR_LINUX_DATA/logs/i3/i3-dmenu-desktop.log"
-rm "$MDIR_LINUX_DATA/logs/i3/rofi.log"
-rm "$MDIR_LINUX_DATA/logs/i3/xfce4-appfinder.log"
+# Remove previous useless logs
+declare -a arr=("$MDIR_LINUX_DATA/logs/i3/i3-sensible-terminal.log" "$MDIR_LINUX_DATA/logs/i3/i3-dmenu-desktop.log" "$MDIR_LINUX_DATA/logs/i3/rofi.log" "$MDIR_LINUX_DATA/logs/i3/xfce4-appfinder.log");
+
+for i in "${arr[@]}";
+do
+    if [ -f "$i" ]; then
+	rm "$i"
+    fi
+done
