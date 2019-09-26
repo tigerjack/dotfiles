@@ -1,3 +1,4 @@
 complete -F _complete_alias dotfiles_mgmt
-complete -F _complete_alias onedrive
+complete -F _complete_alias onedriveatos
+complete -F _complete_alias onedrivepolimi
 complete -F _complete_alias tmux
