@@ -2,7 +2,7 @@
 . ~/bin/bash_git_prompt.sh
 . ~/bin/bash_gpush_pop.sh
 . ~/bin/bash_remote_jupyter.sh
-
+. ~/bin/bash_complete_alias.sh
 ## To prevent nested ranger instances
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
