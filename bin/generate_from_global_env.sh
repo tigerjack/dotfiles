@@ -19,7 +19,7 @@
 
 set -o nounset                              # Treat unset variables as an error
 # declare -a arr=("$XDG_CONFIG_HOME/i3/config");
-declare -a arr=("$XDG_CONFIG_HOME/user-dirs.dirs" "$XDG_CONFIG_HOME/taskwarrior/taskrc" "$XDG_CONFIG_HOME/i3/config" "$XDG_CONFIG_HOME/anacrontab");
+declare -a arr=("$XDG_CONFIG_HOME/user-dirs.dirs" "$XDG_CONFIG_HOME/taskwarrior/taskrc" "$XDG_CONFIG_HOME/i3/config" "$XDG_CONFIG_HOME/anacrontab" "$XDG_CONFIG_HOME/onedrive/atos/config" "$XDG_CONFIG_HOME/onedrive/polimi/config");
 vars=$(awk 'BEGIN{for(v in ENVIRON) print "$" v}' | grep -e "XDG.*HOME" -e "MDIR_.*" | tr '\n' ' ')
 echo "$vars"
 for i in "${arr[@]}";
