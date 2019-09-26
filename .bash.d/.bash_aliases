@@ -38,3 +38,5 @@ alias sncliw="sncli -c $MDIR_PRIVATE/sncli/snclirc_work"
 alias mycli="mycli --myclirc $XDG_CONFIG_HOME/mycli/myclirc"
 alias incognito_on="shopt -uo history"
 alias incognito_off="shopt -so history"
+alias onedriveatos='onedrive --confdir $XDG_CONFIG_HOME/onedrive/atos/'
+alias onedrivepolimi='onedrive --confdir $XDG_CONFIG_HOME/onedrive/polimi/'
