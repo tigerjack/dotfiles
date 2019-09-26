@@ -165,10 +165,11 @@ LinuxData
 # GUI config
 .config/SpeedCrunch
 # 
-.config/onedrive/*
+.config/onedrive/atos/*
+.config/onedrive/polimi/*
 # 
-!.config/onedrive/config
-!.config/onedrive/sync_list
+!.config/onedrive/atos/config.template
+!.config/onedrive/polimi/config.template
 # 
 .xournal/
 !.xournal/config
