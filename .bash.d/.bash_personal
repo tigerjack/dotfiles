@@ -147,8 +147,8 @@ source /usr/bin/virtualenvwrapper_lazy.sh
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 
-#https://github.com/chubin/cheat.sh
-export CHEATSH="curl cht.sh"
+# https://github.com/chubin/cheat.sh
+# export CHEATSH="curl cht.sh"
 #https://github.com/omgimanerd/getnews.tech
 export GETNEWS="curl getnews.tech"
 
