@@ -42,6 +42,7 @@
 #########
 # Sensible data files
 #########
+.tig_history
 .config/private/
 .config/irssi/config
 .sqlite_history
