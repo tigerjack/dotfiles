@@ -19,7 +19,12 @@
 
 set -o nounset                              # Treat unset variables as an error
 # Killing the process effectively dumps the statistics
-echo "Dump requested, $(date -Iseconds)" >> "$MDIR_LOGS/startx/periodic_drive_changes_notifier_2.log$DISPLAY"
-pkill -f drive_changes_notifier_2
-echo "Started again, $(date -Iseconds)" >> "$MDIR_LOGS/startx/periodic_drive_changes_notifier_2.log$DISPLAY"
-"$HOME/bin/x/autostart/periodic_drive_changes_notifier_2.sh" >> "$MDIR_LOGS/startx/periodic_drive_changes_notifier_2.log$DISPLAY" 2>&1 &
+script="inotify_drive_changes_2"
+log="$MDIR_LOGS/startx/$script.log$DISPLAY"
+{
+    echo "Dump requested, $(date -Iseconds)"
+    pkill -f "bash.*$script"
+    pkill -f "inotifywatch.*delete.*drive"
+    echo "Started again, $(date -Iseconds)" 
+} >> "$log"
+"$HOME/bin/x/autostart/$script.sh" >> "$log" 2>&1 &
