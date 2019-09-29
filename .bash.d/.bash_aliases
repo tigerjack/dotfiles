@@ -41,4 +41,5 @@ alias incognito_off="shopt -so history"
 alias onedriveatos='onedrive --confdir $XDG_CONFIG_HOME/onedrive/atos/'
 alias onedrivepolimi='onedrive --confdir $XDG_CONFIG_HOME/onedrive/polimi/'
 alias drivediff='less $MDIR_LOGS/inotify/drive/log'
+alias drivediff2='less $MDIR_LOGS/inotify/drive/log2'
 alias drivesynced='echo "--------- Synced on $(date) --------" >> $MDIR_LOGS/inotify/drive/log'
