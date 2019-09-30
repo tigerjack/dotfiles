@@ -138,11 +138,6 @@ export GIT_DOTFILES_MGMT_OPTS="--git-dir=$HOME/.dot_git/ --work-tree=$HOME"
 # Format options not working
 export GIT_LOG_OPTS="--graph --abbrev-commit --decorate --all"
 
-# python-virtualenvwrapper
-export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
-export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
-source /usr/bin/virtualenvwrapper_lazy.sh
-
 # npm config dir
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
@@ -170,6 +165,14 @@ export TASKRC="$HOME/.config/taskwarrior/taskrc"
 # for thefuck
 eval $(thefuck --alias)
 
+# python-virtualenvwrapper
+export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
+export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
+#source /usr/bin/virtualenvwrapper_lazy.sh
+# use pyenv-virtualenvwrapper instead, source and instructions at 
+# https://github.com/pyenv/pyenv-virtualenvwrapper
+# see following lines
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -177,4 +180,5 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
+  pyenv virtualenvwrapper_lazy
 fi
