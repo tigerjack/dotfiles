@@ -1,7 +1,6 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
-;; STABLE RELEASE 0.200.13
 
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -37,6 +36,7 @@ This function should only modify configuration layer settings."
    '(php
      asciidoc
      html
+     ;; pdf-tools
      (javascript :variables
                  javascript-disable-tern-port-files nil)
      sql
@@ -46,7 +46,6 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      games
-     geben
      ; https://github.com/rubberydub/spacemacs-geben
      (helm :variables
            ;; resize helm buffer window to adapt to the length of the candidate list.
@@ -547,13 +546,6 @@ you should place your code here."
             ((emacs-lisp)
              (calc . t)
              (ditaa . t))))))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 ;; (setq projectile-enable-caching t)
   (setq projectile-globally-ignored-directories
         (append '(
@@ -702,13 +694,6 @@ you should place your code here."
             ((emacs-lisp)
              (calc . t)
              (ditaa . t))))))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -722,6 +707,7 @@ This function is called at the very end of Spacemacs initialization."
  '(custom-safe-themes
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+ '(doc-view-continuous t)
  '(evil-want-Y-yank-to-eol nil)
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ref\\|eqref\\|usepackage\\|input\\|includestandalone\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
