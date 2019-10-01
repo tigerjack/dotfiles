@@ -11,7 +11,7 @@ alias tmsu_uni='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/university'
 alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
 alias tmsu_the='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/thesis'
 alias td='transmission-daemon'
-alias zx="export FIRST_DISPLAY='1' && startx -- -keeptty >$MDIR_LOGS/startx/xorg.log 2>&1"
+alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/xorg.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
 alias gcalcli='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli'
