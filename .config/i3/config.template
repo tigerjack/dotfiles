@@ -172,6 +172,12 @@ bindsym $sup+Control+F1 move workspace to output right
 # Switch focus to left/right monitor
 bindsym $sup+Control+h focus output left
 bindsym $sup+Control+l focus output right
+bindsym $sup+Control+j focus output up
+bindsym $sup+Control+k focus output down
+bindsym $sup+Control+Left focus output left
+bindsym $sup+Control+Right focus output right
+bindsym $sup+Control+Up focus output up
+bindsym $sup+Control+Down focus output down
 
 # Make the currently focused window a scratchpad
 bindsym $sup+Shift+n move scratchpad
