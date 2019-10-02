@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/X -nolisten tcp "$@" -keep-tty
+exec /usr/bin/X -nolisten tcp -nolisten local -keeptty "$@"
