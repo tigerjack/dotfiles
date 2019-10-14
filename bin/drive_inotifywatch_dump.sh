@@ -23,7 +23,7 @@ script="inotify_drive_changes_2"
 log="$MDIR_LOGS/startx/$script.log$DISPLAY"
 {
     echo "Dump requested, $(date -Iseconds)"
-    pkill -f "bash.*$script"
+    #pkill -f "bash.*$script"
     pkill -f "inotifywatch.*delete.*drive"
     echo "Started again, $(date -Iseconds)" 
 } >> "$log"
