@@ -99,6 +99,7 @@ bin/x/qtox_git
 backup
 Downloads
 LinuxData
+.cargo
 
 ########
 # Other apps 
