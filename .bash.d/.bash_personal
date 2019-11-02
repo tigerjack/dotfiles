@@ -182,3 +182,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
   pyenv virtualenvwrapper_lazy
 fi
+
+# opam configuration
+test -r /home/simone/.opam/opam-init/init.sh && . /home/simone/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
