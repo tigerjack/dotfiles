@@ -89,19 +89,21 @@ def main():
     #path = os.environ["MDIR_LOGS"] + "/inotify/drive/log3"
     host = socket.gethostname()
     tw = TaskWarrior()
+    if not args.push:
+        tw.sync()
 
     drive_path = _get_drive_path()
     tsks = _get_tasks(tw, host, args.push)
     print(tsks)
-    excluded_paths = {drive_path+'LinkAppData/TaskWarrior'}
+    excluded_paths = {'LinkAppData/TaskWarrior'}
     s = _compact_changes(tsks)
     if not bool(s):
         print("no changes, exiting")
         return
     logger.debug(f"the final set is {s}")
-    ss = _get_relative_paths(s, drive_path)
-    logger.debug(f"the relative set is {ss}")
-    _drive_sync(ss, drive_path, args.push)
+    # ss = _get_relative_paths(s, drive_path)
+    # logger.debug(f"the relative set is {ss}")
+    _drive_sync(s, drive_path, args.push)
     _task_update(host, tsks, args.push)
 
     tw.sync()
