@@ -59,12 +59,13 @@ def _drive_sync(ss, drive_path, push):
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         stdout, stderr = p.communicate()
         ot = stdout.decode("utf-8").strip()
+        logger.debug(f"Trying to execute operation on path {path}")
         if ot == "":
             logger.debug("No results from stdout of drive sync: OK")
         elif ot.find("is set to be ignored yet is being processed") > 0:
-            logger.debug(f"Ignored path {path}")
+            logger.debug("Ignored path")
         else:
-            logger.error(f"Error happend for path {path}")
+            logger.error(f"Error happend for path")
 
 def _task_update(host, tsks, push):
     to_add = host
