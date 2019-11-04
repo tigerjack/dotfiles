@@ -21,12 +21,14 @@ def _usage():
 
 
 def _get_drive_path():
+    logger.debug("get drive path begin")
     p = subprocess.Popen('xdg-user-dir PUBLICSHARE', shell=True, stdout=subprocess.PIPE)
     stdout, _ = p.communicate()
     drive_path = stdout.decode("utf-8").strip() + "/drive/"
     return drive_path
 
 def _get_tasks(tw, host, push):
+    logger.debug("get tasks begin")
     if push:
         # Tags created by the host which have to be pushed
         return tw.tasks.pending().filter(project="drive").filter(tags__contains=[host+'_to_push'])
@@ -35,6 +37,7 @@ def _get_tasks(tw, host, push):
         return tw.tasks.pending().filter(project="drive").filter(tags__contains=['_pushed']).filter("-"+host+"_pulled").filter("-"+host+"_pushed")
 
 def _compact_changes(tsks, excluded_paths={}):
+    logger.debug("compact changes begin")
     s = set()
     for t in tsks:
         logger.debug(f"uuid = {t['uuid']}")
@@ -51,23 +54,33 @@ def _get_relative_paths(s, drive_path):
     return ss
 
 def _drive_sync(ss, drive_path, push):
+    logger.debug("drive sync begin")
     logger.debug(f"{type(ss)}")
     op = "push" if push else "pull"
     for path in ss:
+        logger.debug(f"Trying to execute operation on path {path}")
         p = subprocess.Popen('cd ' + drive_path + ' && drive ' + op + 
                 ' -no-prompt -quiet ' + path, shell=True, 
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        logger.debug("Trying to start subprocess communication")
         stdout, stderr = p.communicate()
+        logger.debug("Ended subprocess communication")
         ot = stdout.decode("utf-8").strip()
-        logger.debug(f"Trying to execute operation on path {path}")
+        if stderr is not None:
+            et = stderr.decode("utf-8").strip()
+            logger.debug(f"errors from stderr: {et}")
         if ot == "":
             logger.debug("No results from stdout of drive sync: OK")
-        elif ot.find("is set to be ignored yet is being processed") > 0:
-            logger.debug("Ignored path")
         else:
-            logger.error(f"Error happend for path")
+            logger.debug(f"output from stdout: {ot}")
+            if ot.find("is set to be ignored yet is being processed") > 0:
+                logger.debug("Ignored path")
+            else:
+                logger.error("Something else happend for path")
+    logger.debug("drive sync end")
 
 def _task_update(host, tsks, push):
+    logger.debug("task update begin")
     to_add = host
     to_add += '_pushed' if push else '_pulled'
     # to_del = 'to_push' if push else 'pushed'
