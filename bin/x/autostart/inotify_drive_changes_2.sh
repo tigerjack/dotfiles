@@ -23,16 +23,19 @@ set -o nounset                              # Treat unset variables as an error
     date -Iseconds
     echo "-----------"
 } >> "$MDIR_LOGS/inotify/drive/log2"
-var=$(inotifywatch -r -e modify -e delete -e create -e move "$(xdg-user-dir PUBLICSHARE)/drive/"* | tee -a "$MDIR_LOGS/inotify/drive/log2" "$MDIR_LOGS/inotify/drive/log4")
+var=$(inotifywatch -r -e modify -e delete -e create -e move "$(xdg-user-dir PUBLICSHARE)/drive/"* | tee -a "$MDIR_LOGS/inotify/drive/log2")
 if [ -n "$var" ]; then
+    drive_dir="$(xdg-user-dir PUBLICSHARE)/drive/"
+
     task add project:drive tags:"$HOSTNAME""_to_push" -- drive sync
     ID=$(task +LATEST ids)
 
-    note=$(echo "$var" | awk '{for(i=1;i<=NF;i++){if($i~/^\/mnt/){a=$i}} print a}')
+    note=$(echo "$var" | awk '{ 
+        for(i=1;i<=NF;i++){
+            if($i~/^\/mnt/){
+		sub("'"$drive_dir"'","",$i);
+		print $i
+            }}}')
     task "$ID" annotate "$note"
     task sync
-
-    # echo "$note" >> "$MDIR_LOGS/inotify/drive/log3"
-    # # Add id after
-    # echo "task_id=$ID" >> "$MDIR_LOGS/inotify/drive/log3"
 fi

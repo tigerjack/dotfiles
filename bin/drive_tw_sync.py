@@ -59,12 +59,13 @@ def _drive_sync(ss, drive_path, push):
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         stdout, stderr = p.communicate()
         ot = stdout.decode("utf-8").strip()
+        logger.debug(f"Trying to execute operation on path {path}")
         if ot == "":
             logger.debug("No results from stdout of drive sync: OK")
         elif ot.find("is set to be ignored yet is being processed") > 0:
-            logger.debug(f"Ignored path {path}")
+            logger.debug("Ignored path")
         else:
-            logger.error(f"Error happend for path {path}")
+            logger.error(f"Error happend for path")
 
 def _task_update(host, tsks, push):
     to_add = host
@@ -89,19 +90,21 @@ def main():
     #path = os.environ["MDIR_LOGS"] + "/inotify/drive/log3"
     host = socket.gethostname()
     tw = TaskWarrior()
+    if not args.push:
+        tw.sync()
 
     drive_path = _get_drive_path()
     tsks = _get_tasks(tw, host, args.push)
     print(tsks)
-    excluded_paths = {drive_path+'LinkAppData/TaskWarrior'}
+    excluded_paths = {'LinkAppData/TaskWarrior'}
     s = _compact_changes(tsks)
     if not bool(s):
         print("no changes, exiting")
         return
     logger.debug(f"the final set is {s}")
-    ss = _get_relative_paths(s, drive_path)
-    logger.debug(f"the relative set is {ss}")
-    _drive_sync(ss, drive_path, args.push)
+    # ss = _get_relative_paths(s, drive_path)
+    # logger.debug(f"the relative set is {ss}")
+    _drive_sync(s, drive_path, args.push)
     _task_update(host, tsks, args.push)
 
     tw.sync()
