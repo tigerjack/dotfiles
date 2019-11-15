@@ -78,7 +78,7 @@ status.register("shell",
 
 status.register("xkblayout",
     #format="\u2328{symbol}",
-    format="👅 {symbol}",
+    format="👅 {name}",
     layouts=["us", "it"],
     interval=1000
 )
@@ -120,7 +120,7 @@ status.register("battery",
      # Not used, I use my own script
      # alert=True,
      alert_percentage=10,
-     alert_timeout=10,
+     # alert_timeout=10,
      # color="#00ffaa",
      # charging_color="#0055ff",
      full_color="#ff0000",
