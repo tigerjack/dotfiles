@@ -10,7 +10,7 @@ status = Status(logfile='$MDIR_LOGS/i3/i3pystatus.log')
 
 _temp_enabled = os.path.exists("/sys/class/thermal/thermal_zone0/temp")
 _battery_enabled = False
-_net_interface = netifaces.interfaces()[1]
+_net_interface = netifaces.gateways()['default'][netifaces.AF_INET][1]
 
 # Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
 status.register("text",
@@ -77,8 +77,7 @@ status.register("shell",
 # )
 
 status.register("xkblayout",
-    #format="\u2328{symbol}",
-    format="👅 {name}",
+    format="👅{name}",
     layouts=["us", "it"],
     interval=1000
 )
@@ -104,18 +103,14 @@ status.register("shell",
 # For AMD CPU I've commented formatting options and disabled lm_sensors
 if _temp_enabled:
     status.register("temp",
-        lm_sensors_enabled = False,
         format="{temp:.0f}°C",
-    #    lm_sensors_enabled = True,
-    #    format="{Core_0}-{Core_1}-{Core_2}-{Core_3}",
         hints={"markup": "pango"},
-        dynamic_color=True,
         alert_temp=65,
         on_leftclick = "urxvt -e htop",
     )
 
 status.register("battery",
-        format="🔋{percentage:.0f}%{status}{remaining:%E%h:%M}",
+     format="🔋{percentage:.0f}%{status}{remaining:%E%h:%M}",
      interval=30,
      # Not used, I use my own script
      # alert=True,
@@ -163,6 +158,7 @@ status.register("mem",
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 ### TO CONFIGURE FOR EACH MACHINE
+# As a workaround, I used the _net_interface method
 status.register("network",
     interface=_net_interface,
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
@@ -170,9 +166,11 @@ status.register("network",
     format_up="\u2198{bytes_recv}\u2197{bytes_sent} ⃓v❭",
     format_down="{interface}\u2013",
     on_leftclick = "nm-connection-editor",
-    on_rightclick = "urxvt -e bash -c 'sudo nethogs wlp3s0'",
+    on_rightclick = "urxvt -e bash -c 'sudo nethogs {interface}'",
     start_color="#00ffaa",
     end_color="#ff0055",
+    recv_limit=4096,
+    sent_limit=4096,
     separate_color="True",
     hints={"markup": "pango"},
 )
