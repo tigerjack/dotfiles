@@ -6,7 +6,6 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoff
 application/epub+zip=calibre-ebook-viewer.desktop;
 application/x-mobipocket-ebook=calibre-ebook-viewer.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
-image/jpeg=shotwell-viewer.desktop;
 inode/directory=urxvt-usercreated-1.desktop;
 text/x-tex=texstudio.desktop;
 image/svg+xml=shotwell-usercreated-1.desktop;
@@ -20,7 +19,6 @@ application/x-extension-html=firefox.desktop
 application/x-extension-shtml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
-video/x-matroska=smplayer.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -41,3 +39,6 @@ image/png=gpicview.desktop;
 application/xhtml+xml=firefox.desktop;
 application/vnd.ms-excel=libreoffice-calc.desktop;
 video/x-matroska=smplayer.desktop;
+image/jpeg=gpicview.desktop;
+application/x-xpinstall=thunderbird.desktop;
+x-scheme-handler/thunderlink=thunderbird-tl.desktop
