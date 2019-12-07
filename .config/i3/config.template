@@ -9,9 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# $mod1 = Alt; $mod4 = Super, Windows
+# $mod1 = Alt; $mod4 = Super, Windows; Ctrl is simply Control
 set $sup Mod4
 set $alt Mod1
+#
 show_marks yes
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -35,16 +36,13 @@ floating_modifier $sup
 # By default, window focus follows your mouse movements as the mouse crosses window borders. 
 focus_follows_mouse no
 
-# start a terminal
-#bindsym $sup+Return exec i3-sensible-terminal >> "$MDIR_LOGS/i3/i3-sensible-terminal.log" 2>&1
-bindsym $sup+Return exec i3-sensible-terminal
-
-# kill focused window
-bindsym $sup+Shift+x kill
-
+###########################################
+# Launchers
+###########################################
 # start dmenu (a program launcher)
 #bindsym $sup+Shift+semicolon exec dmenu_run
 #bindsym $sup+Shift+semicolon exec "yeganesh -x -- -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC"
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -63,6 +61,11 @@ bindsym $sup+semicolon exec rofi -show
 #bindsym $sup+Shift+a exec xfce4-appfinder >> "$MDIR_LOGS/i3/xfce4-appfinder.log" 2>&1
 bindsym $sup+Shift+a exec xfce4-appfinder
 
+###########################################
+# Windows 
+###########################################
+# kill focused window
+bindsym $sup+Shift+x kill
 # change focus
 bindsym $sup+h focus left
 bindsym $sup+j focus down
@@ -102,10 +105,12 @@ bindsym $sup+t layout tabbed
 bindsym $sup+e layout toggle split
 
 # toggle tiling / floating
-bindsym $sup+Shift+g floating toggle
+#bindsym $sup+Shift+g floating toggle
+bindsym $sup+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $sup+g focus mode_toggle
+#bindsym $sup+g focus mode_toggle
+bindsym $sup+space focus mode_toggle
 
 # focus floating and move/resize (see definitions later)
 bindsym $sup+m focus floating mode "moveit"
@@ -116,95 +121,6 @@ bindsym $sup+a focus parent
 
 # focus the child container
 bindsym $sup+c focus child
-
-# switch to workspace
-bindsym $sup+1 workspace 1
-bindsym $sup+2 workspace 2
-bindsym $sup+3 workspace 3
-bindsym $sup+4 workspace 4
-bindsym $sup+5 workspace 5
-bindsym $sup+6 workspace 6
-bindsym $sup+7 workspace 7
-bindsym $sup+8 workspace 8
-bindsym $sup+9 workspace 9
-bindsym $sup+0 workspace 10
-bindsym $sup+F1 workspace 11
-bindsym $sup+F2 workspace 12
-bindsym $sup+F3 workspace 13
-bindsym $sup+F4 workspace 14
-bindsym $sup+F5 workspace 15
-bindsym $sup+F6 workspace 16
-bindsym $sup+F7 workspace 17
-bindsym $sup+F8 workspace 18
-bindsym $sup+F9 workspace 19
-bindsym $sup+F10 workspace 20
-
-# move focused container to workspace
-bindsym $sup+Shift+1 move container to workspace 1
-bindsym $sup+Shift+2 move container to workspace 2
-bindsym $sup+Shift+3 move container to workspace 3
-bindsym $sup+Shift+4 move container to workspace 4
-bindsym $sup+Shift+5 move container to workspace 5
-bindsym $sup+Shift+6 move container to workspace 6
-bindsym $sup+Shift+7 move container to workspace 7
-bindsym $sup+Shift+8 move container to workspace 8
-bindsym $sup+Shift+9 move container to workspace 9
-bindsym $sup+Shift+0 move container to workspace 10
-bindsym $sup+Shift+F1 move container to workspace 11
-bindsym $sup+Shift+F2 move container to workspace 12
-bindsym $sup+Shift+F3 move container to workspace 13
-bindsym $sup+Shift+F4 move container to workspace 14
-bindsym $sup+Shift+F5 move container to workspace 15
-bindsym $sup+Shift+F6 move container to workspace 16
-bindsym $sup+Shift+F7 move container to workspace 17
-bindsym $sup+Shift+F8 move container to workspace 18
-bindsym $sup+Shift+F9 move container to workspace 19
-bindsym $sup+Shift+F10 move container to workspace 20
-
-# switch between the current and the previously focused one
-bindsym $sup+o workspace back_and_forth
-bindsym $sup+Shift+o move container to workspace back_and_forth
-
-# move to different RandR output
-# Move the current workspace to the next output
-# (effectively toggles when you only have two outputs)
-bindsym $sup+Control+F1 move workspace to output right
-# Switch focus to left/right monitor
-bindsym $sup+Control+h focus output left
-bindsym $sup+Control+l focus output right
-bindsym $sup+Control+j focus output up
-bindsym $sup+Control+k focus output down
-bindsym $sup+Control+Left focus output left
-bindsym $sup+Control+Right focus output right
-bindsym $sup+Control+Up focus output up
-bindsym $sup+Control+Down focus output down
-
-# Make the currently focused window a scratchpad
-bindsym $sup+Shift+n move scratchpad
-
-# Show the first scratchpad window
-bindsym $sup+n scratchpad show
-
-# reload the configuration file
-bindsym $sup+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $sup+Shift+r restart
-# exit i3 (logs you out of your X session)
-#bindsym $sup+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $sup+Shift+q exec dmenu_exit.sh > "$MDIR_LOGS/i3/dmenu_exit.log" 2>&1
-bindsym $sup+Shift+q exec dmenu_exit.sh
-
-# lock the screen
-#bindsym $sup+Shift+z exec "loginctl lock-session > '$MDIR_LOGS/i3/lock-session.log' 2>&1"
-bindsym $sup+Shift+z exec "loginctl lock-session"
-
-# take screenshot
-bindsym $sup+Control+Print exec --no-startup-id scrot "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/"'%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
-bindsym $sup+Shift+Print exec --no-startup-id sleep 0.2 && scrot -s "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/"'%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
-bindsym $sup+Control+Shift+Print exec --no-startup-id sleep 0.2 && scrot -u "$(xdg-user-dir PICTURES)"'/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
-
-# Start calculator
-bindsym $sup+equal exec speedcrunch > $MDIR_LOGS/i3/speedcrunch.log 2>&1
 
 # move floating window
 mode "moveit" {
@@ -271,19 +187,193 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+###########################################
+# Workspaces
+###########################################
+# Now managed by i3-workspace-groups
+# # switch to workspace
+# bindsym $sup+1 workspace 1
+# bindsym $sup+2 workspace 2
+# bindsym $sup+3 workspace 3
+# bindsym $sup+4 workspace 4
+# bindsym $sup+5 workspace 5
+# bindsym $sup+6 workspace 6
+# bindsym $sup+7 workspace 7
+# bindsym $sup+8 workspace 8
+# bindsym $sup+9 workspace 9
+# bindsym $sup+0 workspace 10
+# bindsym $sup+F1 workspace 11
+# bindsym $sup+F2 workspace 12
+# bindsym $sup+F3 workspace 13
+# bindsym $sup+F4 workspace 14
+# bindsym $sup+F5 workspace 15
+# bindsym $sup+F6 workspace 16
+# bindsym $sup+F7 workspace 17
+# bindsym $sup+F8 workspace 18
+# bindsym $sup+F9 workspace 19
+# bindsym $sup+F10 workspace 20
+# 
+# # move focused container to workspace
+# bindsym $sup+Shift+1 move container to workspace 1
+# bindsym $sup+Shift+2 move container to workspace 2
+# bindsym $sup+Shift+3 move container to workspace 3
+# bindsym $sup+Shift+4 move container to workspace 4
+# bindsym $sup+Shift+5 move container to workspace 5
+# bindsym $sup+Shift+6 move container to workspace 6
+# bindsym $sup+Shift+7 move container to workspace 7
+# bindsym $sup+Shift+8 move container to workspace 8
+# bindsym $sup+Shift+9 move container to workspace 9
+# bindsym $sup+Shift+0 move container to workspace 10
+# bindsym $sup+Shift+F1 move container to workspace 11
+# bindsym $sup+Shift+F2 move container to workspace 12
+# bindsym $sup+Shift+F3 move container to workspace 13
+# bindsym $sup+Shift+F4 move container to workspace 14
+# bindsym $sup+Shift+F5 move container to workspace 15
+# bindsym $sup+Shift+F6 move container to workspace 16
+# bindsym $sup+Shift+F7 move container to workspace 17
+# bindsym $sup+Shift+F8 move container to workspace 18
+# bindsym $sup+Shift+F9 move container to workspace 19
+# bindsym $sup+Shift+F10 move container to workspace 20
+
+# Switch to previous/next workspace (in all groups).
+bindsym $sup+p workspace prev
+bindsym $sup+n workspace next
+
+# switch between the current and the previously focused one
+bindsym $sup+o workspace back_and_forth
+bindsym $sup+Shift+o move container to workspace back_and_forth
+
+#######################################
+# i3-workspace-groups shortcuts
+#######################################
+# See also workspaces, some options are mutually exclusive
+# Shortcut for i3-workspace-groups
+set $exec_i3_groups exec --no-startup-id i3-workspace-groups
+# Switch active workspace group
+bindsym $sup+g exec --no-startup-id i3-switch-active-workspace-group
+
+# Assign workspace to a group
+bindsym $sup+Shift+g exec --no-startup-id i3-assign-workspace-to-group
+
+# Select workspace to focus on
+bindsym $sup+w exec --no-startup-id i3-focus-on-workspace
+
+# Move the focused container to another workspace
+bindsym $sup+Shift+w exec --no-startup-id i3-move-to-workspace
+
+# Rename/renumber workspace. Uses Super+Alt+r
+## bindsym Mod1+Mod4+n exec --no-startup-id i3-rename-workspace
+bindsym $sup+$alt+r exec --no-startup-id i3-rename-workspace
+
+bindsym $sup+1 $exec_i3_groups workspace-number 1
+bindsym $sup+2 $exec_i3_groups workspace-number 2
+bindsym $sup+3 $exec_i3_groups workspace-number 3
+bindsym $sup+4 $exec_i3_groups workspace-number 4
+bindsym $sup+5 $exec_i3_groups workspace-number 5
+bindsym $sup+6 $exec_i3_groups workspace-number 6
+bindsym $sup+7 $exec_i3_groups workspace-number 7
+bindsym $sup+8 $exec_i3_groups workspace-number 8
+bindsym $sup+9 $exec_i3_groups workspace-number 9
+bindsym $sup+0 $exec_i3_groups workspace-number 10
+
+bindsym $sup+Shift+1 $exec_i3_groups move-to-number 1
+bindsym $sup+Shift+2 $exec_i3_groups move-to-number 2
+bindsym $sup+Shift+3 $exec_i3_groups move-to-number 3
+bindsym $sup+Shift+4 $exec_i3_groups move-to-number 4
+bindsym $sup+Shift+5 $exec_i3_groups move-to-number 5
+bindsym $sup+Shift+6 $exec_i3_groups move-to-number 6
+bindsym $sup+Shift+7 $exec_i3_groups move-to-number 7
+bindsym $sup+Shift+8 $exec_i3_groups move-to-number 8
+bindsym $sup+Shift+9 $exec_i3_groups move-to-number 9
+bindsym $sup+Shift+0 $exec_i3_groups move-to-number 10
+
+# Switch to previous/next workspace (in the current group).
+bindsym $sup+Control+p $exec_i3_groups workspace-prev
+bindsym $sup+Control+n $exec_i3_groups workspace-next
+
+###########################################
+# RandR
+###########################################
+# move to different RandR output
+# Move the current workspace to the next output
+# (effectively toggles when you only have two outputs)
+bindsym $sup+Control+F1 move workspace to output right
+# Switch focus to left/right monitor
+bindsym $sup+Control+h focus output left
+bindsym $sup+Control+l focus output right
+bindsym $sup+Control+j focus output up
+bindsym $sup+Control+k focus output down
+bindsym $sup+Control+Left focus output left
+bindsym $sup+Control+Right focus output right
+bindsym $sup+Control+Up focus output up
+bindsym $sup+Control+Down focus output down
+
+
+###########################################
+# Scratchpad
+###########################################
+# Make the currently focused window a scratchpad
+bindsym $sup+Shift+d move scratchpad
+
+# Show the first scratchpad window
+bindsym $sup+d scratchpad show
+
+###########################################
+# Utilities
+###########################################
+# reload the configuration file
+bindsym $sup+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $sup+Shift+r restart
+
+###########################################
+# Execute commands/programs
+###########################################
+# start a terminal
+#bindsym $sup+Return exec i3-sensible-terminal >> "$MDIR_LOGS/i3/i3-sensible-terminal.log" 2>&1
+bindsym $sup+Return exec i3-sensible-terminal
+
+# lock the screen
+#bindsym $sup+Shift+z exec "loginctl lock-session > '$MDIR_LOGS/i3/lock-session.log' 2>&1"
+bindsym $sup+Shift+z exec "loginctl lock-session"
+
+# exit i3 (logs you out of your X session)
+#bindsym $sup+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $sup+Shift+q exec dmenu_exit.sh > "$MDIR_LOGS/i3/dmenu_exit.log" 2>&1
+bindsym $sup+Shift+q exec dmenu_exit.sh
+
+# take screenshot
+bindsym $sup+Control+Print exec --no-startup-id scrot "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/"'%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $sup+Shift+Print exec --no-startup-id sleep 0.2 && scrot -s "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/"'%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $sup+Control+Shift+Print exec --no-startup-id sleep 0.2 && scrot -u "$(xdg-user-dir PICTURES)"'/NotShotwelled/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
+
+# Start calculator
+bindsym $sup+equal exec speedcrunch > $MDIR_LOGS/i3/speedcrunch.log 2>&1
+
+# Switch keyboard layout
+#bindsym $sup+Shift+space exec 'xkbgroup_switch.sh' >> "$MDIR_LOGS/i3/xkbgroup.log" 2>&1
+
+#######################################
+# Tray bar
+#######################################
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # https://i3wm.org/docs/userguide.html#_configuring_i3bar
 bar {
+        # Config for i3-workspace-groups
+        strip_workspace_numbers yes
+
 	tray_output primary
-        status_command python3 "$XDG_CONFIG_HOME/i3pystatus/config.py"
 	#status_command i3status
+        status_command python3 "$XDG_CONFIG_HOME/i3pystatus/config.py"
 	mode dock
 	workspace_buttons yes
 	tray_padding 0
 }
 
+#######################################
 ## Mouse options
+#######################################
 # The middle button over a titlebar kills the window
 bindsym --release button2 kill
 
@@ -293,8 +383,9 @@ bindsym --whole-window $sup+button2 kill
 # The right button toggles floating
 bindsym button3 floating toggle
 bindsym $sup+button3 floating toggle
-
-## Some window specific config
+###########################################
+# Some window specific config
+###########################################
 for_window [class="trayer"] floating enable; border none
 for_window [class="copyq"] floating enable; border none
 assign [class="TelegramDesktop"] 17
@@ -303,9 +394,6 @@ assign [class="Skype"] 17
 #assign [class="mplayer"] 10
 #assign [class="mpv"] 10
 #assign [class="Spotify"] 10
-
-### Switch keyboard layout (mine)
-bindsym $sup+Shift+space exec 'xkbgroup_switch.sh' >> "$MDIR_LOGS/i3/xkbgroup.log" 2>&1
 
  
 #Execute the startup script
