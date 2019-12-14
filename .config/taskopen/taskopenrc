@@ -1,13 +1,13 @@
 
 #BROWSER='xdg-open $FILE &>/dev/null'
-#EDITOR='vim'
-#FILE_CMD='xdg-open'
+EDITOR='vim'
+FILE_CMD='xdg-open'
 TASKBIN='task'
 
 # If you sync tasks NOTES_FOLDER should be a location that syncs and is available to
 # other computers, i.e. /users/dropbox/tasknotes
 # NOTES_FOLDER to store notes in, must already exist!
-NOTES_FOLDER="$HOME/tasknotes/"
+NOTES_FOLDER="$MDIR_GLOBAL_APP_DATA/tasknotes/"
 
 # Preferred extension for tasknotes
 NOTES_EXT=".txt"
