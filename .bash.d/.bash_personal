@@ -178,10 +178,16 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 #export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if command -v pyenv 1>/dev/null 2>&1; then
+  # basic pyenv command
   eval "$(pyenv init -)"
+  # for pyenv virtualenv, https://github.com/pyenv/pyenv-virtualenv
   eval "$(pyenv virtualenv-init -)"
+  # for pyenv virtualenvwrapper, https://github.com/pyenv/pyenv-virtualenvwrapper
   pyenv virtualenvwrapper_lazy
 fi
 
 # opam configuration
 test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
+
+# It seems to be only used by texdoc
+#export PDFVIEWER=zathura
