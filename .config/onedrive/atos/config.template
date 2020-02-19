@@ -1,7 +1,8 @@
 # Directory where the files will be synced
 sync_dir = "$MDIR_GLOBAL_DATA/Public/onedrive/AtoS"
 # Skip files and directories that match this pattern
-skip_file = "~*|.~*|*.tmp|*.lnk|Desktop/VMs"
+skip_file = "~*|.~*|*.tmp|*.lnk"
+skip_dir = "Desktop/VMs|*/__pycache__*"
 # Skip simlinks
 skip_symlinks = "false"
 skip_dotfiles = "false"
