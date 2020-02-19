@@ -125,7 +125,12 @@ LinuxData
 .jupyter
 .ipython/profile*
 .qiskit/qiskitrc
+.pyenv
+#
+.rclonesyncwd
 # 
+.Mathematica
+#
 .scenebuilder/
 # GTK
 .gtk-bookmarks
