@@ -275,6 +275,16 @@ bindsym $sup+7 $exec_i3_groups workspace-number 7
 bindsym $sup+8 $exec_i3_groups workspace-number 8
 bindsym $sup+9 $exec_i3_groups workspace-number 9
 bindsym $sup+0 $exec_i3_groups workspace-number 10
+bindsym $sup+F1 $exec_i3_groups workspace-number 11
+bindsym $sup+F2 $exec_i3_groups workspace-number 12
+bindsym $sup+F3 $exec_i3_groups workspace-number 13
+bindsym $sup+F4 $exec_i3_groups workspace-number 14
+bindsym $sup+F5 $exec_i3_groups workspace-number 15
+bindsym $sup+F6 $exec_i3_groups workspace-number 16
+bindsym $sup+F7 $exec_i3_groups workspace-number 17
+bindsym $sup+F8 $exec_i3_groups workspace-number 18
+bindsym $sup+F9 $exec_i3_groups workspace-number 19
+bindsym $sup+F10 $exec_i3_groups workspace-number 20
 
 bindsym $sup+Shift+1 $exec_i3_groups move-to-number 1
 bindsym $sup+Shift+2 $exec_i3_groups move-to-number 2
@@ -286,6 +296,16 @@ bindsym $sup+Shift+7 $exec_i3_groups move-to-number 7
 bindsym $sup+Shift+8 $exec_i3_groups move-to-number 8
 bindsym $sup+Shift+9 $exec_i3_groups move-to-number 9
 bindsym $sup+Shift+0 $exec_i3_groups move-to-number 10
+bindsym $sup+Shift+F1 $exec_i3_groups move-to-number 11
+bindsym $sup+Shift+F2 $exec_i3_groups move-to-number 12
+bindsym $sup+Shift+F3 $exec_i3_groups move-to-number 13
+bindsym $sup+Shift+F4 $exec_i3_groups move-to-number 14
+bindsym $sup+Shift+F5 $exec_i3_groups move-to-number 15
+bindsym $sup+Shift+F6 $exec_i3_groups move-to-number 16
+bindsym $sup+Shift+F7 $exec_i3_groups move-to-number 17
+bindsym $sup+Shift+F8 $exec_i3_groups move-to-number 18
+bindsym $sup+Shift+F9 $exec_i3_groups move-to-number 19
+bindsym $sup+Shift+F10 $exec_i3_groups move-to-number 20
 
 # Switch to previous/next workspace (in the current group).
 bindsym $sup+Control+p $exec_i3_groups workspace-prev
