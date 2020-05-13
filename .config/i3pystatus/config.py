@@ -8,9 +8,10 @@ import netifaces
 
 status = Status(logfile='$MDIR_LOGS/i3/i3pystatus.log')
 
+_weather_city = "Paris"
 _temp_enabled = os.path.exists("/sys/class/thermal/thermal_zone0/temp")
 _battery_enabled = False
-_net_interface = netifaces.gateways()['default'][netifaces.AF_INET][1]
+#_net_interface = netifaces.gateways()['default'][netifaces.AF_INET][1]
 
 # Simple module to invoke pcmanfm-qt and switch to "MOUSE MODE"
 status.register("text",
@@ -55,10 +56,10 @@ status.register("shell",
     #command="curl http://wttr.in/Milan?format='+%c+%t,+%w+%m'",
     #command="curl -s http://wttr.in/Milan?format='+%m+%w' | awk -F' ' '{print $1 $2 \"\u224a\"}'",
     # command="wttr_wrapper.sh",
-    command="wttr_wrapper.py",
+    command="wttr_wrapper.py " + _weather_city,
     interval=3600,
-    on_leftclick='termite --hold -e "curl http://v2.wttr.in/Milan"',
-    on_rightclick='termite --hold -e "curl http://wttr.in/Milan"',
+    on_leftclick='termite --hold -e "curl http://v2.wttr.in/" + _weather_city',
+    on_rightclick='termite --hold -e "curl http://wttr.in/" + _weather_city',
 )
 
 # Doesn't work
@@ -78,7 +79,7 @@ status.register("shell",
 
 status.register("xkblayout",
     format="👅{name}",
-    layouts=["us", "it"],
+    layouts=["us", "it", "us intl"],
     interval=1000
 )
 
@@ -160,7 +161,7 @@ status.register("mem",
 ### TO CONFIGURE FOR EACH MACHINE
 # As a workaround, I used the _net_interface method
 status.register("network",
-    interface=_net_interface,
+    interface="wlp3s0",
     #format_up="{essid}{quality:3.0f}%\u2197{bytes_sent}\u2198{bytes_recv}KB/s",
     #format_up="\u2198{bytes_recv}\u2197{bytes_sent}\u23d0\u03bd\u232a",
     format_up="\u2198{bytes_recv}\u2197{bytes_sent} ⃓v❭",

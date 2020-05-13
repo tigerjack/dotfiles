@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import requests
+from sys import argv
 
 def main():
     try:
-        res = requests.get("http://wttr.in/Milan?format=+%m+%w🌀")
+        res = requests.get(f"http://wttr.in/{argv[1]}?format=+%m+%w🌀")
         if res.status_code == 200:
             if len(res.text) > 20:
                 print("Woah!")
