@@ -8,7 +8,7 @@ import netifaces
 
 status = Status(logfile='$MDIR_LOGS/i3/i3pystatus.log')
 
-_weather_city = "Paris"
+_weather_city = "Benevento"
 _temp_enabled = os.path.exists("/sys/class/thermal/thermal_zone0/temp")
 _battery_enabled = False
 #_net_interface = netifaces.gateways()['default'][netifaces.AF_INET][1]
