@@ -12,7 +12,7 @@ for file in /etc/X11/xinit/xinitrc.d/?*.sh; do
 done
 unset file
 
-## Load X resources, never background them 
+# Load X resources, never background them 
 [ -f ~/.Xdefaults ] && xrdb -merge ~/.Xdefaults > "$MDIR_LOGS/startx/xrdb_defaults.log$DISPLAY" 2>&1
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources > "$MDIR_LOGS/startx/xrdb_resources.log$DISPLAY" 2>&1
 
@@ -33,7 +33,7 @@ eval $(ssh-agent -s &) >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
 #export SSH_AUTH_SOCK
 
 # Change the screen settings
-#xrandr --output "Screen 0" --brightness 0.5 --gamma 1:1:0.5
+# xrandr --output "Screen 0" --brightness 0.5 --gamma 1:1:0.5
 xrandr --output $(xrandr | grep -E " connected (primary )?[1-9]+" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/") --brightness 0.5 --gamma 1:1:0.5 > "$MDIR_LOGS/startx/xrandr.log$DISPLAY" 2>&1
 
 # Activate bloc num

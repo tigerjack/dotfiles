@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.40 for simone on Fri Jan 11 09:28:53 2019.
+# Written by xscreensaver-demo 5.43 for simone on Tue Oct  1 20:47:54 2019.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
@@ -277,6 +277,9 @@ programs:								      \
   GL: 				peepers -root				    \n\
   GL: 				razzledazzle -root			    \n\
 				vfeedback -root				    \n\
+  GL: 				handsy -root				    \n\
+  GL: 				deepstars -root				    \n\
+  GL: 				gravitywell -root			    \n\
 
 
 pointerPollTime:    0:00:05

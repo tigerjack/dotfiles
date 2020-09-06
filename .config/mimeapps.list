@@ -41,6 +41,7 @@ application/x-xpinstall=thunderbird.desktop;
 x-scheme-handler/thunderlink=thunderbird-tl.desktop
 application/xml=libreoffice-writer.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
+application/pdf=mine-pdfxchangeeditorcrack.desktop;
 application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
 text/html=firefox.desktop;
 application/x-research-info-systems=leafpad.desktop;

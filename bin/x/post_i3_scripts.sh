@@ -1,5 +1,6 @@
 #!/bin/sh
 ## Means already in desktop files, either /etx/xdg/autostart or	~/.config/autostart
+
 # Polkit, started by systemctl
 ## lxqt-policykit-agent >"$MDIR_LOGS/startx/lxqt_policykit_agent.log$DISPLAY" 2>&1 &
 
@@ -7,7 +8,7 @@
 xscreensaver -no-splash >"$MDIR_LOGS/startx/xscreensaver.log$DISPLAY" 2>&1 &
 xss-lock -- xscreensaver-command --lock >"$MDIR_LOGS/startx/xss-lock.log$DISPLAY" 2>&1 &
 
-# To associate shortcuts to events
+# To associate shortcuts to events; mostly for Fn keys (mute/unumute, next song, ...)
 xbindkeys >"$MDIR_LOGS/startx/xbindkeys.log$DISPLAY" 2>&1 &
 
 # notification system daemon
@@ -35,6 +36,7 @@ xbindkeys >"$MDIR_LOGS/startx/xbindkeys.log$DISPLAY" 2>&1 &
 ## libinput-gestures >"$MDIR_LOGS/startx/libinput-gestures.log$DISPLAY" 2>&1 &
 
 # Launch all the XDG-autostart 
+# Check files in /etc/xdg/autostart and ~/.config/autostart
 dex -a > "$MDIR_LOGS/startx/dex.log$DISPLAY" 2>&1 &
 
 # Execute all my startup X scripts
