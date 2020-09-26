@@ -106,6 +106,9 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
                                       sphinx-doc
+                                      latex-extra
+                                      ;; flycheck-grammarly
+                                      langtool
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -500,6 +503,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; langtool
+  (setq langtool-java-classpath
+        "/usr/share/languagetool:/usr/share/java/languagetool/*")
+  (require 'langtool)
   ;; For global to use GTAGSLIBPATH
   ;; look here https://emacs.stackexchange.com/questions/13254/find-external-definition-with-gtags-or-ggtags
   ;; WARN: maybe on a per project basis?
