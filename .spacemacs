@@ -93,9 +93,14 @@ This function should only modify configuration layer settings."
             latex-build-command "LaTeX"
             latex-enable-auto-fill -1
             latex-enable-folding t)
-     bibtex
+     (bibtex ;; :variables
+             ;; org-ref-default-bibliography '("~/Papers/references.bib")
+             ;; org-ref-pdf-directory "~/Papers/"
+             ;; org-ref-bibliography-notes "~/Papers/notes.org"
+             )
      (spell-checking :variables
                       spell-checking-enable-by-default nil)
+     ipython-notebook
     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -253,7 +258,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("SauceCodePro Nerd Font Mono"
-                               :size 20
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -627,7 +632,8 @@ you should place your code here."
   (setq TeX-view-program-list
         '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
           ("Skim" "displayline -b -g %n %o %b")
-          ;; forward to zathura line number and file name; resend back to emacs line and filename when CTRL+click on zathura
+          ;; forward to zathura line number and file name; resend back to emacs
+          ;; line and filename when CTRL+click on zathura
           ("Zathura"
            ("zathura %o"
             (mode-io-correlate
@@ -667,42 +673,6 @@ you should place your code here."
         (expand-file-name "/usr/share/ditaa/ditaa.jar"))
  )
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(org-download-screenshot-method "scrot -s %s")
- '(package-selected-packages
-   (quote
-    (sphinx-doc slime-company slime phpunit phpcbf php-extras php-auto-yasnippets org-ref pdf-tools key-chord ivy tablist lv helm-bibtex parsebib company-anaconda ac-etags auto-complete-clang php-mode jedi-core treepy graphql adoc-mode markup-faces ox-reveal haskell-mode swiper flycheck-rtags company-rtags google-c-style flex-autopair bison-mode ac-emacs-eclim company-emacs-eclim eclim company-auctex auctex restclient-helm restclient know-your-http-well tern-auto-complete ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
- '(paradox-automatically-star nil)
- '(paradox-github-token t)
- '(safe-local-variable-values
-   (quote
-    ((eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
-             (calc . t)
-             (C . t)
-             (ditaa . t))))
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
-             (calc . t)
-             (c . t)
-             (ditaa . t))))
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
-             (calc . t)
-             (ditaa . t))))))))
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -714,315 +684,38 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default))
  '(doc-view-continuous t)
  '(evil-want-Y-yank-to-eol nil)
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ref\\|eqref\\|usepackage\\|input\\|includestandalone\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(ispell-program-name "/usr/bin/hunspell")
  '(org-download-screenshot-method "scrot -s %s")
  '(org-format-latex-options
-   (quote
-    (:foreground default :background default :scale 1.6 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
-                 ("begin" "$1" "$" "$$" "\\(" "\\["))))
+   '(:foreground default :background default :scale 1.6 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+                 ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(package-selected-packages
-   (quote
-    (latex-preview-pane
-     latex-extra
-     company-jedi
-     geben
-     sphinx-doc
-     slime-company
-     slime
-     phpunit
-     phpcbf
-     php-extras
-     php-auto-yasnippets
-     org-ref
-     pdf-tools
-     key-chord
-     ivy
-     tablist
-     lv
-     helm-bibtex
-     parsebib
-     company-anaconda
-     ac-etags
-     auto-complete-clang
-     php-mode
-     jedi-core
-     treepy
-     graphql
-     adoc-mode
-     markup-faces
-     ox-reveal
-     haskell-mode
-     swiper
-     flycheck-rtags
-     company-rtags
-     google-c-style
-     flex-autopair
-     bison-mode
-     ac-emacs-eclim
-     company-emacs-eclim
-     eclim
-     company-auctex
-     auctex
-     restclient-helm
-     restclient
-     know-your-http-well
-     tern-auto-complete
-     ranger
-     typit
-     mmt
-     sudoku
-     pacmacs
-     2048-game
-     yapfify
-     pyvenv
-     pytest
-     pyenv-mode
-     py-isort
-     pip-requirements
-     live-py-mode
-     hy-mode
-     helm-pydoc
-     anaconda-mode
-     pythonic
-     flyspell-correct-helm
-     flyspell-correct
-     auto-dictionary
-     git-gutter-fringe+
-     git-gutter-fringe
-     fringe-helper
-     git-gutter+
-     git-gutter
-     diff-hl
-     company-irony-c-headers
-     cython-mode
-     deft
-     yasnippet-snippets
-     rtags
-     flycheck-pos-tip
-     flycheck
-     function-args
-     helm-gtags
-     ggtags
-     xterm-color
-     shell-pop
-     multi-term
-     eshell-z
-     eshell-prompt-extras
-     esh-help
-     disaster
-     company-c-headers
-     cmake-mode
-     clang-format
-     company-quickhelp
-     pos-tip
-     unfill
-     mwim
-     helm-company
-     helm-c-yasnippet
-     fuzzy
-     company-web
-     web-completion-data
-     company-tern
-     dash-functional
-     company-statistics
-     company
-     auto-yasnippet
-     ac-ispell
-     auto-complete
-     web-mode
-     tagedit
-     slim-mode
-     scss-mode
-     sass-mode
-     pug-mode
-     less-css-mode
-     helm-css-scss
-     haml-mode
-     emmet-mode
-     quelpa
-     package-build
-     tern
-     js2-refactor
-     web-beautify
-     livid-mode
-     skewer-mode
-     simple-httpd
-     json-mode
-     json-snatcher
-     json-reformat
-     yasnippet
-     multiple-cursors
-     js2-mode
-     js-doc
-     coffee-mode
-     orgit
-     org-projectile
-     org-pomodoro
-     alert
-     log4e
-     markdown-toc
-     magit-gitflow
-     helm-gitignore
-     evil-magit
-     magit
-     magit-popup
-     git-commit
-     ghub
-     let-alist
-     smeargle
-     org-category-capture
-     org-present
-     gntp
-     org-mime
-     org-download
-     mmm-mode
-     markdown-mode
-     htmlize
-     gnuplot
-     gitignore-mode
-     gitconfig-mode
-     gitattributes-mode
-     git-timemachine
-     git-messenger
-     git-link
-     gh-md
-     with-editor
-     sql-indent
-     ws-butler
-     winum
-     which-key
-     volatile-highlights
-     vi-tilde-fringe
-     uuidgen
-     use-package
-     toc-org
-     spaceline
-     powerline
-     restart-emacs
-     request
-     rainbow-delimiters
-     popwin
-     persp-mode
-     pcre2el
-     paradox
-     spinner
-     org-plus-contrib
-     org-bullets
-     open-junk-file
-     neotree
-     move-text
-     macrostep
-     lorem-ipsum
-     linum-relative
-     link-hint
-     indent-guide
-     hydra
-     hungry-delete
-     hl-todo
-     highlight-parentheses
-     highlight-numbers
-     parent-mode
-     highlight-indentation
-     helm-themes
-     helm-swoop
-     helm-projectile
-     helm-mode-manager
-     helm-make
-     projectile
-     pkg-info
-     epl
-     helm-flx
-     helm-descbinds
-     helm-ag
-     google-translate
-     golden-ratio
-     flx-ido
-     flx
-     fill-column-indicator
-     fancy-battery
-     eyebrowse
-     expand-region
-     exec-path-from-shell
-     evil-visualstar
-     evil-visual-mark-mode
-     evil-unimpaired
-     evil-tutor
-     evil-surround
-     evil-search-highlight-persist
-     evil-numbers
-     evil-nerd-commenter
-     evil-mc
-     evil-matchit
-     evil-lisp-state
-     smartparens
-     evil-indent-plus
-     evil-iedit-state
-     iedit
-     evil-exchange
-     evil-escape
-     evil-ediff
-     evil-args
-     evil-anzu
-     anzu
-     evil
-     goto-chg
-     undo-tree
-     eval-sexp-fu
-     highlight
-     elisp-slime-nav
-     dumb-jump
-     f
-     dash
-     s
-     diminish
-     define-word
-     column-enforce-mode
-     clean-aindent-mode
-     bind-map
-     bind-key
-     auto-highlight-symbol
-     auto-compile
-     packed
-     aggressive-indent
-     adaptive-wrap
-     ace-window
-     ace-link
-     ace-jump-helm-line
-     helm
-     avy
-     helm-core
-     popup
-     async)))
+   '(langtool flycheck-grammarly company-anaconda ac-etags auto-complete-clang php-mode jedi-core treepy graphql adoc-mode markup-faces ox-reveal haskell-mode swiper flycheck-rtags company-rtags google-c-style flex-autopair bison-mode ac-emacs-eclim company-emacs-eclim eclim company-auctex auctex restclient-helm restclient know-your-http-well tern-auto-complete ranger typit mmt sudoku pacmacs 2048-game yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc anaconda-mode pythonic flyspell-correct-helm flyspell-correct auto-dictionary git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl company-irony-c-headers cython-mode deft yasnippet-snippets rtags flycheck-pos-tip flycheck function-args helm-gtags ggtags xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format company-quickhelp pos-tip unfill mwim helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode quelpa package-build tern js2-refactor web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat yasnippet multiple-cursors js2-mode js-doc coffee-mode orgit org-projectile org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore evil-magit magit magit-popup git-commit ghub let-alist smeargle org-category-capture org-present gntp org-mime org-download mmm-mode markdown-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md with-editor sql-indent ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
  '(paradox-automatically-star nil)
  '(paradox-github-token t)
  '(safe-local-variable-values
-   (quote
-    ((TeX-command-extra-options . "-shell-escape")
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
+   '((TeX-command-extra-options . "-shell-escape")
+     (javascript-backend . tern)
+     (javascript-backend . lsp)
+     (eval org-babel-do-load-languages 'org-babel-load-languages
+           '((emacs-lisp)
              (calc . t)
              (C . t)
-             (ditaa . t))))
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
+             (ditaa . t)))
+     (eval org-babel-do-load-languages 'org-babel-load-languages
+           '((emacs-lisp)
              (calc . t)
              (c . t)
-             (ditaa . t))))
-     (eval org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote
-            ((emacs-lisp)
+             (ditaa . t)))
+     (eval org-babel-do-load-languages 'org-babel-load-languages
+           '((emacs-lisp)
              (calc . t)
-             (ditaa . t))))))))
+             (ditaa . t))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
