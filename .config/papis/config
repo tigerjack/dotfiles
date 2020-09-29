@@ -1,0 +1,43 @@
+[papers]
+dir = /mnt/internal/DatiSimone/AppData/papis
+# use whoosh as a database for papers
+database-backend = whoosh
+
+[settings]
+#
+# General file opener program, rifle is a nice python program
+# If you're on macOS, you can write "open", if you're on linux
+# you can also write "xdg-open", on windows-cygwin, you can set it to
+# "cygstart"
+#
+opentool = rifle
+# Use ranger as a file browser, a nice python program
+file-browser = ranger
+# Ask for confirmation when doing papis add
+add-confirm = True
+# Edit the info.yaml file before adding a doc into the library
+# papis add --edit
+add-edit = True
+# Open the files before adding a document into the library
+# papis add --open
+add-open = True
+# afaf
+default-query-string = "*"
+#
+# Define custom default match and header formats
+#
+match-format = {doc[tags]}{doc.subfolder}{doc[title]}{doc[author]}{doc[year]}
+#
+# Define header format with colors and multiline support
+#
+header-format = <red>{doc.html_escape[title]}</red>
+  <span color='#ff00ff'>  {doc.html_escape[author]}</span>
+  <yellow>   ({doc.html_escape[year]})</yellow>
+
+[tui]
+editmode = vi
+options_list.selected_margin_style = bg:ansigreen fg:ansired
+options_list.unselected_margin_style =
+
+# Define a lib
+default-library = papers
