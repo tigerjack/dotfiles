@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+MimeType=text/x-matlab
+Exec=/opt/MATLAB/R2019a/bin/matlab -desktop
+Name=MATLAB
+Icon=matlab
+Categories=Math;Science;NumericalAnalysis;
+Comment=A high-level scientific language for numerical computation and visualization
+StartupNotify=true

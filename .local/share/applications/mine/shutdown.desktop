@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System;
+Comment=To shutdown the computer
+Exec=systemctl poweroff
+Icon=system-shutdown
+Name=Shutdown-Button
+NoDisplay=false
+StartupNotify=false
+Terminal=false
+Type=Application

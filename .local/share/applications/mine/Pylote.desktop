@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=Pylote
+GenericName=Desktop Drawing Tool
+Comment=Allows to draw lines and geometric shapes over any other running application
+Exec=/usr/bin/python "/mnt/internal/LinuxData/online_repos/git/local_apps/pylote/pylote/pylote.pyw"
+Icon=/mnt/internal/LinuxData/online_repos/git/pylote/pylote/images/icon.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Education;

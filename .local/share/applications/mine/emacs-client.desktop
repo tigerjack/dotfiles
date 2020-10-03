@@ -8,6 +8,6 @@ Exec=emacsclient -cn %F
 TryExec=emacsclient
 Icon=emacs
 Terminal=false
-Categories=Development;TextEditor;
+Categories=TextEditor;Utility;
 StartupWMClass=Emacs
 Keywords=Text;Editor;

@@ -1,7 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Encoding=UTF-8
 Type=Application
 Name=urxvt
-NoDisplay=true
-Exec=$TERM -e ranger
+GenericName=My urxvt with ranger
+Exec=sh -c "source /home/simone/.bash.d/.bash_personal; \$TERMINAL -e ranger"

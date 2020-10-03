@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PDF-XChange Editor Crack Wrapper (win64)
+MimeType=application/pdf;
+Exec=pdf_xchange_wrapper.sh %f
+Type=Application
+StartupNotify=true
+Comment=PDF-XChange Editor
+Icon=3F87_PDFXEdit.0
+StartupWMClass=pdfxedit.exe
+Terminal=false
+Categories=Viewer;Office;

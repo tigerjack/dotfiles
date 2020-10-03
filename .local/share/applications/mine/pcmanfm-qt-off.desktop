@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=System;
+Comment=To turn off mouse mode
+#Exec=pcmanfm-qt --desktop-off
+Exec=mouse_mode_off.sh
+Icon=
+Name=Mouse mode off
+NoDisplay=false
+StartupNotify=false
+Terminal=false
+Type=Application

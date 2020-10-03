@@ -8,4 +8,4 @@ NotShowIn=GNOME;
 NoDisplay=true
 Terminal=false
 Type=Application
-Hidden=True
+Hidden=true
