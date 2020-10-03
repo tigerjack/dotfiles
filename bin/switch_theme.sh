@@ -55,8 +55,7 @@ if [ $# -eq 0 ]; then
     i3-style "$i3style" -o "$cfgfile_i3" --reload
     termite-color-switcther "$termitestyle"
     sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
-    sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
-    sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk3"
+    sed -i "s/^gtk-theme-name.*/gtk-theme-name=$rofitheme/" "$cfgfile_gtk3"
     sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$dark/" "$cfgfile_gtk3"
     sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt5"
     sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
