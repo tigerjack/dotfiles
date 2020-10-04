@@ -1,0 +1,3 @@
+theme:
+  text: Gray # text in panes
+  playbar_text: Cyan  # artist name in player pane

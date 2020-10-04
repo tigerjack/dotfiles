@@ -27,6 +27,7 @@ cfgfile_gtk2="$HOME/.gtkrc-2.0"
 cfgfile_gtk3="$HOME/.config/gtk-3.0/settings.ini"
 cfgfile_i3="$HOME/.config/i3/config"
 cfgfile_qt5="$HOME/.config/qt5ct/qt5ct.conf"
+cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
 
 switchto="${1:-def}"
 
@@ -60,6 +61,7 @@ if [[ $switchto = light ]]; then
     vimscheme="morning" 
     vimbg="light" 
     spacemacsscheme="spacemacs-light" 
+    spttheme="light"
 else
     i3style="default" 
     dmenu1="black" 
@@ -73,6 +75,7 @@ else
     vimscheme="default" 
     vimbg="dark" 
     spacemacsscheme="spacemacs-dark" 
+    spttheme="dark"
 fi
 # The following lines should be put before the reload"
 sed -i "s/set \$dmenu_options.*/set \$dmenu_options -nb $dmenu1 -nf $dmenu2 -sb $dmenu3/" "$cfgfile_i3"
@@ -100,7 +103,11 @@ if [ -n "$bla" ]; then
     fi
 fi
 
+### SPOTIFY-TUI
+# WARN: This overwrite any personalized configuration in yaml
+# TODO: A parser of config that preserves non-theme lines
+ln -sf "$HOME/.config/spotify-tui/theme_$spttheme.yml" "$cfgfile_spt"
+
 # Still missing 
 # - Firefox: changes to user.js aren't loaded automatically; you can use a plugin to rotate
 # - Thunderbird: no easy switch 
-# - i3-dmenu-desktop you have to tweak i3 config file directly
