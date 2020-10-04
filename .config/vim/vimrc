@@ -32,6 +32,7 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'bash-support.vim'
 Plugin 'xolox/vim-colorscheme-switcher'
 Plugin 'xolox/vim-misc'
+Plugin 'rafi/awesome-vim-colorschemes'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -68,8 +69,8 @@ filetype plugin indent on    " required
 """""""""""
 
 syntax enable
-set background=dark
-colorscheme default
+set background=light
+colorscheme atom
 set number
 
 """"
