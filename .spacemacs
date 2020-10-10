@@ -508,6 +508,12 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; for workflow
+  (setq org-todo-keywords
+        '((sequence "TODO(t!)" "FEEDBACK(f!)" "|" "NEXT(n!)" "|" "WIP(w!)" "|" "DONE(d!)" "DELEGATED(a!)")
+          ;; (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+          (sequence "DISCUSS(s!)"  "|" "CONFIRMED(v!)" "DROPPED(x!)")
+          ))
   ;; langtool
   (setq langtool-java-classpath
         "/usr/share/languagetool:/usr/share/java/languagetool/*")
