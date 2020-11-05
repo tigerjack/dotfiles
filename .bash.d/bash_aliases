@@ -12,7 +12,7 @@ alias tmsu_phd='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/phd'
 alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
 alias tmsu_the='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/thesis'
 alias td='transmission-daemon'
-#alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/xorg.log 2>&1"
+alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/xorg.log 2>&1"
 alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
