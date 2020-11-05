@@ -1,3 +1,4 @@
+#!/bin/bash
 # Shopt various
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -12,9 +13,9 @@ shopt -s globstar
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
 
@@ -73,7 +74,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 
 
 ## To use solarized dircolors for ls
-eval `dircolors ~/.config/dircolors.ansi-dark`
+eval "$(dircolors ~/.config/dircolors.ansi-dark)"
 
 # Set the default editor
 export EDITOR="vim"
@@ -96,7 +97,7 @@ export GOPATH="$HOME/.local"
 
 # Autojump must be sourced here if you want to use it in subshells also (f.e. 
 # when launching a subshell from ranger)
-. /etc/profile.d/autojump.bash #Arch
+source /etc/profile.d/autojump.bash #Arch
 #. /usr/share/autojump/autojump.sh #Ubuntu
 
 # Bash coloring
@@ -112,7 +113,9 @@ export GPG_TTY
 
 # To override vimrc default location
 # Set vimrc's location and source it on vim startup
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+# export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+export VIMINIT="source $MYVIMRC"
 
 # Export also bins in opt and home
 [ "${PATH#*/opt/simone/bin:}" == "$PATH" ] && export PATH="$PATH:/opt/simone/bin"
@@ -125,7 +128,7 @@ export MATLAB_USE_USERWORK=1
 export MATLAB_LOG_DIR="$MDIR_LOGS/matlab"
 
 # Jupyter
-JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 # Anaconda
 [ "${PATH#*/opt/anaconda/bin:}" == "$PATH" ] && export PATH="$PATH:/opt/anaconda/bin"
 
@@ -163,7 +166,7 @@ export TERMCMD='termite'
 export TASKRC="$HOME/.config/taskwarrior/taskrc"
 
 # for thefuck
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 
 # python-virtualenvwrapper
 export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
@@ -187,7 +190,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # opam configuration
-test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
+test -r "$HOME/.opam/opam-init/init.sh" && source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null
 
 # It seems to be only used by texdoc
 #export PDFVIEWER=zathura
+
+# CARGO
+export PATH="$HOME/.cargo/bin:$PATH"
