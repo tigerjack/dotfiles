@@ -9,3 +9,5 @@
 	commitmsgwidth = 80
 [merge]
 	tool = vimdiff
+[pull]
+	rebase = false
