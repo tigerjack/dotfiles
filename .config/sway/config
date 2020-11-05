@@ -107,12 +107,12 @@ bindsym $sup+t layout tabbed
 bindsym $sup+e layout toggle split
 
 # toggle tiling / floating
-#bindsym $sup+Shift+g floating toggle
-bindsym $sup+Shift+space floating toggle
+bindsym $sup+Shift+g floating toggle
+#bindsym $sup+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $sup+g focus mode_toggle
-bindsym $sup+space focus mode_toggle
+bindsym $sup+g focus mode_toggle
+#bindsym $sup+space focus mode_toggle
 
 # focus floating and move/resize (see definitions later)
 bindsym $sup+m focus floating mode "moveit"
@@ -428,10 +428,12 @@ for_window [class="copyq"] floating enable; border none
 # SWAY SPECIFIC
 ##
 input type:keyboard {
-    xkb_layout us,it
-    xkb_variant ,nodeadkeys
+    xkb_layout us,it,us
+    xkb_variant ,,intl
     # xkb_options grp:alt_shift_toggle
-    xkb_options caps:ctrl_modifier
+    # xkb_options caps:ctrl_modifier
+    # win+space to switch layout, esc on caps
+    xkb_options grp:win_space_toggle,caps:escape 
     repeat_delay 200
     repeat_rate 150
 }
@@ -453,9 +455,19 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 bindsym Ctrl+space exec makoctl dismiss -a
+bindsym Ctrl+Shift+i exec copyq toggle
+bindsym --input-device=keyboard $sup+space xkb_switch_layout next
 
-exec mako
- 
+
 #Execute the startup script
-exec --no-startup-id ~/bin/x/post_i3_scripts.sh
-
+# Doesn't work if I invoke an external script, don't know why
+# exec --no-startup-id ~/bin/x/post_sway_scripts.sh > tmp/a.log 2>&1
+# ... so simply launching from here
+exec eval $(ssh-agent -s &)
+# >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
+exec mako
+exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
+exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
+exec dex /usr/share/applications/com.github.hluk.copyq.desktop
+#exec dex /home/simone/.config/autostart/copyq.desktop 
+exec xss-lock -- swaylock -k -l -c 000000
