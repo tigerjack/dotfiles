@@ -36,8 +36,17 @@ tmp/
 .rnd
 # This is my personal dir stack used by gpush/gpop
 .gdir.txt
-# user dirs are generated automatically through generate_user_dirs.sh script file
+# generated automatically through generate_user_dirs.sh script file
 .config/user-dirs.dirs
+# generated automatically through generate_from_global_env.sh script file
+.config/user-dirs.dirs
+.config/taskwarrior/taskrc
+.config/i3/config
+.config/anacrontab
+.config/onedrive/atos/config
+.config/onedrive/polimi/config
+# history files
+.w3m/history
 
 #########
 # GUI configs
