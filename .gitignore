@@ -1,3 +1,10 @@
+##
+# Mine
+##
+temp/
+tmp/
+
+###
 # log files/dirs
 *.log*
 *[lL]ogs/*

@@ -41,12 +41,14 @@ focus_follows_mouse no
 ###########################################
 set $dmenu_options -nb black -nf white -sb red
 # start dmenu (a program launcher)
+# bindsym $sup+Shift+semicolon exec dmenu_run -nb white -nf black -sb blue
 bindsym $sup+Shift+semicolon exec dmenu_run $dmenu_options
 #bindsym $sup+Shift+semicolon exec "yeganesh -x -- -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
+#bindsym $sup+Shift+semicolon exec --no-startup-id i3-dmenu-desktop >> "/mnt/internal/LinuxData/logs/i3/i3-dmenu-desktop.log" 2>&1
 bindsym $sup+$alt+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i $dmenu_options"
 
 #Trying alternative to i3-dmenu-desktop
@@ -389,6 +391,15 @@ bar {
 	mode dock
 	workspace_buttons yes
 	tray_padding 0
+  colors {
+    separator #666666
+    background #000000
+    statusline #ffffff
+    focused_workspace #4c7899 #285577 #ffffff #FFFFFF
+    active_workspace #333333 #5f676a #ffffff #FFFFFF
+    inactive_workspace #333333 #222222 #888888 #000000
+    urgent_workspace #2f343a #900000 #ffffff #FFFFFF
+  }
 }
 
 #######################################
@@ -418,3 +429,8 @@ for_window [class="copyq"] floating enable; border none
  
 #Execute the startup script
 exec --no-startup-id ~/bin/x/post_i3_scripts.sh
+# other stuff
+client.focused #4c7899 #285577 #ffffff #2e9ef4
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused #333333 #222222 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
