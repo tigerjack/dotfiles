@@ -1,5 +1,5 @@
 # Directory where the files will be synced
-sync_dir = "$MDIR_GLOBAL_DATA/Public/onedrive/PoliMi"
+sync_dir = "$MDIR_GLOBAL_DATA/Public/onedrive/polimi"
 # Skip files and directories that match this pattern
 skip_file = "~*|.~*|*.tmp|*.fuse_hidden*"
 # skip_dir = "Attachments|ProgrammiStandalone|Music|BackupElisa|Poker|Learning/Poker|Phone&simila"
