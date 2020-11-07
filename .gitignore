@@ -181,8 +181,9 @@ LinuxData
 .config/GIMP
 # Electron
 .config/Electron
-# 
+# VeraCrypt
 .config/VeraCrypt
+.VeraCrypt-lock*
 # 
 .config/filezilla/
 !.config/filezilla/layout.xml
@@ -197,8 +198,11 @@ LinuxData
 # GUI config
 .config/SpeedCrunch
 # 
-.config/onedrive/atos/*
-.config/onedrive/polimi/*
+.config/onedrive/**/*refresh_token
+.config/onedrive/**/*backup
+.config/onedrive/**/*hash
+# .config/onedrive/atos/*
+# .config/onedrive/polimi/*
 # 
 !.config/onedrive/atos/config.template
 !.config/onedrive/polimi/config.template
