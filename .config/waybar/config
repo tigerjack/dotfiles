@@ -64,6 +64,7 @@
         "spacing": 10
     },
     "clock": {
+        "format": "{:%H:%M %y-%m-%d}",
         "timezone": "Europe/Rome",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
@@ -146,4 +147,7 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
+    //"sway/layout": {
+    //    
+    //}
 }
