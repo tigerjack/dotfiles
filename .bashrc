@@ -4,7 +4,13 @@
 shopt -s dotglob
 for file in ~/.bash.d/*; do
     if [ -f "$file" ]; then
-	. "$file"
+	source "$file"
+    fi
+done
+unset file
+for file in ~/.bash_completion.d/*; do
+    if [ -f "$file" ]; then
+	source "$file"
     fi
 done
 unset file
