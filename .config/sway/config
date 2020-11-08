@@ -436,7 +436,7 @@ input type:keyboard {
     # xkb_options caps:ctrl_modifier
     # win+space to switch layout, esc on caps
     xkb_options grp:win_space_toggle,caps:escape 
-    repeat_delay 200
+    repeat_delay 150
     repeat_rate 150
 }
 
@@ -466,6 +466,8 @@ bindsym Ctrl+Shift+i exec copyq toggle
 bindsym --input-device=keyboard $sup+space xkb_switch_layout next
 
 bindsym $sup+Shift+i exec clipman pick -t wofi
+bindsym $sup+Ctrl+i exec copyq toggle
+
 bindsym $sup+Ctrl+p exec playerctl_info.sh
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -483,6 +485,9 @@ exec mako
 exec nm-applet --indicator
 # clipboard manager
 exec wl-paste -t text --watch clipman store
+
+# battery-monitor
+exec batsignal -b
 
 #Execute the startup scripts
 # Doesn't work if I invoke an external script, don't know why
