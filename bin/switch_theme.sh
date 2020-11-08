@@ -79,7 +79,7 @@ fi
 # The following lines should be put before the reload of i3-style
 sed -i "s/set \$dmenu_options.*/set \$dmenu_options -nb $dmenu1 -nf $dmenu2 -sb $dmenu3/" "$cfgfile_i3"
 i3-style "$i3style" -o "$cfgfile_i3" --reload > /dev/null 2>&1
-termite-color-switcther "$termitestyle"
+termite-color-switcher "$termitestyle"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$rofitheme/" "$cfgfile_gtk3"
 sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$dark/" "$cfgfile_gtk3"
