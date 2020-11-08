@@ -499,5 +499,5 @@ exec batsignal -b
 exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
 exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
 # exec dex /usr/share/applications/com.github.hluk.copyq.desktop
-#exec dex /home/simone/.config/autostart/copyq.desktop 
+exec dex /home/simone/.config/autostart/copyq.desktop 
 exec xss-lock -- swaylock -k -l -c 000000
