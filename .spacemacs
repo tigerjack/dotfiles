@@ -692,6 +692,7 @@ you should place your code here."
   (add-hook 'LaTeX-mode-hook (lambda () (setq flyspell-generic-check-word-predicate
                                               'auctex-mode-flyspell-skip-myenv)))
   ;; ORG MODE
+  (add-hook 'org-mode-hook 'auto-fill-mode)
   (setq org-export-backends '(beamer html latex md))
   ;; used to export source code with minted package
   (setq org-latex-listings 'minted
