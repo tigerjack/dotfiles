@@ -457,6 +457,8 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+bindsym XF86TouchpadToggle exec toggle_touchpad.sh
+
 bindsym Shift+F10 exec playerctl previous
 bindsym Shift+F11 exec playerctl play-pause
 bindsym Shift+F12 exec playerctl next
