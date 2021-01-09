@@ -132,6 +132,7 @@ JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
 # For helm-gtags
 export GTAGSLABEL=pygments 
+export GTAGSCONF=/usr/share/gtags/gtags.conf
 
 # Some git exports
 export GIT_PROG_MGMT_OPTS="--git-dir=$MDIR_PROGRAMMING_DATA/.git_prog_mgmt/ --work-tree=$MDIR_PROGRAMMING_DATA"
