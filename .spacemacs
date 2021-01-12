@@ -72,6 +72,7 @@ This function should only modify configuration layer settings."
      ranger
      (org :variables
           org-projectile-file "TODOs.org")
+     dap
      (lsp)
      (c-c++ :variables
             c-c++-backend 'lsp-ccls
@@ -263,12 +264,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("SauceCodePro Nerd Font Mono"
-   ;; dotspacemacs-default-font '("Source Code Pro"
-                               :size 22
+   ;; dotspacemacs-default-font '("SauceCodePro Nerd Font Mono"
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 24
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
 
@@ -517,21 +518,21 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; for terminal cursor
   (add-hook 'evil-insert-state-entry-hook (lambda () (send-string-to-terminal "\033[5 q"))) (add-hook 'evil-normal-state-entry-hook (lambda () (send-string-to-terminal "\033[0 q")))
-  ;; for wayland copy/paste
-  (setq wl-copy-process nil)
-  (defun wl-copy (text)
-    (setq wl-copy-process (make-process :name "wl-copy"
-                                        :buffer nil
-                                        :command '("wl-copy" "-f" "-n")
-                                        :connection-type 'pipe))
-    (process-send-string wl-copy-process text)
-    (process-send-eof wl-copy-process))
-  (defun wl-paste ()
-    (if (and wl-copy-process (process-live-p wl-copy-process))
-        nil ; should return nil if we're the current paste owner
-      (shell-command-to-string "wl-paste -n | tr -d \r")))
-  (setq interprogram-cut-function 'wl-copy)
-  (setq interprogram-paste-function 'wl-paste)
+  ;; for wayland copy/paste; doesn't work so well for now
+  ;; (setq wl-copy-process nil)
+  ;; (defun wl-copy (text)
+  ;;   (setq wl-copy-process (make-process :name "wl-copy"
+  ;;                                       :buffer nil
+  ;;                                       :command '("wl-copy" "-f" "-n")
+  ;;                                       :connection-type 'pipe))
+  ;;   (process-send-string wl-copy-process text)
+  ;;   (process-send-eof wl-copy-process))
+  ;; (defun wl-paste ()
+  ;;   (if (and wl-copy-process (process-live-p wl-copy-process))
+  ;;       nil ; should return nil if we're the current paste owner
+  ;;     (shell-command-to-string "wl-paste -n | tr -d \r")))
+  ;; (setq interprogram-cut-function 'wl-copy)
+  ;; (setq interprogram-paste-function 'wl-paste)
   ;; for workflow
   (setq org-todo-keywords
         '((sequence "TODO(t!)" "FEEDBACK(f!)" "|" "NEXT(n!)" "|" "WIP(w!)" "|" "DONE(d!)" "DELEGATED(a!)")
