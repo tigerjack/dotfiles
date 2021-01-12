@@ -33,7 +33,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(go
+   '(csv
+     go
      php
      asciidoc
      html
@@ -94,6 +95,13 @@ This function should only modify configuration layer settings."
              python-enable-yapf-format-on-save t
              ;; slow downs saving a lot
              ;; python-sort-imports-on-save t
+             ;;
+             python-backend 'lsp
+             python-lsp-server 'pyls
+             python-formatter 'yapf
+             python-pipenv-activate t
+             python-fill-column 79
+             ;;             python-lsp-git-root "~/repos/installed/python-language-server"
              )
      deft
      (latex :variables
@@ -516,6 +524,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; to avoid issue with workspace next/previous
+  ;; see https://github.com/syl20bnr/spacemacs/issues/13677
+  (with-eval-after-load 'evil-maps
+    (when (featurep 'tab-bar)
+      (define-key evil-normal-state-map "gt" nil)
+            (define-key evil-normal-state-map "gT" nil)))
+
   ;; for terminal cursor
   (add-hook 'evil-insert-state-entry-hook (lambda () (send-string-to-terminal "\033[5 q"))) (add-hook 'evil-normal-state-entry-hook (lambda () (send-string-to-terminal "\033[0 q")))
   ;; for wayland copy/paste; doesn't work so well for now
