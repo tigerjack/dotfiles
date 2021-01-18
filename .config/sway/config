@@ -115,8 +115,8 @@ bindsym $sup+g focus mode_toggle
 #bindsym $sup+space focus mode_toggle
 
 # focus floating and move/resize (see definitions later)
-bindsym $sup+m focus floating mode "moveit"
-bindsym $sup+r focus floating mode "resize"
+bindsym $sup+r mode "resize"
+bindsym $sup+m mode "moveit"
 
 # focus the parent container
 bindsym $sup+a focus parent
@@ -339,10 +339,10 @@ bindsym $sup+Control+Down focus output down
 ###########################################
 # Scratchpad
 ###########################################
-# Make the currently focused window a scratchpad
+# Move the currently focused window to the scratchpad
 bindsym $sup+Shift+d move scratchpad
 
-# Show the first scratchpad window
+# Show the next scratchpad window or hide the focused one
 bindsym $sup+d scratchpad show
 
 ###########################################
@@ -374,7 +374,8 @@ bindsym $sup+Print exec --no-startup-id grim - | wl-copy
 bindsym $sup+Shift+Print exec --no-startup-id grim -g "$(slurp)"  - | wl-copy
 bindsym $sup+Control+Print exec --no-startup-id grim - | tee "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/$(date +'%s_grim.png')" | wl-copy
 bindsym $sup+Control+Shift+Print exec --no-startup-id grim -g "$(slurp)" - | tee "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/$(date +'%s_grim.png')"  | wl-copy
-bindsym $sup+Alt+Print exec --no-startup-id grim -g  "$(slurp)" - | swappy -f -
+bindsym $sup+Alt+Print exec --no-startup-id grim - | swappy -f -
+bindsym $sup+Alt+Shift+Print exec --no-startup-id grim -g  "$(slurp)" - | swappy -f -
 
 # Start calculator
 bindsym $sup+equal exec speedcrunch > /mnt/internal/LinuxData/logs/i3/speedcrunch.log 2>&1
@@ -473,14 +474,20 @@ bindsym $sup+Ctrl+i exec copyq toggle
 #bindsym $sup+Ctrl+p exec playerctl_info.sh
 bindsym $sup+Ctrl+p exec spotify_info.sh
 
+default_border none
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 600 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+# https://www.reddit.com/r/swaywm/comments/afu6cd/how_to_turn_off_the_screen_after_locking_with/
+set $locker 'swaylock -f -e -c 1d2021 --inside-color 000000b3 -s fill -i ~/.cache/lockscreen'
 exec swayidle \
-    timeout 300 'swaylock -c 000000' \
-    timeout 600 'swaymsg "output * dpms off"' \
-       resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -c 000000'
+    timeout 300 'swaymsg "output * dpms off"' \
+    timeout 600 $locker \
+    timeout 15 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $locker
+    # before-sleep 'swaylock -c 000000'
 
 # notification daemon
 exec mako
@@ -501,5 +508,7 @@ exec batsignal -b
 exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
 exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
 # exec dex /usr/share/applications/com.github.hluk.copyq.desktop
-exec dex /home/simone/.config/autostart/copyq.desktop 
+# Neither of them works if launched by sway, only if launched by terminal
+#exec dex /home/simone/.config/autostart/copyq.desktop 
+#exec env QT_QPA_PLATFORM=xcb /usr/bin/copyq > ~/a.log 2>&1
 exec xss-lock -- swaylock -k -l -c 000000
