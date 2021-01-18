@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.43 for simone on Tue Oct  1 20:47:54 2019.
+# Written by xscreensaver-demo 5.44 for simone on Wed Nov  4 13:58:16 2020.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
@@ -280,6 +280,9 @@ programs:								      \
   GL: 				handsy -root				    \n\
   GL: 				deepstars -root				    \n\
   GL: 				gravitywell -root			    \n\
+				scooter -root				    \n\
+  GL: 				etruscanvenus -root			    \n\
+  GL: 				gibson -root				    \n\
 
 
 pointerPollTime:    0:00:05

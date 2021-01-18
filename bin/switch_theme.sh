@@ -79,6 +79,7 @@ fi
 # The following lines should be put before the reload of i3-style
 sed -i "s/set \$dmenu_options.*/set \$dmenu_options -nb $dmenu1 -nf $dmenu2 -sb $dmenu3/" "$cfgfile_i3"
 i3-style "$i3style" -o "$cfgfile_i3" --reload > /dev/null 2>&1
+# TERMITE you should first install termite-color-switcher
 termite-color-switcher "$termitestyle"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$rofitheme/" "$cfgfile_gtk3"
@@ -90,7 +91,7 @@ sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
 ### VIM
 sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
 sed -i "s/^set background.*/set background=$vimbg/" "$cfgfile_vim"
-### VIM SERVER
+### VIM SERVER, this requires a vim installed with gui support
 for i in $(vim --serverlist); do 
     vim --servername "$i" --remote-send ":colorscheme $vimscheme<CR>"
 done

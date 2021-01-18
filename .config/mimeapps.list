@@ -1,5 +1,5 @@
 [Default Applications]
-x-scheme-handler/tg=telegramdesktop.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-J7WEX0.desktop
 application/lrf=calibre-lrfviewer.desktop
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
@@ -18,7 +18,8 @@ application/x-extension-html=firefox.desktop
 application/x-extension-shtml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
-application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+x-scheme-handler/msteams=teams.desktop
+text/plain=leafpad.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -37,14 +38,17 @@ image/png=gpicview.desktop;
 application/xhtml+xml=firefox.desktop;
 application/vnd.ms-excel=libreoffice-calc.desktop;
 image/jpeg=gpicview.desktop;
-application/x-xpinstall=thunderbird.desktop;
+application/x-xpinstall=leafpad.desktop;thunderbird.desktop;
 x-scheme-handler/thunderlink=thunderbird-tl.desktop
 application/xml=libreoffice-writer.desktop;
-application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
-application/pdf=mine-pdfxchangeeditorcrack.desktop;
 application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
-text/html=firefox.desktop;
 application/x-research-info-systems=leafpad.desktop;
 video/x-matroska=smplayer.desktop;
 video/mp4=smplayer.desktop;
 application/rtf=libreoffice-writer.desktop;
+text/calendar=thunderbird.desktop;
+application/x-ns-proxy-autoconfig=leafpad.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+text/html=firefox.desktop;
+video/x-msvideo=vlc.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-J7WEX0.desktop;

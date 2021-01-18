@@ -5,10 +5,10 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # Set user directories
 export MDIR_PRIVATE="$HOME/.config/private"
 #Other personal global dirs
-export MDIR_GLOBAL_DATA="/mnt/internal/DatiSimone"
+export MDIR_GLOBAL_DATA="/mnt/internal/SharedData"
 export MDIR_GLOBAL_APP_DATA="$MDIR_GLOBAL_DATA/AppData"
 export MDIR_LINUX_DATA="/mnt/internal/LinuxData"
 export MDIR_PROGRAMMING_DATA="$MDIR_LINUX_DATA/prog_mgmt"
 export MDIR_LOGS="$MDIR_LINUX_DATA/logs"
-export MDIR_STANDALONE_SW="$MDIR_GLOBAL_DATA/ProgrammiStandalone"
+export MDIR_STANDALONE_SW="$MDIR_GLOBAL_DATA/StandaloneSw"
 export MDIR_SCREENSHOTS="$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots"

@@ -29,7 +29,7 @@ alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bol
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias ecl='env SWT_GTK3=0 eclipse'
 alias wn32='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32'
-alias wn64='WINEPREFIX=$MDIR_LINUX_DATA/wine64'
+alias wn64='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64'
 alias wnoffice='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine_office'
 alias stellarium='stellarium -c $XDG_CONFIG_HOME/stellarium/config.ini -u $XDG_DATA_HOME/stellarium --screenshot-dir $MDIR_SCREENSHOTS/stellarium'
 alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi'
