@@ -87,3 +87,7 @@ if &diff
 endif
 " To reload vim config file, Leader is \
 nnoremap <Leader>vr :source $MYVIMRC<CR>
+" To use with wayland
+xnoremap "+y y:call system("wl-copy", @")<cr>
+nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
