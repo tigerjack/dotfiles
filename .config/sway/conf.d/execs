@@ -1,0 +1,35 @@
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 600 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+# https://www.reddit.com/r/swaywm/comments/afu6cd/how_to_turn_off_the_screen_after_locking_with/
+set $locker 'swaylock -f -e -c 1d2021 --inside-color 000000b3 -s fill -i ~/.cache/lockscreen'
+exec swayidle \
+    timeout 300 'swaymsg "output * dpms off"' \
+    timeout 600 $locker \
+    timeout 15 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $locker
+
+# notification daemon
+exec mako
+# wifi tray
+exec nm-applet --indicator
+# clipboard manager
+exec wl-paste -t text --watch clipman store
+
+# battery-monitor
+exec batsignal -b
+
+#Execute the startup scripts
+# Doesn't work if I invoke an external script, don't know why
+# exec --no-startup-id ~/bin/x/post_sway_scripts.sh > tmp/a.log 2>&1
+# ... so simply launching from here
+# exec eval $(ssh-agent -s &)
+# >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
+exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
+exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
+# exec dex /usr/share/applications/com.github.hluk.copyq.desktop
+# Neither of them works if launched by sway, only if launched by terminal
+#exec dex /home/simone/.config/autostart/copyq.desktop 
+#exec env QT_QPA_PLATFORM=xcb /usr/bin/copyq > ~/a.log 2>&1
+exec xss-lock -- swaylock -k -l -c 000000
