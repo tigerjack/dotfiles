@@ -1,5 +1,3 @@
-export QT_QPA_PLATFORMTHEME="qt5ct"
-
 # To increase performance on Nvidia cards
 export VGL_READBACK=pbo
 
@@ -11,3 +9,16 @@ export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass
 
 # Other export path for my X bins
 export PATH="$PATH:$HOME/bin/x"
+
+# To enable wayland on firefox
+export MOZ_ENABLE_WAYLAND=1
+
+# TEST for sway
+# export QT_WAYLAND_FORCE_DPI=physical
+# crashes wayland qt apps
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="wayland"
+export ECORE_EVAS_ENGINE=wayland_egl
+export ELM_ENGINE=wayland_egl
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
