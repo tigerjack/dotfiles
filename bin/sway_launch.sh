@@ -18,6 +18,6 @@
 #===============================================================================
 
 set -o nounset                              # Treat unset variables as an error
-source .xmyenv
+source ~/.env_gui
 exec /usr/bin/sway
 

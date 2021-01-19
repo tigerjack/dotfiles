@@ -2,7 +2,7 @@
 Version=1.0
 Name=MnemosyneMine
 Comment=A flash card program to make your review process more efficient
-Exec=bash -c "source ~/.global_env && /usr/bin/mnemosyne -d \$MDIR_GLOBAL_APP_DATA/Mnemosyine %f"
+Exec=bash -c "source ~/.env_global && /usr/bin/mnemosyne -d \$MDIR_GLOBAL_APP_DATA/Mnemosyine %f"
 TryExec=/usr/bin/mnemosyne
 Icon=mnemosyne
 Categories=Education

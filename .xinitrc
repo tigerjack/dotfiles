@@ -2,6 +2,7 @@
 
 #----------
 # copied by xinitrc
+#----------
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -33,10 +34,10 @@ fi
 # Other start programs
 #----------
 # Source my files with environment variables used by all applications...
-# [ -f ~/.global_env ] && . ~/.global_env > "$MDIR_LOGS/startx/global_env.log$DISPLAY" 2>&1
+# [ -f ~/.env_global ] && . ~/.env_global > "$MDIR_LOGS/startx/env_global.log$DISPLAY" 2>&1
 # actually they are sourced via bashrc
 # ... and GUI applications
-[ -f ~/.xmyenv ] && . ~/.xmyenv > "$MDIR_LOGS/startx/xmyenv.log$DISPLAY" 2>&1
+[ -f ~/.env_gui ] && . ~/.env_gui > "$MDIR_LOGS/startx/env_gui.log$DISPLAY" 2>&1
 
 # To avoid terminal bell
 xset -b

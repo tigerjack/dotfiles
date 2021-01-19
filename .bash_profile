@@ -7,7 +7,7 @@
 #setleds -D +num
 
 # Source global environment variables (shared b/w GUI and cli applications)
-. ~/.global_env
+. ~/.env_global
 
 # Source bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc

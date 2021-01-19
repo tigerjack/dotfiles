@@ -17,10 +17,10 @@ unset file
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources > "$MDIR_LOGS/startx/xrdb_resources.log$DISPLAY" 2>&1
 
 # Source my files with environment variables used by all applications...
-# [ -f ~/.global_env ] && . ~/.global_env > "$MDIR_LOGS/startx/global_env.log$DISPLAY" 2>&1
+# [ -f ~/.env_global ] && . ~/.env_global > "$MDIR_LOGS/startx/env_global.log$DISPLAY" 2>&1
 # actually they are sourced via bashrc
 # ... and GUI applications
-[ -f ~/.xmyenv ] && . ~/.xmyenv > "$MDIR_LOGS/startx/xmyenv.log$DISPLAY" 2>&1
+[ -f ~/.env_gui ] && . ~/.env_gui > "$MDIR_LOGS/startx/env_gui.log$DISPLAY" 2>&1
 
 # To avoid terminal bell
 xset -b

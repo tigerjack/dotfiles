@@ -2,7 +2,7 @@
 Name=AnkiMine
 Comment=An intelligent spaced-repetition memory training program
 GenericName=Flashcards
-Exec=bash -c "source ~/.global_env && anki -b \\$MDIR_GLOBAL_APP_DATA/Anki %f"
+Exec=bash -c "source ~/.env_global && anki -b \\$MDIR_GLOBAL_APP_DATA/Anki %f"
 TryExec=anki
 Icon=anki
 Categories=Education;Languages;KDE;Qt;
