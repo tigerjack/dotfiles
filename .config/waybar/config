@@ -8,21 +8,21 @@
     "modules-center": ["sway/window"],
     "modules-right": ["idle_inhibitor", "sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
     // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}: {icon}",
+        "format-icons": {
     //         "1": "",
     //         "2": "",
     //         "3": "",
     //         "4": "",
     //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -114,11 +114,15 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
+        // "format-wifi": "{essid} ({signalStrength}%) - \u2197 {bandwidthDownBits} \u2198{bandwidthUpBits} ",
         "format-wifi": "{essid} ({signalStrength}%) ",
+	"interval": 5,
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"on-click": "nm-connection-editor",
+	"on-click-right": "gnethogs"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
