@@ -3,6 +3,7 @@
 ##
 temp/
 tmp/
+.rustup
 
 ###
 # log files/dirs
