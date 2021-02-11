@@ -1,9 +1,21 @@
 # Directory where the files will be synced
-sync_dir = "$MDIR_GLOBAL_DATA/Public/onedrive/polimi"
+sync_dir = "$MDIR_GLOBAL_DATA/Public/onedrive/polimi_wsl"
 # Skip files and directories that match this pattern
-skip_file = "~*|.~*|*.tmp|*.fuse_hidden*"
-# skip_dir = "Attachments|ProgrammiStandalone|Music|BackupElisa|Poker|Learning/Poker|Phone&simila"
-skip_dir = "Attachments|ProgrammiStandalone|Music|Pictures|BackupElisa|Poker|Phone&simila|WebSites|eBooks|University|Link*"
+skip_file = "~*|.~*|*.tmp|*.lock|*.fuse_hidden*|*desktop.ini|*.log|auto/*.el"
+skip_file = "GS.mkv|CC_3.avi"
+skip_dir = "Link*"
+skip_dir = "_minted*"
+skip_dir = "Attachments|BackupElisa|Music|StandaloneSW|Pictures|Poker|Phone&simila|WebSites"
+skip_dir = "eBooks/Manga_Comics|eBooks/AudioBooks"
+skip_dir = "Learning/Games|Learning/Handwriting|Learning/Photography|Learning/PlayMusic/Percussions|Learning/Languages/English/IELTS"
+skip_dir = "University/Unisannio|University/PoliMi/Master"
+skip_dir = "PersonalDevelopment"
+skip_dir = "AppData"
+# skip_dir = "AppData/SpotifyOffline|AppData/TaskWarrior|AppData/OpenShotProjects|AppData/Anki"
+skip_dir = "Videos"
+skip_dir = "tmp"
+# if you add a .nosync file to your folder, it will be skipped
+check_nosync = "true"
 # Skip simlinks
 skip_symlinks = "false"
 skip_dotfiles = "false"
