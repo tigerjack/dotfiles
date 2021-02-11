@@ -9,7 +9,7 @@ input type:keyboard {
     # win+space to switch layout, esc on caps
     xkb_options grp:win_space_toggle,caps:escape 
     repeat_delay 150
-    repeat_rate 150
+    repeat_rate 100
 }
 
 input type:touchpad {

@@ -9,6 +9,7 @@ exec swayidle \
     timeout 15 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"' \
     before-sleep $locker
+# exec ~/bin/x/mylock safe-mode
 
 # notification daemon
 exec mako
@@ -26,10 +27,11 @@ exec batsignal -b
 # ... so simply launching from here
 # exec eval $(ssh-agent -s &)
 # >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
-exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
-exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
 # exec dex /usr/share/applications/com.github.hluk.copyq.desktop
 # Neither of them works if launched by sway, only if launched by terminal
 #exec dex /home/simone/.config/autostart/copyq.desktop 
+#exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
+#exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
 #exec env QT_QPA_PLATFORM=xcb /usr/bin/copyq > ~/a.log 2>&1
+exec dex -a
 exec xss-lock -- swaylock -k -l -c 000000

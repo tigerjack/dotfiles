@@ -1,15 +1,17 @@
-###########################################
+##########################################
 # Launchers
 ###########################################
 set $dmenu_options -nb black -nf white -sb red
 # start dmenu (a program launcher)
-bindsym $sup+Shift+semicolon exec dmenu_run $dmenu_options
+# bindsym $sup+Shift+semicolon exec dmenu_run $dmenu_options
 #bindsym $sup+Shift+semicolon exec "yeganesh -x -- -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC"
+bindsym $sup+Shift+semicolon exec wofi --show dmenu
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $sup+$alt+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i $dmenu_options"
+# bindsym $sup+$alt+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i $dmenu_options"
+bindsym $sup+$alt+semicolon exec wofi --show run
 
 #Trying alternative to i3-dmenu-desktop
 #--no-generic disable the reading of GenericName keys from desktop files
@@ -17,7 +19,7 @@ bindsym $sup+$alt+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu
 
 # Replacing dmenu with rofi
 #bindsym $sup+semicolon exec rofi -show >> "/mnt/internal/LinuxData/logs/i3/rofi.log" 2>&1
-bindsym $sup+semicolon exec rofi -show
+bindsym $sup+semicolon exec wofi --show
 
 # A GUI menu for applications, testing
 #bindsym $sup+Shift+a exec xfce4-appfinder >> "/mnt/internal/LinuxData/logs/i3/xfce4-appfinder.log" 2>&1
@@ -318,7 +320,7 @@ bindsym $sup+Shift+r restart
 ###########################################
 # start a terminal
 #bindsym $sup+Return exec i3-sensible-terminal >> "/mnt/internal/LinuxData/logs/i3/i3-sensible-terminal.log" 2>&1
-bindsym $sup+Return exec i3-sensible-terminal
+bindsym $sup+Return exec $TERMINAL
 
 # lock the screen
 #bindsym $sup+Shift+z exec "loginctl lock-session > '/mnt/internal/LinuxData/logs/i3/lock-session.log' 2>&1"
@@ -384,11 +386,10 @@ bindsym Shift+F12 exec playerctl next
 bindsym Ctrl+space exec makoctl dismiss -a
 # copyq 
 bindsym Ctrl+Shift+i exec copyq toggle
-# switch keyboard layout
 bindsym --input-device=keyboard $sup+space xkb_switch_layout next
 
-#bindsym $sup+Shift+i exec clipman pick -t wofi
-#bindsym $sup+Ctrl+i exec copyq toggle
+bindsym $sup+Shift+i exec clipman pick -t wofi
+bindsym $sup+Ctrl+i exec copyq toggle
 
 #bindsym $sup+Ctrl+p exec playerctl_info.sh
 bindsym $sup+Ctrl+p exec spotify_info.sh
