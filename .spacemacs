@@ -41,13 +41,13 @@ This function should only modify configuration layer settings."
      ;; pdf-tools
      (javascript :variables
                  javascript-disable-tern-port-files nil)
-     sql
+     ;; sql
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     games
+     ;; games
      ; https://github.com/rubberydub/spacemacs-geben
      (helm :variables
            ;; resize helm buffer window to adapt to the length of the candidate list.
@@ -84,6 +84,10 @@ This function should only modify configuration layer settings."
             c-c++-enable-clang-format-on-save t
             c-c++-enable-rtags-support t
             c-c++-default-mode-for-headers 'c++-mode)
+     (rust :variables
+           rust-backend 'lsp
+           lsp-rust-server 'rls
+           )
      gtags
      (shell :variables
             shell-default-height 30
@@ -97,7 +101,8 @@ This function should only modify configuration layer settings."
              ;; python-sort-imports-on-save t
              ;;
              python-backend 'lsp
-             python-lsp-server 'pyls
+             ;; python-lsp-server 'pyls
+             python-lsp-server 'pyright
              python-formatter 'yapf
              python-pipenv-activate t
              python-fill-column 79
