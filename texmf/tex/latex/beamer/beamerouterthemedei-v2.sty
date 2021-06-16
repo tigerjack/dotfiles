@@ -1,0 +1,646 @@
+% Copyright 2010 by Ettore Speziale <speziale.ettore@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% Dipartimento di Elettronica ed Informazione outer theme.
+
+\RequirePackage{etex}
+
+\newdimen\beamer@frametitlewidth
+
+\newdimen\beamer@sidebaronewidth
+\newdimen\beamer@sidebartwowidth
+\newdimen\beamer@sidebarwidth
+
+\newdimen\beamer@framebarwidth
+
+\newdimen\beamer@footonewidth
+\newdimen\beamer@foottwowidth
+
+\newdimen\beamer@headheight
+\newdimen\beamer@framebarheight
+\newdimen\beamer@footheight
+\newdimen\beamer@footextraheight
+
+\beamer@sidebaronewidth=0.21in
+\beamer@sidebartwowidth=0.14in
+\beamer@sidebarwidth=0.35in
+
+\beamer@framebarwidth=0.59in
+
+\beamer@headheight=0.42in
+\beamer@framebarheight=0.04in
+\beamer@footheight=0.10in
+\beamer@footextraheight=0.04in
+
+\beamer@tempdim=\beamer@paperwidth
+\advance\beamer@tempdim by -\beamer@sidebarwidth
+\advance\beamer@tempdim by -\beamer@framebarwidth
+
+\beamer@frametitlewidth=\beamer@tempdim
+
+\beamer@tempdim=\beamer@paperwidth
+\divide\beamer@tempdim by 2
+\beamer@foottwowidth=\beamer@tempdim
+
+\advance\beamer@tempdim by -\beamer@sidebarwidth
+\beamer@footonewidth=\beamer@tempdim
+
+\setbeamersize{sidebar width left=\beamer@sidebarwidth}
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+
+%%%% Presentation settings %%%%
+
+\mode<presentation>
+
+% The title page is rendered in a different way. Renew \maketitle to
+% transparently install a custom theme.
+\renewcommand{\maketitle}{
+  \begingroup
+    \setlength{\hoffset}{-0.5\beamer@sidebarwidth}
+
+    \setbeamertemplate{title page}[dei titlepage theme]
+    \setbeamertemplate{frametitle}[dei titlepage theme]
+    \setbeamertemplate{headline}[dei titlepage theme]
+    \setbeamertemplate{sidebar left}[dei titlepage theme]
+    \setbeamertemplate{footline}[dei titlepage theme]
+    \setbeamertemplate{background}[dei titlepage theme]
+
+    \begin{frame}
+      \titlepage
+    \end{frame}
+
+  \endgroup
+}
+
+%%% Theme for title page %%%
+
+\defbeamertemplate*{title page}{dei titlepage theme}{}
+\defbeamertemplate*{frametitle}{dei titlepage theme}{}
+\defbeamertemplate*{headline}{dei titlepage theme}{}
+\defbeamertemplate*{sidebar left}{dei titlepage theme}{}
+\defbeamertemplate*{footline}{dei titlepage theme}{}
+
+% Only used to draw the arrow.
+\definecolor{poli-orange}{RGB}{251,150,0}
+
+% Draw the Politecnico arrow: requires drawing box size.
+\newcommand{\insertpoliarrow}[1]
+{%
+  \begin{pgfpicture}{0in}{0in}{#1}{#1}
+    \newdimen\beamer@sidewidth
+    \newdimen\beamer@sideheight
+    \newdimen\beamer@sideoffset
+
+    \beamer@sideheight=#1
+    \divide \beamer@sideheight by 5
+
+    \beamer@sidewidth=#1
+    \divide \beamer@sidewidth by 5
+    \multiply \beamer@sidewidth by 4
+
+    \beamer@sideoffset=#1
+    \divide \beamer@sideoffset by 10
+
+    \newdimen\beamer@tmpx
+    \newdimen\beamer@tmpy
+    \newdimen\beamer@magic
+
+    \beamer@magic=#1
+    \divide \beamer@magic by 7
+
+    \pgfsetfillcolor{poli-orange}
+
+    \pgfpathmoveto{\pgfpoint{\beamer@sideoffset}{0.0in}}
+    \pgfpathlineto{\pgfpoint{#1}{0in}}
+
+    \beamer@tmpy=#1
+    \advance\beamer@tmpy by -\beamer@sideoffset
+    \pgfpathlineto{\pgfpoint{#1}{\beamer@tmpy}}
+
+    \beamer@tmpx=#1
+    \advance\beamer@tmpx by -\beamer@sideheight
+    \pgfpathlineto{\pgfpoint{\beamer@tmpx}{\beamer@tmpy}}
+
+    \beamer@tmpy=\beamer@sideheight
+    \advance\beamer@tmpy by \beamer@magic
+    \pgfpathlineto{\pgfpoint{\beamer@tmpx}{\beamer@tmpy}}
+
+    \beamer@tmpy=\beamer@magic
+    \pgfpathlineto{\pgfpoint{\beamer@tmpy}{#1}}
+
+    \beamer@tmpy=#1
+    \advance\beamer@tmpy by -\beamer@magic
+    \pgfpathlineto{\pgfpoint{0in}{\beamer@tmpy}}
+
+    \beamer@tmpx=#1
+    \advance\beamer@tmpx by -\beamer@sideheight
+    \advance\beamer@tmpx by -\beamer@magic
+    \pgfpathlineto{\pgfpoint{\beamer@tmpx}{\beamer@sideheight}}
+
+    \pgfpathlineto{\pgfpoint{\beamer@sideoffset}{\beamer@sideheight}}
+    \pgfpathclose{}
+
+    \pgfusepath{fill}
+  \end{pgfpicture}%
+}
+
+% Draw a vertical rule: requires rule height, and extra depth.
+\newcommand{\insertpolirule}[2]
+{%
+  \begin{pgfpicture}{0in}{0in}{0.01in}{#1}
+    \newdimen\beamer@base
+    \newdimen\beamer@height
+
+    \beamer@base=0in
+    \advance\beamer@base by -#2
+
+    \beamer@height=#1
+    \advance\beamer@height by #2
+
+    \pgfpathrectangle{\pgfpoint{0in}{\beamer@base}}
+                     {\pgfpoint{0.01in}{\beamer@height}}
+    \pgfusepath{fill}
+  \end{pgfpicture}%
+}
+
+\defbeamertemplate*{background}{dei titlepage theme}
+{%
+  \hskip .5\beamer@sidebarwidth%
+  \vbox to \beamer@headheight {%
+    \vskip -\beamer@headheight%
+
+    \begin{pgfpicture}{0}{0}{\beamer@paperwidth}{\beamer@paperheight}
+      % Draw upper logo area.
+
+      \newdimen\beamer@logowidth
+      \newdimen\beamer@logoheight
+      \newdimen\beamer@logobase
+
+      \beamer@logowidth=1.69in
+      \beamer@logoheight=0.76in
+
+      \beamer@logobase=\beamer@paperheight
+      \advance\beamer@logobase by -\beamer@logoheight
+
+      \usebeamercolor[bg]{logo}
+      \pgfpathrectangle{\pgfpoint{0in}{\beamer@logobase}}
+                       {\pgfpoint{\beamer@logowidth}{\beamer@logoheight}}
+
+      % Draw horizontal box background.
+
+      \newdimen\beamer@backgroundbase
+      \newdimen\beamer@backgroundheight
+
+      \beamer@backgroundbase=\beamer@paperheight
+      \advance\beamer@backgroundbase by -\beamer@logoheight
+      \advance\beamer@backgroundbase by -1.15in
+
+      \beamer@backgroundheight=1.15in
+
+      \usebeamercolor[bg]{logo}
+      \pgfpathrectangle{\pgfpoint{0in}{\beamer@backgroundbase}}
+                       {\pgfpoint{\beamer@paperwidth}{\beamer@backgroundheight}}
+
+      % Draw small line delimiting the title.
+
+      \pgfpathrectangle{\pgfpoint{0.56in}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.01in}{-0.54in}}
+
+      \pgfusepath{fill}
+
+      % Now, draw the logo. I tried using pgf foreach, by I cannot update the
+      % iteration variables inside the loop, so I had to unroll the whole 2D
+      % loop nest.
+
+      \newdimen\beamer@logodiagbasex
+      \newdimen\beamer@logoboxwidth
+      \newdimen\beamer@logoboxheight
+
+      \newdimen\beamer@logoboxbasex
+      \newdimen\beamer@logoboxbasey
+
+      \beamer@logodiagbasex=\beamer@logowidth
+      \beamer@logoboxwidth=0.27in
+      \beamer@logoboxheight=0.18in
+
+      \usebeamercolor[fg]{logo}
+
+      % 3rd diagonal.
+      \pgfsetfillopacity{0.6}
+      \advance\beamer@logodiagbasex by -\beamer@logoboxwidth
+      \beamer@logoboxbasex=\beamer@logodiagbasex
+      \beamer@logoboxbasey=\beamer@logobase
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \pgfusepath{fill}
+
+      % 2nd diagonal.
+      \pgfsetfillopacity{0.5}
+      \advance\beamer@logodiagbasex by -\beamer@logoboxwidth
+      \advance\beamer@logodiagbasex by -0.01in
+      \beamer@logoboxbasex=\beamer@logodiagbasex
+      \beamer@logoboxbasey=\beamer@logobase
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \advance\beamer@logoboxbasex by \beamer@logoboxwidth
+      \advance\beamer@logoboxbasex by 0.01in
+      \advance\beamer@logoboxbasey by \beamer@logoboxheight
+      \advance\beamer@logoboxbasey by 0.01in
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \pgfusepath{fill}
+
+      % 1st diagonal.
+      \pgfsetfillopacity{0.4}
+      \advance\beamer@logodiagbasex by -\beamer@logoboxwidth
+      \advance\beamer@logodiagbasex by -0.01in
+      \beamer@logoboxbasex=\beamer@logodiagbasex
+      \beamer@logoboxbasey=\beamer@logobase
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \advance\beamer@logoboxbasex by \beamer@logoboxwidth
+      \advance\beamer@logoboxbasex by 0.01in
+      \advance\beamer@logoboxbasey by \beamer@logoboxheight
+      \advance\beamer@logoboxbasey by 0.01in
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \advance\beamer@logoboxbasex by \beamer@logoboxwidth
+      \advance\beamer@logoboxbasex by 0.01in
+      \advance\beamer@logoboxbasey by \beamer@logoboxheight
+      \advance\beamer@logoboxbasey by 0.01in
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \pgfusepath{fill}
+
+      \pgfsetfillopacity{1}
+
+      % Institute.
+
+      \newdimen\beamer@instwidth
+      \newdimen\beamer@instheight
+
+      \newdimen\beamer@instcenterx
+      \newdimen\beamer@instcentery
+
+      \usebeamercolor[bg]{palette tertiary}
+      \pgfpathrectangle{\pgfpoint{0in}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.56in}{0.92in}}
+      \pgfusepath{fill}
+
+      \beamer@instwidth=\beamer@logowidth
+      \advance\beamer@instwidth by -0.04in
+
+      \beamer@instheight=\beamer@backgroundheight
+      \advance\beamer@instheight by -0.92in
+      \divide\beamer@instheight by 2
+
+      \beamer@instcenterx=\beamer@instwidth
+      \divide\beamer@instcenterx by 2
+
+      \beamer@instcentery=\beamer@instheight
+      \divide\beamer@instcentery by -2
+      \advance\beamer@instcentery by \beamer@logobase
+
+      \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
+        \parbox[t]{\beamer@instwidth}{%
+          \usebeamercolor[fg]{institute}%
+          \usebeamerfont{institute}%
+          \ifx\insertinstitute\@empty%
+            \centering{%
+              \beamer@tempdim=\beamer@instheight%
+              \divide\beamer@tempdim by 7%
+              \multiply\beamer@tempdim by 4%
+              \insertpoliarrow{\beamer@tempdim}~~%
+              \insertpolirule{\beamer@instheight}{0in}~~%
+              POLITECNICO DI MILANO%
+            }%
+          \else
+            \centering\insertinstitute%
+          \fi%
+        }%
+      }
+
+      \beamer@instwidth=\beamer@logowidth
+      \advance\beamer@instwidth by -0.60in
+
+      \advance\beamer@instheight by 0.1in
+
+      \beamer@instcenterx=\beamer@instwidth
+      \divide\beamer@instcenterx by 2
+      \advance\beamer@instcenterx by 0.60in
+
+      \beamer@instcentery=\beamer@backgroundbase
+      \advance\beamer@instcentery by \beamer@instheight
+
+      \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
+        \parbox[t]{\beamer@instwidth}{%
+          \usebeamercolor[fg]{institute}%
+          \usebeamerfont{institute}%
+          \ifx\insertinstitute\@empty%
+            Dipartimento di \\
+            Elettronica, Informazione \\
+            e Bioingegneria
+          \else%
+            \centering\insertshortinstitute%
+          \fi%
+        }%
+      }
+
+      % Opaque boxes.
+
+      \newdimen\beamer@boxstart
+      \newdimen\beamer@boxwidth
+
+      \usebeamercolor[fg]{logo}
+      \pgfsetfillopacity{0.3}
+
+      % This box cover almost all the banner.
+
+      \beamer@boxwidth=\beamer@paperwidth
+      \advance\beamer@boxwidth by -\beamer@logowidth
+
+      \pgfpathrectangle{\pgfpoint{\beamer@logowidth}{\beamer@backgroundbase}}
+                       {\pgfpoint{\beamer@boxwidth}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      % First group of opaque boxes.
+
+      \pgfpathrectangle{\pgfpoint{\beamer@logowidth}{\beamer@backgroundbase}}
+                       {\pgfpoint{1.16in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 0.36in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.57in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 0.66in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.11in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      % Second group of opaque boxes.
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 2.47in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.39in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 2.70in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.16in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 2.98in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.04in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxwidth=\beamer@paperwidth
+      \advance\beamer@boxwidth by -\beamer@boxstart
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{\beamer@boxwidth}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      % We need to draw the title here instead than specializing title page
+      % because it is placed in an unusual position for beamer.
+
+      \newdimen\beamer@titlewidth
+      \newdimen\beamer@titleheight
+
+      \beamer@titlewidth=\beamer@paperwidth
+      \advance\beamer@titlewidth by -0.9in
+      \advance\beamer@titlewidth by -0.3in
+
+      \beamer@titleheight=\beamer@paperheight
+      \advance\beamer@titleheight by -\beamer@backgroundbase
+      \advance\beamer@titleheight by -0.4in
+
+      \newdimen\beamer@titlebase
+
+      \beamer@titlebase=0.05in
+      \advance\beamer@titlebase by \beamer@footheight
+      \advance\beamer@titlebase by \beamer@footextraheight
+
+      \pgfsetfillopacity{1}
+
+      \pgftext[left,base,at=\pgfpoint{0.9in}{\beamer@titlebase}]{%
+        \begin{beamercolorbox}[wd=\beamer@titlewidth,
+                               ht=\beamer@titleheight]{title}
+          \vbox to \beamer@titleheight {%
+            {%
+              \usebeamercolor[fg]{title}%
+              \usebeamerfont{title}%
+              \inserttitle%
+              \par%
+            }%
+            \ifx\insertsubtitle\@empty
+            \else
+            {%
+              \vskip 0.5em
+              \usebeamercolor[fg]{subtitle}%
+              \usebeamerfont{subtitle}%
+              \insertsubtitle%
+              \par%
+            }%
+            \fi
+%             \vskip 1.5em
+%             {%
+%               \usebeamercolor[fg]{author}%
+%               \usebeamerfont{author}%
+%               \insertauthor%
+%               \par%
+%             }%
+          }%
+        \end{beamercolorbox}%
+      }
+      \pgftext[left,base,at=\pgfpoint{0.2in}{\beamer@titlebase}]{%
+        \begin{beamercolorbox}[wd=\beamer@paperwidth,ht=0.8in]{title}
+          \vbox to 0.8in {%
+
+              \usebeamercolor[fg]{author}%
+              \usebeamerfont{author}%
+	      \centering
+              {\insertauthor}%
+	      \par%
+	      \vskip 1.5em
+	      \footnotesize\itshape\insertdate
+	  }
+        \end{beamercolorbox}%
+      }
+    \end{pgfpicture}
+  }
+}
+
+%%% Theme for normal pages %%%
+
+\defbeamertemplate*{frametitle}{dei theme}
+{%
+  \nointerlineskip%
+  \vskip-\beamer@headheight%
+  \vbox to \beamer@headheight%
+  {%
+    \vfil
+    \leftskip=-\beamer@leftmargin%
+    \advance\leftskip by 0.3cm%
+    \rightskip=-\beamer@rightmargin%
+    \advance\rightskip by 0.3cm plus 1fil%
+    {%
+      \usebeamercolor[fg]{frametitle}%
+      \usebeamerfont{frametitle}%
+      \insertframetitle\par%
+    }%
+    {%
+      \usebeamercolor[fg]{framesubtitle}%
+      \usebeamerfont{framesubtitle}%
+      \insertframesubtitle\par%
+    }%
+    \vbox{}%
+    \vskip-1em%
+    \vfil
+  }%
+}
+
+\defbeamertemplate*{headline}{dei theme}
+{
+  \hbox to \beamer@paperwidth {%
+    \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
+                           ht=\beamer@headheight]{palette sidebar primary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@sidebartwowidth,
+                           ht=\beamer@headheight]{palette sidebar tertiary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@frametitlewidth,
+                           ht=\beamer@headheight]{frametitle}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@framebarwidth,
+                           ht=\beamer@headheight]{frametitle}
+      \vbox to \beamer@headheight{%
+        {%
+          \usebeamercolor[bg]{palette tertiary}%
+          \vrule width \beamer@framebarwidth height \beamer@framebarheight%
+        }%
+        {%
+          \vskip1em%
+          \usebeamercolor[fg]{page number in head/foot}%
+          \usebeamerfont{page number in head/foot}%
+          \centering\insertframenumber\hspace*{2ex}%
+          \vfil%
+        }%
+      }%
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate*{sidebar left}{dei theme}
+{
+  \hbox to \beamer@sidebarwidth {%
+    \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
+                           ht=\beamer@paperheight]{palette sidebar secondary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@sidebartwowidth,
+                           ht=\beamer@paperheight]{palette sidebar quaternary}
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate*{footline}{dei theme}
+{
+  \hbox to \beamer@paperwidth {%
+    \hfill%
+    \begin{beamercolorbox}[wd=\beamer@foottwowidth,
+                           ht=\beamer@footextraheight]{palette tertiary}
+    \end{beamercolorbox}%
+  }
+  \hbox to \beamer@paperwidth {%
+    \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in]{palette secondary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@sidebartwowidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in]{palette quaternary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@footonewidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in,
+                           right]{author in head/foot}
+      \usebeamerfont{author in head/foot}%
+			\hspace*{-0.1in}%
+      %\ifx\insertinstitute\@empty%
+      %  DEIB
+      %\else%
+        \insertdate%
+      %\fi%
+      \hfill~\insertshortauthor\hspace*{2ex}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@foottwowidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in,
+                           center]{institute in head/foot}
+      \ifx\insertinstitute\@empty%
+        \usebeamerfont{institute in head/foot}
+        \centering{%
+          \beamer@tempdim=\beamer@footheight%
+          \divide\beamer@tempdim by 9%
+          \multiply\beamer@tempdim by 4%
+          POLITECNICO DI MILANO~~%
+          \insertpolirule{\beamer@footheight}{0.05in}~~%
+          \insertpoliarrow{\beamer@tempdim}~~%
+          Dipartimento di Elettronica, Informazione e Bioingegneria%
+        }%
+      \else%
+        \centering\insertinstitute%
+      \fi%
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate*{background}{dei theme}{
+  \begin{pgfpicture}{0}{0}{\beamer@paperwidth}{\beamer@paperheight}
+    \newdimen\beamer@backgroundbase
+    \newdimen\beamer@backgroundtop
+
+    \beamer@backgroundbase=\beamer@footheight
+    \advance\beamer@backgroundbase by 0.05in
+
+    \beamer@backgroundtop=\beamer@paperheight
+    \advance\beamer@backgroundtop by -\beamer@headheight
+    \advance\beamer@backgroundtop by -\beamer@footheight
+    \advance\beamer@backgroundtop by -0.05in
+
+    \pgfsetstrokecolor{background.bg}
+    \pgfsetfillcolor{background.bg}
+    \pgfpathrectangle{\pgfpoint{\beamer@sidebarwidth}{\beamer@backgroundbase}}
+                     {\pgfpoint{\beamer@paperwidth}{\beamer@backgroundtop}}
+    \pgfusepath{stroke,fill}
+  \end{pgfpicture}
+}
+
+\defbeamertemplate*{navigation symbols}{dei theme}{}
+
+% Reset section counter at part start.
+\AtBeginPart
+{
+  \beamer@tocsectionnumber=0\relax
+  \setcounter{section}{0}
+}
+
+%%%% All settings %%%%
+
+\mode<all>

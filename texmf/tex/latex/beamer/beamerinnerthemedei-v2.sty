@@ -1,0 +1,60 @@
+% Copyright 2010 by Ettore Speziale <speziale.ettore@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% Dipartimento di Elettronica ed Informazione inner theme.
+
+%%%% Presentation settings %%%%
+
+\mode<presentation>
+
+\defbeamertemplate*{section in toc}{dei theme}
+{%
+  \leavevmode%
+  \usebeamercolor[fg]{item}%
+  \inserttocsectionnumber. % Here we need a space before newline.
+  \usebeamercolor[fg]{section in toc}%
+  \inserttocsection%
+  \par%
+}
+
+\defbeamertemplate*{subsection in toc}{dei theme}
+{%
+  \leavevmode%
+  \usebeamercolor[fg]{item}%
+  \leftskip=1.2em\inserttocsubsectionnumber. % See above.
+  \usebeamercolor[fg]{subsection in toc}%
+  \inserttocsubsection%
+  \par%
+}
+
+\defbeamertemplate*{subsubsection in toc}{dei theme}
+{%
+  \leavevmode%
+  \usebeamercolor[fg]{item}%
+  \leftskip=2.4em\inserttocsubsubsectionnumber. % See above.
+  \usebeamercolor[fg]{subsubsection in toc}%
+  \inserttocsubsubsection%
+  \par%
+}
+
+\defbeamertemplate*{itemize item}{dei theme}{\tiny$\blacksquare$}
+\defbeamertemplate*{itemize subitem}{dei theme}{$\bullet$}
+\defbeamertemplate*{itemize subsubitem}{dei theme}{$-$}
+
+\defbeamertemplate*{enumerate item}{dei theme}{\insertenumlabel.}
+\defbeamertemplate*{enumerate subitem}{dei theme}{\insertsubenumlabel.}
+\defbeamertemplate*{enumerate subsubitem}{dei theme}{\insertsubsubenumlabel.}
+
+\defbeamertemplate*{bibliography item}{dei theme}{$\blacktriangleright$}
+
+% Beamer bug workaround: only rounded blocks are centered, so use them instead
+% of square blocks.
+\setbeamertemplate{blocks}[rounded]
+
+%%%% All settings %%%%
+
+\mode<all>

@@ -1,0 +1,65 @@
+% Copyright 2010 by Ettore Speziale <speziale.ettore@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% Dipartimento di Elettronica ed Informazione font theme.
+
+%%%% Presentation settings %%%%
+
+\mode<presentation>
+
+% DEI uses Arial, but it is not free: use helvetica instead.
+\RequirePackage{helvet}
+
+\setbeamerfont*{title}{size=\LARGE,series=\bfseries,parent=structure}
+\setbeamerfont*{title in head/foot}{}
+\setbeamerfont*{title in sidebar}{}
+
+\setbeamerfont*{subtitle}{size=\Large,series=\normalfont,parent=title}
+
+\setbeamerfont*{author}{size=\small,parent=structure}
+\setbeamerfont*{author in head/foot}{size=\tiny,series=\bfseries}
+\setbeamerfont*{author in sidebar}{}
+
+\setbeamerfont*{date}{size=\scriptsize,parent=structure}
+\setbeamerfont*{date in head/foot}{}
+\setbeamerfont*{date in sidebar}{}
+
+\setbeamerfont*{sidebar}{parent={tiny structure}}
+\setbeamerfont*{sidebar left}{parent=sidebar}
+\setbeamerfont*{sidebar right}{parent=sidebar}
+
+\setbeamerfont*{institute}{size=\tiny,series=\bfseries}
+\setbeamerfont*{institute in head/foot}{size=\Tiny,series=\bfseries}
+
+\setbeamerfont*{section in toc}{series=\bfseries}
+\setbeamerfont*{subsection in toc}{size=\small}
+\setbeamerfont*{subsubsection in toc}{size=\scriptsize}
+
+\setbeamerfont*{frametitle}{size=\Large,
+                            series=\bfseries,
+                            parent=structure}
+\setbeamerfont*{framesubtitle}{size=\footnotesize,
+                               series=\normalfont,
+                               parent=frametitle}
+
+\setbeamerfont*{block body}{size=\small}
+\setbeamerfont*{block title}{size=\small,
+                             series=\bfseries,
+                             parent={structure,block body}}
+
+\setbeamerfont*{abstract}{size=\normalsize}
+\setbeamerfont*{abstract title}{size=\Large,
+                                series=\bfseries,
+                                parent={abstract,structure}}
+
+\setbeamerfont*{page number in head/foot}{size=\tiny,
+                                          series=\bfseries}
+\setbeamerfont*{item}{series=\bfseries\itshape,size=\small}
+\setbeamerfont*{note page}{size=\footnotesize}
+%%%% All settings %%%%
+
+\mode<all>

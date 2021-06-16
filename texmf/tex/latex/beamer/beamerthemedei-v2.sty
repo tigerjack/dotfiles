@@ -1,0 +1,32 @@
+% Copyright 2010 by Ettore Speziale <speziale.ettore@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% Dipartimento di Elettronica ed Informazione theme.
+
+\newif\ifbeamer@insertsectiontoc
+
+\beamer@insertsectiontocfalse
+
+\DeclareOptionBeamer{insertsectiontoc}{\beamer@insertsectiontoctrue}
+\ProcessOptionsBeamer
+
+% The insertsectiontoc beamer option allows to automatically insert a table of
+% contents before each section. The current section is highlighted, while the
+% other are shaded.
+\ifbeamer@insertsectiontoc
+  \AtBeginSection[]
+  {
+    \begin{frame}{Section Outline}
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+\fi
+
+\usecolortheme{dei-v2}
+\usefonttheme{dei-v2}
+\useinnertheme{dei-v2}
+\useoutertheme{dei-v2}
