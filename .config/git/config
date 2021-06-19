@@ -1,5 +1,5 @@
 [user]
-	email = simone.perriello@protonmail.com
+	email = 8199216+tigerjack@users.noreply.github.com
 	name = Simone Perriello
 [gui]
 	fontui = -family \"DejaVu Sans Mono\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
@@ -11,3 +11,7 @@
 	tool = vimdiff
 [pull]
 	rebase = false
+[alias]
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
+[init]
+	defaultBranch = main
