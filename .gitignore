@@ -126,6 +126,10 @@ LinuxData
 ########
 # Other apps 
 ########
+# zotero
+.zotero
+# pylint
+.pylint.d
 # Microsoft Teams
 .config/Microsoft/Microsoft Teams
 .config/teams
