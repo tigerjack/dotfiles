@@ -52,6 +52,7 @@ This function should only modify configuration layer settings."
      (helm :variables
            ;; resize helm buffer window to adapt to the length of the candidate list.
            helm-enable-auto-resize t)
+     (multiple-cursors :variables multiple-cursors-backend 'evil-mc)
      (auto-completion :variables
                         auto-completion-enable-help-tooltip t
                         auto-completion-enable-snippets-in-popup t
