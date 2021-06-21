@@ -16,7 +16,9 @@ exec mako
 # wifi tray
 exec nm-applet --indicator
 # clipboard manager
-exec wl-paste -t text --watch clipman store
+# exec wl-paste -t text --watch clipman store
+# https://github.com/yory8/clipman/issues/52#issuecomment-778693461
+# exec wl-paste -t text --watch myclipman
 
 # battery-monitor
 exec batsignal -b

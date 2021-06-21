@@ -12,9 +12,9 @@ input type:keyboard {
     repeat_rate 100
 }
 
+# input "1241:5890:USB_Keyboard" repeat_rate 50
+
 input type:touchpad {
     tap enabled
     natural_scroll enabled
 }
-
-

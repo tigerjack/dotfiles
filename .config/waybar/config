@@ -141,7 +141,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol-qt"
+        "on-click": "pavucontrol"
     },
     "custom/media": {
         "format": "{icon} {}",
