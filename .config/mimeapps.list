@@ -19,13 +19,15 @@ application/x-extension-shtml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 x-scheme-handler/msteams=teams.desktop
-text/plain=leafpad.desktop
 x-scheme-handler/news=userapp-Thunderbird-MXTFX0.desktop
 x-scheme-handler/snews=userapp-Thunderbird-MXTFX0.desktop
 x-scheme-handler/nntp=userapp-Thunderbird-MXTFX0.desktop
 x-scheme-handler/feed=userapp-Thunderbird-CNUDX0.desktop
 application/rss+xml=userapp-Thunderbird-CNUDX0.desktop
 application/x-extension-rss=userapp-Thunderbird-CNUDX0.desktop
+image/png=imv.desktop
+image/jpeg=imv.desktop
+application/pdf=org.pwmt.zathura.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -39,11 +41,10 @@ application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 application/x-xoj=xournalpp.desktop;
 audio/x-wav=mpv.desktop;
-text/plain=leafpad.desktop;
-image/png=gpicview.desktop;
+image/png=gpicview.desktop;imv.desktop;
 application/xhtml+xml=firefox.desktop;
 application/vnd.ms-excel=libreoffice-calc.desktop;
-image/jpeg=gpicview.desktop;
+image/jpeg=imv.desktop;gpicview.desktop;
 application/x-xpinstall=leafpad.desktop;thunderbird.desktop;
 x-scheme-handler/thunderlink=thunderbird-tl.desktop
 application/xml=libreoffice-writer.desktop;
@@ -54,7 +55,7 @@ video/mp4=smplayer.desktop;
 application/rtf=libreoffice-writer.desktop;
 text/calendar=thunderbird.desktop;
 application/x-ns-proxy-autoconfig=leafpad.desktop;
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/pdf=chromium.desktop;org.pwmt.zathura.desktop;wine-Programs-Tracker Software-PDF-XChange Editor.desktop;userapp-PDF-XChange\\ Editor.lnk-ZOGAZ0.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
 text/html=firefox.desktop;
 video/x-msvideo=vlc.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-J7WEX0.desktop;
@@ -64,3 +65,7 @@ x-scheme-handler/nntp=userapp-Thunderbird-MXTFX0.desktop;
 x-scheme-handler/feed=userapp-Thunderbird-CNUDX0.desktop;
 application/rss+xml=userapp-Thunderbird-CNUDX0.desktop;
 application/x-extension-rss=userapp-Thunderbird-CNUDX0.desktop;
+text/x-c++hdr=gvim.desktop;
+text/plain=leafpad.desktop;
+
+[Removed Associations]
