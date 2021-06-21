@@ -84,6 +84,8 @@ tmp/
 .mycli-history
 # Eduroam keys
 .cat_installer
+# Protonvpn
+.pvpn-cli
 #-----------
 
 ########
