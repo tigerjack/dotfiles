@@ -21,6 +21,7 @@ set -o nounset                              # Treat unset variables as an error
 
 # cfgpath_firefox="$HOME/.mozilla/firefox"
 cfgfile_rofi="$HOME/.config/rofi/config"
+cfgfile_wofi="$HOME/.config/wofi/config"
 cfgfile_vim="$HOME/.config/vim/vimrc"
 cfgfile_spacemacs="$HOME/.spacemacs"
 cfgfile_gtk2="$HOME/.gtkrc-2.0"
@@ -87,7 +88,7 @@ sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme
 sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt5"
 
 ### ROFI
-sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
+# sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
 ### VIM
 sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
 sed -i "s/^set background.*/set background=$vimbg/" "$cfgfile_vim"
@@ -117,6 +118,8 @@ sed -i "s;ColorSchemeName.*;ColorSchemeName=Solarized $speedcrunch;" "$cfgfile_s
 
 # Still missing 
 # - Firefox: changes to user.js aren't loaded automatically; you can use a plugin to rotate
+#   b/w themes with Alt+Shift+R
 # - Thunderbird: no easy switch 
 # - CopyQ: theme not changeable easily
 # - GoldenDict
+# - Wofi

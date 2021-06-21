@@ -1,0 +1,261 @@
+#!/usr/bin/env bash
+
+usage() {
+    echo "$PROG [-r|--download-random-image] [-d|--delete-downloaded-image] [-i|--image <image>] [seconds] [mode]
+
+Set up swayidle with automatic screen blanking, lock and/or suspend after an idle period.
+In all modes (except movie-mode), the screen is blanked after the first timeout.
+Locking, if enabled, happens on the next timeout and then suspend, if enabled.
+For safety after a suspend, safe-mode is enabled and the screen is locked.
+
+You can put default settings in the config file $CFG_FILE
+
+-i|--image <image>   : use a specific screensaver image
+                       Or put IMAGE=<filename> in the config file.
+
+-r|--download-random-image:
+                       download a random screensaver image from unsplash.it
+                       Images are stored in \$XDG_PICTURES_DIR (usually ~/Pictures) 
+                       Or put DOWNLOAD_RANDOM_IMAGE=true in the config file.
+
+-d|--delete-downloaded-image:
+                       delete the downloaded image after use
+                       Or put DELETE_DOWNLOADED_IMAGE=true in the config file.
+
+If neither -i|--image or -r|--download-random-image is given then a random image
+from \$XDG_PICTURES_DIR is used.
+
+'seconds' is the time before an idle event is triggered (default 600 = 10m)
+
+'mode' is one of:
+safe-mode     : auto-lock after timeout and eventually auto-suspend.
+                this should be the default in the sway config.
+at-home-mode  : (Less Safe) don't lock (just blank screen) until we manually suspend
+                eg you're in a safe environment like at home
+download-mode : auto-lock after timeout but don't auto-suspend.
+                eg you want to keep the machine going, maybe a download
+movie-mode    : (Less Safe) don't lock, don't even blank until we manually suspend
+                eg you're in a safe environment like at home watching a movie
+lock-now      : just lock the machine now; don't change auto-lock or auto-suspend
+<no argument> : popup a rofi dialog to select one of the above
+
+Dependencies: rofi, swayidle, swaylock, sway, wget for downloading images.
+
+I would suggest the following key bindings and startup for sway's config file:
+
+# this first one pops up the dialog to select the mode:
+bindsym  \$mod+l                exec $PROG  
+bindsym  Shift+\$mod+l          exec $PROG at-home-mode
+bindsym  Control+\$mod+l        exec $PROG safe-mode
+bindsym  Control+Shift+\$mod+l  exec $PROG lock-now
+...
+
+It is recommended to have this in your sway config to start swayidle with safe defaults:
+exec $PROG safe-mode
+
+"
+}
+
+# query key bindings from sway config file:
+get_binding_for() {
+    TARGET=$1
+
+    awk "/^bindsym.* $PROG.* $TARGET/ { print \$2; exit 0 }" ${XDG_CONFIG_DIR:-$HOME/.config}/sway/config
+}
+
+# defaults
+DOWNLOAD_RANDOM_IMAGE=""
+DELETE_DOWNLOADED_IMAGE=""
+IMAGE=""
+PROG=$( basename $0 )
+SELF=$0
+TIMEOUT=600
+
+# customise this to wherever you have a nice collection of background images
+IMAGE_COLLECTION="${XDG_PICTURES_DIR:-$HOME/Pictures}"
+
+IMAGE_URL='https://unsplash.it/1920/1080/?random'
+
+# 
+LOCK_NOW_BINDING=$( get_binding_for "lock-now" )
+AT_HOME_MODE_BINDING=$( get_binding_for "at-home-mode" )
+MOVIE_MODE_BINDING=$( get_binding_for "movie-mode" )
+SAFE_MODE_BINDING=$( get_binding_for "safe-mode" )
+DOWNLOAD_MODE_BINDING=$( get_binding_for "download-mode" )
+
+# load settings from config file:
+CFG_FILE=${XDG_CONFIG_DIR:-$HOME/.config}/$PROG/config
+[[ -r "$CFG_FILE" ]] && source $CFG_FILE
+
+# process options:
+TEMP=$( getopt --options rdh --longoptions download-random-image,delete-downloaded-image,help -- "$@" ) || exit 1
+set -- $TEMP
+
+for i in "$@"; do
+  case $i in
+      -r|--random) DOWNLOAD_RANDOM_IMAGE="true"; shift;;
+      -d|--delete-downloaded-image) DELETE_DOWNLOADED_IMAGE="true"; shift;;
+      -i|--image)
+          IMAGE="$2"
+          shift 2
+          [[ -r $IMAGE ]] || {
+              echo "$PROG: no such image $IMAGE" >&2
+              exit 1
+          }
+          ;;
+      -h|--help) usage; exit 0;;
+    --) shift; break;;
+  esac
+done
+
+type $PROG &>/dev/null || PATH+=":$( dirname $0 )"
+
+# provide a way to customise rofi eg theme:
+ROFI=rofi
+type myrofi &>/dev/null && ROFI=myrofi
+
+get_current_idle() {
+    IDLE=$( ps -ef | grep '[s]wayidle -w' )
+            
+    IDLE=$( echo "$IDLE" | sed "s/^.*swayidle -w //; s/timeout/\n&/g; s/before-sleep/\n&/g; s/after-resume/\n&/g" )
+    MASK=0
+    if echo "$IDLE" | grep -q '^timeout .* lock-now'; then
+        LOCKING="on"
+        MASK=$(( MASK + 100 ))
+    else
+        LOCKING="off"
+    fi
+    if echo "$IDLE" | grep -q '^timeout .* suspend'; then
+        SUSPEND="on"
+        MASK=$(( MASK + 10 ))
+    else
+        SUSPEND="off"
+    fi
+    if echo "$IDLE" | grep -q '^timeout .*output.*off'; then
+        BLANKING="on"
+        MASK=$(( MASK + 1 ))
+    else
+        BLANKING="off"
+    fi
+    case $MASK in
+        0) MODE="Movie" ;;
+        1) MODE="At home" ;;
+        111) MODE="Safe" ;;
+        101) MODE="Downloading" ;;
+    esac
+    
+    echo "$MODE mode: you have blanking=$BLANKING auto-lock=$LOCKING auto-suspend=$SUSPEND
+
+$IDLE"
+}
+
+# set timeout value:
+[[ "$1" && $1 =~ [0-9]+ ]] && {
+    TIMEOUT=$1
+    shift
+}
+
+# do we need a dialog?
+[[ -z "$1" ]] && {
+    VAL=$(
+        echo "Lock now          with no change to blanking/auto-lock/suspend [$LOCK_NOW_BINDING]
+Safe mode:        Blanking, Auto-lock & auto-suspend [$SAFE_MODE_BINDING]
+At home mode:     Blanking but no auto-lock or suspend [$AT_HOME_MODE_BINDING]
+Downloading mode: Blanking and auto-lock but no auto-suspend [$DOWNLOAD_MODE_BINDING]
+Movie mode:       No blanking, auto-lock or suspend [$MOVIE_MODE_BINDING]" |
+        $ROFI -dmenu -no-custom -p "$( get_current_idle )" -format d ) || exit 0
+
+    case "$VAL" in
+        1) VAL="'lock-now'" ;;
+        2) VAL="'safe-mode'" ;;
+        3) VAL="'at-home-mode'" ;;
+        4) VAL="'download-mode'" ;;
+        5) VAL="'movie-mode'" ;;
+        *) exit
+    esac
+
+    set -- $VAL
+}
+
+ROFI_MSG=""
+case "$1" in
+    "'lock-now'")
+        if [[ -z "$IMAGE" ]] && [[ "$DOWNLOAD_RANDOM_IMAGE" ]]; then
+            # fetch a download random image from unsplash.it:
+            IMAGE="$IMAGE_COLLECTION/unsplash.it-$( date +"%Y%m%dT%H%M%S" ).jpg"
+            $ROFI -width 30 -e "Downloading image from $IMAGE_URL ..." & ROFI_PID=$!
+            wget -q -O $IMAGE $IMAGE_URL || {
+                echo "$PROG: download from '$IMAGE_URL' failed" >&2
+                # exit 1 # probably better to lock with a blank screen or an image from $XDG_PICTURES_DIR
+                IMAGE=""
+            }
+
+            # kill -- -$ROFI_PID ... doesn't work
+            # kill the rofi message - anything with a PPID==$ROFI_PID:
+            ps -eo pid,ppid | while read pid ppid; do
+                (( ppid == ROFI_PID )) && kill $pid
+            done
+        fi
+        
+        [[ "$IMAGE" ]] || {
+            # get a random image from our collection:
+            IMAGE="$IMAGE_COLLECTION/$( ls $IMAGE_COLLECTION | shuf -n 1 )"
+        }
+        
+        pkill swaylock
+        swaylock -f --image "$IMAGE"
+        [[ "DOWNLOAD_RANDOM_IMAGE" ]] && [[ "$DELETE_DOWNLOADED_IMAGE" ]] && { sleep 10; rm "$IMAGE" & }
+        ;;
+
+    "'safe-mode'")
+        pkill swayidle
+        swayidle -w \
+                 timeout $TIMEOUT                "swaymsg 'output * dpms off'" \
+                 resume                          "swaymsg 'output * dpms on'" \
+                 timeout $(( TIMEOUT * 2 ))      "swaymsg 'output * dpms on'; $SELF lock-now" \
+                 timeout $(( TIMEOUT * 3 ))      "swaymsg 'output * dpms off'" \
+                 resume                          "swaymsg 'output * dpms on'" \
+                 timeout $(( TIMEOUT * 4 ))      "sudo systemctl suspend" \
+                 before-sleep                    "$SELF lock-now" &
+        
+        ROFI_MSG="Safer: auto-lock and auto-suspend are enabled (timeout=$TIMEOUT secs)"
+        ;;
+        
+    "'at-home-mode'")
+        pkill swayidle
+        swayidle -w \
+                 timeout $TIMEOUT  "swaymsg 'output * dpms off'" \
+                 resume            "swaymsg 'output * dpms on'" \
+                 before-sleep      "$SELF lock-now" \
+                 after-resume      "$SELF safe-mode" &
+        
+        ROFI_MSG="Less Safe: auto-lock and auto-suspend are disabled (until manual suspend)"
+        ;;
+
+    "'download-mode'")
+        pkill swayidle
+        swayidle -w \
+                 timeout $TIMEOUT                "swaymsg 'output * dpms off'" \
+                 resume                          "swaymsg 'output * dpms on'" \
+                 timeout $(( TIMEOUT * 2 ))      "swaymsg 'output * dpms on'; $SELF lock-now" \
+                 timeout $(( TIMEOUT * 3 ))      "swaymsg 'output * dpms off'" \
+                 resume                          "swaymsg 'output * dpms on'" \
+                 before-sleep                    "$SELF lock-now" &
+
+        # ROFI_MSG="Safer: auto-lock is enabled (timeout=$TIMEOUT secs); auto-suspend is disabled"
+        ;;
+
+    "'movie-mode'")
+        pkill swayidle
+        swayidle -w \
+                 before-sleep      "$SELF lock-now" \
+                 after-resume      "$SELF safe-mode" &
+        
+        # ROFI_MSG="Less Safe: blanking, auto-lock and auto-suspend are disabled (until manual suspend)"
+        ;;
+
+esac
+
+[[ "$ROFI_MSG" ]] && $ROFI -width 50 -e "$( get_current_idle )"
+
+exit 0
