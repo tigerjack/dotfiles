@@ -50,7 +50,6 @@ tmp/
 .w3m/history
 # rvm/ruby
 .rvm
-
 #########
 # GUI configs
 ########
@@ -130,6 +129,12 @@ LinuxData
 ########
 # Other apps 
 ########
+# openshot
+.openshot/
+# OBS-studio
+.config/obs-studio/
+# bundle for ruby
+.bundle/
 # zotero
 .zotero
 # pylint
