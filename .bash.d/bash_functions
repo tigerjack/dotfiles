@@ -42,3 +42,26 @@ function vims {
     $vim_orig --servername vim "$@"
   fi
 }
+# sourcing this file will define a bash functions that 
+# tries to run subsequent calls to emacs with 24 bit color.
+#
+# Checks if there is an xterm-direct, either globally or in the user defined directory) 
+# and, if so, check if truecolor is enabled
+#
+# To check how many colors emacs thinks it can display, run M-x list-colors-display
+emacs () {
+    if ( test -f "$HOME/.terminfo/x/xterm-direct" || test -f "/usr/share/terminfo/x/xterm-direct" ) && test "$COLORTERM" == "truecolor"
+    then
+        TERM=xterm-direct command emacs "$@"
+    else
+        command emacs "$@"
+    fi
+}
+emacsclient () {
+    if ( test -f "$HOME/.terminfo/x/xterm-direct" || test -f "/usr/share/terminfo/x/xterm-direct" ) && test "$COLORTERM" == "truecolor"
+    then
+        TERM=xterm-direct command emacsclient "$@"
+    else
+        command emacsclient "$@"
+    fi
+}
