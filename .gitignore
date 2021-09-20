@@ -48,6 +48,8 @@ tmp/
 .config/onedrive/polimi/config
 # history files
 .w3m/history
+# rvm/ruby
+.rvm
 
 #########
 # GUI configs
