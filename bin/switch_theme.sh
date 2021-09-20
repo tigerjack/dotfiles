@@ -23,6 +23,8 @@ set -o nounset                              # Treat unset variables as an error
 cfgfile_rofi="$HOME/.config/rofi/config"
 cfgfile_wofi="$HOME/.config/wofi/config"
 cfgfile_vim="$HOME/.config/vim/vimrc"
+cfgfile_taskwarrior="$HOME/.config/taskwarrior/taskrc"
+echo "$cfgfile_taskwarrior"
 cfgfile_spacemacs="$HOME/.spacemacs"
 cfgfile_gtk2="$HOME/.gtkrc-2.0"
 cfgfile_gtk3="$HOME/.config/gtk-3.0/settings.ini"
@@ -50,13 +52,16 @@ if [[ $switchto = light ]]; then
     dmenu1="white" 
     dmenu2="black" 
     dmenu3="blue" 
-    termitestyle="atom-one-light" 
+    # termitestyle="atom-one-light" 
+    alacrittystyle="Google.light"
     gtktheme="\"Arc\"" 
     rofitheme="Arc" 
     dark="false" 
     qt5colors="simple.conf" 
-    vimscheme="atom" 
+    # deep-space, default, delek +, koehler +, nord, pablo, peachpuff, pyte, zellner +,
+    # vimscheme="koehler" 
     vimbg="light" 
+    taskwarriortheme="/usr/share/doc/task/rc/solarized-light-256.theme"
     spacemacsscheme="spacemacs-light" 
     spttheme="light"
     speedcrunch="Light"
@@ -65,13 +70,15 @@ else
     dmenu1="black" 
     dmenu2="white" 
     dmenu3="red" 
-    termitestyle="default" 
+    alacrittystyle="Google.dark"
+    # termitestyle="default" 
     gtktheme="\"Arc-Dark\"" 
     rofitheme="Arc-Dark" 
     dark="true" 
     qt5colors="darker.conf" 
-    vimscheme="default" 
+    # vimscheme="default" 
     vimbg="dark" 
+    taskwarriortheme="/usr/share/doc/task/rc/solarized-dark-256.theme"
     spacemacsscheme="spacemacs-dark" 
     spttheme="dark"
     speedcrunch="Dark"
@@ -80,8 +87,14 @@ fi
 # The following lines should be put before the reload of i3-style
 sed -i "s/set \$dmenu_options.*/set \$dmenu_options -nb $dmenu1 -nf $dmenu2 -sb $dmenu3/" "$cfgfile_i3"
 i3-style "$i3style" -o "$cfgfile_i3" --reload > /dev/null 2>&1
+# ALACRITTY
+# https://github.com/rajasegar/alacritty-themes
+# https://github.com/rajasegar/alacritty-themes/tree/master/themes
+alacritty-themes "$alacrittystyle"
 # TERMITE you should first install termite-color-switcher
-termite-color-switcher "$termitestyle"
+# OFF
+# termite-color-switcher "$termitestyle"
+# Others
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$rofitheme/" "$cfgfile_gtk3"
 sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$dark/" "$cfgfile_gtk3"
@@ -90,7 +103,7 @@ sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5col
 ### ROFI
 # sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
 ### VIM
-sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
+# sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
 sed -i "s/^set background.*/set background=$vimbg/" "$cfgfile_vim"
 ### VIM SERVER, this requires a vim installed with gui support
 for i in $(vim --serverlist); do 
@@ -108,6 +121,9 @@ if [ -n "$bla" ]; then
 	echo "Unable to change theme in spacemacs"
     fi
 fi
+### TASKWARRIOR
+sed -i "s;^include.*;include $taskwarriortheme;" "$cfgfile_taskwarrior"
+
 ### SPOTIFY-TUI
 # WARN: This overwrite any personalized configuration in yaml
 # TODO: A parser of config that preserves non-theme lines
