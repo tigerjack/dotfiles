@@ -156,9 +156,9 @@ export DIALOGRC="$HOME/dialog/dialogrc"
 
 # for i3-sensible-terminal
 #export TERMINAL=termite
-export TERMINAL='termite'
+export TERMINAL='alacritty'
 # for ranger
-export TERMCMD='termite'
+export TERMCMD='alacritty'
 
 # for locale
 # export LC_ALL=en_US.UTF-8
