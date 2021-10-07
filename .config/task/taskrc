@@ -11,13 +11,15 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
+# data.location=/mnt/internal/SharedData/AppData/TaskWarrior/
 data.location=$MDIR_GLOBAL_APP_DATA/TaskWarrior/
 
+include /usr/share/doc/task/rc/solarized-dark-256.theme
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
 #include /usr/share/doc/task/rc/light-256.theme
 #include /usr/share/doc/task/rc/dark-16.theme
-include /usr/share/doc/task/rc/dark-256.theme
+#include /usr/share/doc/task/rc/dark-256.theme
 #include /usr/share/doc/task/rc/dark-red-256.theme
 #include /usr/share/doc/task/rc/dark-green-256.theme
 #include /usr/share/doc/task/rc/dark-blue-256.theme
@@ -30,6 +32,9 @@ include /usr/share/doc/task/rc/dark-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
 taskd.server=freecinc.com:53589
+# taskd.key=/home/simone/.config/private/TaskWarrior/freecinc_9aa46843.key.pem
+# taskd.ca=/home/simone/.config/private/TaskWarrior/freecinc_9aa46843.ca.pem
+# taskd.certificate=/home/simone/.config/private/TaskWarrior/freecinc_9aa46843.cert.pem
 taskd.key=$MDIR_PRIVATE/TaskWarrior/freecinc_9aa46843.key.pem
 taskd.ca=$MDIR_PRIVATE/TaskWarrior/freecinc_9aa46843.ca.pem
 taskd.certificate=$MDIR_PRIVATE/TaskWarrior/freecinc_9aa46843.cert.pem
@@ -41,3 +46,6 @@ report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
 
+context.work.read=project:phd
+context.work.write=project:phd
+context=work
