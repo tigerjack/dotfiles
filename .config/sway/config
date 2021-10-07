@@ -1,3 +1,4 @@
+
 # $mod1 = Alt; $mod4 = Super, Windows; Ctrl is simply Control
 set $sup Mod4
 set $alt Mod1
@@ -23,3 +24,4 @@ include ./conf.d/bar
 include ./conf.d/inout
 include ./conf.d/windows
 include ./conf.d/execs
+include /etc/sway/config.d/*

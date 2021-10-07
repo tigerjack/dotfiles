@@ -286,7 +286,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # move to different RandR output
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
-bindsym $sup+Control+F1 move workspace to output right
+bindsym $sup+Control+F1 move workspace to output left
+bindsym $sup+Control+F2 move workspace to output down
+bindsym $sup+Control+F3 move workspace to output up
+bindsym $sup+Control+F4 move workspace to output right
 # Switch focus to left/right monitor
 bindsym $sup+Control+h focus output left
 bindsym $sup+Control+l focus output right
@@ -363,21 +366,21 @@ bindsym $sup+button3 floating toggle
 ## Function keys
 #######################################
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# Locked is to allow keybindings to work even when lockscreen is active
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked Shift+F10 exec playerctl previous
+bindsym --locked Shift+F11 exec playerctl play-pause
+bindsym --locked Shift+F12 exec playerctl next
 
 bindsym XF86TouchpadToggle exec toggle_touchpad.sh
-
-bindsym Shift+F10 exec playerctl previous
-bindsym Shift+F11 exec playerctl play-pause
-bindsym Shift+F12 exec playerctl next
 
 #######################################
 ## Other general bindings
@@ -393,3 +396,7 @@ bindsym $sup+Ctrl+i exec copyq toggle
 
 #bindsym $sup+Ctrl+p exec playerctl_info.sh
 bindsym $sup+Ctrl+p exec spotify_info.sh
+
+bindsym Ctrl+Alt+R exec obs-cli --password malaka recording toggle
+# Color picker, copy to clipboard
+bindsym $sup+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy

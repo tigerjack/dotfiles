@@ -6,7 +6,7 @@
 # https://i3wm.org/docs/userguide.html#_configuring_i3bar
 bar {
         # Config for i3-workspace-groups
-        strip_workspace_numbers yes
+        # strip_workspace_numbers yes
 
 	tray_output primary
 	# status_command swaybar
