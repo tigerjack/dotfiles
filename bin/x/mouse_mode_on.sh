@@ -18,5 +18,5 @@
 #===============================================================================
 
 set -o nounset                              # Treat unset variables as an error
-pcmanfm-qt --desktop &
+pcmanfm --desktop &
 mate-panel &

@@ -32,4 +32,9 @@ elif [ "$TERMINAL" = "urxvt" ]; then
 	urxvt -e sh -c "cd $curdir && bash" &
 	i=$((i+1))
     done
+elif [ "$TERMINAL" = "kitty" ]; then
+    while [ "$i" -le "$n" ]; do
+	kitty sh -c "cd $curdir && bash" &
+	i=$((i+1))
+    done
 fi

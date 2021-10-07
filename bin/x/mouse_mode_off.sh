@@ -18,6 +18,6 @@
 #===============================================================================
 
 set -o nounset                              # Treat unset variables as an error
-pcmanfm-qt --desktop-off
+pcmanfm --desktop-off
 killall mate-panel
 

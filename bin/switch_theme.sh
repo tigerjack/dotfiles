@@ -52,6 +52,7 @@ if [[ $switchto = light ]]; then
     dmenu1="white" 
     dmenu2="black" 
     dmenu3="blue" 
+    kittystyle="Atom One Light"
     # termitestyle="atom-one-light" 
     alacrittystyle="Google.light"
     gtktheme="\"Arc\"" 
@@ -59,7 +60,7 @@ if [[ $switchto = light ]]; then
     dark="false" 
     qt5colors="simple.conf" 
     # deep-space, default, delek +, koehler +, nord, pablo, peachpuff, pyte, zellner +,
-    # vimscheme="koehler" 
+    vimscheme="gruvbox" 
     vimbg="light" 
     taskwarriortheme="/usr/share/doc/task/rc/solarized-light-256.theme"
     spacemacsscheme="spacemacs-light" 
@@ -71,12 +72,13 @@ else
     dmenu2="white" 
     dmenu3="red" 
     alacrittystyle="Google.dark"
+    kittystyle="Misterioso"
     # termitestyle="default" 
     gtktheme="\"Arc-Dark\"" 
     rofitheme="Arc-Dark" 
     dark="true" 
     qt5colors="darker.conf" 
-    # vimscheme="default" 
+    vimscheme="gruvbox" 
     vimbg="dark" 
     taskwarriortheme="/usr/share/doc/task/rc/solarized-dark-256.theme"
     spacemacsscheme="spacemacs-dark" 
@@ -91,6 +93,8 @@ i3-style "$i3style" -o "$cfgfile_i3" --reload > /dev/null 2>&1
 # https://github.com/rajasegar/alacritty-themes
 # https://github.com/rajasegar/alacritty-themes/tree/master/themes
 alacritty-themes "$alacrittystyle"
+# KITTY
+kitty +kitten themes --reload-in=all  "$kittystyle"
 # TERMITE you should first install termite-color-switcher
 # OFF
 # termite-color-switcher "$termitestyle"
@@ -104,6 +108,7 @@ sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5col
 # sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
 ### VIM
 # sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
+# sed -i "s/\scolorscheme.*/ colorscheme $vimscheme/" "$cfgfile_vim"
 sed -i "s/^set background.*/set background=$vimbg/" "$cfgfile_vim"
 ### VIM SERVER, this requires a vim installed with gui support
 for i in $(vim --serverlist); do 

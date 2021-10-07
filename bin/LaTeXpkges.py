@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import re
@@ -135,7 +135,7 @@ def file_md5(path, blocksize=65536):
     re_Creation = re.compile(b"/CreationDate\s+\(.*?\)")
     re_Mod = re.compile(b"/ModDate\s+\(.*?\)")
 
-    re_Output = re.compile(r"TeX output [0-9]{4}\.[0-9]{2}\.[0-9]{2}\:[0-9]{4}")
+    re_Output = re.compile(b"TeX output [0-9]{4}\.[0-9]{2}\.[0-9]{2}\:[0-9]{4}")
 
     contents = re.sub(re_ID, b'', contents)
     contents = re.sub(re_Creation, b'/CreationDate ()', contents)
