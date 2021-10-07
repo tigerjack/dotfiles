@@ -4,9 +4,10 @@
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    // "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery",  "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -28,34 +29,34 @@
     },
     "language": {
         "format": "{}",
-        "max-length": 50
+        "max-length": 120
     },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 2,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
+    // "mpd": {
+    //     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
+    //     "format-disconnected": "Disconnected ",
+    //     "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    //     "unknown-tag": "N/A",
+    //     "interval": 2,
+    //     "consume-icons": {
+    //         "on": " "
+    //     },
+    //     "random-icons": {
+    //         "off": "<span color=\"#f53c3c\"></span> ",
+    //         "on": " "
+    //     },
+    //     "repeat-icons": {
+    //         "on": " "
+    //     },
+    //     "single-icons": {
+    //         "on": "1 "
+    //     },
+    //     "state-icons": {
+    //         "paused": "",
+    //         "playing": ""
+    //     },
+    //     "tooltip-format": "MPD (connected)",
+    //     "tooltip-format-disconnected": "MPD (disconnected)"
+    // },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -109,9 +110,9 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
+    // "battery#bat2": {
+    //     "bat": "BAT2"
+    // },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         // "format-wifi": "{essid} ({signalStrength}%) - \u2197 {bandwidthDownBits} \u2198{bandwidthUpBits} ",
