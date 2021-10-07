@@ -29,6 +29,7 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+#
 *__pycache__*
 .Xauthority
 # it's just a link to Xresources
@@ -93,8 +94,8 @@ tmp/
 # Local others
 ########
 .cache
-
-.local/share
+.local/share/
+~/.local/state/
 
 # Used (mainly?) by pip --user
 .local/lib
