@@ -1,0 +1,4 @@
+option toolbox true
+bind g gotoFirst
+bind G gotoLast
+bind e goto
