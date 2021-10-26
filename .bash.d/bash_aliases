@@ -13,7 +13,7 @@ alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
 alias tmsu_the='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/thesis'
 alias td='transmission-daemon'
 alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/xorg.log 2>&1"
-alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/log 2>&1"
+alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
 alias gcalcli='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli'
@@ -49,3 +49,4 @@ alias taskopen='taskopen -c $HOME/.config/taskopen/taskopenrc'
 alias rclone_pull='rclone sync --copy-links -v polimi: /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt'
 alias rclone_push='rclone sync --copy-links -v /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt'
 #alias sshenv='"$HOME"/bin/autostart_ssh_agent.sh; echo "Sourcing $MSSH_ENV"; source "$MSSH_ENV"'
+alias icat="kitty +kitten icat"
