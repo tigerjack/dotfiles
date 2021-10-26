@@ -389,10 +389,13 @@ bindsym XF86TouchpadToggle exec toggle_touchpad.sh
 bindsym Ctrl+space exec makoctl dismiss -a
 # copyq 
 bindsym Ctrl+Shift+i exec copyq toggle
+bindsym Ctrl+Shift+t exec notify-send "trans: $(copyq clipboard)" "$(trans -e google -no-ansi -t en+it -b $(copyq clipboard))"
+bindsym Ctrl+Shift+d exec notify-send "def: $(copyq clipboard)"   "$(trans -e google -no-ansi -t en+it -d $(copyq clipboard))"
+# change keyboard layout
 bindsym --input-device=keyboard $sup+space xkb_switch_layout next
 
-bindsym $sup+Shift+i exec clipman pick -t wofi
-bindsym $sup+Ctrl+i exec copyq toggle
+# clipman
+# bindsym $sup+Shift+i exec clipman pick -t wofi
 
 #bindsym $sup+Ctrl+p exec playerctl_info.sh
 bindsym $sup+Ctrl+p exec spotify_info.sh
