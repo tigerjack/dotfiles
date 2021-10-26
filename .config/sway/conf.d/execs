@@ -12,28 +12,19 @@ exec swayidle \
 # exec ~/bin/x/mylock safe-mode
 
 # notification daemon
-exec mako
+exec mako >/mnt/internal/LinuxData/logs/sway/mako.log 2>&1 
 # wifi tray
-exec nm-applet --indicator
+exec nm-applet --indicator >/mnt/internal/LinuxData/logs/sway/nm_applet.log 2>&1
 # clipboard manager
 # exec wl-paste -t text --watch clipman store
 # https://github.com/yory8/clipman/issues/52#issuecomment-778693461
 # exec wl-paste -t text --watch myclipman
 
 # battery-monitor
-exec batsignal -b
+exec batsignal -b >/mnt/internal/LinuxData/logs/sway/batsignal.log 2>&1 
 
 #Execute the startup scripts
-# Doesn't work if I invoke an external script, don't know why
-# exec --no-startup-id ~/bin/x/post_sway_scripts.sh > tmp/a.log 2>&1
-# ... so simply launching from here
-# exec eval $(ssh-agent -s &)
-# >"$MDIR_LOGS/startx/ssh_agent.log$DISPLAY" 2>&1
-# exec dex /usr/share/applications/com.github.hluk.copyq.desktop
-# Neither of them works if launched by sway, only if launched by terminal
-#exec dex /home/simone/.config/autostart/copyq.desktop 
-#exec dex /home/simone/.config/autostart/gnome-keyring-ssh.desktop
-#exec dex /home/simone/.config/autostart/gnome-keyring-secrets.desktop
-#exec env QT_QPA_PLATFORM=xcb /usr/bin/copyq > ~/a.log 2>&1
-exec dex -a
-exec xss-lock -- swaylock -k -l -c 000000
+exec dex -a >/mnt/internal/LinuxData/logs/sway/dex.log 2>&1 
+# locker
+exec xss-lock -- swaylock -k -l -c 000000 >/mnt/internal/LinuxData/logs/sway/xss_lock.log 2>&1 
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
