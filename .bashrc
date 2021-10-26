@@ -15,6 +15,8 @@ for file in ~/.bash_completion.d/*; do
 done
 unset file
 shopt -u dotglob
+# To source kitty completion
+source <(kitty + complete setup bash)
 
 # To search in the official repository when command is not found (Arch Linux specific config)
 # Too slow

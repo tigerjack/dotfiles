@@ -156,15 +156,16 @@ export DIALOGRC="$HOME/dialog/dialogrc"
 
 # for i3-sensible-terminal
 #export TERMINAL=termite
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 # for ranger
-export TERMCMD='alacritty'
+export TERMCMD='kitty'
 
 # for locale
 # export LC_ALL=en_US.UTF-8
 
-# for task warrior
-export TASKRC="$HOME/.config/taskwarrior/taskrc"
+# for taskwarrior
+# Unset, now it's automatically put in ~/.config/task/
+# export TASKRC="$HOME/.config/taskwarrior/taskrc"
 
 # for thefuck
 eval $(thefuck --alias)
