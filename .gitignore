@@ -29,6 +29,7 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+.electron-gyp/*
 #
 *__pycache__*
 .Xauthority
@@ -132,6 +133,7 @@ LinuxData
 ########
 # openshot
 .openshot/
+.openshot_qt/
 # OBS-studio
 .config/obs-studio/
 # bundle for ruby
