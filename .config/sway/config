@@ -1,4 +1,3 @@
-
 # $mod1 = Alt; $mod4 = Super, Windows; Ctrl is simply Control
 set $sup Mod4
 set $alt Mod1
@@ -18,6 +17,9 @@ floating_modifier $sup
 
 # By default, window focus follows your mouse movements as the mouse crosses window borders. 
 focus_follows_mouse no
+
+# dmenu not used anymore, replaced by wofi
+# set $dmenu_options -nb black -nf white -sb red
 
 include ./conf.d/bindings
 include ./conf.d/bar

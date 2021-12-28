@@ -1,24 +1,10 @@
 ##########################################
 # Launchers
 ###########################################
-set $dmenu_options -nb black -nf white -sb red
-# start dmenu (a program launcher)
-# bindsym $sup+Shift+semicolon exec dmenu_run $dmenu_options
-#bindsym $sup+Shift+semicolon exec "yeganesh -x -- -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC"
-bindsym $sup+Shift+semicolon exec wofi --show dmenu
+# bindsym $sup+$alt+semicolon exec wofi --show dmenu
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $sup+$alt+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i $dmenu_options"
-bindsym $sup+$alt+semicolon exec wofi --show run
+bindsym $sup+Shift+semicolon exec wofi --show run
 
-#Trying alternative to i3-dmenu-desktop
-#--no-generic disable the reading of GenericName keys from desktop files
-#bindsym $sup+Shift+semicolon exec --no-startup-id j4-dmenu-desktop --no-generic
-
-# Replacing dmenu with rofi
-#bindsym $sup+semicolon exec rofi -show >> "/mnt/internal/LinuxData/logs/i3/rofi.log" 2>&1
 bindsym $sup+semicolon exec wofi --show
 
 # A GUI menu for applications, testing
@@ -206,84 +192,10 @@ bindsym $sup+n workspace next
 bindsym $sup+o workspace back_and_forth
 bindsym $sup+Shift+o move container to workspace back_and_forth
 
-# #######################################
-# # i3-workspace-groups shortcuts
-# #######################################
-# # See also workspaces, some options are mutually exclusive
-# # Shortcut for i3-workspace-groups
-# set $exec_i3_groups exec --no-startup-id i3-workspace-groups
-# # Switch active workspace group
-# bindsym $sup+g exec --no-startup-id i3-switch-active-workspace-group
-# 
-# # Assign workspace to a group
-# bindsym $sup+Shift+g exec --no-startup-id i3-assign-workspace-to-group
-# 
-# # Select workspace to focus on
-# bindsym $sup+w exec --no-startup-id i3-focus-on-workspace
-# 
-# # Move the focused container to another workspace
-# bindsym $sup+Shift+w exec --no-startup-id i3-move-to-workspace
-# 
-# # Rename/renumber workspace. Uses Super+Alt+r
-# ## bindsym Mod1+Mod4+n exec --no-startup-id i3-rename-workspace
-# bindsym $sup+$alt+r exec --no-startup-id i3-rename-workspace
-# 
-# bindsym $sup+1 $exec_i3_groups workspace-number 1
-# bindsym $sup+2 $exec_i3_groups workspace-number 2
-# bindsym $sup+3 $exec_i3_groups workspace-number 3
-# bindsym $sup+4 $exec_i3_groups workspace-number 4
-# bindsym $sup+5 $exec_i3_groups workspace-number 5
-# bindsym $sup+6 $exec_i3_groups workspace-number 6
-# bindsym $sup+7 $exec_i3_groups workspace-number 7
-# bindsym $sup+8 $exec_i3_groups workspace-number 8
-# bindsym $sup+9 $exec_i3_groups workspace-number 9
-# bindsym $sup+0 $exec_i3_groups workspace-number 10
-# bindsym $sup+F1 $exec_i3_groups workspace-number 11
-# bindsym $sup+F2 $exec_i3_groups workspace-number 12
-# bindsym $sup+F3 $exec_i3_groups workspace-number 13
-# bindsym $sup+F4 $exec_i3_groups workspace-number 14
-# bindsym $sup+F5 $exec_i3_groups workspace-number 15
-# bindsym $sup+F6 $exec_i3_groups workspace-number 16
-# bindsym $sup+F7 $exec_i3_groups workspace-number 17
-# bindsym $sup+F8 $exec_i3_groups workspace-number 18
-# bindsym $sup+F9 $exec_i3_groups workspace-number 19
-# bindsym $sup+F10 $exec_i3_groups workspace-number 20
-# 
-# bindsym $sup+Shift+1 $exec_i3_groups move-to-number 1
-# bindsym $sup+Shift+2 $exec_i3_groups move-to-number 2
-# bindsym $sup+Shift+3 $exec_i3_groups move-to-number 3
-# bindsym $sup+Shift+4 $exec_i3_groups move-to-number 4
-# bindsym $sup+Shift+5 $exec_i3_groups move-to-number 5
-# bindsym $sup+Shift+6 $exec_i3_groups move-to-number 6
-# bindsym $sup+Shift+7 $exec_i3_groups move-to-number 7
-# bindsym $sup+Shift+8 $exec_i3_groups move-to-number 8
-# bindsym $sup+Shift+9 $exec_i3_groups move-to-number 9
-# bindsym $sup+Shift+0 $exec_i3_groups move-to-number 10
-# bindsym $sup+Shift+F1 $exec_i3_groups move-to-number 11
-# bindsym $sup+Shift+F2 $exec_i3_groups move-to-number 12
-# bindsym $sup+Shift+F3 $exec_i3_groups move-to-number 13
-# bindsym $sup+Shift+F4 $exec_i3_groups move-to-number 14
-# bindsym $sup+Shift+F5 $exec_i3_groups move-to-number 15
-# bindsym $sup+Shift+F6 $exec_i3_groups move-to-number 16
-# bindsym $sup+Shift+F7 $exec_i3_groups move-to-number 17
-# bindsym $sup+Shift+F8 $exec_i3_groups move-to-number 18
-# bindsym $sup+Shift+F9 $exec_i3_groups move-to-number 19
-# bindsym $sup+Shift+F10 $exec_i3_groups move-to-number 20
-# 
-# # Switch to previous/next workspace (in the current group).
-# bindsym $sup+Control+p $exec_i3_groups workspace-prev
-# bindsym $sup+Control+n $exec_i3_groups workspace-next
-#
-###########################################
-### Output configuration
-###########################################
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ###########################################
-# RandR
+# Old RandR config, now managed directly
 ###########################################
-# move to different RandR output
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
 bindsym $sup+Control+F1 move workspace to output left
@@ -329,9 +241,7 @@ bindsym $sup+Return exec $TERMINAL
 #bindsym $sup+Shift+z exec "loginctl lock-session > '/mnt/internal/LinuxData/logs/i3/lock-session.log' 2>&1"
 bindsym $sup+Shift+z exec "loginctl lock-session"
 
-# exit i3 (logs you out of your X session)
-#bindsym $sup+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $sup+Shift+q exec dmenu_exit.sh > "/mnt/internal/LinuxData/logs/i3/dmenu_exit.log" 2>&1
+# exit menu (logs you out of your X session)
 bindsym $sup+Shift+q exec dmenu_exit.sh
 
 # take screenshot
@@ -345,20 +255,17 @@ bindsym $sup+Alt+Shift+Print exec --no-startup-id grim -g  "$(slurp)" - | swappy
 # Start calculator
 bindsym $sup+equal exec speedcrunch > /mnt/internal/LinuxData/logs/i3/speedcrunch.log 2>&1
 
-# Switch keyboard layout
-#bindsym $sup+Shift+space exec 'xkbgroup_switch.sh' >> "/mnt/internal/LinuxData/logs/i3/xkbgroup.log" 2>&1
-
 #######################################
 ## Mouse options
 #######################################
-# The middle button over a titlebar kills the window
+# The middle button over a titlebar kills the window (only if floating)
 bindsym --release button2 kill
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $sup+button2 kill
 
 # The right button toggles floating
-bindsym button3 floating toggle
+# bindsym button3 floating toggle
 bindsym $sup+button3 floating toggle
 
 
@@ -388,9 +295,9 @@ bindsym XF86TouchpadToggle exec toggle_touchpad.sh
 # dismiss notifications
 bindsym Ctrl+space exec makoctl dismiss -a
 # copyq 
-bindsym Ctrl+Shift+i exec copyq toggle
-bindsym Ctrl+Shift+t exec notify-send "trans: $(copyq clipboard)" "$(trans -e google -no-ansi -t en+it -b $(copyq clipboard))"
-bindsym Ctrl+Shift+d exec notify-send "def: $(copyq clipboard)"   "$(trans -e google -no-ansi -t en+it -d $(copyq clipboard))"
+bindsym $sup+Ctrl+i exec copyq toggle
+bindsym $sup+Ctrl+t exec notify-send "trans: $(copyq clipboard)" "$(trans -e google -no-ansi -t en+it -b $(copyq clipboard))"
+bindsym $sup+Ctrl+d exec notify-send "def: $(copyq clipboard)"   "$(trans -e google -no-ansi -t en+it -d $(copyq clipboard))"
 # change keyboard layout
 bindsym --input-device=keyboard $sup+space xkb_switch_layout next
 
@@ -400,6 +307,6 @@ bindsym --input-device=keyboard $sup+space xkb_switch_layout next
 #bindsym $sup+Ctrl+p exec playerctl_info.sh
 bindsym $sup+Ctrl+p exec spotify_info.sh
 
-bindsym Ctrl+Alt+R exec obs-cli --password malaka recording toggle
+bindsym $sup+Ctrl+R exec obs-cli --password malaka recording toggle
 # Color picker, copy to clipboard
 bindsym $sup+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
