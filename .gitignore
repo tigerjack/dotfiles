@@ -29,6 +29,11 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+# Ruby
+.gem
+# rvm/ruby
+.rvm
+# 
 .electron-gyp/*
 #
 *__pycache__*
@@ -50,8 +55,6 @@ tmp/
 .config/onedrive/polimi/config
 # history files
 .w3m/history
-# rvm/ruby
-.rvm
 #########
 # GUI configs
 ########
@@ -134,6 +137,8 @@ LinuxData
 # openshot
 .openshot/
 .openshot_qt/
+# sage
+.sage/cache/
 # OBS-studio
 .config/obs-studio/
 # bundle for ruby
@@ -199,6 +204,8 @@ LinuxData
 .config/enchant
 # Gimp
 .config/GIMP
+# FortiClient
+.config/FortiClient
 # Electron
 .config/Electron
 # VeraCrypt
