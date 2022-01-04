@@ -32,9 +32,13 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jceb/vim-orgmode'
 Plugin 'bash-support.vim'
+" colorscheme gruvbox
 Plugin 'xolox/vim-colorscheme-switcher'
 Plugin 'xolox/vim-misc'
 Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
+Plugin 'morhetz/gruvbox'
+"/ colorscheme gruvbox
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -69,12 +73,56 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 """""""""""
-
-syntax enable
-set background=light
-colorscheme atom
+""""
+" misc
+""""
 set number
+syntax enable
 
+""""
+" integration with kitty
+""""
+if $TERM == "xterm-kitty"
+    set mouse=a
+    try
+        " undercurl support
+        let &t_Cs = "\e[4:3m"
+        let &t_Ce = "\e[4:0m"
+    catch
+    endtry
+    " Change the cursor in different modes
+    let &t_SI = "\e[5 q"
+    let &t_SR = "\e[3 q"
+    let &t_EI = "\e[1 q"
+    " vim hardcodes background color erase even if the terminfo file does
+    " not contain bce. This causes incorrect background rendering when
+    " using a color theme with a background color.
+    let &t_ut=''
+endif
+
+""""
+" colorscheme gruvbox
+""""
+set background=dark
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+    if exists('+termguicolors')
+        let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+        set termguicolors
+        autocmd vimenter * ++nested colorscheme gruvbox
+        if &diff
+	    colorscheme gruvbox
+        endif
+    else
+        colorscheme gruvbox
+        if &diff
+            colorscheme gruvbox
+        endif
+    endif
+endif
 """"
 " tabs "
 """"
@@ -84,9 +132,6 @@ set softtabstop=4
 set shiftwidth=4
 " Don't expand tab, i.e. don't convert tabs to spaces
 set noexpandtab
-if &diff
-    colorscheme mycolorscheme
-endif
 " To reload vim config file, Leader is \
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 " To use with wayland
