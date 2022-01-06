@@ -98,6 +98,8 @@ if $TERM == "xterm-kitty"
     " not contain bce. This causes incorrect background rendering when
     " using a color theme with a background color.
     let &t_ut=''
+    " Disable modifyOtherKeys
+    let [&t_TI, &t_TE] = ['', '']
 endif
 
 """"
