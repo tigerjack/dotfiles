@@ -5,7 +5,7 @@
 
 bindsym $sup+Shift+semicolon exec wofi --show run
 
-bindsym $sup+semicolon exec wofi --show
+bindsym $sup+semicolon exec wofi --show drun
 
 # A GUI menu for applications, testing
 #bindsym $sup+Shift+a exec xfce4-appfinder >> "/mnt/internal/LinuxData/logs/i3/xfce4-appfinder.log" 2>&1
