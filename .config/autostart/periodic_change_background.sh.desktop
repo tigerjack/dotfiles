@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=bash -c "sleep 10 && /home/simone/bin/x/periodic_change_background.sh"
+Name=periodic_change_background.sh
+Type=Application
+X-GNOME-Autostart-Delay=3
+#Terminal=true
