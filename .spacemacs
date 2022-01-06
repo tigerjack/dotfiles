@@ -78,7 +78,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-projectile-file "TODOs.org")
      dap
-     (lsp)
+     ;; (lsp)
      (c-c++ :variables
             c-c++-backend 'lsp-ccls
             c-c++-lsp-enable-semantic-highlight 'rainbow
@@ -105,8 +105,8 @@ This function should only modify configuration layer settings."
              ;; python-sort-imports-on-save t
              ;;
              python-backend 'lsp
-             python-lsp-server 'pyls
-             ;; python-lsp-server 'pyright
+             ;; python-lsp-server 'pyls
+             python-lsp-server 'pyright
              ;; python-lsp-server 'flake8
              python-formatter 'yapf
              python-pipenv-activate t
