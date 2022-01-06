@@ -235,7 +235,7 @@ bindsym $sup+Shift+r restart
 ###########################################
 # start a terminal
 #bindsym $sup+Return exec i3-sensible-terminal >> "/mnt/internal/LinuxData/logs/i3/i3-sensible-terminal.log" 2>&1
-bindsym $sup+Return exec $TERMINAL
+bindsym $sup+Return exec "$TERMINAL -c ~/.config/kitty/override.conf"
 
 # lock the screen
 #bindsym $sup+Shift+z exec "loginctl lock-session > '/mnt/internal/LinuxData/logs/i3/lock-session.log' 2>&1"
