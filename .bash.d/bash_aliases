@@ -6,7 +6,8 @@ alias ls='ls -h --color=always'
 alias ll='ls -lh'
 alias lal='ls -Alh'
 alias l1='ls -1'
-alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
+# Now tmux seems to read from config by default
+# alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias tmsu_uni='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/university'
 alias tmsu_phd='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/phd'
 alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
@@ -16,15 +17,17 @@ alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/xorg.log 2>&1"
 alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
-alias gcalcli='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli'
-alias gcalclit='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=tigerjack89@gmail.com'
-alias gcalclir='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=Ripetizioni'
-alias gcalclip='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=perriellanza'
+# NOT USED ANYMORE
+# alias gcalcli='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli'
+# alias gcalclit='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=tigerjack89@gmail.com'
+# alias gcalclir='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=Ripetizioni'
+# alias gcalclip='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=perriellanza'
 alias emt='emacsclient -t'
 alias emcn='emacsclient -cn'
 alias emn='emacsclient -n'
 alias spwnd='spawn_x_terminals_into_pwd.sh'
-alias mutt='mutt -F $XDG_CONFIG_HOME/neomutt/neomuttrc'
+# NOT USED ANYMORE
+# alias mutt='mutt -F $XDG_CONFIG_HOME/neomutt/neomuttrc'
 alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias ecl='env SWT_GTK3=0 eclipse'
@@ -37,16 +40,19 @@ alias 5m='find ~/ ! -path "/home/simone/.mozilla/*"  ! -path "/home/simone/.cach
 alias mynote="vim $(xdg-user-dir DOCUMENTS)/Notes/FastNotes.txt"
 alias snclip="sncli -c $MDIR_PRIVATE/sncli/snclirc_personal"
 alias sncliw="sncli -c $MDIR_PRIVATE/sncli/snclirc_work"
-alias mycli="mycli --myclirc $XDG_CONFIG_HOME/mycli/myclirc"
+# NOT USED ANYMORE
+# alias mycli="mycli --myclirc $XDG_CONFIG_HOME/mycli/myclirc"
 alias incognito_on="shopt -uo history"
 alias incognito_off="shopt -so history"
 alias onedrivepolimi='onedrive --confdir $XDG_CONFIG_HOME/onedrive/polimi/'
 alias onedrivetest='onedrive --confdir $XDG_CONFIG_HOME/onedrive/test/ --dry-run'
-alias drivediff='less $MDIR_LOGS/inotify/drive/log'
-alias drivediff2='less $MDIR_LOGS/inotify/drive/log2'
-alias drivesynced='echo "--------- Synced on $(date) --------" | tee -a $MDIR_LOGS/inotify/drive/log $MDIR_LOGS/inotify/drive/log2'
+# NOT USED ANYMORE
+# alias drivediff='less $MDIR_LOGS/inotify/drive/log'
+# alias drivediff2='less $MDIR_LOGS/inotify/drive/log2'
+# alias drivesynced='echo "--------- Synced on $(date) --------" | tee -a $MDIR_LOGS/inotify/drive/log $MDIR_LOGS/inotify/drive/log2'
 alias taskopen='taskopen -c $HOME/.config/taskopen/taskopenrc'
 alias rclone_pull='rclone sync --copy-links -v polimi: /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt'
 alias rclone_push='rclone sync --copy-links -v /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt'
-#alias sshenv='"$HOME"/bin/autostart_ssh_agent.sh; echo "Sourcing $MSSH_ENV"; source "$MSSH_ENV"'
+# NOT USED ANYMORE
+# alias sshenv='"$HOME"/bin/autostart_ssh_agent.sh; echo "Sourcing $MSSH_ENV"; source "$MSSH_ENV"'
 alias icat="kitty +kitten icat"
