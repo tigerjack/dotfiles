@@ -18,12 +18,10 @@ floating_modifier $sup
 # By default, window focus follows your mouse movements as the mouse crosses window borders. 
 focus_follows_mouse no
 
-# dmenu not used anymore, replaced by wofi
-# set $dmenu_options -nb black -nf white -sb red
-
-include ./conf.d/bindings
-include ./conf.d/bar
-include ./conf.d/inout
-include ./conf.d/windows
-include ./conf.d/execs
+# include ./conf.d/bindings
+# include ./conf.d/bar
+# include ./conf.d/inout
+# include ./conf.d/windows
+# include ./conf.d/execs
+include ./conf.d/*
 include /etc/sway/config.d/*

@@ -293,13 +293,14 @@ bindsym XF86TouchpadToggle exec toggle_touchpad.sh
 ## Other general bindings
 #######################################
 # dismiss notifications
-bindsym Ctrl+space exec makoctl dismiss -a
+bindsym $sup+x exec makoctl dismiss -a
 # copyq 
 bindsym $sup+Ctrl+i exec copyq toggle
 bindsym $sup+Ctrl+t exec notify-send "trans: $(copyq clipboard)" "$(trans -e google -no-ansi -t en+it -b $(copyq clipboard))"
 bindsym $sup+Ctrl+d exec notify-send "def: $(copyq clipboard)"   "$(trans -e google -no-ansi -t en+it -d $(copyq clipboard))"
 # change keyboard layout
-bindsym --input-device=keyboard $sup+space xkb_switch_layout next
+# This is defined directly in the input type:keyboard with the xkb_options grp
+# bindsym --input-device=keyboard $sup+b xkb_switch_layout next
 
 # clipman
 # bindsym $sup+Shift+i exec clipman pick -t wofi
