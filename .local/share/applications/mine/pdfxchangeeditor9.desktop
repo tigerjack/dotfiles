@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=PDF-XChange Editor Old Wrapper (win64)
+Name=PDF-XChange Editor 9 Wrapper (win64)
 MimeType=application/pdf;
-Exec=pdf_xchange_wrapper.sh %F
+Exec=pdf_xchange_wrapper2.sh %F
 Type=Application
 StartupNotify=true
 Comment=PDF-XChange Editor
