@@ -23,8 +23,7 @@ set -o nounset                              # Treat unset variables as an error
 cfgfile_rofi="$HOME/.config/rofi/config"
 cfgfile_wofi="$HOME/.config/wofi/config"
 cfgfile_vim="$HOME/.config/vim/vimrc"
-cfgfile_taskwarrior="$HOME/.config/taskwarrior/taskrc"
-echo "$cfgfile_taskwarrior"
+cfgfile_taskwarrior="$HOME/.config/task/taskrc"
 cfgfile_spacemacs="$HOME/.spacemacs"
 cfgfile_gtk2="$HOME/.gtkrc-2.0"
 cfgfile_gtk3="$HOME/.config/gtk-3.0/settings.ini"
@@ -52,13 +51,15 @@ if [[ $switchto = light ]]; then
     dmenu1="white" 
     dmenu2="black" 
     dmenu3="blue" 
-    kittystyle="Atom One Light"
+    #kittystyle="Atom One Light"
+    kittystyle="Pencil Light"
     # termitestyle="atom-one-light" 
     alacrittystyle="Google.light"
     gtktheme="\"Arc\"" 
     rofitheme="Arc" 
     dark="false" 
     qt5colors="simple.conf" 
+    qt5icons="breeze"
     # deep-space, default, delek +, koehler +, nord, pablo, peachpuff, pyte, zellner +,
     vimscheme="gruvbox" 
     vimbg="light" 
@@ -66,24 +67,32 @@ if [[ $switchto = light ]]; then
     spacemacsscheme="spacemacs-light" 
     spttheme="light"
     speedcrunch="Light"
+    makomode="light"
+    spotifytheme="Fluent"
+    spotifyscheme="light"
 else
     i3style="default" 
     dmenu1="black" 
     dmenu2="white" 
     dmenu3="red" 
     alacrittystyle="Google.dark"
-    kittystyle="Misterioso"
+    #kittystyle="Misterioso"
+    kittystyle="Pencil Dark"
     # termitestyle="default" 
     gtktheme="\"Arc-Dark\"" 
     rofitheme="Arc-Dark" 
     dark="true" 
     qt5colors="darker.conf" 
+    qt5icons="breeze-dark"
     vimscheme="gruvbox" 
     vimbg="dark" 
     taskwarriortheme="/usr/share/doc/task/rc/solarized-dark-256.theme"
     spacemacsscheme="spacemacs-dark" 
     spttheme="dark"
     speedcrunch="Dark"
+    makomode="dark"
+    spotifytheme="Fluent"
+    spotifyscheme="dark"
 fi
 ### MAIN: gtk, qt5, i3, terminal, 
 # The following lines should be put before the reload of i3-style
@@ -103,12 +112,14 @@ sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$rofitheme/" "$cfgfile_gtk3"
 sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$dark/" "$cfgfile_gtk3"
 sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt5"
+sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
 
 ### ROFI
 # sed -i "s;^rofi.theme.*;rofi.theme: $rofitheme;" "$cfgfile_rofi"
 ### VIM
 # sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
 # sed -i "s/\scolorscheme.*/ colorscheme $vimscheme/" "$cfgfile_vim"
+# This only works for new instances of vim; it's impossible to change the colorscheme of a running instance
 sed -i "s/^set background.*/set background=$vimbg/" "$cfgfile_vim"
 ### VIM SERVER, this requires a vim installed with gui support
 for i in $(vim --serverlist); do 
@@ -137,10 +148,27 @@ ln -sf "$HOME/.config/spotify-tui/theme_$spttheme.yml" "$cfgfile_spt"
 # WARN: doesn't work if already active; on exit, it overwrites changes
 sed -i "s;ColorSchemeName.*;ColorSchemeName=Solarized $speedcrunch;" "$cfgfile_speedcrunch"
 
+### ZATHURA
+for i in $(pidof zathura); do
+    dbus-send --type="method_call" --dest=org.pwmt.zathura.PID-"$i" /org/pwmt/zathura org.pwmt.zathura.ExecuteCommand string:"set recolor"
+done
+
+# This work for Firefox, Wofi and Thunderbird; however, the latter doesn't work
+# see here https://wiki.archlinux.org/title/Dark_mode_switching#Tools
+echo "GTK through gsettings"
+gsettings set org.gnome.desktop.interface gtk-theme "$gtktheme"
+
+echo "qt5ct-refresh"
+qt5ct-refresh
+
+echo "mako"
+makoctl set-mode "$makomode"
+
+echo "spotify"
+spicetify config current_theme "$spotifytheme" color_scheme "$spotifytheme"
+spicetify apply
+
 # Still missing 
-# - Firefox: changes to user.js aren't loaded automatically; you can use a plugin to rotate
-#   b/w themes with Alt+Shift+R
-# - Thunderbird: no easy switch 
 # - CopyQ: theme not changeable easily
 # - GoldenDict
-# - Wofi
+# - Sway window colors
