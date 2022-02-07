@@ -29,6 +29,11 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+# Local state, mostly used by pipewire
+.local/state
+.config/pipewire
+# xournal autosave
+.config/xournalpp/autosave
 # Ruby
 .gem
 # rvm/ruby
@@ -134,6 +139,8 @@ LinuxData
 ########
 # Other apps 
 ########
+.sage/
+.config/spicetify
 # openshot
 .openshot/
 .openshot_qt/
