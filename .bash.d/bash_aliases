@@ -34,7 +34,9 @@ alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bol
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias ecl='env SWT_GTK3=0 eclipse'
 alias wn32='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32'
+alias wn32b='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32b'
 alias wn64='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64'
+alias wn64b='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64b'
 alias wnoffice='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine_office'
 alias stellarium='stellarium -c $XDG_CONFIG_HOME/stellarium/config.ini -u $XDG_DATA_HOME/stellarium --screenshot-dir $MDIR_SCREENSHOTS/stellarium'
 alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi'
@@ -52,7 +54,7 @@ alias onedrivetest='onedrive --confdir $XDG_CONFIG_HOME/onedrive/test/ --dry-run
 # alias drivediff='less $MDIR_LOGS/inotify/drive/log'
 # alias drivediff2='less $MDIR_LOGS/inotify/drive/log2'
 # alias drivesynced='echo "--------- Synced on $(date) --------" | tee -a $MDIR_LOGS/inotify/drive/log $MDIR_LOGS/inotify/drive/log2'
-alias taskopen='taskopen -c $HOME/.config/taskopen/taskopenrc'
+#alias taskopen='taskopen -c $HOME/.config/taskopen/taskopenrc'
 alias rclone_pull='rclone sync --copy-links -v polimi: /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt'
 alias rclone_push='rclone sync --copy-links -v /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt'
 # NOT USED ANYMORE
