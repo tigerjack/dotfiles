@@ -216,3 +216,6 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# chtsh
+export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
