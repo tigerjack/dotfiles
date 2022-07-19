@@ -31,6 +31,8 @@ cfgfile_i3="$HOME/.config/i3/config"
 cfgfile_qt5="$HOME/.config/qt5ct/qt5ct.conf"
 cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
 cfgfile_speedcrunch="$HOME/.config/SpeedCrunch/SpeedCrunch.ini"
+cfgfile_ranger="$HOME/.config/ranger/rc.conf"
+cfgfile_chtsh="$HOME/.config/chtsh/conf"
 
 switchto="${1:-def}"
 
@@ -70,6 +72,8 @@ if [[ $switchto = light ]]; then
     makomode="light"
     spotifytheme="Fluent"
     spotifyscheme="light"
+    rangerscheme="solarized"
+    chtshstyle="xcode"
 else
     i3style="default" 
     dmenu1="black" 
@@ -93,6 +97,8 @@ else
     makomode="dark"
     spotifytheme="Fluent"
     spotifyscheme="dark"
+    rangerscheme="default"
+    chtshstyle="native"
 fi
 ### MAIN: gtk, qt5, i3, terminal, 
 # The following lines should be put before the reload of i3-style
@@ -139,6 +145,8 @@ if [ -n "$bla" ]; then
 fi
 ### TASKWARRIOR
 sed -i "s;^include.*;include $taskwarriortheme;" "$cfgfile_taskwarrior"
+### RANGER
+sed -i "s/^set colorscheme .*/set colorscheme=$rangerscheme/" "$cfgfile_ranger"
 
 ### SPOTIFY-TUI
 # WARN: This overwrite any personalized configuration in yaml
@@ -167,6 +175,9 @@ makoctl set-mode "$makomode"
 echo "spotify"
 spicetify config current_theme "$spotifytheme" color_scheme "$spotifytheme"
 spicetify apply
+
+# cht.sh
+sed -i "s;style=.*;style=$chtshstyle\";" "$cfgfile_chtsh"
 
 # Still missing 
 # - CopyQ: theme not changeable easily
