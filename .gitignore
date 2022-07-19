@@ -29,6 +29,8 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+# PEM files of openvpn
+.cert*
 # Local state, mostly used by pipewire
 .local/state
 .config/pipewire
