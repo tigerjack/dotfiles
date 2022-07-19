@@ -9,7 +9,7 @@ bar {
         # strip_workspace_numbers yes
 
 	tray_output primary
-	# status_command swaybar
+	# swaybar_command swaybar
 	swaybar_command waybar
 	#status_command i3status
         #status_command python3 "/home/simone/.config/i3pystatus/config.py"

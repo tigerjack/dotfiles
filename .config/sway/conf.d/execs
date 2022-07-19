@@ -22,9 +22,12 @@ exec nm-applet --indicator >/mnt/internal/LinuxData/logs/sway/nm_applet.log 2>&1
 
 # battery-monitor
 exec batsignal -b >/mnt/internal/LinuxData/logs/sway/batsignal.log 2>&1 
+# exec_always pkill kanshi; exec kanshi
+exec_always kanshi
 
 # Execute the startup scripts
 exec dex -a >/mnt/internal/LinuxData/logs/sway/dex.log 2>&1 
 # locker
 exec xss-lock -- swaylock -k -l -c 000000 >/mnt/internal/LinuxData/logs/sway/xss_lock.log 2>&1 
 # exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
+# https://github.com/emersion/kanshi/issues/43
