@@ -1,9 +1,0 @@
-!rofi.combi-modi:    
-rofi.theme: Arc-Dark
-rofi.font:          hack 15
-rofi.modi:          drun,window,run,ssh
-rofi.matching:	    regex
-rofi.width:	    60
-rofi.sidebar-mode:  true
-rofi.drun-match-fields: all
-rofi.no-lazy-grab:  true
