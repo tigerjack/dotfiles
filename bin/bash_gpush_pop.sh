@@ -21,7 +21,7 @@
 #set -o nounset                              # Treat unset variables as an error
 
 
-directory_stack=~/.gdir.txt
+directory_stack="$XDG_CACHE_HOME"/gdir
 function gpush() {
     a=1
     if [ $# -ge 1 ] ; then
@@ -30,25 +30,25 @@ function gpush() {
 
     i=1
     while [ $i -le "$a" ]; do
-	pwd >> $directory_stack
+	pwd >> "$directory_stack"
 	i=$((i+1))
     done
 }
 
 function gpop() {
-    [ ! -s $directory_stack ] && return
-    newdir=$(sed -n '$p' $directory_stack)
-    sed -i -e '$d' $directory_stack
+    [ ! -s "$directory_stack" ] && return
+    newdir=$(sed -n '$p' "$directory_stack")
+    sed -i -e '$d' "$directory_stack"
     cd "$newdir" || exit
 }
 
 
 function gstatus() {
-    cat $directory_stack
+    cat "$directory_stack"
 }
 
 gclear ()
 {   
     # no-op, just to rewrite
-    true > $directory_stack
-}	# ----------  end of function gclear  ----------
+    true > "$directory_stack"
+}
