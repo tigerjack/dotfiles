@@ -7,16 +7,35 @@
 
 input type:keyboard {
     xkb_layout us,it,us
-    xkb_variant ,,intl
+    xkb_variant altgr-intl,,intl
     # xkb_options grp:alt_shift_toggle
     # xkb_options caps:ctrl_modifier
-    # win+space to switch layout, esc on caps
-    xkb_options grp:win_space_toggle,caps:escape 
+    
+    # grp:win_space_toggle win+space to switch layout; 
+    # esc on caps lock, but shift+caps is still caps lock toggle
+    # AltGr+2 is euro symbol
+    xkb_options grp:win_space_toggle,caps:escape_shifted_capslock,eurosign:2
     repeat_delay 150
     repeat_rate 100
 }
 
-# input "1241:5890:USB_Keyboard" repeat_rate 50
+# input 5215:688:TRUST__GXT_833_Keyboard {
+#     xkb_layout us,it,us
+#     xkb_variant altgr-intl,,intl
+#     # xkb_options grp:alt_shift_toggle
+#     # xkb_options caps:ctrl_modifier
+#     # win+space to switch layout, esc on caps
+#     xkb_options grp:win_space_toggle,caps:escape 
+#     repeat_delay 150
+#     repeat_rate 100
+# }
+
+input "1386:934:Wacom_One_Pen_Display_13_Pen" {
+    accel_profile "flat"
+    pointer_accel 0
+    map_to_output "Wacom Tech Wacom One 13 0LQ0171019682"
+    # map_to_output "Unknown Wacom One 13 0LQ0171019682"
+}
 
 input type:touchpad {
     tap enabled

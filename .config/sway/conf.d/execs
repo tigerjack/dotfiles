@@ -12,7 +12,9 @@ exec swayidle \
 # exec ~/bin/x/mylock safe-mode
 
 # notification daemon
-exec mako >/mnt/internal/LinuxData/logs/sway/mako.log 2>&1 
+# now spawned by dbus-service in $XDG_DATA_HOME/dbus-1/services/org.freedesktop.Notifications.service
+# exec mako >/mnt/internal/LinuxData/logs/sway/mako.log 2>&1 
+
 # wifi tray
 exec nm-applet --indicator >/mnt/internal/LinuxData/logs/sway/nm_applet.log 2>&1
 # clipboard manager
@@ -22,8 +24,6 @@ exec nm-applet --indicator >/mnt/internal/LinuxData/logs/sway/nm_applet.log 2>&1
 
 # battery-monitor
 exec batsignal -b >/mnt/internal/LinuxData/logs/sway/batsignal.log 2>&1 
-# exec_always pkill kanshi; exec kanshi
-exec_always kanshi
 
 # Execute the startup scripts
 exec dex -a >/mnt/internal/LinuxData/logs/sway/dex.log 2>&1 
@@ -31,3 +31,6 @@ exec dex -a >/mnt/internal/LinuxData/logs/sway/dex.log 2>&1
 exec xss-lock -- swaylock -k -l -c 000000 >/mnt/internal/LinuxData/logs/sway/xss_lock.log 2>&1 
 # exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
 # https://github.com/emersion/kanshi/issues/43
+
+# exec_always pkill kanshi; exec kanshi
+exec_always pkill kanshi; exec kanshi >/mnt/internal/LinuxData/logs/sway/kanshi.log 2>&1 
