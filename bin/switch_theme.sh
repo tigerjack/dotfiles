@@ -33,6 +33,8 @@ cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
 cfgfile_speedcrunch="$HOME/.config/SpeedCrunch/SpeedCrunch.ini"
 cfgfile_ranger="$HOME/.config/ranger/rc.conf"
 cfgfile_chtsh="$HOME/.config/chtsh/conf"
+cfgfile_bat="$HOME/.config/bat/config"
+cfgfile_zathura="$HOME/.config/zathura/zathurarc"
 
 switchto="${1:-def}"
 
@@ -49,6 +51,9 @@ elif [[ $switchto != light ]] && [[ $switchto != dark ]]; then
 fi
 echo "Switching to $switchto"
 if [[ $switchto = light ]]; then
+    zathura_light="#ACACAC"
+    zathura_dark="#131313"
+    battheme="OneHalfLight"
     i3style="park" 
     dmenu1="white" 
     dmenu2="black" 
@@ -60,7 +65,7 @@ if [[ $switchto = light ]]; then
     osc411style="tango-light"
     gtktheme="\"Arc\"" 
     rofitheme="Arc" 
-    dark="false" 
+    preferdark="false" 
     qt5colors="simple.conf" 
     qt5icons="breeze"
     # deep-space, default, delek +, koehler +, nord, pablo, peachpuff, pyte, zellner +,
@@ -76,6 +81,9 @@ if [[ $switchto = light ]]; then
     rangerscheme="solarized"
     chtshstyle="xcode"
 else
+    zathura_dark="#ACACAC"
+    zathura_light="#131313"
+    battheme="OneHalfDark"
     i3style="default" 
     dmenu1="black" 
     dmenu2="white" 
@@ -87,7 +95,7 @@ else
     # termitestyle="default" 
     gtktheme="\"Arc-Dark\"" 
     rofitheme="Arc-Dark" 
-    dark="true" 
+    preferdark="true" 
     qt5colors="darker.conf" 
     qt5icons="breeze-dark"
     vimscheme="gruvbox" 
@@ -115,7 +123,7 @@ fi
 # alacritty-themes "$alacrittystyle"
 
 # KITTY
-kitty +kitten themes --reload-in=all  "$kittystyle"
+kitty +kitten themes --reload-in=all "$kittystyle"
 echo "kitty done"
 
 # TERMITE you should first install termite-color-switcher
@@ -125,9 +133,10 @@ echo "kitty done"
 # OFF
 # theme.sh "$osc411style"
 
-# Others
+# GTK/QT
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
-sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$dark/" "$cfgfile_gtk3"
+sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk3"
+sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$preferdark/" "$cfgfile_gtk3"
 sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt5"
 sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
 echo "gtk, qt5 done"
@@ -135,6 +144,7 @@ echo "gtk, qt5 done"
 # This work for Firefox, Wofi and Thunderbird; however, the latter doesn't work
 # see here https://wiki.archlinux.org/title/Dark_mode_switching#Tools
 gsettings set org.gnome.desktop.interface gtk-theme "$gtktheme"
+gsettings set org.gnome.desktop.interface color-scheme prefer-"$switchto"
 echo "GTK through gsettings done"
 
 qt5ct-refresh
@@ -191,20 +201,26 @@ sed -i "s;ColorSchemeName.*;ColorSchemeName=Solarized $speedcrunch;" "$cfgfile_s
 echo "speedcrunch done"
 
 ### ZATHURA
+sed -i "s;set recolor-darkcolor.*;set recolor-darkcolor \"$zathura_dark\";;" "$cfgfile_zathura"
+sed -i "s;set recolor-lightcolor.*;set recolor-lightcolor \"$zathura_light\";;" "$cfgfile_zathura"
 for i in $(pidof zathura); do
     dbus-send --type="method_call" --dest=org.pwmt.zathura.PID-"$i" /org/pwmt/zathura org.pwmt.zathura.ExecuteCommand string:"set recolor"
 done
 echo "zathura done"
 
-makoctl set-mode "$makomode"
-echo "mako done"
+### MAKO
+pgrep -x mako > /dev/null && makoctl set-mode "$makomode" && echo "mako done"
 
-spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
-spicetify apply
-echo "spicety for spotify"
+echo "Skipping spicetify"
+# spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
+# spicetify apply
+# echo "spicety for spotify"
 
-# cht.sh
+### cht.sh
 sed -i "s;style=.*;style=$chtshstyle\";" "$cfgfile_chtsh"
+
+### BAT
+sed -i "s;^--theme=.*;--theme=\"$battheme\";" "$cfgfile_bat"
 
 # Still missing 
 # - CopyQ: theme not changeable easily
