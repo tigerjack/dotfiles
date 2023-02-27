@@ -6,6 +6,9 @@ alias ls='ls -h --color=always'
 alias ll='ls -lh'
 alias lal='ls -Alh'
 alias l1='ls -1'
+alias lld='lsd -l'
+alias lald='lsd -Al'
+alias l1d='lsd -1'
 # Now tmux seems to read from config by default
 # alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias tmsu_uni='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/university'
@@ -57,6 +60,7 @@ alias onedrivetest='onedrive --confdir $XDG_CONFIG_HOME/onedrive/test/ --dry-run
 #alias taskopen='taskopen -c $HOME/.config/taskopen/taskopenrc'
 alias rclone_pull='rclone sync --copy-links -v polimi: /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt'
 alias rclone_push='rclone sync --copy-links -v /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt'
+alias rclone_bisync='rclone bisync --copy-links -v /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt'
 # NOT USED ANYMORE
 # alias sshenv='"$HOME"/bin/autostart_ssh_agent.sh; echo "Sourcing $MSSH_ENV"; source "$MSSH_ENV"'
 alias icat="kitty +kitten icat"

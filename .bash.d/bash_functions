@@ -1,8 +1,9 @@
 ## External defined functions
-. ~/bin/bash_git_prompt.sh
-. ~/bin/bash_gpush_pop.sh
-. ~/bin/bash_remote_jupyter.sh
-. ~/bin/bash_complete_alias.sh
+source ~/bin/bash_git_prompt.sh
+source ~/bin/bash_gpush_pop.sh
+source ~/bin/bash_remote_jupyter.sh
+source ~/bin/bash_complete_alias.sh
+
 ## To prevent nested ranger instances
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
@@ -65,3 +66,23 @@ emacsclient () {
         command emacsclient "$@"
     fi
 }
+# FOOT, extrapolated from foot wiki
+osc7_cwd() {
+    local strlen=${#PWD}
+    local encoded=""
+    local pos c o
+    for (( pos=0; pos<strlen; pos++ )); do
+        c=${PWD:$pos:1}
+        case "$c" in
+            [-/:_.!\'\(\)~[:alnum:]] ) o="${c}" ;;
+            * ) printf -v o '%%%02X' "'${c}" ;;
+        esac
+        encoded+="${o}"
+    done
+    printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
+}
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
+prompt_marker() {
+    printf '\e]133;A\e\\'
+}
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }prompt_marker

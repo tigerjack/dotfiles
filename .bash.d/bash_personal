@@ -113,13 +113,6 @@ export GPG_TTY
 # Set vimrc's location and source it on vim startup
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
-# Export my bins
-myArray=("bin" "bin/x" "bin/games")
-for str in ${myArray[@]}; do
-    [[ ! "$PATH" =~ "$str": ]] && export PATH="$PATH:$HOME/$str"
-done
-unset myArray
-
 # Set matlab to use the userpath folder (first run userpath('dir_name') inside matlab
 export MATLAB_USE_USERWORK=1
 # Set matlab log directory
@@ -158,6 +151,7 @@ export TERMCMD='kitty'
 
 # for locale
 # export LC_ALL=en_US.UTF-8
+export LC_TIME=it_IT.UTF-8 
 
 # for taskwarrior
 # Unset, now it's automatically put in ~/.config/task/
@@ -212,9 +206,16 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 # chtsh
 export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
 
-# extend path
-myArray=("/opt/simone/bin" "$GOPATH/bin" "/opt/anaconda/bin" "$HOME/.rvm/bin" "$GEM_HOME/bin")
+# Export additiona bins path
+myArray=("$HOME/bin" "$HOME/bin/x" "$HOME/bin/games" "$HOME/.cargo/bin/" "/opt/simone/bin" "$GOPATH/bin" "/opt/anaconda/bin" "$HOME/.rvm/bin" "$GEM_HOME/bin")
 for str in ${myArray[@]}; do
-    [[ ! "$PATH" =~ "$str": ]] && export PATH="$PATH:$HOME/$str"
+    [[ ! "$PATH" =~ "$str": ]] && export PATH="$PATH:$str"
 done
 unset myArray
+
+# TEXLIVE
+# export TEXMFDIST=
+
+# theme.sh integration
+# theme.sh tango-light
+

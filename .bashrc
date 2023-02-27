@@ -15,6 +15,8 @@ for file in ~/.bash_completion.d/*; do
 done
 unset file
 shopt -u dotglob
+# to make complete all aliases
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
 # To source kitty completion
 source <(kitty + complete setup bash)
 
@@ -26,3 +28,8 @@ source <(kitty + complete setup bash)
 #. /etc/profile.d/vte.sh
 #__vte_prompt_command
 #fi
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
