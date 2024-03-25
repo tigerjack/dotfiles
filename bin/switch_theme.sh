@@ -51,8 +51,7 @@ elif [[ $switchto != light ]] && [[ $switchto != dark ]]; then
 fi
 echo "Switching to $switchto"
 if [[ $switchto = light ]]; then
-    zathura_light="#ACACAC"
-    zathura_dark="#131313"
+    zathura_recolor="false"
     battheme="OneHalfLight"
     i3style="park" 
     dmenu1="white" 
@@ -68,6 +67,7 @@ if [[ $switchto = light ]]; then
     preferdark="false" 
     qt5colors="simple.conf" 
     qt5icons="breeze"
+    qt5style="kvantum"
     # deep-space, default, delek +, koehler +, nord, pablo, peachpuff, pyte, zellner +,
     vimscheme="gruvbox" 
     vimbg="light" 
@@ -76,13 +76,12 @@ if [[ $switchto = light ]]; then
     spttheme="light"
     speedcrunch="Light"
     makomode="light"
-    spotifytheme="Fluent"
-    spotifyscheme="light"
+    spotifytheme="Ziro"
+    spotifyscheme="purple-light"
     rangerscheme="solarized"
     chtshstyle="xcode"
-else
-    zathura_dark="#ACACAC"
-    zathura_light="#131313"
+else # dark theme
+    zathura_recolor="true"
     battheme="OneHalfDark"
     i3style="default" 
     dmenu1="black" 
@@ -98,6 +97,7 @@ else
     preferdark="true" 
     qt5colors="darker.conf" 
     qt5icons="breeze-dark"
+    qt5style="kvantum-dark"
     vimscheme="gruvbox" 
     vimbg="dark" 
     taskwarriortheme="/usr/share/doc/task/rc/solarized-dark-256.theme"
@@ -105,8 +105,8 @@ else
     spttheme="dark"
     speedcrunch="Dark"
     makomode="dark"
-    spotifytheme="Fluent"
-    spotifyscheme="dark"
+    spotifytheme="Ziro"
+    spotifyscheme="purple-dark"
     rangerscheme="default"
     chtshstyle="native"
 fi
@@ -123,7 +123,8 @@ fi
 # alacritty-themes "$alacrittystyle"
 
 # KITTY
-kitty +kitten themes --reload-in=all "$kittystyle"
+# cache age is there to not use internet
+kitty +kitten themes --reload-in=all --cache-age -1 "$kittystyle"
 echo "kitty done"
 
 # TERMITE you should first install termite-color-switcher
@@ -137,9 +138,12 @@ echo "kitty done"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk3"
 sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$preferdark/" "$cfgfile_gtk3"
+echo "gtk done"
 sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt5"
 sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
-echo "gtk, qt5 done"
+sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
+sed -i "s;^style.*;style=$qt5style;" "$cfgfile_qt5"
+echo "qt5 done"
 
 # This work for Firefox, Wofi and Thunderbird; however, the latter doesn't work
 # see here https://wiki.archlinux.org/title/Dark_mode_switching#Tools
@@ -201,26 +205,34 @@ sed -i "s;ColorSchemeName.*;ColorSchemeName=Solarized $speedcrunch;" "$cfgfile_s
 echo "speedcrunch done"
 
 ### ZATHURA
-sed -i "s;set recolor-darkcolor.*;set recolor-darkcolor \"$zathura_dark\";;" "$cfgfile_zathura"
-sed -i "s;set recolor-lightcolor.*;set recolor-lightcolor \"$zathura_light\";;" "$cfgfile_zathura"
+# for new instances
+sed -i "s;set recolor .*;set recolor \"$zathura_recolor\";;" "$cfgfile_zathura"
+# for already opened ones
 for i in $(pidof zathura); do
-    dbus-send --type="method_call" --dest=org.pwmt.zathura.PID-"$i" /org/pwmt/zathura org.pwmt.zathura.ExecuteCommand string:"set recolor"
+    dbus-send --type="method_call" --dest=org.pwmt.zathura.PID-"$i" /org/pwmt/zathura org.pwmt.zathura.ExecuteCommand string:"set recolor $zathura_recolor"
 done
 echo "zathura done"
 
 ### MAKO
 pgrep -x mako > /dev/null && makoctl set-mode "$makomode" && echo "mako done"
 
-echo "Skipping spicetify"
-# spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
-# spicetify apply
-# echo "spicety for spotify"
-
 ### cht.sh
 sed -i "s;style=.*;style=$chtshstyle\";" "$cfgfile_chtsh"
 
 ### BAT
 sed -i "s;^--theme=.*;--theme=\"$battheme\";" "$cfgfile_bat"
+
+echo -n "Spicetify "
+spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
+if pgrep -x spotify>/dev/null; then 
+    spicetify apply
+    # sleep 2s && playerctl -p spotify play
+    echo " ... done"
+else
+    spicetify apply -n
+    echo " ... skipped"
+fi
+# echo "spicety for spotify"
 
 # Still missing 
 # - CopyQ: theme not changeable easily
