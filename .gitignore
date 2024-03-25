@@ -29,6 +29,12 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+# rkward
+.rkward/
+# flatpak
+.var/
+# pipx
+.local/pipx
 # PEM files of openvpn
 .cert*
 # Local state, mostly used by pipewire
@@ -65,11 +71,17 @@ tmp/
 #########
 # GUI configs
 ########
+.config/PDFStudio
+.config/LanguageTool
+.config/Kvantum
+.config/MuseScore
+.config/Unknown Organization
 .config/pavucontrol.ini
 .config/qgit/qgit4.conf
 .fltk/*
-.xournalpp/*
+.config/xournalpp/*
 .config/syncthing
+.config/teams-for-linux
 #-----------
 
 #########
@@ -457,3 +469,4 @@ Session.vim
 *~
 # Auto-generated tag files
 tags
+
