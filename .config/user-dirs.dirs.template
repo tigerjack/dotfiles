@@ -5,7 +5,7 @@
 # homedir-relative path, or XDG_xxx_DIR="/yyy", where /yyy is an
 # absolute path. No other format is supported.
 # 
-XDG_DESKTOP_DIR="$MDIR_LINUX_DATA/Desktop"
+XDG_DESKTOP_DIR="$MDIR_GLOBAL_DATA/LinuxDesktop"
 XDG_DOWNLOAD_DIR="$MDIR_GLOBAL_DATA/Downloads"
 XDG_TEMPLATES_DIR="$MDIR_GLOBAL_DATA/Templates"
 XDG_PUBLICSHARE_DIR="$MDIR_GLOBAL_DATA/Public"
