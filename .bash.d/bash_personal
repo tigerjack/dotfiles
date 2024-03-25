@@ -206,10 +206,10 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 # chtsh
 export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
 
-# Export additiona bins path
+# Export additional bins path
 myArray=("$HOME/bin" "$HOME/bin/x" "$HOME/bin/games" "$HOME/.cargo/bin/" "/opt/simone/bin" "$GOPATH/bin" "/opt/anaconda/bin" "$HOME/.rvm/bin" "$GEM_HOME/bin")
 for str in ${myArray[@]}; do
-    [[ ! "$PATH" =~ "$str": ]] && export PATH="$PATH:$str"
+    [[ ! "$PATH" =~ "$str": ]] && export PATH="$str:$PATH"
 done
 unset myArray
 
