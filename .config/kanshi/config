@@ -1,10 +1,28 @@
-profile work {
-	output eDP-1 enable mode 1920x1080@60Hz position 1280,1080
-	output HDMI-A-2 enable mode 1280x1024@60Hz position 0,0 
-	output DP-1 enable mode 1920x1080@60Hz position 1280,0
+# #
+profile work1a {
+	output eDP-1 enable mode 1920x1080@59.999Hz position 1080,640 transform normal
+	output "Samsung Electric Company LF27T35 H1AK500000" enable mode 1920x1080@60Hz position 0,0 transform 270
+	output "Dell Inc. DELL E173FP U494149I006L" enable mode 1280x1024@60.020Hz position 3000,696 transform normal
+}
+profile work2 {
+	output eDP-1 enable mode 1920x1080@59.999Hz position 1080,640 transform normal
+	output "Samsung Electric Company LF27T35 H1AK500000" enable mode 1920x1080@60Hz position 0,0 transform 270
+	output "Wacom Tech Wacom One 13 0LQ0171019682" enable mode 1920x1080@60.00Hz position 1080,1920
+}
+profile work3 {
+	output eDP-1 enable mode 1920x1080@59.999Hz position 1080,640 transform normal
+	output "Samsung Electric Company LF27T35 H1AK500000" enable mode 1920x1080@60Hz position 0,0 transform 270
+}
+profile home1 {
+	output eDP-1 enable mode 1920x1080@60Hz position 0,0
 }
 
-profile home {
-	output HDMI-A-2 'Samsung Electric Company SyncMaster H9XZ313018' enable mode 1920x1080@60Hz position 0,0
-	output eDP-1 enable mode 1920x1080@60Hz position 1920,850
+profile home2 {
+	output "Samsung Electric Company SyncMaster H9XZ313018" enable mode 1920x1080@59.934Hz position 0,0 transform 90
+	output 'BOE 0x07D8 Unknown' enable mode 1920x1080@60Hz position 1080,840
+}
+profile home3 {
+	output "Samsung Electric Company SyncMaster H9XZ313018" enable mode 1920x1080@59.934Hz position 0,0 transform 90
+	output 'BOE 0x07D8 Unknown' enable mode 1920x1080@60Hz position 1080,840
+	output 'Wacom Tech Wacom One 13 0LQ0171019682' enable mode 1920x1080@60Hz position 0,1920
 }
