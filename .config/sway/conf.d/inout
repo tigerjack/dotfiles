@@ -15,7 +15,7 @@ input type:keyboard {
     # esc on caps lock, but shift+caps is still caps lock toggle
     # AltGr+2 is euro symbol
     xkb_options grp:win_space_toggle,caps:escape_shifted_capslock,eurosign:2
-    repeat_delay 150
+    # repeat_delay 350
     repeat_rate 100
 }
 
@@ -29,8 +29,8 @@ input type:keyboard {
 #     repeat_delay 150
 #     repeat_rate 100
 # }
-
 input "1386:934:Wacom_One_Pen_Display_13_Pen" {
+# input "1386:934:Wacom_Co." {
     accel_profile "flat"
     pointer_accel 0
     map_to_output "Wacom Tech Wacom One 13 0LQ0171019682"

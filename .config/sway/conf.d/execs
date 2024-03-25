@@ -32,5 +32,6 @@ exec xss-lock -- swaylock -k -l -c 000000 >/mnt/internal/LinuxData/logs/sway/xss
 # exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
 # https://github.com/emersion/kanshi/issues/43
 
-# exec_always pkill kanshi; exec kanshi
-exec_always pkill kanshi; exec kanshi >/mnt/internal/LinuxData/logs/sway/kanshi.log 2>&1 
+exec_always "pkill kanshi; exec kanshi >/mnt/internal/LinuxData/logs/sway/kanshi.log 2>&1"
+# exec_always pkill kanshi > /mnt/internal/LinuxData/logs/sway/kanshi.log 2>&1 
+# exec_always kanshi >/mnt/internal/LinuxData/logs/sway/kanshi.log 2>&1 

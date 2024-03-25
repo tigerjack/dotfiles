@@ -11,25 +11,33 @@
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "{name}: {icon}",
         "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
+             "3": "📖",
+             "4": "",
+             "8": "",
+             "10": "",
+             "11": "",
             "urgent": "",
             "focused": "",
             "default": ""
         }
     },
+    "sway/window": {
+        "icon": false,
+  	"max-length": 50,
+	"on-click-middle": "swaymsg kill",
+  	"rewrite": {
+  		"(.*) - Mozilla Firefox": "🌎 $1",
+  		"(.*) - zsh": "> [$1]"
+  	}
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "language": {
-        "format": "{}",
-        "max-length": 120
+        "format": "<span color=\"#000000\">{short}</span>"
     },
     // "mpd": {
     //     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
@@ -75,11 +83,12 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "<span color=\"#000000\">{usage}% </span>",
         "tooltip": true
     },
     "memory": {
         "format": "{}% ",
+        "format": "<span color=\"#ffffff\">{}% </span>",
         "tooltip": true
     },
     "temperature": {
@@ -87,13 +96,13 @@
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        "format": "<span color=\"#ffffff\">{temperatureC}°C {icon}</span>",
         "format-icons": ["", "", ""],
         "tooltip": true
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "<span color=\"#333333\">{percent}% {icon}</span>",
         "format-icons": ["", ""]
     },
     "battery": {

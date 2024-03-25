@@ -293,6 +293,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 bindsym --locked XF86AudioNext exec playerctl next
 bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86Tools exec notify-send "$(playerctl -l | head -n 1) $(playerctl metadata artist) $(playerctl metadata title)"
 bindsym --locked Shift+F10 exec playerctl previous
 bindsym --locked Shift+F11 exec playerctl play-pause
 bindsym --locked Shift+F12 exec playerctl next
