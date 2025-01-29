@@ -4,6 +4,7 @@
 temp/
 tmp/
 .rustup
+.nvm/
 
 ###
 # log files/dirs
@@ -29,6 +30,7 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+.config/tidal-hifi/
 # rkward
 .rkward/
 # flatpak

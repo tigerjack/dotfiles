@@ -131,11 +131,11 @@ def file_md5(path, blocksize=65536):
         contents = infile.read()
 
     # pdflatex puts a timestamp in every PDF
-    re_ID = re.compile(b"/ID\s*\[.*?\]") 
-    re_Creation = re.compile(b"/CreationDate\s+\(.*?\)")
-    re_Mod = re.compile(b"/ModDate\s+\(.*?\)")
+    re_ID = re.compile(rb"/ID\s*\[.*?\]") 
+    re_Creation = re.compile(rb"/CreationDate\s+\(.*?\)")
+    re_Mod = re.compile(rb"/ModDate\s+\(.*?\)")
 
-    re_Output = re.compile(b"TeX output [0-9]{4}\.[0-9]{2}\.[0-9]{2}\:[0-9]{4}")
+    re_Output = re.compile(rb"TeX output [0-9]{4}\.[0-9]{2}\.[0-9]{2}\:[0-9]{4}")
 
     contents = re.sub(re_ID, b'', contents)
     contents = re.sub(re_Creation, b'/CreationDate ()', contents)
@@ -210,7 +210,7 @@ if __name__ == '__main__':
     parser.add_argument('--visual', action='store_true', default=False, 
                         help="Do the visual comarison instead of checksum (default: %(default)s)")
     parser.add_argument('--input', action='append', required=False, type=str, default=[],
-                        help="Specify additional files loaded via \input{} in the document to consider for testing")
+                        help="Specify additional files loaded via \\input{} in the document to consider for testing")
     parser.add_argument('--parallel', action='store_true', default=False,
                         help="Speed up with multiple threads, with the cpu count of this machine (default: %(default)s)")
     args = parser.parse_args()

@@ -15,3 +15,7 @@
     ignored = !git ls-files -v | grep "^[[:lower:]]"
 [init]
 	defaultBranch = main
+[pack]
+	windowMemory = 4096m
+	packSizeLimit = 4096m
+	threads = 4
