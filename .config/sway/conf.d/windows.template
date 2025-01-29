@@ -1,0 +1,12 @@
+###########################################
+# Some window specific config
+###########################################
+# for_window [class="trayer"] floating enable; border none
+# for_window [app_id="copyq"] floating enable; border none
+# for_window [class="Skype"] floating enable; border none
+#assign [class="TelegramDesktop"] 17
+#assign [class="Skype"] 17
+#assign [class="smplayer"] 10
+#assign [class="mplayer"] 10
+#assign [class="mpv"] 10
+#assign [class="Spotify"] 10

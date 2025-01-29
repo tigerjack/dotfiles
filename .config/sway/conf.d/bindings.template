@@ -1,0 +1,324 @@
+##########################################
+# Launchers
+###########################################
+# bindsym $sup+$alt+semicolon exec wofi --show dmenu
+
+bindsym $sup+Shift+semicolon exec wofi --show run > "$MDIR_LOGS/sway/wofi.log" 2>&1
+
+
+bindsym $sup+semicolon exec wofi --show drun > "$MDIR_LOGS/sway/wofi.log" 2>&1
+
+# A GUI menu for applications, testing
+#bindsym $sup+Shift+a exec xfce4-appfinder >> "$MDIR_LOGS/i3/xfce4-appfinder.log" 2>&1
+bindsym $sup+Shift+a exec xfce4-appfinder > "$MDIR_LOGS/sway/xfce4-appfinder.log" 2>&1
+
+###########################################
+# Windows 
+###########################################
+# kill focused window
+bindsym $sup+Shift+x kill
+# change focus
+bindsym $sup+h focus left
+bindsym $sup+j focus down
+bindsym $sup+k focus up
+bindsym $sup+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $sup+Left focus left
+bindsym $sup+Down focus down
+bindsym $sup+Up focus up
+bindsym $sup+Right focus right
+
+# move focused window
+bindsym $sup+Shift+h move left
+bindsym $sup+Shift+j move down
+bindsym $sup+Shift+k move up
+bindsym $sup+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $sup+Shift+Left move left
+bindsym $sup+Shift+Down move down
+bindsym $sup+Shift+Up move up
+bindsym $sup+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $sup+minus split v
+
+# split in vertical orientation
+bindsym $sup+backslash split h
+
+# enter fullscreen mode for the focused container
+bindsym $sup+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $sup+s layout stacking
+bindsym $sup+t layout tabbed
+bindsym $sup+e layout toggle split
+
+# toggle tiling / floating
+bindsym $sup+Shift+g floating toggle
+#bindsym $sup+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $sup+g focus mode_toggle
+#bindsym $sup+space focus mode_toggle
+
+# focus floating and move/resize (see definitions later)
+bindsym $sup+r mode "resize"
+bindsym $sup+m mode "moveit"
+
+# focus the parent container
+bindsym $sup+a focus parent
+
+# focus the child container
+bindsym $sup+c focus child
+
+# move floating window
+mode "moveit" {
+
+    bindsym k move up 5px
+    bindsym h move left 5px
+    bindsym j move down 5px
+    bindsym l move right 5px
+
+    bindsym Shift+k move up 25px
+    bindsym Shift+h move left 25px
+    bindsym Shift+j move down 25px
+    bindsym Shift+l move right 25px
+
+    bindsym Up move up 5px
+    bindsym Left move left 5px
+    bindsym Down move down 5px
+    bindsym Right move right 5px
+
+    bindsym Shift+Up move up 25px
+    bindsym Shift+Left move left 25px
+    bindsym Shift+Down move down 25px
+    bindsym Shift+Right move right 25px
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+	# Faster
+        bindsym Shift+h resize shrink width 25 px or 25 ppt
+        bindsym Shift+k resize grow height 25 px or 25 ppt
+        bindsym Shift+j resize shrink height 25 px or 25 ppt
+        bindsym Shift+l resize grow width 25 px or 25 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+	# Faster
+
+        bindsym Shift+Left resize shrink width 25 px or 25 ppt
+        bindsym Shift+Up resize grow height 25 px or 25 ppt
+        bindsym Shift+Down resize shrink height 25 px or 25 ppt
+        bindsym Shift+Right resize grow width 25 px or 25 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+###########################################
+# Workspaces
+###########################################
+# switch to workspace
+bindsym $sup+1 workspace 1
+bindsym $sup+2 workspace 2
+bindsym $sup+3 workspace 3
+bindsym $sup+4 workspace 4
+bindsym $sup+5 workspace 5
+bindsym $sup+6 workspace 6
+bindsym $sup+7 workspace 7
+bindsym $sup+8 workspace 8
+bindsym $sup+9 workspace 9
+bindsym $sup+0 workspace 10
+bindsym $sup+F1 workspace 11
+bindsym $sup+F2 workspace 12
+bindsym $sup+F3 workspace 13
+bindsym $sup+F4 workspace 14
+bindsym $sup+F5 workspace 15
+bindsym $sup+F6 workspace 16
+bindsym $sup+F7 workspace 17
+bindsym $sup+F8 workspace 18
+bindsym $sup+F9 workspace 19
+bindsym $sup+F10 workspace 20
+
+# move focused container to workspace
+bindsym $sup+Shift+1 move container to workspace 1
+bindsym $sup+Shift+2 move container to workspace 2
+bindsym $sup+Shift+3 move container to workspace 3
+bindsym $sup+Shift+4 move container to workspace 4
+bindsym $sup+Shift+5 move container to workspace 5
+bindsym $sup+Shift+6 move container to workspace 6
+bindsym $sup+Shift+7 move container to workspace 7
+bindsym $sup+Shift+8 move container to workspace 8
+bindsym $sup+Shift+9 move container to workspace 9
+bindsym $sup+Shift+0 move container to workspace 10
+bindsym $sup+Shift+F1 move container to workspace 11
+bindsym $sup+Shift+F2 move container to workspace 12
+bindsym $sup+Shift+F3 move container to workspace 13
+bindsym $sup+Shift+F4 move container to workspace 14
+bindsym $sup+Shift+F5 move container to workspace 15
+bindsym $sup+Shift+F6 move container to workspace 16
+bindsym $sup+Shift+F7 move container to workspace 17
+bindsym $sup+Shift+F8 move container to workspace 18
+bindsym $sup+Shift+F9 move container to workspace 19
+bindsym $sup+Shift+F10 move container to workspace 20
+
+# Switch to previous/next workspace (in all groups).
+bindsym $sup+p workspace prev
+bindsym $sup+n workspace next
+
+# switch between the current and the previously focused one
+bindsym $sup+o workspace back_and_forth
+bindsym $sup+Shift+o move container to workspace back_and_forth
+
+
+###########################################
+# Old RandR config, now managed directly
+###########################################
+# Move the current workspace to the next output
+# (effectively toggles when you only have two outputs)
+# bindsym $sup+Control+F1 move workspace to output left
+# bindsym $sup+Control+F2 move workspace to output down
+# bindsym $sup+Control+F3 move workspace to output up
+# bindsym $sup+Control+F4 move workspace to output right
+# Switch focus to left/right monitor
+bindsym $sup+Control+h focus output left
+bindsym $sup+Control+l focus output right
+bindsym $sup+Control+j focus output up
+bindsym $sup+Control+k focus output down
+bindsym $sup+Control+Shift+h move workspace to output left
+bindsym $sup+Control+Shift+l move workspace to output right
+bindsym $sup+Control+Shift+j move workspace to output up
+bindsym $sup+Control+Shift+k move workspace to output down
+bindsym $sup+Control+Left focus output left
+bindsym $sup+Control+Right focus output right
+bindsym $sup+Control+Up focus output up
+bindsym $sup+Control+Down focus output down
+bindsym $sup+Control+Shift+Left move workspace to output left
+bindsym $sup+Control+Shift+Right move workspace to output right
+bindsym $sup+Control+Shift+Up move workspace to output up
+bindsym $sup+Control+Shift+Down move workspace to output down
+
+
+###########################################
+# Scratchpad
+###########################################
+# Move the currently focused window to the scratchpad
+bindsym $sup+Shift+d move scratchpad
+
+# Show the next scratchpad window or hide the focused one
+bindsym $sup+d scratchpad show
+
+###########################################
+# Utilities
+###########################################
+# reload the configuration file
+bindsym $sup+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $sup+Shift+r restart
+
+###########################################
+# Execute commands/programs
+###########################################
+# start a terminal
+#bindsym $sup+Return exec i3-sensible-terminal >> "$MDIR_LOGS/i3/i3-sensible-terminal.log" 2>&1
+# bindsym $sup+Return exec "$TERMINAL -c ~/.config/kitty/override.conf"
+bindsym $sup+Return exec kitty
+
+# lock the screen
+#bindsym $sup+Shift+z exec "loginctl lock-session > '$MDIR_LOGS/i3/lock-session.log' 2>&1"
+bindsym $sup+Shift+z exec "loginctl lock-session"
+
+# exit menu (logs you out of your X session)
+bindsym $sup+Shift+q exec dmenu_exit.sh
+
+# take screenshot
+bindsym $sup+Print exec --no-startup-id grim - | wl-copy
+bindsym $sup+Shift+Print exec --no-startup-id grim -g "$(slurp)"  - | wl-copy
+bindsym $sup+Control+Print exec --no-startup-id grim - | tee "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/$(date +'%s_grim.png')" | wl-copy
+bindsym $sup+Control+Shift+Print exec --no-startup-id grim -g "$(slurp)" - | tee "$(xdg-user-dir PICTURES)/NotShotwelled/Screenshots/$(date +'%s_grim.png')"  | wl-copy
+bindsym $sup+Alt+Print exec --no-startup-id grim - | swappy -f -
+bindsym $sup+Alt+Shift+Print exec --no-startup-id grim -g  "$(slurp)" - | swappy -f -
+
+# Start calculator
+bindsym $sup+equal exec speedcrunch > $MDIR_LOGS/i3/speedcrunch.log 2>&1
+
+#######################################
+## Mouse options
+#######################################
+# The middle button over a titlebar kills the window (only if floating)
+bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $sup+button2 kill
+
+# The right button toggles floating
+# bindsym button3 floating toggle
+bindsym $sup+button3 floating toggle
+
+
+#######################################
+## Function keys
+#######################################
+
+# Locked is to allow keybindings to work even when lockscreen is active
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86Tools exec notify-send "$(playerctl -l | head -n 1) $(playerctl metadata artist) $(playerctl metadata title)"
+bindsym --locked Shift+F10 exec playerctl previous
+bindsym --locked Shift+F11 exec playerctl play-pause
+bindsym --locked Shift+F12 exec playerctl next
+
+bindsym XF86TouchpadToggle exec toggle_touchpad.sh
+
+#######################################
+## Other general bindings
+#######################################
+# dismiss notifications
+bindsym $sup+x exec makoctl dismiss -a
+# copyq 
+bindsym $sup+Ctrl+i exec copyq toggle
+bindsym $sup+Ctrl+t exec notify-send "trans: $(copyq clipboard)" "$(trans -e google -no-ansi -t en+it -b $(copyq clipboard))"
+bindsym $sup+Ctrl+d exec notify-send "def: $(copyq clipboard)"   "$(trans -e google -no-ansi -t en+it -d $(copyq clipboard))"
+# change keyboard layout
+# This is defined directly in the input type:keyboard with the xkb_options grp
+# bindsym --input-device=keyboard $sup+b xkb_switch_layout next
+
+# clipman
+# bindsym $sup+Shift+i exec clipman pick -t wofi
+
+#bindsym $sup+Ctrl+p exec playerctl_info.sh
+bindsym $sup+Ctrl+p exec spotify_info.sh
+
+bindsym $sup+Ctrl+R exec obs-cli --password malaka recording toggle
+# Color picker, copy to clipboard
+bindsym $sup+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
