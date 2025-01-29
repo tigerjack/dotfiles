@@ -66,6 +66,8 @@ x-scheme-handler/feed=userapp-Thunderbird-CNUDX0.desktop;
 application/rss+xml=userapp-Thunderbird-CNUDX0.desktop;
 application/x-extension-rss=userapp-Thunderbird-CNUDX0.desktop;
 text/x-c++hdr=gvim.desktop;
-text/plain=leafpad.desktop;
+text/plain=featherpad.desktop;leafpad.desktop;
 
 [Removed Associations]
+text/org=vim.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop;

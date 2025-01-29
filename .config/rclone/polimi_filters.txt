@@ -1,0 +1,51 @@
+# emacs temp file
+- **.#*
+# Zotero
+- **.zotero-pdf-state**
+- **.zotero-reader-state**
+- /AppData/Zotero/pipes/
+- /AppData/Zotero/cache/
+- /AppData/Zotero/logs/
+- /AppData/Zotero/styles/
+- /AppData/Zotero/translators/
+- /AppData/Zotero/better-bibtex/cache*
+- /AppData/Zotero/**journal*
+# linux
+- **.fuse_hidden**
+# all files and dirs starting with Link
+- **Link*/
+# Dirs
++ /AppData/MuseScore/**
++ /AppData/tasknotes/**
++ /AppData/Zotero/**
+- /AppData/**
+- /Attachments/
+- /BackupElisa/
+- /Music/
+- /Microsoft Teams Chat Files/
+- /StandaloneSW/
+- /Pictures/
+- /Poker/
+- /Phone&simila/
+- /WebSites/
+- /eBooks/
+- /Keys/LinuxLuksKeys
+- /Languages/
+- /Learning/Poker/
+- /Learning/Games/
+- /Learning/Handwriting/
+- /Learning/Photography/
+- /Learning/PlayMusic/Percussions/
+- /Learning/Languages/English/IELTS/
+- /PersonalDevelopment/
+# - /Policement/GS.mkv
+- /Videos/
+- /tmp/
+- /University/UniSannio/
+- /University/PoliMi/Master/Courses/Done/Cryptography/Rec/**
++ /University/PoliMi/Master/Courses/Done/Cryptography/**
+- /University/PoliMi/Master/Courses/Done/EmbeddedSystem/**
++ /University/PoliMi/Master/Courses/Done/EmbeddedSystem/AOS**
+- /University/PoliMi/Master/Courses/LA2/**
++ /University/PoliMi/Master/Courses/LA2/Beep/Campi/**
+- /University/PoliMi/Master/**

@@ -12,31 +12,25 @@ alias lald='lsd -Al'
 alias l1d='lsd -1'
 # Now tmux seems to read from config by default
 # alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
-alias tmsu_uni='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/university'
-alias tmsu_phd='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/phd'
-alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
-alias tmsu_the='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/thesis'
-alias td='transmission-daemon'
+# alias tmsu_uni='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/university'
+# alias tmsu_phd='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/phd'
+# alias tmsu_vid='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/video'
+# alias tmsu_the='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/thesis'
+alias tmsu_general='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/general'
+alias tmsu_academia='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/academia'
+# alias td='transmission-daemon'
 alias zx="export FIRST_DISPLAY='1' && startx >$MDIR_LOGS/startx/xorg.log 2>&1"
-# alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway.log 2>&1"
+# alias zw="FIRST_DISPLAY='1' ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1 "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway.log 2>&1"
+alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway.log 2>&1"
 # alias zw="FIRST_DISPLAY='1' ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1 "$HOME/bin/sway_launch.sh""
-alias zw="FIRST_DISPLAY='1' ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1 "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway_forked.log 2>&1"
 alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
-# NOT USED ANYMORE
-# alias gcalcli='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli'
-# alias gcalclit='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=tigerjack89@gmail.com'
-# alias gcalclir='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=Ripetizioni'
-# alias gcalclip='gcalcli --config-folder=$XDG_CONFIG_HOME/gcalcli --calendar=perriellanza'
 alias emt='emacsclient -t'
 alias emcn='emacsclient -cn'
 alias emn='emacsclient -n'
 alias spwnd='spawn_x_terminals_into_pwd.sh'
-# NOT USED ANYMORE
-# alias mutt='mutt -F $XDG_CONFIG_HOME/neomutt/neomuttrc'
 alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias ecl='env SWT_GTK3=0 eclipse'
 alias wn32='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32'
 alias wn32b='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32b'
 alias wn64a='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64a'
@@ -47,25 +41,18 @@ alias stellarium='stellarium -c $XDG_CONFIG_HOME/stellarium/config.ini -u $XDG_D
 alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi'
 alias 5m='find ~/ ! -path "/home/simone/.mozilla/*"  ! -path "/home/simone/.cache/*" ! -path "/home/simone/.eclipse/*"! -path ".config/google-chrome/*" ! -path "~/.config/libreoffice/4/user/*" ! -mmin -5 -type f -ls'
 alias mynote="vim $(xdg-user-dir DOCUMENTS)/Notes/FastNotes.txt"
-alias snclip="sncli -c $MDIR_PRIVATE/sncli/snclirc_personal"
-alias sncliw="sncli -c $MDIR_PRIVATE/sncli/snclirc_work"
-# NOT USED ANYMORE
-# alias mycli="mycli --myclirc $XDG_CONFIG_HOME/mycli/myclirc"
+# alias snclip="sncli -c $MDIR_PRIVATE/sncli/snclirc_personal"
+# alias sncliw="sncli -c $MDIR_PRIVATE/sncli/snclirc_work"
 alias incognito_on="shopt -uo history"
 alias incognito_off="shopt -so history"
-alias onedrivepolimi='onedrive --confdir $XDG_CONFIG_HOME/onedrive/polimi/'
-alias onedrivetest='onedrive --confdir $XDG_CONFIG_HOME/onedrive/test/ --dry-run'
-# NOT USED ANYMORE
-# alias drivediff='less $MDIR_LOGS/inotify/drive/log'
-# alias drivediff2='less $MDIR_LOGS/inotify/drive/log2'
-# alias drivesynced='echo "--------- Synced on $(date) --------" | tee -a $MDIR_LOGS/inotify/drive/log $MDIR_LOGS/inotify/drive/log2'
-#alias taskopen='taskopen -c $HOME/.config/taskopen/taskopenrc'
+#
 alias rclone_pull='rclone sync --copy-links --create-empty-src-dirs --local-case-sensitive -v polimi: /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt'
 alias rclone_push='rclone sync --copy-links --create-empty-src-dirs --local-case-sensitive -v /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt'
 alias rclone_bisync='rclone bisync /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filters-file ~/.config/rclone/polimi_filters.txt --copy-links  --create-empty-src-dirs -MvP'
 alias rclone_check='rclone check /mnt/internal/SharedData/Public/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt -v'
 #
-alias rclone_proton_bisync='rclone bisync /mnt/internal/SharedData/Public/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP'
+alias rclone_proton_bisync='rclone bisync /mnt/internal/SharedData/Public/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt --checkers=4 --transfers=2 -MvP'
+# alias rclone_proton_bisync='rclone bisync /mnt/internal/SharedData/Public/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt --checkers=8 --transfers=4 -MvP'
 alias rclone_proton_push='rclone sync /mnt/internal/SharedData/Public/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP'
 alias rclone_proton_pull='rclone sync proton: /mnt/internal/SharedData/Public/protondrive/ --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP'
 # NOT USED ANYMORE
