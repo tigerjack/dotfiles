@@ -23,5 +23,9 @@ focus_follows_mouse no
 # include ./conf.d/inout
 # include ./conf.d/windows
 # include ./conf.d/execs
-include ./conf.d/*
-include /etc/sway/config.d/*
+include ./conf.d/bar
+include ./conf.d/bindings
+include ./conf.d/execs
+include ./conf.d/inout
+include ./conf.d/wallpaper.conf
+include /etc/sway/config.d/windows
