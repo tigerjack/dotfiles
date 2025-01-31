@@ -79,6 +79,7 @@
     "clock": {
         "format": "{:%H:%M %y-%m-%d}",
         "timezone": "Europe/Rome",
+        "locale": "it_IT.UTF-8",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
