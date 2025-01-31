@@ -29,6 +29,7 @@ cfgfile_gtk2="$HOME/.gtkrc-2.0"
 cfgfile_gtk3="$HOME/.config/gtk-3.0/settings.ini"
 cfgfile_i3="$HOME/.config/i3/config"
 cfgfile_qt5="$HOME/.config/qt5ct/qt5ct.conf"
+cfgfile_qt6="$HOME/.config/qt6ct/qt6ct.conf"
 cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
 cfgfile_speedcrunch="$HOME/.config/SpeedCrunch/SpeedCrunch.ini"
 cfgfile_ranger="$HOME/.config/ranger/rc.conf"
@@ -144,6 +145,11 @@ sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
 sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
 sed -i "s;^style.*;style=$qt5style;" "$cfgfile_qt5"
 echo "qt5 done"
+sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt6"
+sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt6"
+sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt6"
+sed -i "s;^style.*;style=$qt5style;" "$cfgfile_qt6"
+echo "qt6 done"
 
 # This work for Firefox, Wofi and Thunderbird; however, the latter doesn't work
 # see here https://wiki.archlinux.org/title/Dark_mode_switching#Tools
@@ -171,19 +177,19 @@ for i in $(vim --serverlist); do
 done
 echo "vim done"
 
-### EMACS 
-# WARN: this is a toggle, so it doesn't take into account any argument, maybe change
-sed -i 's#spacemacs-light#spacemacs-dark#g;t;s#spacemacs-dark#spacemacs-light#g' "$cfgfile_spacemacs"
-### EMACS SERVER
-bla=$(pgrep -f "emacs --daemon")
-if [ -n "$bla" ]; then
-    echo "emacs server running"
-    t=$(emacsclient -e "(load-theme '$spacemacsscheme)")
-    if [[ $t != t ]]; then
-	echo "Unable to change theme in spacemacs"
-    fi
-fi
-echo "emacs done"
+# ### EMACS 
+# # WARN: this is a toggle, so it doesn't take into account any argument, maybe change
+# sed -i 's#spacemacs-light#spacemacs-dark#g;t;s#spacemacs-dark#spacemacs-light#g' "$cfgfile_spacemacs"
+# ### EMACS SERVER
+# bla=$(pgrep -f "emacs --daemon")
+# if [ -n "$bla" ]; then
+#     echo "emacs server running"
+#     t=$(emacsclient -e "(load-theme '$spacemacsscheme)")
+#     if [[ $t != t ]]; then
+# 	echo "Unable to change theme in spacemacs"
+#     fi
+# fi
+# echo "emacs done"
 
 ### TASKWARRIOR
 sed -i "s;^include.*;include $taskwarriortheme;" "$cfgfile_taskwarrior"
@@ -223,14 +229,18 @@ sed -i "s;style=.*;style=$chtshstyle\";" "$cfgfile_chtsh"
 sed -i "s;^--theme=.*;--theme=\"$battheme\";" "$cfgfile_bat"
 
 echo -n "Spicetify "
-spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
-if pgrep -x spotify>/dev/null; then 
-    spicetify apply
-    # sleep 2s && playerctl -p spotify play
-    echo " ... done"
+if command -v spicetify &>/dev/null; then
+    spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
+    if pgrep -x spotify>/dev/null; then 
+        spicetify apply
+        # sleep 2s && playerctl -p spotify play
+        echo " ... done"
+    else
+        spicetify apply -n
+        echo " ... skipped"
+    fi
 else
-    spicetify apply -n
-    echo " ... skipped"
+    echo "... not found"
 fi
 # echo "spicety for spotify"
 
