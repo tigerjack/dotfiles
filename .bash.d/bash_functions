@@ -1,7 +1,7 @@
 ## External defined functions
 source ~/bin/bash_git_prompt.sh
 source ~/bin/bash_gpush_pop.sh
-source ~/bin/bash_remote_jupyter.sh
+# source ~/bin/bash_remote_jupyter.sh
 source ~/bin/bash_complete_alias.sh
 
 ## To prevent nested ranger instances
