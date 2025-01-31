@@ -10,6 +10,9 @@
 - /AppData/Zotero/translators/
 - /AppData/Zotero/better-bibtex/cache*
 - /AppData/Zotero/**journal*
+# these are highly pc dependant
+- /AppData/Zotero/*.sqlite
+- /AppData/Zotero/*.sqlite*bak
 # linux
 - **.fuse_hidden**
 # all files and dirs starting with Link
