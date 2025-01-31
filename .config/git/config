@@ -19,3 +19,6 @@
 	windowMemory = 4096m
 	packSizeLimit = 4096m
 	threads = 4
+[filter "ignore-theme"]
+	clean = sed '/THEME_START/,/THEME_END/d'
+	smudge = cat

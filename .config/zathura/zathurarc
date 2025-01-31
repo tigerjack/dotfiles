@@ -1,7 +1,6 @@
 # Recolor
 set recolor-darkcolor "#ACACAC"
 set recolor-lightcolor "#131313"
-set recolor true
 
 # Colors
 set statusbar-bg "#000000"
