@@ -1,5 +1,5 @@
 [Desktop Entry]
-Hidder=true
+Hidden=true
 Type=Application
 Exec=pcmanfm-qt --desktop --profile=lxqt
 TryExec=pcmanfm-qt
