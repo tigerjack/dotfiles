@@ -17,6 +17,11 @@ profile work_station {
 	output "Samsung Electric Company SMBX2440 H9XB203660" enable mode 1920x1080@60Hz position 1080,0 transform normal
 	output "Samsung Electric Company LF27T35 H1AK500000" enable mode 1920x1080@60Hz position 0,0 transform 90
 }
+profile work_station2 {
+	output "Dell Inc. DELL E173FP U494149I006L" enable mode 1280x1024@60Hz position 3000,0 transform normal
+	output "Samsung Electric Company SMBX2440 H9XB203660" enable mode 1920x1080@60Hz position 1080,0 transform normal
+	output "Samsung Electric Company LF27T35 H1AK500000" enable mode 1920x1080@60Hz position 0,0 transform 90
+}
 profile home1 {
 	output eDP-1 enable mode 1920x1080@60Hz position 0,0
 }
