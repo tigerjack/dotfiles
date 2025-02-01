@@ -1,4 +1,12 @@
 ##
+.cfg/
+.config/Keybase/
+.config/keybase/
+.config/protonmail/
+.config/rclone/*.md5
+.config/rclone/rclone.conf
+.config/sway/conf.d/azenb
+.config/sway/conf.d/battaglia
 # Mine
 ##
 temp/
