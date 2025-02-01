@@ -140,7 +140,8 @@ This function should only modify configuration layer settings."
             latex-enable-auto-fill t
             latex-enable-folding t)
      (bibtex ;; :variables
-      org-ref-default-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
+      ;;org-ref-default-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
+      org-ref-default-bibliography (list (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Zotero/MyLibrary.bib"))
       ;; org-ref-pdf-directory "~/Papers/"
       ;; org-ref-bibliography-notes "~/Papers/notes.org"
       )
@@ -564,7 +565,9 @@ you should place your code here."
     (ispell-hunspell-add-multi-dic "en_US,en_GB,it_IT")
     (setq ispell-dictionary "en_US"))
   ;; bibtex
-  (setq bibtex-completion-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
+  (setq 
+	bibtex-completion-bibliography (list (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Zotero/MyLibrary.bib"))
+	;; bibtex-completion-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
         ;; bibtex-completion-library-path "~/Papers/"
         ;; bibtex-completion-notes-path "~/Papers/notes.org"
         )
