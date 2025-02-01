@@ -9,7 +9,8 @@ exec swayidle \
     timeout 15 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"' \
     before-sleep $locker
-# exec ~/bin/x/mylock safe-mode
+
+exec swayidle lock $locker
 
 # notification daemon
 # now spawned by dbus-service in $XDG_DATA_HOME/dbus-1/services/org.freedesktop.Notifications.service
