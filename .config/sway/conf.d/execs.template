@@ -12,10 +12,6 @@ exec swayidle \
 
 exec swayidle lock $locker
 
-# notification daemon
-# now spawned by dbus-service in $XDG_DATA_HOME/dbus-1/services/org.freedesktop.Notifications.service
-# exec mako >$MDIR_LOGS/sway/mako.log 2>&1 
-
 # wifi tray
 exec nm-applet --indicator >$MDIR_LOGS/sway/nm_applet.log 2>&1
 # clipboard manager
@@ -23,16 +19,17 @@ exec nm-applet --indicator >$MDIR_LOGS/sway/nm_applet.log 2>&1
 # https://github.com/yory8/clipman/issues/52#issuecomment-778693461
 # exec wl-paste -t text --watch myclipman
 
-# battery-monitor
-exec batsignal -b >$MDIR_LOGS/sway/batsignal.log 2>&1 
-
 # Execute the startup scripts
 exec dex -a >$MDIR_LOGS/sway/dex.log 2>&1 
 # locker
-exec xss-lock -- swaylock -k -l -c 000000 >$MDIR_LOGS/sway/xss_lock.log 2>&1 
+# exec xss-lock -- swaylock -k -l -c 000000 >$MDIR_LOGS/sway/xss_lock.log 2>&1 
 # exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
 # https://github.com/emersion/kanshi/issues/43
 
 exec_always "pkill kanshi; exec kanshi >$MDIR_LOGS/sway/kanshi.log 2>&1"
 # exec_always pkill kanshi > $MDIR_LOGS/sway/kanshi.log 2>&1 
 # exec_always kanshi >$MDIR_LOGS/sway/kanshi.log 2>&1 
+#
+# exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+# exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+# exec systemctl --user start sway.target

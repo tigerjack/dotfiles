@@ -1,0 +1,3 @@
+# battery-monitor
+exec batsignal -b >$MDIR_LOGS/sway/batsignal.log 2>&1 
+
