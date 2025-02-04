@@ -1,3 +1,3 @@
 # notification daemon
 # now spawned by dbus-service in $XDG_DATA_HOME/dbus-1/services/org.freedesktop.Notifications.service
-exec mako >$MDIR_LOGS/sway/mako.log 2>&1 
+# exec mako >$MDIR_LOGS/sway/mako.log 2>&1 
