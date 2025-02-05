@@ -1,3 +1,4 @@
 # battery-monitor
 exec batsignal -b >$MDIR_LOGS/sway/batsignal.log 2>&1 
-
+# Now systemd service
+# exec mako  >$MDIR_LOGS/sway/mako.log 2>&1 
