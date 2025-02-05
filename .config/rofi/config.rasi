@@ -6,6 +6,3 @@ configuration {
 	sidebar-mode: true;
 	matching: "regex";
 }
-// THEME_START
-@theme "/usr/share/rofi/themes/Arc.rasi"
-// THEME_END
