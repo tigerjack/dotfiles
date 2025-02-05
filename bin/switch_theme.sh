@@ -22,6 +22,7 @@ set -o nounset                              # Treat unset variables as an error
 # cfgpath_firefox="$HOME/.mozilla/firefox"
 cfgfile_rofi="$HOME/.config/rofi/config.rasi"
 cfgfile_wofi="$HOME/.config/wofi/config"
+cfgfile_wofi_stylesheet="$HOME/.config/wofi/style.css"
 cfgfile_vim="$HOME/.config/vim/vimrc"
 cfgfile_taskwarrior="$HOME/.config/task/taskrc"
 cfgfile_spacemacs="$HOME/.spacemacs"
@@ -163,6 +164,16 @@ echo "qt5ct-refresh done"
 ### ROFI
 sed -i 's|/usr/share/rofi/themes/[^.]*|/usr/share/rofi/themes/'"$rofitheme"'|' "$cfgfile_rofi"
 echo "rofi done"
+
+### WOFI
+if [[ $switchto == light ]]; then
+  if [[ -e $cfgfile_wofi_stylesheet ]]; then
+    rm $cfgfile_wofi_stylesheet
+  fi
+elif [[ $switchto == dark ]]; then
+  ln -sf  "$XDG_CONFIG_HOME/wofi/themes/themes/gruvbox.css" "$XDG_CONFIG_HOME/wofi/style.css"
+fi
+
 
 ### VIM
 # sed -i "s/^colorscheme.*/colorscheme $vimscheme/" "$cfgfile_vim"
