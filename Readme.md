@@ -7,9 +7,12 @@ git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
 ```
 1. execute
 ```
-dotfiles_mgmt config --global filter.ignore-theme.smudge "sed '/THEME_START/,/THEME_END/d'"
 dotfiles_mgmt config --global filter.ignore-theme.clean "sed '/THEME_START/,/THEME_END/d'"
+dotfiles_mgmt config --global filter.ignore-theme.smudge "cat"
 ```
+It will
+- `clean` Deletes lines between THEME_START and THEME_END when committing.
+- `smudge` Leaves the file unchanged when checking it out, preserving local modifications.
 
 * Post git clone
 0. Set hostname if not already specified inside /etc/hostname
