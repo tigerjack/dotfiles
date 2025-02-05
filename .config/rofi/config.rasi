@@ -6,4 +6,6 @@ configuration {
 	sidebar-mode: true;
 	matching: "regex";
 }
-@theme "glue_pro_blue"
+// THEME_START
+@theme "/usr/share/rofi/themes/Arc.rasi"
+// THEME_END
