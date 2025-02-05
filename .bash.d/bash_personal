@@ -161,8 +161,9 @@ export LC_TIME=it_IT.UTF-8
 eval $(thefuck --alias)
 
 # python-virtualenvwrapper
-export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
-export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
+# export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
+# export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
+
 #source /usr/bin/virtualenvwrapper_lazy.sh
 # use pyenv-virtualenvwrapper instead, source and instructions at 
 # https://github.com/pyenv/pyenv-virtualenvwrapper
@@ -180,7 +181,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   # for pyenv virtualenv, https://github.com/pyenv/pyenv-virtualenv
   eval "$(pyenv virtualenv-init -)"
   # for pyenv virtualenvwrapper, https://github.com/pyenv/pyenv-virtualenvwrapper
-  pyenv virtualenvwrapper_lazy
+  # pyenv virtualenvwrapper_lazy
   # export PYENV_VIRTUALENV_DISABLE_PROMPT=0
   # enabled anyway through PROMPT_COMMAND
 fi
