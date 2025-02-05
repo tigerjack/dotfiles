@@ -33,7 +33,7 @@
 .config/SpeedCrunch/SpeedCrunch.ini filter=ignore-theme
 .config/ranger/rc.conf filter=ignore-theme
 .config/chtsh/conf filter=ignore-theme
-.config/chtsh/config.rasi filter=ignore-theme
+.config/rofi/config.rasi filter=ignore-theme
 .config/bat/config filter=ignore-theme
 .config/zathura/zathurarc filter=ignore-theme
 
