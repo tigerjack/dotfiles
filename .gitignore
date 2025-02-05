@@ -38,6 +38,16 @@ tmp/
 *.sqlite3-wal
 
 ### Particular files/dirs
+.config/GitKraken/
+.config/autostart/Proton Mail Bridge.desktop
+.config/autostart/keybase_autostart.desktop
+.config/featherpad/
+.config/guvcview2/
+.config/kitty/kitty-themes/
+.config/kitty/kitty_grab/
+.config/qt6ct/
+.config/transmission/
+.config/vlc/
 .config/tidal-hifi/
 # rkward
 .rkward/
