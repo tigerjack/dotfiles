@@ -1,9 +1,9 @@
 configuration {
-	modi: "drun,run,ssh,keys,file-browser";
+	modi: "drun,run,ssh,keys,filebrowser";
 	width: 60;
 	font: "hack 15";
 	drun-match-fields: "all";
 	sidebar-mode: true;
 	matching: "regex";
-	theme: "glue_pro_blue";
 }
+@theme "glue_pro_blue"
