@@ -1,0 +1,12 @@
+[submodule ".config/wofi/themes"]
+	path = .config/wofi/themes
+	url = https://github.com/joao-vitor-sr/wofi-themes-collection
+[submodule "/home/simone/.config/vim/bundle/Vundle.vim"]
+	path = /home/simone/.config/vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".config/kitty/kitty-themes"]
+	path = .config/kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git
+[submodule ".local/share/rofi/themes"]
+	path = .local/share/rofi/themes
+	url = https://github.com/lr-tech/rofi-themes-collection.git
