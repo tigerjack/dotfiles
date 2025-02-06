@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=CopyQ
-Exec=bash -c "sleep 5s && copyq --start-server show"
+Exec=bash -c "sleep 5s && copyq --start-server hide"
 Icon=copyq
 GenericName=Clipboard Manager
 # Workaround / fix for issue #1526 that prevents a proper autostart of the tray icon in GNOME
