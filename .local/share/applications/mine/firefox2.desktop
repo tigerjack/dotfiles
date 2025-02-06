@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox (ask profile)
+Name=Firefox (ask profile, private )
 GenericName=Web Browser
 GenericName[ar]=متصفح وِب
 GenericName[ast]=Restolador Web
@@ -83,7 +83,7 @@ Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
 Comment[zh_CN]=浏览互联网
 Comment[zh_TW]=瀏覽網際網路
-Exec=/usr/lib/firefox/firefox -p %u
+Exec=/usr/lib/firefox/firefox --private-window -p %u
 Icon=firefox
 Terminal=false
 Type=Application
