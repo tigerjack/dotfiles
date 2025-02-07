@@ -49,7 +49,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-projectile-file "TODOs.org"
           org-enable-roam-support t
-          org-roam-directory "/mnt/internal/SharedData/Documents/org-roam/"
+          org-roam-directory (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Documents/org-roam/")
           )
 
      ;; themes-megapack
@@ -140,7 +140,6 @@ This function should only modify configuration layer settings."
             latex-enable-auto-fill t
             latex-enable-folding t)
      (bibtex ;; :variables
-      ;;org-ref-default-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
       org-ref-default-bibliography (list (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Zotero/MyLibrary.bib"))
       ;; org-ref-pdf-directory "~/Papers/"
       ;; org-ref-bibliography-notes "~/Papers/notes.org"
@@ -282,13 +281,6 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-initial-scratch-message nil
 
-   ;; List of themes, the first of the list is loaded when spacemacs starts.
-   ;; Press `SPC T n' to cycle to the next theme in the list (works great
-   ;; with 2 themes variants, one dark and one light)
-   ;; dotspacemacs-themes '(tsdh-dark
-   ;;                       tsdh-light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark)
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
    ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
@@ -565,12 +557,12 @@ you should place your code here."
     (ispell-hunspell-add-multi-dic "en_US,en_GB,it_IT")
     (setq ispell-dictionary "en_US"))
   ;; bibtex
-  (setq 
-	bibtex-completion-bibliography (list (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Zotero/MyLibrary.bib"))
-	;; bibtex-completion-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
-        ;; bibtex-completion-library-path "~/Papers/"
-        ;; bibtex-completion-notes-path "~/Papers/notes.org"
-        )
+  (setq
+   bibtex-completion-bibliography (list (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Zotero/MyLibrary.bib"))
+   ;; bibtex-completion-bibliography '("/mnt/internal/SharedData/AppData/Zotero/MyLibrary.bib")
+   ;; bibtex-completion-library-path "~/Papers/"
+   ;; bibtex-completion-notes-path "~/Papers/notes.org"
+   )
   ;; to avoid issue with workspace next/previous
   ;; see https://github.com/syl20bnr/spacemacs/issues/13677
   (with-eval-after-load 'evil-maps
@@ -817,7 +809,7 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
-   '(default ((t (:background nil))))
+   '(default ((t (:background unspecified))))
    '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
    '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
    '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
@@ -835,4 +827,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ '(default ((t (:background unspecified)))))
