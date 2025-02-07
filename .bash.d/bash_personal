@@ -203,11 +203,19 @@ test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /
 
 # RUBY
 # export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+
+## RVM
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # Some other file is exporting, don't know which one
 # export PATH="$PATH:$HOME/.rvm/bin"
 # # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+#
+## rbenv, alternative to RVM
+# However, considering that I'll not use ruby so often, ...
+export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+#
 
 # chtsh
 export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
