@@ -20,6 +20,13 @@ It will
 2. Set relevant dirs in .env_global
 3. Execute generate_from_global_env
 4. Execute switch_theme.sh. Note that theme lines are untracked from git using this method https://stackoverflow.com/questions/6557467/can-git-ignore-a-specific-line
+5. Enable systemd units. For example
+```bash
+systemctl --user daemon-reload
+systemctl --user enable clean_tmp.timer
+systemctl --user enable mako.service
+systemctl --user enable kanshi.service
+```
 
 
 # Other useful things to do
