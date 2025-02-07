@@ -10,3 +10,6 @@
 [submodule ".local/share/rofi/themes"]
 	path = .local/share/rofi/themes
 	url = https://github.com/lr-tech/rofi-themes-collection.git
+[submodule ".config/kitty/kitty_grab"]
+	path = .config/kitty/kitty_grab
+	url = https://github.com/yurikhan/kitty_grab.git
