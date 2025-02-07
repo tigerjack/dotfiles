@@ -41,6 +41,7 @@ tmp/
 
 
 ### Particular files/dirs
+.config/go
 .config/nomacs
 
 # This is automatically created by switch_theme
@@ -62,8 +63,10 @@ tmp/
 .config/autostart/keybase_autostart.desktop
 .config/featherpad/
 .config/guvcview2/
+# now submodules
 # .config/kitty/kitty-themes/
 # .config/kitty/kitty_grab/
+.config/kitty/current-theme.conf
 .config/qt6ct/
 .config/transmission/
 .config/vlc/
@@ -157,7 +160,7 @@ tmp/
 ########
 .cache
 .local/share/
-~/.local/state/
+.local/state/
 
 # Used (mainly?) by pip --user
 .local/lib
