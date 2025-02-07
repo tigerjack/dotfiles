@@ -1,6 +1,6 @@
 My git dotfiles repo containing all relevant configurations.
 
-* Post-install steps
+# Post-install steps
 0. clone git repo in your user dir using
 ```sh
 git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
@@ -20,4 +20,19 @@ It will
 2. Set relevant dirs in .env_global
 3. Execute generate_from_global_env
 4. Execute switch_theme.sh. Note that theme lines are untracked from git using this method https://stackoverflow.com/questions/6557467/can-git-ignore-a-specific-line
+
+
+# Other useful things to do
+##  Move firefox cache dirs
+https://support.mozilla.org/en-US/questions/955978
+
+That is, FOR EACH PROFILE
+0. mkdir -p .cache/firefox/PROFILE_NAME (f.e. krxbnl3b.polimi)
+1. about:config
+2. search for browser.cache.disk.parent_directory 
+3. mod to string, and add something like /home/simone/.cache/firefox/PROFILE_NAME
+
+## Move emacs dir
+>mv .emacs.d/.cache/ .cache/emacs/
+>ln -s .cache/emacs/ .emacs.d/.cache
 
