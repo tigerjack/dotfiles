@@ -1,0 +1,8 @@
+[Unit]
+Description=Clean Temporary Directories
+Wants=clean_tmp.timer
+
+[Service]
+Type=oneshot
+# my bin
+ExecStart=/home/simone/bin/clean_my_temp_dirs.sh
