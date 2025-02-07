@@ -189,17 +189,17 @@ echo "vim done"
 
 # ### EMACS 
 # # WARN: this is a toggle, so it doesn't take into account any argument, maybe change
-# sed -i 's#spacemacs-light#spacemacs-dark#g;t;s#spacemacs-dark#spacemacs-light#g' "$cfgfile_spacemacs"
-# ### EMACS SERVER
-# bla=$(pgrep -f "emacs --daemon")
-# if [ -n "$bla" ]; then
-#     echo "emacs server running"
-#     t=$(emacsclient -e "(load-theme '$spacemacsscheme)")
-#     if [[ $t != t ]]; then
-# 	echo "Unable to change theme in spacemacs"
-#     fi
-# fi
-# echo "emacs done"
+sed -i 's#spacemacs-light#spacemacs-dark#g;t;s#spacemacs-dark#spacemacs-light#g' "$cfgfile_spacemacs"
+### EMACS SERVER
+bla=$(pgrep -f "emacs --daemon")
+if [ -n "$bla" ]; then
+    echo "emacs server running"
+    t=$(emacsclient -e "(load-theme '$spacemacsscheme)")
+    if [[ $t != t ]]; then
+	echo "Unable to change theme in spacemacs"
+    fi
+fi
+echo "emacs done"
 
 ### TASKWARRIOR
 sed -i "s;^include.*;include $taskwarriortheme;" "$cfgfile_taskwarrior"
@@ -255,6 +255,6 @@ fi
 # echo "spicety for spotify"
 
 # Still missing 
-# - CopyQ: theme not changeable easily
+# - CopyQ: theme not changeable easily; UP: now it seems to respect qt5 styles
 # - GoldenDict
 # - Sway window colors
