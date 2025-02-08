@@ -8,6 +8,10 @@ for file in ~/.bash.d/*; do
     fi
 done
 unset file
+for file in ~/.shell_commons.d/*; do
+    [[ -f "$file" ]] && source "$file"
+done
+unset file
 for file in ~/.bash_completion.d/*; do
     if [ -f "$file" ]; then
 	source "$file"
