@@ -13,3 +13,6 @@
 [submodule ".config/kitty/kitty_grab"]
 	path = .config/kitty/kitty_grab
 	url = https://github.com/yurikhan/kitty_grab.git
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = "https://github.com/ohmyzsh/ohmyzsh.git "
