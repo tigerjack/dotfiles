@@ -1,3 +1,9 @@
+# Compilation flags
+ export ARCHFLAGS="-arch $(uname -m)"
+
+# should be set by default
+# [ -x /usr/bin/lesspipe.sh ] && eval "$(SHELL=/bin/sh lesspipe.sh)" #ARCH
+
 # Set the default editor
 export EDITOR="vim"
 # ... and my personal editor2
@@ -11,18 +17,20 @@ export ALTERNATE_EDITOR=""
 # Default browser
 export BROWSER="firefox"
 
+# To override vimrc default location
+# Set vimrc's location and source it on vim startup
+export VIMINIT='let $MYVIMRC = $XDG_CONFIG_HOME . "/vim/vimrc" | source $MYVIMRC'
+
 
 # Go src, bin, pkg directories.
 # WARN: I put the dir inside .local, where also user python stores its bin, lib, share dirs.
 export GOPATH="$HOME/.local"
 
+
 # GPG variables
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# To override vimrc default location
-# Set vimrc's location and source it on vim startup
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # Set matlab to use the userpath folder (first run userpath('dir_name') inside matlab
 export MATLAB_USE_USERWORK=1
@@ -36,10 +44,7 @@ JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export GTAGSLABEL=pygments 
 export GTAGSCONF=/usr/share/gtags/gtags.conf
 
-# Some git exports
-export GIT_PROG_MGMT_OPTS="--git-dir=$MDIR_PROGRAMMING_DATA/.git_prog_mgmt/ --work-tree=$MDIR_PROGRAMMING_DATA"
-export GIT_DOTFILES_MGMT_OPTS="--git-dir=$HOME/.dot_git/ --work-tree=$HOME"
-# Format options not working
+# Format options
 export GIT_LOG_OPTS="--graph --abbrev-commit --decorate --all"
 
 # npm config dir
@@ -49,12 +54,11 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 # https://github.com/chubin/cheat.sh
 # export CHEATSH="curl cht.sh"
 #https://github.com/omgimanerd/getnews.tech
-export GETNEWS="curl getnews.tech"
 
 # for dialog
 export DIALOGRC="$HOME/dialog/dialogrc"
 
-# for i3-sensible-terminal
+# for sway
 #export TERMINAL=termite
 export TERMINAL='kitty'
 # for ranger
@@ -64,50 +68,15 @@ export TERMCMD='kitty'
 # export LC_ALL=en_US.UTF-8
 export LC_TIME=it_IT.UTF-8 
 
-# for taskwarrior
-# Unset, now it's automatically put in ~/.config/task/
-# export TASKRC="$HOME/.config/taskwarrior/taskrc"
-
-# for thefuck
-eval $(thefuck --alias)
-
-# python-virtualenvwrapper
-# export WORKON_HOME="$MDIR_LINUX_DATA/virtualenvs"
-# export PROJECT_HOME="$MDIR_LINUX_DATA/projects"
-
-#source /usr/bin/virtualenvwrapper_lazy.sh
-# use pyenv-virtualenvwrapper instead, source and instructions at 
-# https://github.com/pyenv/pyenv-virtualenvwrapper
-# see following lines
-
 # pyenv
-#export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if command -v pyenv 1>/dev/null 2>&1; then
   #export PYENV_ROOT="$HOME/.pyenv"
   export PYENV_ROOT="$MDIR_LINUX_DATA/pyenv"
   [[ ! "$PATH" =~ "$PYENV_ROOT/bin": ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-  # basic pyenv command
-  eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
-  # for pyenv virtualenv, https://github.com/pyenv/pyenv-virtualenv
-  eval "$(pyenv virtualenv-init -)"
-  # for pyenv virtualenvwrapper, https://github.com/pyenv/pyenv-virtualenvwrapper
-  # pyenv virtualenvwrapper_lazy
-  # export PYENV_VIRTUALENV_DISABLE_PROMPT=0
-  # enabled anyway through PROMPT_COMMAND
 fi
-# export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} updatePrompt"
-# function updatePrompt {
-#   if [[ "$(pyenv version-name)" != "system" ]]; then
-#     export PS1='($(pyenv version-name)) '$PS1
-#   fi
-# }
 
 # opam configuration
 test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
-
-# It seems to be only used by texdoc
-#export PDFVIEWER=zathura
 
 # conda
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
@@ -121,7 +90,7 @@ test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /
 # export PATH="$PATH:$HOME/.rvm/bin"
 # # Load RVM into a shell session *as a function*
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
-#
+
 ## rbenv, alternative to RVM
 # However, considering that I'll not use ruby so often, ...
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -132,16 +101,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
 
 # Export additional bins path
-# DELETED "$HOME/.rvm/bin" "$GEM_HOME/bin"
 myArray=("$HOME/bin" "$HOME/bin/x" "$HOME/bin/games" "$HOME/.cargo/bin/" "/opt/simone/bin" "$GOPATH/bin" "/opt/anaconda/bin")
 for str in ${myArray[@]}; do
     [[ ! "$PATH" =~ "$str": ]] && export PATH="$str:$PATH"
 done
 unset myArray
-
-# TEXLIVE
-# export TEXMFDIST=
-
-# theme.sh integration
-# theme.sh tango-light
-

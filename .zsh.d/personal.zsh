@@ -11,7 +11,4 @@ setopt hist_verify
 # Enable extended globbing
 setopt extendedglob
 
-# Set default editor
-export EDITOR="vim"
-
-PS1='%F{blue}%n@%m%f:%F{green}%~%f$(__git_ps1 " (%s)")%# '
+# PS1='%F{blue}%n@%m%f:%F{green}%~%f$'

@@ -1,0 +1,54 @@
+alias hf='history | fzf' # fuzzy hystory search
+alias getnews="curl getnews.tech"
+alias diff='diff --color=always'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=always'
+alias ls='ls -h --color=always'
+alias ll='ls -lh'
+alias lal='ls -Alh'
+alias l1='ls -1'
+alias lld='lsd -l'
+alias lald='lsd -Al'
+alias l1d='lsd -1'
+# Now tmux seems to read from config by default
+# alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
+alias tmsu_general='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/general'
+alias tmsu_academia='tmsu -D $MDIR_GLOBAL_APP_DATA/tmsu/academia'
+alias zw="export FIRST_DISPLAY='1' && "$HOME/bin/sway_launch.sh" >$MDIR_LOGS/sway/sway.log 2>&1"
+# alias zw="FIRST_DISPLAY='1' ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1 "$HOME/bin/sway_launch.sh""
+alias dotfiles_mgmt='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias prog_mgmt='/usr/bin/git --git-dir=$MDIR_PROGRAMMING_DATA/.git/ --work-tree=$MDIR_PROGRAMMING_DATA'
+alias emt='emacsclient -t'
+alias emcn='emacsclient -cn'
+alias emn='emacsclient -n'
+alias spwnd='spawn_x_terminals_into_pwd.sh'
+alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias wn32='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32'
+alias wn32b='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32b'
+alias wn64a='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64a'
+alias wn64b='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64b'
+alias wn64c='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64c'
+alias wnoffice='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine_office'
+alias stellarium='stellarium -c $XDG_CONFIG_HOME/stellarium/config.ini -u $XDG_DATA_HOME/stellarium --screenshot-dir $MDIR_SCREENSHOTS/stellarium'
+alias irssi='irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi'
+alias 5m='find ~/ ! -path "/home/simone/.mozilla/*"  ! -path "/home/simone/.cache/*" ! -path "/home/simone/.eclipse/*"! -path ".config/google-chrome/*" ! -path "~/.config/libreoffice/4/user/*" ! -mmin -5 -type f -ls'
+alias mynote="vim $(xdg-user-dir DOCUMENTS)/Notes/FastNotes.txt"
+# alias snclip="sncli -c $MDIR_PRIVATE/sncli/snclirc_personal"
+# alias sncliw="sncli -c $MDIR_PRIVATE/sncli/snclirc_work"
+alias incognito_on="shopt -uo history"
+alias incognito_off="shopt -so history"
+#
+alias rclone_pull="rclone sync --copy-links --create-empty-src-dirs --local-case-sensitive -v polimi: $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt"
+alias rclone_push="rclone sync --copy-links --create-empty-src-dirs --local-case-sensitive -v $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt"
+alias rclone_bisync="rclone bisync $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filters-file ~/.config/rclone/polimi_filters.txt --copy-links  --create-empty-src-dirs -MvP"
+alias rclone_check="rclone check $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt -v"
+#
+alias rclone_proton_bisync="rclone bisync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt --checkers=4 --transfers=2 -MvP"
+# alias rclone_proton_bisync="rclone bisync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt --checkers=8 --transfers=4 -MvP"
+alias rclone_proton_push="rclone sync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP"
+alias rclone_proton_pull="rclone sync proton: $MDIR_PUBLIC_DATA/protondrive/ --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP"
+# NOT USED ANYMORE
+# alias sshenv='"$HOME"/bin/autostart_ssh_agent.sh; echo "Sourcing $MSSH_ENV"; source "$MSSH_ENV"'
+alias icat="kitty +kitten icat"
