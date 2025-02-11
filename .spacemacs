@@ -49,7 +49,8 @@ This function should only modify configuration layer settings."
      (org :variables
           org-projectile-file "TODOs.org"
           org-enable-roam-support t
-          org-roam-directory (substitute-env-in-file-name "$MDIR_GLOBAL_APP_DATA/Documents/org-roam/")
+          org-roam-directory (substitute-env-in-file-name "$MDIR_GLOBAL_DATA/Documents/org-roam/")
+          org-agenda-files (list (substitute-env-in-file-name "$MDIR_GLOBAL_DATA/Documents/org-agenda/"))
           )
 
      ;; themes-megapack
@@ -269,7 +270,8 @@ It should only modify the values of Spacemacs settings."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+                                (projects . 7)
+                                (agenda . 4))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
