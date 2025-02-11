@@ -113,14 +113,14 @@ if (empty($TMUX))
         let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
         set termguicolors
-        autocmd vimenter * ++nested colorscheme gruvbox
+        autocmd vimenter * ++nested colorscheme one
         if &diff
-	    colorscheme gruvbox
+	    colorscheme one
         endif
     else
-        colorscheme gruvbox
+        colorscheme one
         if &diff
-            colorscheme gruvbox
+            colorscheme one
         endif
     endif
 endif
