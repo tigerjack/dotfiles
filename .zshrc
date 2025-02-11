@@ -21,7 +21,7 @@ ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
-
+# echo "cache dir"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -67,46 +67,32 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy/mm/dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
-
 # export ZSH_CUSTOM=~/.zsh.d/
 
-for file in ~/.shell_commons.d/*; do
-    # echo "sourcing $file"
-    [[ -f "$file" ]] && source "$file"
-done
-unset file
+source ~/.shell_commons.d/aliases
 
 for file in ~/.zsh.d/*.zsh; do
-    # echo "sourcing $file"
-    [[ -f "$file" ]] && source "$file"
+  if [[ "$file" == "$HOME/.zsh.d/exports.zsh" ]]; then
+    continue
+  fi
+  # echo "sourcing $file"
+  source "$file"
 done
 unset file
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
+autoload -Uz compinit
+if [[ -n $ZSH_COMPDUMP ]]; then
+  compinit -d "$ZSH_COMPDUMP"
+else
+  compinit -C   # Use cache if available, otherwise regenerat#
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

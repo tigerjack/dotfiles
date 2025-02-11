@@ -11,4 +11,6 @@ setopt hist_verify
 # Enable extended globbing
 setopt extendedglob
 
+setopt COMPLETE_ALIASES
+
 # PS1='%F{blue}%n@%m%f:%F{green}%~%f$'

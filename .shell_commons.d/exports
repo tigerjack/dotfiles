@@ -70,9 +70,11 @@ export LC_TIME=it_IT.UTF-8
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
+  # echo "exporting PYENV"
   #export PYENV_ROOT="$HOME/.pyenv"
   export PYENV_ROOT="$MDIR_LINUX_DATA/pyenv"
-  [[ ! "$PATH" =~ "$PYENV_ROOT/bin": ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  [[ ! "$PATH" =~ "$PYENV_ROOT/bin": ]] && [ -d "$PYENV_ROOT/bin" ] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
 fi
 
 # opam configuration
