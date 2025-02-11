@@ -1,8 +1,23 @@
 ## External defined functions
 source ~/bin/bash_git_prompt.sh
-source ~/bin/bash_gpushb_pop.sh
+source ~/bin/bash_gpush_pop.sh
 # source ~/bin/bash_remote_jupyter.sh
 source ~/bin/bash_complete_alias.sh
+# Autojump must be sourced here if you want to use it in subshells also (f.e. 
+# when launching a subshell from ranger)
+source /etc/profile.d/autojump.bash #Arch
+
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  # basic pyenv command
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+  # for pyenv virtualenv, https://github.com/pyenv/pyenv-virtualenv
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 # for thefuck
 eval $(thefuck --alias)

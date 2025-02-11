@@ -1,3 +1,15 @@
+# Already done by rbenv plugin
+# if command -v rbenv 1>/dev/null 2>&1; then
+#   eval "$(rbenv init - zsh)"
+# fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+  # Already done by pyenv plugin
+  # eval "$(pyenv init -)"
+  # eval "$(pyenv virtualenv-init -)"
+fi
+
 # Function for preventing nested ranger instances
 function ranger {
     if [[ -z "$RANGER_LEVEL" ]]; then
