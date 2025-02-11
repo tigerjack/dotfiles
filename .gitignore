@@ -34,6 +34,9 @@ tmp/
 
 
 # Particular files/dirs
+.viminfo
+.zsh_eternal_history
+
 # git repo
 .cfg/
 
