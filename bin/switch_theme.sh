@@ -20,21 +20,20 @@
 set -o nounset                              # Treat unset variables as an error
 
 # cfgpath_firefox="$HOME/.mozilla/firefox"
-cfgfile_rofi="$HOME/.config/rofi/config.rasi"
 cfgfile_wofi="$HOME/.config/wofi/config"
 cfgfile_wofi_stylesheet="$HOME/.config/wofi/style.css"
+cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
+cfgfile_chtsh="$HOME/.config/chtsh/conf"
+# sed based
 cfgfile_vim="$HOME/.config/vim/vimrc"
 cfgfile_taskwarrior="$HOME/.config/task/taskrc"
 cfgfile_spacemacs="$HOME/.spacemacs"
 cfgfile_gtk2="$HOME/.gtkrc-2.0"
 cfgfile_gtk3="$HOME/.config/gtk-3.0/settings.ini"
-cfgfile_i3="$HOME/.config/i3/config"
 cfgfile_qt5="$HOME/.config/qt5ct/qt5ct.conf"
 cfgfile_qt6="$HOME/.config/qt6ct/qt6ct.conf"
-cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
 cfgfile_speedcrunch="$HOME/.config/SpeedCrunch/SpeedCrunch.ini"
 cfgfile_ranger="$HOME/.config/ranger/rc.conf"
-cfgfile_chtsh="$HOME/.config/chtsh/conf"
 cfgfile_bat="$HOME/.config/bat/config"
 cfgfile_zathura="$HOME/.config/zathura/zathurarc"
 
@@ -55,18 +54,10 @@ echo "Switching to $switchto"
 if [[ $switchto = light ]]; then
     zathura_recolor="false"
     battheme="OneHalfLight"
-    i3style="park" 
-    dmenu1="white" 
-    dmenu2="black" 
-    dmenu3="blue" 
     #kittystyle="Atom One Light"
     kittystyle="Pencil Light"
-    # termitestyle="atom-one-light" 
-    alacrittystyle="Google.light"
-    osc411style="tango-light"
     gtktheme="\"Arc\"" 
-    rofitheme="Arc" 
-    preferdark="false" 
+    gtkpreferdark="false" 
     qt5colors="simple.conf" 
     qt5icons="breeze"
     qt5style="kvantum"
@@ -85,18 +76,11 @@ if [[ $switchto = light ]]; then
 else # dark theme
     zathura_recolor="true"
     battheme="OneHalfDark"
-    i3style="default" 
-    dmenu1="black" 
-    dmenu2="white" 
-    dmenu3="red" 
-    alacrittystyle="Google.dark"
-    osc411style="tango-dark"
     #kittystyle="Misterioso"
     kittystyle="Pencil Dark"
-    # termitestyle="default" 
     gtktheme="\"Arc-Dark\"" 
     rofitheme="Arc-Dark" 
-    preferdark="true" 
+    gtkpreferdark="true" 
     qt5colors="darker.conf" 
     qt5icons="breeze-dark"
     qt5style="kvantum-dark"
@@ -113,33 +97,16 @@ else # dark theme
     chtshstyle="native"
 fi
 ### MAIN: gtk, qt5, i3, terminal, 
-# The following lines should be put before the reload of i3-style
-# sed -i "s/set \$dmenu_options.*/set \$dmenu_options -nb $dmenu1 -nf $dmenu2 -sb $dmenu3/" "$cfgfile_i3"
-# i3-style "$i3style" -o "$cfgfile_i3" --reload > /dev/null 2>&1
-# echo "i3-style done"
-
-# ALACRITTY
-# OFF
-# https://github.com/rajasegar/alacritty-themes
-# https://github.com/rajasegar/alacritty-themes/tree/master/themes
-# alacritty-themes "$alacrittystyle"
 
 # KITTY
 # cache age is there to not use internet
 kitty +kitten themes --reload-in=all --cache-age -1 "$kittystyle"
 echo "kitty done"
 
-# TERMITE you should first install termite-color-switcher
-# OFF
-# termite-color-switcher "$termitestyle"
-# ALL OSC 4/11 Terminal emulators via theme.sh and bashrc; works only on new instances
-# OFF
-# theme.sh "$osc411style"
-
 # GTK/QT
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk2"
 sed -i "s/^gtk-theme-name.*/gtk-theme-name=$gtktheme/" "$cfgfile_gtk3"
-sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$preferdark/" "$cfgfile_gtk3"
+sed -i "s/^gtk-application-prefer-dark-theme.*/gtk-application-prefer-dark-theme=$gtkpreferdark/" "$cfgfile_gtk3"
 echo "gtk done"
 sed -i "s;^color_scheme_path.*;color_scheme_path=/usr/share/qt5ct/colors/$qt5colors;" "$cfgfile_qt5"
 sed -i "s;^icon_theme.*;icon_theme=$qt5icons;" "$cfgfile_qt5"
@@ -160,10 +127,6 @@ echo "GTK through gsettings done"
 
 qt5ct-refresh
 echo "qt5ct-refresh done"
-
-### ROFI
-sed -i 's|/usr/share/rofi/themes/[^.]*|/usr/share/rofi/themes/'"$rofitheme"'|' "$cfgfile_rofi"
-echo "rofi done"
 
 ### WOFI
 if [[ $switchto == light ]]; then
@@ -258,3 +221,47 @@ fi
 # - CopyQ: theme not changeable easily; UP: now it seems to respect qt5 styles
 # - GoldenDict
 # - Sway window colors
+#
+# UNMANTAINED
+# cfgfile_rofi="$HOME/.config/rofi/config.rasi"
+# cfgfile_i3="$HOME/.config/i3/config"
+#
+    # osc411style="tango-light"
+    # rofitheme="Arc" 
+    # i3style="park" 
+    # dmenu1="white" 
+    # dmenu2="black" 
+    # dmenu3="blue" 
+    # termitestyle="atom-one-light" 
+    # alacrittystyle="Google.light"
+    #
+    # osc411style="tango-dark"
+    # i3style="default" 
+    # dmenu1="black" 
+    # dmenu2="white" 
+    # dmenu3="red" 
+    # termitestyle="default" 
+    # alacrittystyle="Google.dark"
+#
+### ROFI
+# sed -i 's|/usr/share/rofi/themes/[^.]*|/usr/share/rofi/themes/'"$rofitheme"'|' "$cfgfile_rofi"
+# echo "rofi done"
+# 
+# The following lines should be put before the reload of i3-style
+# sed -i "s/set \$dmenu_options.*/set \$dmenu_options -nb $dmenu1 -nf $dmenu2 -sb $dmenu3/" "$cfgfile_i3"
+# i3-style "$i3style" -o "$cfgfile_i3" --reload > /dev/null 2>&1
+# echo "i3-style done"
+
+
+# TERMITE you should first install termite-color-switcher
+# OFF
+# termite-color-switcher "$termitestyle"
+# ALL OSC 4/11 Terminal emulators via theme.sh and bashrc; works only on new instances
+# OFF
+# theme.sh "$osc411style"
+#
+# ALACRITTY
+# OFF
+# https://github.com/rajasegar/alacritty-themes
+# https://github.com/rajasegar/alacritty-themes/tree/master/themes
+# alacritty-themes "$alacrittystyle"
