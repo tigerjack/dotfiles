@@ -15,6 +15,7 @@
 data.location=$MDIR_GLOBAL_APP_DATA/TaskWarrior/
 
 # Color theme (uncomment one to use)
+include THEME_PLACEHOLDER
 #include /usr/share/doc/task/rc/light-16.theme
 #include /usr/share/doc/task/rc/light-256.theme
 #include /usr/share/doc/task/rc/dark-16.theme
