@@ -251,7 +251,7 @@ bindsym $sup+Return exec kitty
 #bindsym $sup+Shift+z exec "loginctl lock-session > '$MDIR_LOGS/i3/lock-session.log' 2>&1"
 bindsym $sup+Shift+z exec "loginctl lock-session"
 
-# exit menu (logs you out of your X session)
+# exit menu (logs you out of your GUI session)
 bindsym $sup+Shift+q exec dmenu_exit.sh
 
 # take screenshot

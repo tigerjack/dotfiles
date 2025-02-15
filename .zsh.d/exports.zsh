@@ -7,3 +7,4 @@ export ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zshcompdump-$ZSH_VERSIO
 export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTFILE=~/.zsh_eternal_history
+# export WORDCHARS=${WORDCHARS//-}
