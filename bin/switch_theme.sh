@@ -42,11 +42,18 @@ CONFIG_FILE="$HOME/.config/themes_config.cfg"
 echo "# Sed based"
 while IFS=: read -r name file pattern light_value dark_value; do
     [[ -z "$name" || "$name" =~ ^# ]] && continue
-    echo -n "Processing $file "
-    # eval "expanded_file=\"$file\""
+    eval "expanded_file=\"$file\""
+    # Validate that the file exists
+    if [[ ! -f "$expanded_file" ]]; then
+        echo "ERROR: File '$expanded_file' not found."
+        continue
+    fi
+    echo -n "Processing $file."
     value=$([ "$switchto" = "light" ] && echo "$light_value" || echo "$dark_value")
-    sed -i -E "s;($pattern).*;\1$value;" "$(eval echo "$file")"
-    echo "done"
+    outfile="${expanded_file%.@theme}"
+    echo -n "Output to $outfile"
+    sed -E "s|($pattern).*|\1$value|" "$expanded_file" > "$outfile"
+    echo ". DONE."
 done < "$CONFIG_FILE"
 
 qt5ct-refresh
@@ -73,6 +80,7 @@ else # dark theme
     spotifyscheme="purple-dark"
     gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $5}')
     spacemacsscheme=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $5}')
+    zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $5}')
 fi
 # KITTY
 # cache age is there to not use internet
