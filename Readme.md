@@ -7,11 +7,16 @@ git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
 ```
 1. execute
 ```
-dotfiles_mgmt config --global filter.ignore-theme.clean "sed '/THEME_START/,/THEME_END/d'"
-dotfiles_mgmt config --global filter.ignore-theme.smudge "cat"
+dotfiles_mgmt config filter.kittytheme.clean "sed '/# BEGIN_KITTY_THEME/,/# END_KITTY_THEME/ d'"
+dotfiles_mgmt config filter.kittytheme.smudge "cat"
 ```
-It will
-- `clean` Deletes lines between THEME_START and THEME_END when committing.
+The `.gitattributes` file should contain the line
+```
+.config/kitty/kitty.conf filter=kittytheme
+```
+
+In this way,
+- `clean` Deletes lines between BEGIN_KITTY_THEME and END_KITTY_THEME when committing.
 - `smudge` Leaves the file unchanged when checking it out, preserving local modifications.
 
 * Post git clone
@@ -19,8 +24,8 @@ It will
 1. Set graphic cards in .env_gui
 2. Set relevant dirs in .env_global
 3. Execute generate_config
-4. Execute switch_theme.sh. Note that theme lines are untracked from git using this method https://stackoverflow.com/questions/6557467/can-git-ignore-a-specific-line
-5. Enable systemd units. For example
+4. Execute switch_theme.sh
+5. Enable systemd units. Specifically
 ```bash
 systemctl --user daemon-reload
 systemctl --user enable clean_tmp.timer
