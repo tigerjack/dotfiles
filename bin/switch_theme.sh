@@ -40,21 +40,39 @@ echo "Switching to $switchto"
 # SED based Apply the configuration based on the selected theme
 CONFIG_FILE="$HOME/.config/themes_config.cfg"
 echo "# Sed based"
+
+declare -A processed_files
+# Iterate over the config file and process each line
 while IFS=: read -r name file pattern light_value dark_value; do
+    # Skip empty lines and comments
     [[ -z "$name" || "$name" =~ ^# ]] && continue
+
     eval "expanded_file=\"$file\""
-    # Validate that the file exists
     if [[ ! -f "$expanded_file" ]]; then
-        echo "ERROR: File '$expanded_file' not found."
-        continue
+	echo "ERROR: File '$expanded_file' not found."
+	continue
     fi
-    echo -n "Processing $file."
+
+    # Output file (remove the '@theme' suffix)
+    out_file="${expanded_file%.@theme}"
+
+    # Collect patterns for the current file (skip first time)
+    if [[ ! ${processed_files["$out_file"]+_} ]]; then
+        # Copy the source file to the output file once
+        cp "$expanded_file" "$out_file"
+        # Mark the file as processed
+        processed_files["$out_file"]=1
+    fi
+
+    # Choose the value based on target theme
     value=$([ "$switchto" = "light" ] && echo "$light_value" || echo "$dark_value")
-    outfile="${expanded_file%.@theme}"
-    echo -n "Output to $outfile"
-    sed -E "s|($pattern).*|\1$value|" "$expanded_file" > "$outfile"
-    echo ". DONE."
+
+    # Apply the sed operation for this pattern to the output file
+    sed -E -i "s|($pattern).*|\1$value|" "$out_file"
+    echo "Applied pattern to $out_file."
 done < "$CONFIG_FILE"
+
+echo "Theme switching complete."
 
 qt5ct-refresh
 echo "qt5ct-refresh done"
