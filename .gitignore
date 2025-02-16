@@ -1,3 +1,15 @@
+# Theme
+.config/bat/config
+.config/chtsh/conf
+.config/gtk-3.0/settings.ini
+.config/kitty/theme.conf
+.config/qt5ct/qt5ct.conf
+.config/ranger/rc.conf
+.config/task/taskrc
+.config/vim/vimrc
+.config/wofi/config
+.config/zathura/zathurarc
+
 # TEMP
 .BurpSuite/
 .android/
@@ -95,7 +107,6 @@
 .tmux/
 .w3m/
 .yosys_history
-#
 # /END TEMP
 
 # Mine
@@ -396,15 +407,6 @@ LinuxData
 .config/GeoGebra
 # GUI config
 .config/SpeedCrunch
-# 
-.config/onedrive/**/*refresh_token
-.config/onedrive/**/*backup
-.config/onedrive/**/*hash
-# .config/onedrive/atos/*
-# .config/onedrive/polimi/*
-# 
-!.config/onedrive/atos/config.template
-!.config/onedrive/polimi/config.template
 # 
 .xournal/
 !.xournal/config
