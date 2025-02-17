@@ -271,7 +271,7 @@ It should only modify the values of Spacemacs settings."
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7)
-                                (agenda . 4))
+                                )
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -674,11 +674,11 @@ you should place your code here."
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   ;; PYTHON
   ;; ANACONDA
-  (setq anaconda-mode-localhost-address "localhost")
+  ;; (setq anaconda-mode-localhost-address "localhost")
   ;; (eval-after-load "company"
   ;;   '(add-to-list 'company-backends '(company-jedi company-anaconda)))
   ;; (add-hook 'python-mode-hook 'my/python-mode-hook)
-  (add-hook 'python-mode-hook 'anaconda-mode)
+  ;; (add-hook 'python-mode-hook 'anaconda-mode)
   (setq python-shell-interpreter "ipython3")
   ;; (add-hook 'python-mode-hook 'auto-complete-mode)
   ;;
