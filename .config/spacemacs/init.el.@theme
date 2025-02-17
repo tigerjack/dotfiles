@@ -132,6 +132,7 @@ This function should only modify configuration layer settings."
              python-formatter 'yapf
              python-pipenv-activate t
              python-fill-column 79
+             python-auto-set-local-pyenv-version 'on-visit
              ;;             python-lsp-git-root "~/repos/installed/python-language-server"
              )
      deft
@@ -282,6 +283,15 @@ It should only modify the values of Spacemacs settings."
    ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
    ;; (default nil)
    dotspacemacs-initial-scratch-message nil
+
+
+   ;; List of themes, the first of the list is loaded when spacemacs starts.
+   ;; Press `SPC T n' to cycle to the next theme in the list (works great
+   ;; with 2 themes variants, one dark and one light). A theme from external
+   ;; package can be defined with `:package', or a theme can be defined with
+   ;; `:location' to download the theme package, refer the themes section in
+   ;; DOCUMENTATION.org for the full theme specifications.
+   dotspacemacs-themes '(THEME_PLACEHOLDER THEME_PLACEHOLDER)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The

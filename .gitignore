@@ -2,7 +2,7 @@
 texmf/
 
 # Theme
-.spacemacs
+.config/spacemacs/init.el
 .config/bat/config
 .config/chtsh/conf
 .config/gtk-3.0/settings.ini
