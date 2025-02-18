@@ -91,8 +91,10 @@ autoload -Uz compinit
 if [[ -n $ZSH_COMPDUMP ]]; then
   compinit -d "$ZSH_COMPDUMP"
 else
-  compinit -C   # Use cache if available, otherwise regenerat#
+  compinit -C   # Use cache if available, otherwise regenerate
 fi
+autoload -Uz select-word-style
+select-word-style bash
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
