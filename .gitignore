@@ -110,7 +110,6 @@ texmf/
 .sympow/
 .tmux/
 .w3m/
-.yosys_history
 # /END TEMP
 
 # Mine
@@ -251,7 +250,10 @@ tmp/
 .viminfo
 .zsh_eternal_history
 .pdbhistory
+.pdb-pyhist
+.yosys_history
 .w3m/history
+
 .config/spotify-tui/client.yml
 .config/spotify-tui/.spotify_token_cache.json
 .tig_history
