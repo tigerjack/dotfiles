@@ -19,7 +19,6 @@
 
 set -o nounset                              # Treat unset variables as an error
 
-
 switchto="${1:-def}"
 
 # Determine the target theme if not provided, assuming gtk-2 has the source of truth
@@ -88,8 +87,10 @@ if [[ $switchto = light ]]; then
     spotifytheme="Ziro"
     spotifyscheme="purple-light"
     gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $4}')
-    spacemacsscheme=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $4}')
+    spacemacs=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $4}' | sed -n 's/.*(\([^ ]*\) .*/\1/p')
     zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $4}')
+    tty_term_fg="black"
+    tty_term_bg="white"
 else # dark theme
     kittystyle="Pencil Dark"
     spttheme="dark"
@@ -97,9 +98,17 @@ else # dark theme
     spotifytheme="Ziro"
     spotifyscheme="purple-dark"
     gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $5}')
-    spacemacsscheme=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $5}')
+    spacemacs=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $5}' | sed -n 's/.*(\([^ ]*\) .*/\1/p')
     zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $5}')
+    tty_term_fg="white"
+    tty_term_bg="black"
 fi
+
+#setterm --inversescreen on
+# setterm -clear all  -foreground "$tty_term_fg" -background "$tty_term_bg" -store
+# echo "set terminal (tty)"
+
+
 # KITTY
 # cache age is there to not use internet
 kitty +kitten themes --reload-in=all --cache-age -1 "$kittystyle"
@@ -133,7 +142,7 @@ fi
 bla=$(pgrep -f "emacs --daemon")
 if [ -n "$bla" ]; then
     echo "emacs server running"
-    t=$(emacsclient -e "(load-theme '$spacemacsscheme)")
+    t=$(emacsclient -e "(load-theme '$spacemacs)")
     if [[ $t != t ]]; then
 	echo "Unable to change theme in spacemacs"
     fi
