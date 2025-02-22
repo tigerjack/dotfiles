@@ -1,5 +1,6 @@
 #!/bin/sh
-myArrayPath="$HOME/bin $HOME/bin/gui $HOME/bin/games $HOME/.cargo/bin/ /opt/simone/bin $GOPATH/bin /opt/anaconda/bin"
+# Still unsure why I should export $HOME/bin/gui  from here
+myArrayPath="$HOME/bin $HOME/bin/games $HOME/.cargo/bin/ /opt/simone/bin /opt/anaconda/bin"
 # Compilation flags
 ARCHFLAGS="-arch $(uname -m)"
 export ARCHFLAGS
@@ -29,7 +30,7 @@ export VIMINIT="let \$MYVIMRC = \$XDG_CONFIG_HOME . '/vim/vimrc' | source \$MYVI
 # Go src, bin, pkg directories.
 # WARN: I put the dir inside .local, where also user python stores its bin, lib, share dirs.
 export GOPATH="$HOME/.local"
-
+myArrayPath="$myArrayPath $GOPATH/bin"
 
 # GPG variables
 GPG_TTY=$(tty)
@@ -108,19 +109,25 @@ fi
 
 ## rbenv, alternative to RVM
 # However, considering that I'll not use ruby so often, ...
-export PATH="$HOME/.rbenv/bin:$PATH"
+myArrayPath="$myArrayPath $HOME/.rbenv/bin"
 # eval "$(rbenv init -)"
-#
 
 # chtsh
 export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
 
-# Export additional bins path
-# for str in ${myArray[@]}; do
-for str in $myArrayPath; do
+# Export additional bins path in a shell-independent way
+echo "$myArrayPath" | tr ' ' '\n' | while read -r item; do
+    # echo -n "Analyzing $item: "
     case ":$PATH:" in
-        *:"$str":*) ;;  # Do nothing, already in PATH
-        *) [ -d "$str" ] && export PATH="$str:$PATH" ;;  # Prepend if directory exists
+        *:"$item":*) 
+    	# echo "Already in PATH" 
+    	;;  # Do nothing, already in PATH
+        *) 
+    	# echo "Not in PATH" 
+            if [ -d "$item" ]; then 
+                # echo "$item is dir" 
+                export PATH="$item:$PATH"
+            fi 
     esac
 done
-unset myArray
+unset myArrayPath
