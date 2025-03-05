@@ -25,7 +25,7 @@ alias emn='emacsclient -n'
 alias spwnd='spawn_x_terminals_into_pwd.sh'
 alias gitlg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitlg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias wn32='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32'
+alias wn32a='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32a'
 alias wn32b='WINEARCH=win32 WINEPREFIX=$MDIR_LINUX_DATA/wine32b'
 alias wn64a='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64a'
 alias wn64b='WINEARCH=win64 WINEPREFIX=$MDIR_LINUX_DATA/wine64b'
