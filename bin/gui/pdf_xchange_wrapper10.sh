@@ -1,5 +1,5 @@
 source ~/.env_global
-export WINEPREFIX="$MDIR_LINUX_DATA/wine64c"
+export WINEPREFIX="$MDIR_LINUX_DATA/wines/wine64c"
 export WINEARCH=win64
 
 # Convert Unix path to Windows path

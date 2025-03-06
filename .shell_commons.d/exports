@@ -77,12 +77,12 @@ export LC_TIME=it_IT.UTF-8
 if command -v pyenv 1>/dev/null 2>&1; then
   # echo "exporting PYENV"
   #export PYENV_ROOT="$HOME/.pyenv"
-  export PYENV_ROOT="$MDIR_LINUX_DATA/pyenv"
+  export PYENV_ROOT="$MDIR_LINUX_DATA/venvs/pyenv"
   myArrayPath="$myArrayPath $PYENV_ROOT/bin"
 fi
 
 if command -v rbenv 1>/dev/null 2>&1; then
-  export RBENV_ROOT="$MDIR_LINUX_DATA/rbenv"
+  export RBENV_ROOT="$MDIR_LINUX_DATA/venvs/rbenv"
 fi
 
 
