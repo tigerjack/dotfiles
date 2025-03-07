@@ -43,12 +43,12 @@ alias incognito_off="shopt -so history"
 alias rclone_pull="rclone sync --copy-links --create-empty-src-dirs --local-case-sensitive -v polimi: $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ --filter-from ~/.config/rclone/polimi_filters.txt"
 alias rclone_push="rclone sync --copy-links --create-empty-src-dirs --local-case-sensitive -v $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt"
 alias rclone_bisync="rclone bisync $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filters-file ~/.config/rclone/polimi_filters.txt --copy-links  --create-empty-src-dirs -MvP"
-alias rclone_check="rclone check $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/polimi_filters.txt -v"
+alias rclone_check="rclone check $MDIR_PUBLIC_DATA/onedrive/polimi_wsl/ polimi: --filter-from ~/.config/rclone/proton_filters.txt -v"
 #
-alias rclone_proton_bisync="rclone bisync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt --checkers=4 --transfers=2 -MvP"
-# alias rclone_proton_bisync="rclone bisync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt --checkers=8 --transfers=4 -MvP"
-alias rclone_proton_push="rclone sync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP"
-alias rclone_proton_pull="rclone sync proton: $MDIR_PUBLIC_DATA/protondrive/ --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/polimi_filters.txt -MvP"
+alias rclone_proton_bisync="rclone bisync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/proton_filters.txt --checkers=4 --transfers=2 -MvP"
+# alias rclone_proton_bisync="rclone bisync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/proton_filters.txt --checkers=8 --transfers=4 -MvP"
+alias rclone_proton_push="rclone sync $MDIR_PUBLIC_DATA/protondrive/ proton: --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/proton_filters.txt -MvP"
+alias rclone_proton_pull="rclone sync proton: $MDIR_PUBLIC_DATA/protondrive/ --copy-links  --create-empty-src-dirs --filter-from ~/.config/rclone/proton_filters.txt -MvP"
 # NOT USED ANYMORE
 # alias sshenv='"$HOME"/bin/autostart_ssh_agent.sh; echo "Sourcing $MSSH_ENV"; source "$MSSH_ENV"'
 alias icat="kitty +kitten icat"
