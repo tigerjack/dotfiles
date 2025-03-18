@@ -24,6 +24,8 @@
 - /AppData/**
 - /Attachments/
 - /BackupElisa/
+- /eBooks/Manga_Comics/
+- /eBooks/AudioBooks/
 - /Music/
 - /Microsoft Teams Chat Files/
 - /StandaloneSW/
