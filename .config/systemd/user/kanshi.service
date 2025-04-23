@@ -5,6 +5,7 @@ BindsTo=sway-session.target
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 2
 ExecStart=/usr/bin/kanshi
 
 [Install]

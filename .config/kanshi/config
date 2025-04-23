@@ -31,9 +31,13 @@ profile home1 {
 	output eDP-1 enable mode 1920x1080@60Hz position 0,0
 }
 
-profile home2 {
-	output "Samsung Electric Company SyncMaster H9XZ313018" enable mode 1920x1080@59.934Hz position 0,0 transform 90
-	output 'BOE 0x07D8 Unknown' enable mode 1920x1080@60Hz position 1080,840
+# profile home2A {
+# 	output "Samsung Electric Company SyncMaster H9XZ313018" enable mode 1920x1080@59.934Hz position 0,0 transform 90
+# 	output 'BOE 0x07D8 Unknown' enable mode 1920x1080@60Hz position 1080,840
+# }
+profile home2B {
+	output 'BOE 0x07D8 Unknown' enable mode 1920x1080@60Hz position 0,312
+	output "Samsung Electric Company SyncMaster H9XZ313018" enable mode 1920x1080@59.934Hz position 1920,0 transform 90
 }
 profile home3 {
 	output "Samsung Electric Company SyncMaster H9XZ313018" enable mode 1920x1080@59.934Hz position 0,0 transform 90
