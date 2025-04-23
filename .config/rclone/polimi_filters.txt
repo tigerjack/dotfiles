@@ -1,4 +1,5 @@
 # emacs temp file
+- .~lock.*
 - **.#*
 # Zotero
 - **.zotero-pdf-state**
@@ -31,7 +32,7 @@
 - /Poker/
 - /Phone&simila/
 - /WebSites/
-- /eBooks/
+# - /eBooks/
 - /Keys/LinuxLuksKeys
 - /Languages/
 - /Learning/Poker/
