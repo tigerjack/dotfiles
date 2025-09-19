@@ -1,10 +1,25 @@
 My git dotfiles repo containing all relevant configurations.
 
 # Post-install steps
-0. clone git repo in your user dir using
+0a. some prelimiary installations
+```sh
+pacman -S \
+    git \
+    zsh \
+    inet-utils \ # for hostname
+```
+0b. clone git repo in your user dir using
+
 ```sh
 git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
 ```
+
+then 
+```sh
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles checkout
+```
+
 1. execute
 ```
 dotfiles_mgmt config filter.kittytheme.clean "sed '/# BEGIN_KITTY_THEME/,/# END_KITTY_THEME/ d'"
@@ -18,6 +33,22 @@ The `.gitattributes` file should contain the line
 In this way,
 - `clean` Deletes lines between BEGIN_KITTY_THEME and END_KITTY_THEME when committing.
 - `smudge` Leaves the file unchanged when checking it out, preserving local modifications.
+
+2. GUI install
+
+```sh
+pacman -S \
+    sway \
+    wofi \
+    waybar \
+    xdg-user-dirs \
+    networkmanager \
+    kitty \
+    ttf-font-awesome \
+    ttf-fira-code \
+
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+```
 
 * Post git clone
 0. Set hostname if not already specified inside /etc/hostname
