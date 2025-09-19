@@ -37,7 +37,21 @@ In this way,
 - `clean` Deletes lines between BEGIN_KITTY_THEME and END_KITTY_THEME when committing.
 - `smudge` Leaves the file unchanged when checking it out, preserving local modifications.
 
-2. GUI install
+* Post git clone
+0. Set hostname if not already specified inside /etc/hostname
+1. Set graphic cards in .env_gui
+2. Set relevant dirs in .env_global
+3. Execute generate_config
+4. Execute switch_theme.sh
+5. Enable systemd units. Specifically
+```bash
+systemctl --user daemon-reload
+systemctl --user enable clean_tmp.timer
+systemctl --user enable mako.service
+systemctl --user enable kanshi.service
+```
+
+## GUI installs
 
 ```sh
 pacman -S \
@@ -55,23 +69,14 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 ```
 
-* Post git clone
-0. Set hostname if not already specified inside /etc/hostname
-1. Set graphic cards in .env_gui
-2. Set relevant dirs in .env_global
-3. Execute generate_config
-4. Execute switch_theme.sh
-5. Enable systemd units. Specifically
-```bash
-systemctl --user daemon-reload
-systemctl --user enable clean_tmp.timer
-systemctl --user enable mako.service
-systemctl --user enable kanshi.service
+```sh
+kitty +kittens
 ```
+ans select Misterioso, then copy option
 
 
-# Other useful things to do
-##  Move firefox cache dirs
+## Other useful things to do
+###  Move firefox cache dirs
 https://support.mozilla.org/en-US/questions/955978
 
 That is, FOR EACH PROFILE
@@ -80,7 +85,7 @@ That is, FOR EACH PROFILE
 2. search for browser.cache.disk.parent_directory 
 3. mod to string, and add something like /home/simone/.cache/firefox/PROFILE_NAME
 
-## Move emacs dir
+### Move emacs dir
 >mv .emacs.d/.cache/ .cache/emacs/
 >ln -s .cache/emacs/ .emacs.d/.cache
 
