@@ -5,10 +5,13 @@ My git dotfiles repo containing all relevant configurations.
 ```sh
 pacman -S \
     git \
+    openssh \
     zsh \
     inet-utils \ # for hostname
 ```
-0b. clone git repo in your user dir using
+0b. copy your ssh keys into your .ssh dir
+
+0c. clone git repo in your user dir using
 
 ```sh
 git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
