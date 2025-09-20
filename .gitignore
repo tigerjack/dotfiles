@@ -20,6 +20,8 @@ texmf/
 .avidemux6/
 .beaver/
 .cabal/
+# generated from template
+.config/user-dirs.dirs
 .config/Carson Ip/
 .config/Code Industry/
 .config/Extensions/
@@ -77,6 +79,7 @@ texmf/
 .config/protonvpn/
 .config/pybliometrics.cfg
 .config/qt5ct/colors/
+.config/qt5ct/qt5ct.conf
 .config/rkwardrc
 .config/scribus/
 .config/settings
@@ -90,6 +93,7 @@ texmf/
 .config/yelp/
 .config/zoom.conf
 .config/zoomus.conf
+.zoom
 .fehbg
 .flutter
 .fontconfig/
