@@ -1,7 +1,8 @@
 My git dotfiles repo containing all relevant configurations.
 
 # Post-install steps
-0a. some prelimiary installations
+## Preliminaries
+Install a few utility that we'll need later
 ```sh
 pacman -S \
     git \
@@ -9,21 +10,21 @@ pacman -S \
     zsh \
     inet-utils \ # for hostname
 ```
-0b. copy your ssh keys into your .ssh dir
 
-0c. clone git repo in your user dir using
+To facilitate the process, copy your ssh keys into your .ssh dir. In this
+way, you can use an ssh-agent.
+
+Then, clone the git repo in your user dir using
 
 ```sh
 git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 ```
 
-then 
-```sh
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles checkout
-```
+## Some dotfiles configs 
+### Kitty
+Note that this is an attempt, but I still don't know if successful.
 
-1. execute
 ```
 dotfiles_mgmt config filter.kittytheme.clean "sed '/# BEGIN_KITTY_THEME/,/# END_KITTY_THEME/ d'"
 dotfiles_mgmt config filter.kittytheme.smudge "cat"
@@ -37,7 +38,7 @@ In this way,
 - `clean` Deletes lines between BEGIN_KITTY_THEME and END_KITTY_THEME when committing.
 - `smudge` Leaves the file unchanged when checking it out, preserving local modifications.
 
-* Post git clone
+## Post git clone
 0. Set hostname if not already specified inside /etc/hostname
 1. Set graphic cards in .env_gui
 2. Set relevant dirs in .env_global
@@ -51,28 +52,82 @@ systemctl --user enable mako.service
 systemctl --user enable kanshi.service
 ```
 
-## GUI installs
+## Useful installs
 
+### windows manager
 ```sh
 pacman -S \
     sway \
-    wofi \
+    swayidle \
+    swaylock \
     waybar \
+    wofi \
     xdg-user-dirs \
-    networkmanager \
-    kitty \
+    networkmanager
+```
+
+### terminals
+```sh
+pacman -S \
+    kitty
     ttf-font-awesome \
     ttf-fira-code \
 
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 ```
 
+for themes
 ```sh
 kitty +kittens
 ```
-ans select Misterioso, then copy option
+and select Misterioso, then copy option
+
+### spacemacs
+
+```sh
+pacman -S \
+    emacs
+    ttf-adobe-source-code-pro-fonts \ # mainly emacs
+
+git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+```
+
+You should also configure langtool and the tigerjack layer
+
+### Qt/Gtk
+Install the icon theme Arc
+
+### git projects
+On old machine, go to `vc` dir and
+```sh
+list_git_repos.sh . > repos.json
+```
+
+On the new one, do 
+
+```sh
+restore_git_repos.sh repos.json .
+```
+
+### others
+- zotero
+- zathura
+- rclone
+- zoom
+- protonvpn
+- pdf xchange 6 (come with rcloning)
+- pdf xchange 10
+- signal
+- libreoffice
+- virtualbox (have to import machines)
+- keybase
+- veracrypt
+- keepassxc
+- spotify
+- syncthing
+- git projects wip
+- pyenv (and virtualenv plugin)
 
 
 ## Other useful things to do
@@ -85,7 +140,10 @@ That is, FOR EACH PROFILE
 2. search for browser.cache.disk.parent_directory 
 3. mod to string, and add something like /home/simone/.cache/firefox/PROFILE_NAME
 
-### Move emacs dir
->mv .emacs.d/.cache/ .cache/emacs/
->ln -s .cache/emacs/ .emacs.d/.cache
+### Move emacs cache dir
+```sh
+mv .emacs.d/.cache/ .cache/emacs
+ln -s ~/.cache/emacs/ .emacs.d/.cache
+```
+
 
