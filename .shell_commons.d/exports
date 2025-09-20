@@ -1,6 +1,6 @@
 #!/bin/sh
 # Still unsure why I should export $HOME/bin/gui  from here
-myArrayPath="$HOME/bin $HOME/bin/games $HOME/.cargo/bin/ /opt/simone/bin /opt/anaconda/bin"
+myArrayPath="$HOME/bin $HOME/bin/games $HOME/bin/gui $HOME/.cargo/bin/ /opt/simone/bin /opt/anaconda/bin /usr/local/texlive/2025/bin/x86_64-linux"
 # Compilation flags
 ARCHFLAGS="-arch $(uname -m)"
 export ARCHFLAGS
@@ -70,7 +70,7 @@ export TERMINAL='kitty'
 export TERMCMD='kitty'
 
 # for locale
-# export LC_ALL=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export LC_TIME=it_IT.UTF-8 
 
 # pyenv
