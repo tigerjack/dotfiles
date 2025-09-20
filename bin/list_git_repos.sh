@@ -23,26 +23,41 @@ set -o nounset                              # Treat unset variables as an error
 # Usage: ./export-git-repos.sh vc > repos.json
 # vc = folder containing all git projects
 
+#!/usr/bin/env bash
+# Usage: ./export-git-repos.sh vc > repos.json
+
+#!/usr/bin/env bash
+# Usage: ./export-git-repos.sh vc > repos.json
+
 BASE_DIR="$1"
 [[ -z "$BASE_DIR" ]] && { echo "Usage: $0 <vc_folder>"; exit 1; }
 
 echo "["
 
-first=true
+first_repo=true
 find "$BASE_DIR" -type d -name ".git" | while read -r gitdir; do
     repo_dir=$(dirname "$gitdir")
     rel_path="${repo_dir#$BASE_DIR/}"
 
-    # Collect all remotes
-    remotes_json=$(git -C "$repo_dir" remote -v | awk '{print $1" "$2}' | \
-        awk '!seen[$0]++' | \
-        awk '{printf "\"%s\":\"%s\"", $1, $2}' ORS=',' | sed 's/,$//')
+    # Skip if it's not a valid git repository
+    if ! git -C "$repo_dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        continue
+    fi
 
-    # Skip repos without remotes
-    [[ -z "$remotes_json" ]] && remotes_json="{}"
+    # Collect all remotes into JSON
+    remotes=()
+    while read -r name url _; do
+        [[ -z "$name" || -z "$url" ]] && continue
+        remotes+=("\"$name\":\"$url\"")
+    done < <(git -C "$repo_dir" remote -v | awk '!seen[$0]++ {print $1, $2, $3}')
 
-    [[ "$first" = true ]] && first=false || echo ","
-    echo "  {\"path\":\"$rel_path\",\"remotes\":{$remotes_json}}"
+    remotes_json="{}"
+    if [[ ${#remotes[@]} -gt 0 ]]; then
+        remotes_json="{$(IFS=,; echo "${remotes[*]}")}"
+    fi
+
+    [[ "$first_repo" = true ]] && first_repo=false || echo ","
+    echo "  {\"path\":\"$rel_path\",\"remotes\":$remotes_json}"
 done
 
 echo "]"
