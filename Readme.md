@@ -146,4 +146,8 @@ mv .emacs.d/.cache/ .cache/emacs
 ln -s ~/.cache/emacs/ .emacs.d/.cache
 ```
 
-
+### Check GPU and rendering
+```sh
+❯ lspci -k | grep -A 3 -E "VGA|3D"
+❯ glxinfo -B | grep -E "Device|Renderer|OpenGL"
+```
