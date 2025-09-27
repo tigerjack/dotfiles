@@ -25,7 +25,7 @@ declare -a arr=("$XDG_CONFIG_HOME/waybar/config");
 
 # Set user directories
 for i in "${arr[@]}"; do
-    ln -s "$i.$HOSTNAME" "$i"
+    ln -sf "$i.$HOSTNAME" "$i"
 done
 
 
