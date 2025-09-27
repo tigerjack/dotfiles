@@ -9,6 +9,7 @@ pacman -S \
     openssh \
     zsh \
     inet-utils \ # for hostname
+    arc-gtk-theme \ # for theme switching
 ```
 
 To facilitate the process, copy your ssh keys into your .ssh dir. In this
@@ -63,7 +64,14 @@ pacman -S \
     waybar \
     wofi \
     xdg-user-dirs \
-    networkmanager
+    networkmanager \
+    xdg-desktop-portal-gtk \ # useful also to switch theme on Firefox
+    xdg-desktop-portal-wlr \ # required for screensharing
+    # pipewire related
+    pipewire \
+    pipewire-pulse \
+    pipewire-audio \
+    wireplumber
 ```
 
 ### terminals
