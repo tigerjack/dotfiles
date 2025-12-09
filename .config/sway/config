@@ -28,5 +28,7 @@ include ./conf.d/bindings
 include ./conf.d/execs
 include ./conf.d/inout
 include ./conf.d/wallpaper.conf
+include ./conf.d/zoom.us.conf
+include ./conf.d/zotero.conf
 include "./conf.d/$(cat /etc/hostname)"
 include /etc/sway/config.d/*
