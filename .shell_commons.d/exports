@@ -1,6 +1,6 @@
 #!/bin/sh
 # Still unsure why I should export $HOME/bin/gui  from here
-myArrayPath="$HOME/bin $HOME/bin/games $HOME/bin/gui $HOME/.cargo/bin/ /opt/simone/bin /opt/anaconda/bin /usr/local/texlive/2025/bin/x86_64-linux"
+myArrayPath="$HOME/bin $HOME/bin/games $HOME/bin/gui $HOME/.cargo/bin /opt/simone/bin /opt/anaconda/bin /usr/local/texlive/2025/bin/x86_64-linux"
 # Compilation flags
 ARCHFLAGS="-arch $(uname -m)"
 export ARCHFLAGS
@@ -115,19 +115,29 @@ myArrayPath="$myArrayPath $HOME/.rbenv/bin"
 # chtsh
 export CHTSH_CONF="$XDG_CONFIG_HOME/chtsh/conf"
 
+
 # Export additional bins path in a shell-independent way
-echo "$myArrayPath" | tr ' ' '\n' | while read -r item; do
-    # echo -n "Analyzing $item: "
+while IFS= read -r item; do
+    # Remove trailing slash to normalize
+    dir="${item%/}"
+
     case ":$PATH:" in
-        *:"$item":*) 
-    	# echo "Already in PATH" 
-    	;;  # Do nothing, already in PATH
-        *) 
-    	# echo "Not in PATH" 
-            if [ -d "$item" ]; then 
-                # echo "$item is dir" 
-                export PATH="$item:$PATH"
-            fi 
+        *:"$dir":*)
+            ;;  # Already in PATH
+        *)
+            if [ -d "$dir" ]; then
+                export PATH="$dir:$PATH"
+            fi
+            ;;
     esac
-done
+done <<EOF
+$(printf "%s" "$myArrayPath" | tr ' ' '\n')
+EOF
+
 unset myArrayPath
+
+# TeX Live 2025 paths
+export MANPATH="/usr/local/texlive/2025/texmf-dist/doc/man:${MANPATH}"
+export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info:${INFOPATH}"
+# already in myArrayPath
+# export PATH="/usr/local/texlive/2025/bin/x86_64-linux:${PATH}"
