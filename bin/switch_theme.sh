@@ -84,8 +84,8 @@ if [[ $switchto = light ]]; then
     kittystyle="Pencil Light"
     spttheme="light"
     makomode="light"
-    spotifytheme="Ziro"
-    spotifyscheme="purple-light"
+    spotifytheme="Comfy"
+    spotifyscheme="catppuccin-latte"
     gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $4}')
     spacemacs=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $4}' | sed -n 's/.*(\([^ ]*\) .*/\1/p')
     zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $4}')
@@ -95,8 +95,8 @@ else # dark theme
     kittystyle="Pencil Dark"
     spttheme="dark"
     makomode="dark"
-    spotifytheme="Ziro"
-    spotifyscheme="purple-dark"
+    spotifytheme="Comfy"
+    spotifyscheme="catppuccin-macchiato"
     gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $5}')
     spacemacs=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $5}' | sed -n 's/.*(\([^ ]*\) .*/\1/p')
     zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $5}')
@@ -169,6 +169,7 @@ pgrep -x mako > /dev/null && makoctl set-mode "$makomode" && echo "mako done"
 echo -n "Spicetify "
 if command -v spicetify &>/dev/null; then
     spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
+    spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
     if pgrep -x spotify>/dev/null; then 
         spicetify apply
         # sleep 2s && playerctl -p spotify play
