@@ -28,6 +28,9 @@ application/x-extension-rss=userapp-Thunderbird-CNUDX0.desktop
 image/png=imv.desktop
 image/jpeg=imv.desktop
 application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/mailto=org.mozilla.Thunderbird.desktop
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
