@@ -144,4 +144,4 @@ export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info:${INFOPATH}"
 
 # For git submodule to work with keybase
 # https://github.com/keybase/client/issues/9292
-export GIT_ALLOW_PROTOCOL=keybase
+export GIT_ALLOW_PROTOCOL=ssh:https:keybase
