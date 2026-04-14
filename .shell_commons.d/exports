@@ -1,6 +1,9 @@
 #!/bin/sh
 # Still unsure why I should export $HOME/bin/gui  from here
-myArrayPath="$HOME/bin $HOME/bin/games $HOME/bin/gui $HOME/.cargo/bin /opt/simone/bin /opt/anaconda/bin /usr/local/texlive/2025/bin/x86_64-linux"
+myArrayPath="$HOME/bin $HOME/bin/games $HOME/bin/gui $HOME/.cargo/bin /opt/simone/bin /opt/anaconda/bin /usr/local/texlive/2026/bin/x86_64-linux"
+myArrayManPath="/usr/local/texlive/2026/texmf-dist/doc/man"
+myArrayInfoPath="/usr/local/texlive/2026/texmf-dist/doc/info"
+
 # Compilation flags
 ARCHFLAGS="-arch $(uname -m)"
 export ARCHFLAGS
@@ -136,11 +139,42 @@ EOF
 
 unset myArrayPath
 
-# TeX Live 2025 paths
-export MANPATH="/usr/local/texlive/2025/texmf-dist/doc/man:${MANPATH}"
-export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info:${INFOPATH}"
-# already in myArrayPath
-# export PATH="/usr/local/texlive/2025/bin/x86_64-linux:${PATH}"
+while IFS= read -r item; do
+    # Remove trailing slash to normalize
+    dir="${item%/}"
+    case ":$MANPATH:" in
+        *:"$dir":*)
+            ;;  # Already in MANPATH
+        *)
+            if [ -d "$dir" ]; then
+                export MANPATH="$dir:$MANPATH"
+            fi
+            ;;
+    esac
+done <<EOF
+$(printf "%s" "$myArrayManPath" | tr ' ' '\n')
+EOF
+
+unset myArrayManPath
+
+
+while IFS= read -r item; do
+    # Remove trailing slash to normalize
+    dir="${item%/}"
+    case ":$INFOPATH:" in
+        *:"$dir":*)
+            ;;  # Already in PATH
+        *)
+            if [ -d "$dir" ]; then
+                export INFOPATH="$dir:$INFOPATH"
+            fi
+            ;;
+    esac
+done <<EOF
+$(printf "%s" "$myArrayInfoPath" | tr ' ' '\n')
+EOF
+
+unset myArrayInfoPath
 
 # For git submodule to work with keybase
 # https://github.com/keybase/client/issues/9292
