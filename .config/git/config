@@ -22,3 +22,5 @@
 [filter "ignore-theme"]
 	clean = sed '/THEME_START/,/THEME_END/d'
 	smudge = cat
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
