@@ -1,0 +1,32 @@
+- .git/
+- .ccls-cache/
+- .dir-locals.el
+
+- .python-version
+- out/
+- # Bytecode and cache files
+- __pycache__/
+- *.pyc
+- *.pyo
+
+- # Virtual environments
+- venv/
+- .venv/
+
+- # Build and distribution artifacts
+- build/
+- dist/
+- *.egg-info/
+
+- # Editor and IDE settings
+- .vscode/
+- .idea/
+- *.swp
+
+- # Testing and type-checking caches
+- .mypy_cache/
+- .pytest_cache/
+
+- # Logs and temporary files
+- *.log
+- .DS_Store
