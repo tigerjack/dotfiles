@@ -1,6 +1,7 @@
 [user]
 	email = 8199216+tigerjack@users.noreply.github.com
 	name = Simone Perriello
+	signingkey = /home/simone/.ssh/git.pub
 [gui]
 	fontui = -family \"DejaVu Sans Mono\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"DejaVu Sans Mono\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
@@ -22,3 +23,7 @@
 [filter "ignore-theme"]
 	clean = sed '/THEME_START/,/THEME_END/d'
 	smudge = cat
+[gpg]
+	format = ssh
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
