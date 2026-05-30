@@ -142,7 +142,6 @@ unset myArrayPath
 while IFS= read -r item; do
     # Remove trailing slash to normalize
     dir="${item%/}"
-
     case ":$MANPATH:" in
         *:"$dir":*)
             ;;  # Already in MANPATH
@@ -159,11 +158,9 @@ EOF
 unset myArrayManPath
 
 
-
 while IFS= read -r item; do
     # Remove trailing slash to normalize
     dir="${item%/}"
-
     case ":$INFOPATH:" in
         *:"$dir":*)
             ;;  # Already in PATH
@@ -178,3 +175,7 @@ $(printf "%s" "$myArrayInfoPath" | tr ' ' '\n')
 EOF
 
 unset myArrayInfoPath
+
+# For git submodule to work with keybase
+# https://github.com/keybase/client/issues/9292
+export GIT_ALLOW_PROTOCOL=file:ssh:https:keybase
