@@ -1,0 +1,4 @@
+# Tracked template for the local ranger theme override.
+# switch_theme.sh copies this to local-theme.conf (gitignored) and rewrites
+# the `set colorscheme` line in place.
+set colorscheme default

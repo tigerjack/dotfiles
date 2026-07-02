@@ -1,0 +1,4 @@
+" Tracked template for the local vim theme override.
+" switch_theme.sh copies this to local-theme.vim (gitignored) and rewrites
+" the `set background=` line in place.
+set background=dark
