@@ -157,7 +157,7 @@ done
 echo "zathura done"
 
 ### MAKO
-pgrep -x mako > /dev/null && makoctl set-mode "$makomode" && echo "mako done"
+pgrep -x mako > /dev/null && makoctl mode -s "$makomode" && echo "mako done"
 
 echo -n "Spicetify "
 if command -v spicetify &>/dev/null; then
