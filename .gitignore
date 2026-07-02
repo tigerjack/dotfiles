@@ -2,15 +2,20 @@
 texmf/
 
 # Theme
-.config/spacemacs/init.el
-.config/bat/config
+# theme files
+.config/vim/local-theme.vim
+.config/spacemacs/local-themes.el
+.config/ranger/local-theme.conf
+
+# .config/spacemacs/init.el
+# .config/vim/vimrc
+.config/bat/local-theme.sh
 .config/chtsh/conf
 .config/gtk-3.0/settings.ini
-.config/kitty/theme.conf
+.config/kitty/current-theme.conf
 .config/qt5ct/qt5ct.conf
 .config/ranger/rc.conf
 .config/task/taskrc
-.config/vim/vimrc
 .config/wofi/config
 .config/zathura/zathurarc
 

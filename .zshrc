@@ -104,3 +104,5 @@ select-word-style bash
 if [ -n "${ZSH_DEBUGRC+1}" ]; then
     zprof
 fi
+
+[ -f "$XDG_CONFIG_HOME/bat/local-theme.sh" ] && source "$XDG_CONFIG_HOME/bat/local-theme.sh"

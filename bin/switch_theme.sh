@@ -1,22 +1,3 @@
-#!/bin/bash - 
-#===============================================================================
-#
-#          FILE: switch_theme.sh
-# 
-#         USAGE: ./switch_theme.sh 
-# 
-#   DESCRIPTION: 
-# 
-#       OPTIONS: ---
-#  REQUIREMENTS: ---
-#          BUGS: ---
-#         NOTES: ---
-#        AUTHOR: Simone Perriello, 
-#  ORGANIZATION: 
-#       CREATED: 09/17/2020 08:55
-#      REVISION:  ---
-#===============================================================================
-
 set -o nounset                              # Treat unset variables as an error
 
 switchto="${1:-def}"
@@ -77,18 +58,30 @@ qt5ct-refresh
 echo "qt5ct-refresh done"
 
 echo "# Others"
+
+# Look up the light/dark value for a given entry name in CONFIG_FILE.
+# column 4 = light value, column 5 = dark value.
+theme_config_value() {
+    local entry="$1"
+    local col=$([ "$switchto" = "light" ] && echo 4 || echo 5)
+    grep "^${entry}:" "$CONFIG_FILE" | awk -F: -v c="$col" '{print $c}'
+}
+
 # cfgpath_firefox="$HOME/.mozilla/firefox"
 cfgfile_wofi_stylesheet="$HOME/.config/wofi/style.css"
 cfgfile_spt="$HOME/.config/spotify-tui/config.yml"
+
+gtktheme=$(theme_config_value gtk2)
+# spacemacs value is like "'(spacemacs-light spacemacs-dark)"; extract the first symbol.
+spacemacs=$(theme_config_value spacemacs | sed -n 's/.*(\([^ ]*\) .*/\1/p')
+zathura_recolor=$(theme_config_value zathura)
+
 if [[ $switchto = light ]]; then
     kittystyle="Pencil Light"
     spttheme="light"
     makomode="light"
     spotifytheme="Comfy"
     spotifyscheme="catppuccin-latte"
-    gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $4}')
-    spacemacs=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $4}' | sed -n 's/.*(\([^ ]*\) .*/\1/p')
-    zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $4}')
     tty_term_fg="black"
     tty_term_bg="white"
 else # dark theme
@@ -97,9 +90,6 @@ else # dark theme
     makomode="dark"
     spotifytheme="Comfy"
     spotifyscheme="catppuccin-macchiato"
-    gtktheme=$(grep "^gtk2:" "$CONFIG_FILE" | awk -F: '{print $5}')
-    spacemacs=$(grep "^spacemacs:" "$CONFIG_FILE" | awk -F: '{print $5}' | sed -n 's/.*(\([^ ]*\) .*/\1/p')
-    zathura_recolor=$(grep "^zathura:" "$CONFIG_FILE" | awk -F: '{print $5}')
     tty_term_fg="white"
     tty_term_bg="black"
 fi
@@ -132,13 +122,16 @@ fi
 
 ### VIM
 ### VIM SERVER, this requires a vim installed with gui support, that unfortunately relies on X
-# for i in $(vim --serverlist); do 
+# for i in $(vim --serverlist); do
 #     echo "vim server(s) running"
 #     vim --servername "$i" --remote-send ":colorscheme $vimscheme<CR>"
 # done
 # echo "vim done"
 
-### EMACS 
+### EMACS (Spacemacs)
+# local-themes.el is generated above from the tracked local-themes.el.@theme
+# template (see themes_config.cfg), so this reload never touches the
+# git-tracked init.el / dotspacemacs-themes list.
 bla=$(pgrep -f "emacs --daemon")
 if [ -n "$bla" ]; then
     echo "emacs server running"
@@ -170,7 +163,7 @@ echo -n "Spicetify "
 if command -v spicetify &>/dev/null; then
     spicetify config current_theme "$spotifytheme" color_scheme "$spotifyscheme"
     spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
-    if pgrep -x spotify>/dev/null; then 
+    if pgrep -x spotify>/dev/null; then
         spicetify apply
         # sleep 2s && playerctl -p spotify play
         echo " ... done"
@@ -183,6 +176,6 @@ else
 fi
 echo "spicety for spotify"
 
-# Still missing 
+# Still missing
 # - CopyQ: theme not changeable easily; UP: now it seems to respect qt5 styles
 # - Sway window colors
