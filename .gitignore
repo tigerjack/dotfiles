@@ -17,6 +17,9 @@ texmf/
 .config/task/taskrc
 .config/wofi/config
 .config/zathura/zathurarc
+.config/git/gitk
+# maybe 
+.ansible/
 
 # TEMP
 .BurpSuite/
@@ -252,6 +255,22 @@ tmp/
 .config/xournalpp/*
 .config/syncthing
 .config/teams-for-linux
+.config/Nextcloud/
+.config/audacity/
+.config/depot_tools/
+# sensitive
+.config/Signal/
+# sensitive
+.config/libaccounts-glib/
+# sensitive
+.config/proton-drive-sync/
+.config/nextcloud-talk/
+.config/onlyoffice/
+.config/spotify-tui/config.yml
+.config/systemd/user/keybase-redirector.service
+.dart-tool/
+.pub-cache/
+.texlive2026/
 #-----------
 
 #########
@@ -429,9 +448,10 @@ LinuxData
 .config/SpeedCrunch
 # 
 .xournal/
-!.xournal/config
+# !.xournal/config
 #
 .config/pcmanfm-qt/
+.config/pcmanfm/
 #
 # don't know why it doesn't work without an * and the ! pattern
 # maybe bcz autosave is interpreted as a dir
@@ -540,7 +560,7 @@ LinuxData
 #
 .jd/
 #
-.texlive/
+.texlive*/
 #
 .config/tmux/plugins/
 #.tmux/resurrect/
