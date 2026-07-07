@@ -101,7 +101,9 @@ fi
 
 # KITTY
 # cache age is there to not use internet
-kitty +kitten themes --reload-in=all --cache-age -1 "$kittystyle"
+# kitty +kitten themes --reload-in=all --cache-age -1 "$kittystyle"
+kitty +kitten themes --dump-theme "$kittystyle" > "$XDG_CONFIG_HOME/kitty/current-theme.conf"
+kitty @ set-colors --all --configured "$XDG_CONFIG_HOME/kitty/current-theme.conf" 2>/dev/null || true
 echo "kitty done"
 
 # This work for Firefox, Wofi and Thunderbird; however, the latter doesn't work
