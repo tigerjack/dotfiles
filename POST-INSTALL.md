@@ -24,10 +24,14 @@ git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
 ### Kitty
 Note that this is an attempt, but I still don't know if successful.
 
+The `.cfg/config` file should contain the line
 ```
-dotfiles_mgmt config filter.kittytheme.clean "sed '/# BEGIN_KITTY_THEME/,/# END_KITTY_THEME/ d'"
-dotfiles_mgmt config filter.kittytheme.smudge "cat"
+[filter "kittytheme"]
+	clean = "sed '/# BEGIN_KITTY_THEME/,/# END_KITTY_THEME/ d'"
+	smudge = "cat; printf '# BEGIN_KITTY_THEME\n# (theme name is local-only, see current-theme.conf)\ninclude current-theme.conf\n# END_KITTY_THEME\n'"
+
 ```
+
 The `.gitattributes` file should contain the line
 ```
 .config/kitty/kitty.conf filter=kittytheme
@@ -48,7 +52,6 @@ In this way,
 systemctl --user daemon-reload
 systemctl --user enable clean_tmp.timer
 systemctl --user enable mako.service
-systemctl --user enable kanshi.service
 ```
 
 ## Useful installs
@@ -70,6 +73,12 @@ pacman -S \
     pipewire-pulse \
     pipewire-audio \
     wireplumber
+```
+
+To generate the configuration for sway, use
+
+```sh
+bin/generate_config.sh
 ```
 
 ### terminals
