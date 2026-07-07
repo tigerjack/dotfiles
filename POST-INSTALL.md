@@ -1,5 +1,4 @@
-# Post-install steps
-## Preliminaries
+# Preliminaries
 Install a few utility that we'll need later
 ```sh
 pacman -S \
@@ -20,8 +19,8 @@ git clone --bare git@github.com:tigerjack/dotfiles.git ~/.cfg`
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 ```
 
-## Some dotfiles configs 
-### Kitty
+# Some dotfiles configs 
+## Kitty
 Note that this is an attempt, but I still don't know if successful.
 
 The `.cfg/config` file should contain the line
@@ -41,22 +40,23 @@ In this way,
 - `clean` Deletes lines between BEGIN_KITTY_THEME and END_KITTY_THEME when committing.
 - `smudge` Leaves the file unchanged when checking it out, preserving local modifications.
 
-## Post git clone
+# Post git clone
 0. Set hostname if not already specified inside /etc/hostname
 1. Set graphic cards in .env_gui
 2. Set relevant dirs in .env_global
 3. Execute generate_config
 4. Execute switch_theme.sh
 5. Enable systemd units. Specifically
+
 ```bash
 systemctl --user daemon-reload
 systemctl --user enable clean_tmp.timer
 systemctl --user enable mako.service
 ```
 
-## Useful installs
+# Useful installs
 
-### windows manager
+## windows manager
 ```sh
 pacman -S \
     sway \
@@ -75,13 +75,7 @@ pacman -S \
     wireplumber
 ```
 
-To generate the configuration for sway, use
-
-```sh
-bin/generate_config.sh
-```
-
-### terminals
+## terminals
 ```sh
 pacman -S \
     kitty
@@ -98,7 +92,7 @@ kitty +kittens
 ```
 and select Misterioso, then copy option
 
-### spacemacs
+## spacemacs
 
 ```sh
 pacman -S \
@@ -110,10 +104,10 @@ git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 
 You should also configure langtool and the tigerjack layer
 
-### Qt/Gtk
+## Qt/Gtk
 Install the icon theme Arc
 
-### git projects
+## git projects
 On old machine, go to `vc` dir and
 ```sh
 list_git_repos.sh . > repos.json
@@ -125,7 +119,7 @@ On the new one, do
 restore_git_repos.sh repos.json .
 ```
 
-### others
+## others
 - zotero
 - zathura
 - rclone
@@ -145,8 +139,8 @@ restore_git_repos.sh repos.json .
 - pyenv (and virtualenv plugin)
 
 
-## Other useful things to do
-###  Move firefox cache dirs
+# Other useful things to do
+##  Move firefox cache dirs
 https://support.mozilla.org/en-US/questions/955978
 
 That is, FOR EACH PROFILE
@@ -155,13 +149,13 @@ That is, FOR EACH PROFILE
 2. search for browser.cache.disk.parent_directory 
 3. mod to string, and add something like /home/simone/.cache/firefox/PROFILE_NAME
 
-### Move emacs cache dir
+## Move emacs cache dir
 ```sh
 mv .emacs.d/.cache/ .cache/emacs
 ln -s ~/.cache/emacs/ .emacs.d/.cache
 ```
 
-### Check GPU and rendering
+## Check GPU and rendering
 ```sh
 ❯ lspci -k | grep -A 3 -E "VGA|3D"
 ❯ glxinfo -B | grep -E "Device|Renderer|OpenGL"
