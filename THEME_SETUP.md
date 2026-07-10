@@ -77,12 +77,49 @@ already-open terminals need a fresh `source ~/.bashrc` or a new shell.
 ### kitty: no filter needed
 
 `kitty.conf` just has a static `include current-theme.conf` line, committed
-once. `current-theme.conf` is gitignored and is what `kitty +kitten themes`
-rewrites on every switch. There used to be a `.gitattributes` clean/smudge
-filter (`filter=kittytheme`) trying to strip a `BEGIN_KITTY_THEME` /
-`END_KITTY_THEME` comment block on commit; it's been removed because
-`smudge = cat` didn't reconstruct the block on checkout, so a fresh clone
-would silently end up with no `include` line and no working theme.
+once and never touched again. `current-theme.conf` is gitignored and holds
+the actual palette.
+
+There used to be a `.gitattributes` clean/smudge filter (`filter=kittytheme`)
+trying to strip a `BEGIN_KITTY_THEME` / `END_KITTY_THEME` comment block from
+`kitty.conf` on commit. It's gone now, for two reasons:
+
+- **It was broken.** `smudge = cat` never reconstructed the block on
+  checkout, so a fresh clone silently ended up with no `include` line and no
+  working theme.
+- **It was solving the wrong problem.** The root cause wasn't "git needs to
+  ignore this block," it was that `kitty +kitten themes --reload-in=all`
+  writes theme colors *and* rewrites the include block *inside `kitty.conf`
+  itself* every time you switch. As long as anything writes to a tracked
+  file on every switch, no clean/smudge trick fully hides it — `git status`
+  and `git diff` can disagree with each other when a filter is involved
+  (confirmed while debugging this: `status` kept showing `kitty.conf` as
+  modified with an empty `diff`, and even `update-index --refresh` didn't
+  clear it — only `git add`, i.e. actually re-filtering and re-hashing,
+  did). That's git faithfully reporting a file that a filter is fighting to
+  keep looking stable, not a bug worth working around.
+
+The actual fix was to stop the write from touching `kitty.conf` at all,
+using kitty's own `--dump-theme` flag (prints a theme's palette to stdout
+instead of writing it into `kitty.conf`) plus remote control for live reload
+of already-open windows:
+
+```sh
+kitty +kitten themes --dump-theme "$kittystyle" > "$XDG_CONFIG_HOME/kitty/current-theme.conf"
+kitty @ set-colors --all --configured "$XDG_CONFIG_HOME/kitty/current-theme.conf" 2>/dev/null || true
+```
+
+This needs `allow_remote_control` and `listen_on` set once in `kitty.conf`
+(static, tracked, never changes). With this, `kitty.conf` is genuinely
+never rewritten after the initial `include` line goes in — same guarantee
+mechanism 2 gives vim/ranger/spacemacs, just reached by changing *what
+kitty is told to do* instead of trying to filter its output after the fact.
+
+**General lesson from this one:** prefer stopping a tool from writing to a
+tracked file over adding a git filter to hide that it did. Filters are
+asymmetric (clean/smudge can drift out of sync, as here) and only paper
+over the symptom; check for a flag/env-var/API that avoids the write
+before reaching for `.gitattributes`.
 
 ## Files not toggled by theme
 
