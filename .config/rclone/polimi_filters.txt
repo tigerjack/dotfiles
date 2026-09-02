@@ -1,3 +1,13 @@
+# Auto generated
+- /Microsoft Teams Chat Files/
+- /File di Microsoft Copilot Chat/
+- /Attachments/
+- /Registrazioni/
+- /Riunioni/
+- /Scans/
+#######
+# Mine
+#######
 # emacs temp file
 - .~lock.*
 - **.#*
@@ -25,28 +35,13 @@
 + /AppData/tasknotes/**
 + /AppData/Zotero/**
 - /AppData/**
-- /Attachments/
-- /BackupElisa/
-- /Music/
-- /Microsoft Teams Chat Files/
-- /StandaloneSW/
+# - /BackupElisa/
 - /Pictures/
-- /Poker/
-- /Phone&simila/
 - /WebSites/
 # - /eBooks/
 - /Keys/LinuxLuksKeys
-- /Languages/
-- /Learning/Poker/
-- /Learning/Games/
-- /Learning/Handwriting/
-- /Learning/Photography/
-- /Learning/PlayMusic/Percussions/
-- /Learning/Languages/English/IELTS/
-- /PersonalDevelopment/
 # - /Policement/GS.mkv
-- /Videos/
-- /tmp/
+# - /Videos/
 - /University/UniSannio/
 - /University/PoliMi/Master/Courses/Done/Cryptography/Rec/**
 + /University/PoliMi/Master/Courses/Done/Cryptography/**
