@@ -164,6 +164,7 @@ tmp/
 .cfg/
 
 ## should remain private
+.config/private/
 .config/Keybase/
 .config/keybase/
 .config/protonmail/
@@ -286,7 +287,6 @@ tmp/
 .config/spotify-tui/client.yml
 .config/spotify-tui/.spotify_token_cache.json
 .tig_history
-.config/private/
 .config/irssi/config
 .sqlite_history
 .mysql_history
