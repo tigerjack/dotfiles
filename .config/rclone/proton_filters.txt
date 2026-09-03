@@ -17,6 +17,7 @@
 # these are highly pc dependant
 - /AppData/Zotero/*.sqlite
 - /AppData/Zotero/*.sqlite*bak
+- /AppData/SpotifyOffline/**
 - **History.dat
 # linux
 - **.fuse_hidden**
@@ -24,10 +25,6 @@
 - **Link*/
 # Dirs
 - /App/
-+ /AppData/MuseScore/**
-+ /AppData/tasknotes/**
-+ /AppData/Zotero/**
-- /AppData/**
 - /Attachments/
 - /BackupElisa/
 - /eBooks/Manga_Comics/

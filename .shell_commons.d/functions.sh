@@ -149,13 +149,13 @@ rclone_proton_bisync() {
 # I don't own this folder, deletions land in the owner's trash, not mine.
 
 rclone_gd4prom_pull() {
-  _rclone_run copy promethence_gdrive: '/mnt/internal/SharedData/Public/gdrive_promethence' --copy-links -MvP "$@"
+  _rclone_run copy promethence_gdrive: "$MDIR_PUBLIC_DATA/gdrive_promethence" --copy-links -MvP "$@"
 }
 
 rclone_gd4prom_pull_sync() {
-  _rclone_run sync promethence_gdrive: '/mnt/internal/SharedData/Public/gdrive_promethence' --copy-links -MvP "$@"
+  _rclone_run sync promethence_gdrive: "$MDIR_PUBLIC_DATA/gdrive_promethence" --copy-links -MvP "$@"
 }
 
 rclone_gd4prom_push() {
-  _rclone_run copy '/mnt/internal/SharedData/Public/gdrive_promethence' promethence_gdrive: --copy-links -MvP "$@"
+  _rclone_run copy "$MDIR_PUBLIC_DATA/gdrive_promethence" promethence_gdrive: --copy-links -MvP "$@"
 }
