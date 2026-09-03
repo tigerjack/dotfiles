@@ -1,6 +1,8 @@
 # emacs temp file
 - **.#*
+##########
 # Zotero
+##########
 - **.zotero-pdf-state**
 - **.zotero-ft-cache**
 - **.zotero-reader-state**
@@ -21,6 +23,7 @@
 # all files and dirs starting with Link
 - **Link*/
 # Dirs
+- /App/
 + /AppData/MuseScore/**
 + /AppData/tasknotes/**
 + /AppData/Zotero/**
@@ -38,12 +41,12 @@
 - /WebSites/
 - /Keys/LinuxLuksKeys
 - /Languages/
-- /Learning/
-+ /Learning/PlayMusic/Instruments/Drums/
++ /Learning/PlayMusic/Instruments/Drums/**
++ /Learning/PlayMusic/Instruments/Batteria/**
+- /Learning/**
 - /PersonalDevelopment/
-# - /Policement/GS.mkv
 - /Videos/
-- /tmp/
+# University stuff
 - /University/UniSannio/
 - /University/PoliMi/Master/Courses/Done/Cryptography/Rec/**
 + /University/PoliMi/Master/Courses/Done/Cryptography/**
