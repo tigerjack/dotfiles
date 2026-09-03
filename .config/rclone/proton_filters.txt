@@ -38,12 +38,8 @@
 - /WebSites/
 - /Keys/LinuxLuksKeys
 - /Languages/
-- /Learning/Poker/
-- /Learning/Games/
-- /Learning/Handwriting/
-- /Learning/Photography/
-- /Learning/PlayMusic/Percussions/
-- /Learning/Languages/English/IELTS/
+- /Learning/
++ /Learning/PlayMusic/Instruments/Drums/
 - /PersonalDevelopment/
 # - /Policement/GS.mkv
 - /Videos/

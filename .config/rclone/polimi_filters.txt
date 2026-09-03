@@ -31,17 +31,13 @@
 # all files and dirs starting with Link
 - **Link*/
 # Dirs
-+ /AppData/MuseScore/**
-+ /AppData/tasknotes/**
 + /AppData/Zotero/**
 - /AppData/**
-# - /BackupElisa/
 - /Pictures/
-- /WebSites/
-# - /eBooks/
-- /Keys/LinuxLuksKeys
-# - /Policement/GS.mkv
-# - /Videos/
+- /Keys/
+- /Policement/
+- /Work/
+# University
 - /University/UniSannio/
 - /University/PoliMi/Master/Courses/Done/Cryptography/Rec/**
 + /University/PoliMi/Master/Courses/Done/Cryptography/**
