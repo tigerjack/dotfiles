@@ -8,6 +8,7 @@
 #######
 # Mine
 #######
+- /App/
 # emacs temp file
 - .~lock.*
 - **.#*
