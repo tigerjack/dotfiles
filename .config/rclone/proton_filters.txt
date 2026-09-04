@@ -1,5 +1,6 @@
 # emacs temp file
 - **.#*
+- **/__pycache__/**
 ##########
 # Zotero
 ##########
