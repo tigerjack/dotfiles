@@ -53,3 +53,4 @@
 - /University/PoliMi/Master/Courses/LA2/**
 + /University/PoliMi/Master/Courses/LA2/Beep/Campi/**
 - /University/PoliMi/Master/**
+- /Work/Promethence/
