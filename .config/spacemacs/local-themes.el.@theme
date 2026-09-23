@@ -1,3 +1,4 @@
+;; local-themes.el --- Spacemacs local themes -*- lexical-binding: t; -*-
 ;; Tracked template for the local Spacemacs theme override.
 ;; switch_theme.sh copies this to local-themes.el (gitignored) and rewrites
 ;; the dotspacemacs-themes line in place, so the generated file -- not this
