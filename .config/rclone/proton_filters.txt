@@ -14,9 +14,11 @@
 - /AppData/Zotero/styles/
 - /AppData/Zotero/translators/
 - /AppData/Zotero/better-bibtex/cache*
+- /AppData/Zotero/*.bib
 - /AppData/Zotero/**journal*
 # these are highly pc dependant
 - /AppData/Zotero/*.sqlite
+- /AppData/Zotero/zotero.sqlite-wal
 - /AppData/Zotero/*.sqlite*bak
 - /AppData/SpotifyOffline/**
 - **History.dat
