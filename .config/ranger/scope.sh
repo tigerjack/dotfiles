@@ -280,6 +280,11 @@ handle_mime() {
             ## Preview as markdown conversion
             pandoc -s -t markdown -- "${FILE_PATH}" && exit 5
             exit 1;;
+	
+	## Markdown
+        md|markdown)
+            glow -w "${PREVIEW_WIDTH}" -- "${FILE_PATH}" && exit 5
+            exit 1;;
 
         ## XLS
         *ms-excel)
